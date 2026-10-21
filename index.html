@@ -699,6 +699,112 @@ footer li{font-size:13.5px;color:var(--mute);padding:4px 0}
   text-transform:uppercase;color:var(--fg);display:block;line-height:1.5}
 
 
+
+/* ---- tap affordance + detail drawer ------------------------------------- */
+.tap{cursor:pointer;position:relative;-webkit-tap-highlight-color:transparent}
+.tap:focus-visible{outline:2px solid var(--red2);outline-offset:3px}
+.sample.tap,.brandcard.tap,.lf.tap,.lk.tap,.chrome-spec>div.tap,.intside .lst>div.tap,.stats>div.tap,.gal figure.tap,.track figure.tap{transition:border-color .2s,background-color .2s,transform .25s}
+.sample.tap:hover,.brandcard.tap:hover,.lf.tap:hover,.lk.tap:hover,.chrome-spec>div.tap:hover,.intside .lst>div.tap:hover{border-color:rgba(240,32,42,.55)}
+.sample.tap:hover,.brandcard.tap:hover,.lf.tap:hover{transform:translateY(-3px)}
+.chrome-spec>div.tap:hover{background:var(--panel2)}
+.tapcue{position:absolute;right:12px;top:12px;width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,255,255,.24);
+  background:rgba(8,8,12,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);pointer-events:none;z-index:2;
+  transition:background .2s,border-color .2s,transform .25s}
+.tapcue::before,.tapcue::after{content:"";position:absolute;left:50%;top:50%;width:10px;height:1.6px;margin:-.8px 0 0 -5px;background:#fff;border-radius:1px}
+.tapcue::after{transform:rotate(90deg)}
+.tap:hover>.tapcue,.tap:focus-visible>.tapcue{background:var(--red);border-color:var(--red);transform:rotate(90deg)}
+.brandcard>.tapcue{top:auto;bottom:16px}
+.stats>div.tap{border-radius:14px;padding:14px 6px}
+.stats>div.tap:hover{background:var(--panel)}
+.stats>div>.tapcue{position:relative;display:block;right:auto;top:auto;margin:12px auto 0;width:22px;height:22px}
+.chrome-spec>div>.tapcue{width:22px;height:22px;top:14px;right:14px}
+.gal figure.tap,.track figure.tap{cursor:zoom-in}
+.tapchip{cursor:pointer;transition:border-color .2s,color .2s,background .2s}
+.tapchip::after{content:"+";margin-left:7px;color:var(--red2);font-weight:700;font-style:normal}
+.tapchip:hover,.tapchip[aria-pressed="true"]{border-color:var(--red2)!important;color:var(--fg)!important}
+.chk span.tapchip[aria-pressed="true"]{background:rgba(217,13,20,.15)}
+.hero .eyebrow.pill.tap::after{content:"+";margin-left:9px;color:var(--red2)}
+.hero .logos img.tap{transition:opacity .2s}
+.hero .logos img.tap:hover{opacity:1}
+.dd-tiny{font-weight:500;letter-spacing:.06em;text-transform:none;color:var(--red2);margin-left:6px;font-size:11px}
+.covprice b{color:var(--fg)}
+.tool.flash{box-shadow:0 0 0 2px var(--red2),0 0 70px rgba(217,13,20,.35);transition:box-shadow .3s}
+.lk .lkmore{display:none;color:#d4d5db;font-size:13px;line-height:1.6;margin:10px 0 2px}
+.lk.open .lkmore{display:block}
+.lk.open{border-color:rgba(240,32,42,.6);background:linear-gradient(90deg,rgba(217,13,20,.09),transparent 70%),var(--panel)}
+.lkchev{display:inline-block;width:6px;height:6px;margin-left:8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .25s}
+.lk.open .lkchev{transform:rotate(-135deg) translateY(-1px)}
+.laysheets .sheet{transition:transform .55s cubic-bezier(.2,.8,.2,1),opacity .35s,box-shadow .35s;cursor:pointer}
+.laysheets[data-pick] .sheet{opacity:.2}
+.laysheets[data-pick="1"] .s1,.laysheets[data-pick="2"] .s2,.laysheets[data-pick="3"] .s3,.laysheets[data-pick="4"] .s4{opacity:1;box-shadow:0 0 0 1px rgba(240,32,42,.85),0 0 46px rgba(240,32,42,.45)}
+.laysheets[data-pick="1"] .s1{transform:translateZ(200px)}
+.laysheets[data-pick="2"] .s2{transform:translateZ(150px)}
+.laysheets[data-pick="3"] .s3{transform:translateZ(100px)}
+.laysheets[data-pick="4"] .s4{transform:translateZ(40px)}
+@media(max-width:560px){
+  .laysheets[data-pick="1"] .s1{transform:translateZ(140px)}
+  .laysheets[data-pick="2"] .s2{transform:translateZ(105px)}
+  .laysheets[data-pick="3"] .s3{transform:translateZ(70px)}
+  .laysheets[data-pick="4"] .s4{transform:translateZ(30px)}}
+.layhint{position:absolute;left:0;right:0;bottom:6px;text-align:center;font-family:var(--disp);font-weight:600;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);pointer-events:none}
+.intside .lst>div.tap::after{content:"";width:6px;height:6px;flex:none;align-self:center;margin-left:4px;border-right:1.5px solid var(--dim);border-bottom:1.5px solid var(--dim);transform:rotate(-45deg)}
+.intside .lst>div.hi::after{border-color:var(--red2)}
+.intside .lst>div{align-items:center}
+.intside .lst>div>span{margin-left:auto}
+.lstmore{border:1px solid rgba(240,32,42,.35);border-radius:12px;background:var(--panel2);padding:14px 16px;margin:-8px 0 18px;font-size:13.5px;line-height:1.6;color:var(--mute)}
+.lstmore b{display:block;color:var(--fg);font-family:var(--hero);font-size:14.5px;margin-bottom:4px}
+.lstmore a{display:inline-block;margin-top:8px;color:var(--fg);font-weight:600;text-decoration:underline;text-decoration-color:var(--red2);text-underline-offset:3px}
+html:has(.dd-dlg[open]){overflow:hidden}
+.dd-dlg{position:fixed;inset:0 0 0 auto;margin:0;padding:0;border:0;width:min(480px,100vw);max-width:100vw;height:100dvh;max-height:100dvh;
+  background:var(--panel);color:var(--fg);border-left:1px solid var(--line2);box-shadow:-30px 0 80px rgba(0,0,0,.55);overflow:hidden}
+.dd-dlg::backdrop{background:rgba(3,3,6,.62);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+.dd-dlg[open]{animation:ddin .32s cubic-bezier(.2,.8,.2,1)}
+@keyframes ddin{from{transform:translateX(48px);opacity:0}to{transform:none;opacity:1}}
+.dd-in{height:100%;overflow-y:auto;overscroll-behavior:contain;padding:30px 26px 0;box-sizing:border-box}
+.dd-x{position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:50%;border:1px solid var(--line2);background:rgba(19,19,26,.85);
+  color:var(--fg);font-size:22px;line-height:1;cursor:pointer;z-index:4;display:grid;place-items:center;padding:0}
+.dd-x:hover{border-color:var(--red2);background:var(--red)}
+.dd-media{margin:-30px -26px 22px;line-height:0;background:#000}
+.dd-media img{width:100%;max-height:56vh;object-fit:cover}
+.dd-eye{display:block;color:var(--red2);margin-bottom:8px}
+.dd-title{font-size:clamp(24px,3vw,30px);padding-right:46px;letter-spacing:-.025em}
+.dd-lede{color:var(--mute);font-size:15px;line-height:1.6;margin:12px 0 0}
+.dd-body{margin-top:16px}
+.dd-h{font-family:var(--disp);font-weight:600;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);margin:22px 0 10px}
+.dd-p{color:var(--mute);font-size:14.5px;line-height:1.65;margin:0 0 10px}
+.dd-spec{margin:0}
+.dd-list{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.dd-list li{position:relative;padding-left:22px;font-size:14px;line-height:1.5;color:#d7d8de}
+.dd-list li::before{content:"";position:absolute;left:3px;top:.55em;width:6px;height:6px;border-radius:50%;background:var(--red2)}
+.dd-list.tick li::before{width:9px;height:5px;left:1px;top:.42em;border-left:1.7px solid var(--red2);border-bottom:1.7px solid var(--red2);background:none;border-radius:0;transform:rotate(-45deg)}
+.dd-list.cross li{color:var(--mute)}
+.dd-list.cross li::before{background:var(--dim)}
+.dd-tw{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+.dd-t{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+.dd-t th{text-align:left;font-family:var(--disp);font-weight:600;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);
+  padding:10px 12px;border-bottom:1px solid var(--line);background:var(--panel2);white-space:nowrap}
+.dd-t td{padding:9px 12px;border-bottom:1px solid var(--line);color:#d7d8de;vertical-align:top}
+.dd-t td:not(:first-child),.dd-t th:not(:first-child){text-align:right;white-space:nowrap}
+.dd-t tr:last-child td{border-bottom:0}
+.dd-t tr.hi td{background:rgba(217,13,20,.14);color:var(--fg);font-weight:600}
+.dd-ex{color:var(--dim);font-size:12px;white-space:normal}
+.dd-t td .dd-ex{display:inline-block;max-width:150px;text-align:right}
+.dd-note{font-size:12.5px;color:var(--dim);margin:10px 0 0;line-height:1.5}
+.dd-act{display:flex;flex-wrap:wrap;gap:10px;margin:26px -26px 0;position:sticky;bottom:0;padding:16px 26px 22px;
+  background:linear-gradient(rgba(14,14,19,0),var(--panel) 28%)}
+.dd-act .btn{flex:1 1 auto;text-align:center;white-space:nowrap}
+.lk em{white-space:nowrap}
+@media(max-width:640px){
+  .dd-dlg{inset:auto 0 0 0;width:100vw;height:auto;max-height:90dvh;border-left:0;border-top:1px solid var(--line2);border-radius:20px 20px 0 0;box-shadow:0 -30px 80px rgba(0,0,0,.55)}
+  .dd-dlg[open]{animation:ddup .34s cubic-bezier(.2,.8,.2,1)}
+  @keyframes ddup{from{transform:translateY(80px);opacity:0}to{transform:none;opacity:1}}
+  .dd-in{height:auto;max-height:90dvh;padding:28px 20px 0}
+  .dd-media{margin:-28px -20px 20px}
+  .dd-act{margin:22px -20px 0;padding:14px 20px calc(18px + env(safe-area-inset-bottom))}
+  .dd-x{top:12px;right:12px}
+}
+.cfgload.nudge{animation:nudge .5s}
+@keyframes nudge{30%{filter:brightness(1.6)}}
 </style>
 </head>
 <body>
@@ -751,7 +857,7 @@ footer li{font-size:13.5px;color:var(--mute);padding:4px 0}
     <div><b><span class="cu" data-to="12">0</span></b><span class="eyebrow">Vehicle categories priced</span></div>
     <div><b><span class="cu" data-to="4">0</span></b><span class="eyebrow">Films on the shelf</span></div>
     <div><b><span class="cu" data-to="8">0</span>.5</b><span class="eyebrow">Mil, thickest option</span></div>
-    <div><b><span class="cu" data-to="10">0</span></b><span class="eyebrow">Years max warranty</span></div>
+    <div><b><span class="cu" data-to="6">0</span></b><span class="eyebrow">Years max warranty</span></div>
   </div>
 </div></section>
 
@@ -1250,6 +1356,11 @@ footer li{font-size:13.5px;color:var(--mute);padding:4px 0}
   </div>
   <p class="credit">3D car: <a href="https://sketchfab.com/3d-models/2022-toyota-land-cruiser-300-vxr-3dfcd7904cdb4e52afa3ce59fa59e1a5" rel="noopener" target="_blank">2022 Toyota Land Cruiser 300 VX.R</a> by <a href="https://sketchfab.com/ddiaz-design" rel="noopener" target="_blank">Ddiaz Design</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">CC BY-NC-SA 4.0</a>.</p>
 </div></footer>
+
+<dialog class="dd-dlg" id="dd-dlg" aria-labelledby="dd-title">
+  <button class="dd-x" type="button" aria-label="Close">&times;</button>
+  <div class="dd-in"></div>
+</dialog>
 
 <script>
 /* ---- process film: plays on its own, captions tied to the timeline ------- */
@@ -1824,8 +1935,10 @@ window.DD_CC = (function(){
   const viewBtns = [...stage.querySelectorAll("[data-view]")];
   const black = document.getElementById("cfgblack");
   function setViewBtn(name){ viewBtns.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.view === name))); }
-  viewBtns.forEach(b => b.addEventListener("click", () => { if (mode === "3d") { engine.view(b.dataset.view); setViewBtn(b.dataset.view); } }));
-  spinBtn.addEventListener("click", () => { if (mode !== "3d") return; const on = !engine.spinning; engine.spin(on); spinBtn.setAttribute("aria-pressed", String(on)); if (on) setViewBtn(""); });
+  let pendingView = null;
+  const nudge = () => { const l = document.getElementById("cfgload"); if (l) { l.classList.remove("nudge"); void l.offsetWidth; l.classList.add("nudge"); } };
+  viewBtns.forEach(b => b.addEventListener("click", () => { if (mode === "3d") { engine.view(b.dataset.view); setViewBtn(b.dataset.view); } else { pendingView = b.dataset.view; setViewBtn(pendingView); nudge(); } }));
+  spinBtn.addEventListener("click", () => { if (mode !== "3d") { nudge(); return; } const on = !engine.spinning; engine.spin(on); spinBtn.setAttribute("aria-pressed", String(on)); if (on) setViewBtn(""); });
   black.addEventListener("change", () => { if (mode === "3d") engine.setBlackout(black.checked); });
   stage.addEventListener("pointerdown", () => hint.classList.add("off"), { once:true });
 
@@ -1836,6 +1949,7 @@ window.DD_CC = (function(){
       api.onSpin = on => { spinBtn.setAttribute("aria-pressed", String(on)); if (!on) setViewBtn(""); };
       document.getElementById("cfgload").classList.add("off");
       drawGrid(); paint(); if (black.checked) api.setBlackout(true);
+      if (pendingView) { try { api.spin(false); api.view(pendingView); } catch(e){} pendingView = null; }
     },
     useImages(){
       if (mode === "3d") return;
@@ -1873,6 +1987,431 @@ document.querySelectorAll("[data-blackout]").forEach(a => a.addEventListener("cl
   window.addEventListener("error", e => say("error: " + (e.message||"") + " @" + ((e.filename||"").split("/").slice(-2).join("/"))), true);
   window.addEventListener("unhandledrejection", e => say("rejection: " + (e.reason && (e.reason.message||e.reason))));
   window.addEventListener("securitypolicyviolation", e => say("CSP: " + e.violatedDirective + " blocked " + (e.blockedURI||"").slice(0,80)));
+})();
+</script>
+<script>
+/* ---- details: every card, chip and tile opens something you can use ------
+   One drawer (side panel on desktop, bottom sheet on phones). Prices come from
+   the same rate card as the quote tool, so they can never drift apart. */
+(function(){
+  const dlg = document.getElementById("dd-dlg");
+  if(!dlg || typeof dlg.showModal !== "function") return;
+  const box = dlg.querySelector(".dd-in");
+  const rm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const WA = t => "https://wa.me/" + DD_CFG.whatsapp + "?text=" + encodeURIComponent(t);
+  const car = () => S.model ? (S.model[0] + " " + S.model[1]) : null;
+  const film = id => FILMS.find(f => f.id === id);
+  const price = (f, v) => (f.tier === 0 ? VEH[v][2] : VEH[v][3]) + f.off;
+  const rs = n => "Rs " + fmt(n);
+  const esc = t => String(t).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+  /* little builders, all return HTML */
+  const P = t => `<p class="dd-p">${t}</p>`;
+  const H = t => `<h4 class="dd-h">${t}</h4>`;
+  const FACTS = r => `<dl class="spec dd-spec">${r.map(x => `<div><dt>${x[0]}</dt><dd>${x[1]}</dd></div>`).join("")}</dl>`;
+  const LIST = (items, cls) => `<ul class="dd-list ${cls || ""}">${items.map(i => `<li>${i}</li>`).join("")}</ul>`;
+  const TABLE = (head, rows, hi) => `<div class="dd-tw"><table class="dd-t"><thead><tr>${head.map(h => `<th>${h}</th>`).join("")}</tr></thead><tbody>${rows.map((r, i) => `<tr${i === hi ? ' class="hi"' : ""}>${r.map(c => `<td>${c}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+  const NOTE = t => `<p class="dd-note">${t}</p>`;
+
+  /* ---- the drawer ---- */
+  let back = null;
+  function open(d){
+    if(!dlg.open) back = document.activeElement;
+    box.innerHTML =
+      (d.media ? `<figure class="dd-media"><img src="${d.media}" alt="${esc(d.alt || d.title)}"></figure>` : "") +
+      `<span class="eyebrow dd-eye">${d.eye || ""}</span>` +
+      `<h3 class="dd-title" id="dd-title">${d.title}</h3>` +
+      (d.lede ? `<p class="dd-lede">${d.lede}</p>` : "") +
+      `<div class="dd-body">${d.body || ""}</div>` +
+      `<div class="dd-act">${(d.actions || []).map((a, i) =>
+        `<a class="btn ${a.ghost ? "btn-ghost" : "btn-red"}" data-ai="${i}" href="${a.wa ? WA(a.wa) : "#"}"${a.wa ? ' target="_blank" rel="noopener"' : ""}>${a.label}</a>`).join("")}</div>`;
+    box.querySelectorAll("[data-ai]").forEach(el => el.addEventListener("click", e => {
+      const a = d.actions[+el.dataset.ai];
+      if(a.wa){ if(typeof sendLead === "function") sendLead({ source: "detail:" + (d.key || d.title), note: a.wa }); return; }
+      e.preventDefault();
+      if(a.stay){ a.fn(); return; }
+      close(); if(a.fn) setTimeout(a.fn, 80);
+    }));
+    if(!dlg.open) dlg.showModal();
+    box.scrollTop = 0;
+  }
+  function close(){ if(dlg.open) dlg.close(); }
+  dlg.addEventListener("click", e => { if(e.target === dlg) close(); });
+  dlg.querySelector(".dd-x").addEventListener("click", close);
+  dlg.addEventListener("close", () => { if(back && back.focus) back.focus({ preventScroll: true }); });
+
+  /* ---- make an element tappable ---- */
+  function tap(el, fn, label){
+    if(!el || el.dataset.tap) return;
+    el.dataset.tap = "1";
+    el.classList.add("tap");
+    if(!/^(A|BUTTON)$/.test(el.tagName)){ el.setAttribute("role", "button"); el.tabIndex = 0; }
+    if(label) el.setAttribute("aria-label", label);
+    el.addEventListener("click", e => {
+      const inner = e.target.closest("a,button,input,label,[data-tap]");
+      if(inner && inner !== el && el.contains(inner)) return;
+      fn(e);
+    });
+    el.addEventListener("keydown", e => { if(e.target !== el) return; if(e.key === "Enter" || e.key === " "){ e.preventDefault(); fn(e); } });
+  }
+  function cue(el){ const c = document.createElement("span"); c.className = "tapcue"; c.setAttribute("aria-hidden", "true"); el.appendChild(c); }
+
+  /* ---- jumps into the page ---- */
+  function go(sel, after){
+    const el = document.querySelector(sel); if(!el) return;
+    el.scrollIntoView({ behavior: rm ? "auto" : "smooth", block: "start" });
+    if(after) setTimeout(after, rm ? 50 : 750);
+  }
+  function flash(sel){ const el = document.querySelector(sel); if(!el) return; el.classList.add("flash"); setTimeout(() => el.classList.remove("flash"), 1600); }
+  function priceWith(fid){ S.film = fid; S.cov = "plat"; paint(); go("#price", () => flash(".tool")); }
+  function findCar(){ go("#price", () => { flash(".tool"); const q = document.getElementById("vq"); if(q) q.focus({ preventScroll: true }); }); }
+  function on3D(view){
+    if(window.DD_CC) window.DD_CC.blackout(true);
+    go("#colour", () => { const api = window.DD_3D && window.DD_3D(); if(api && api.view && view){ try { api.spin && api.spin(false); api.view(view); } catch(e){} } });
+  }
+
+  /* =======================================================================
+     CONTENT
+     ======================================================================= */
+
+  /* ---- films ---- */
+  const FILM_TXT = {
+    ph: { lede: "ProForce's standard sheet. Clear TPU with a self-healing topcoat at 7.5 mil, and the lowest price per panel we offer.",
+          good: ["Daily drivers that mostly see city roads", "A first PPF job on a newer car", "Full coverage on a tighter budget"] },
+    pp: { lede: "ProForce's thick sheet. 8.5 mil, so more of a stone hit is soaked up before it reaches the paint. Rs 25,000 under the matching DefenX Pro.",
+          good: ["Regular motorway and GT Road runs", "SUVs and pick-ups that throw gravel at themselves", "The thickest sheet at the lower price"] },
+    dx: { lede: "OneFilm USA's core film. 7 mil American urethane, self-healing topcoat, 6 year warranty from the brand. OneFilm sets the price, so it is the same at every authorised applicator.",
+          good: ["New cars where a brand-backed warranty matters", "Mixed city and highway driving", "Owners keeping the car for years"] },
+    dp: { lede: "The thickest film we fit and the top of the OneFilm range. 8.5 mil with a 6 year brand warranty.",
+          good: ["Highway miles and long trips", "Luxury cars and big SUVs", "The most protection we can put on a panel"] },
+  };
+  function filmDrawer(id){
+    const f = film(id), t = FILM_TXT[id];
+    const mil = parseFloat(f.sub), um = Math.round(mil * 25.4);
+    open({
+      key: "film:" + id, eye: f.brand, title: f.name, lede: t.lede,
+      body:
+        FACTS([["Thickness", `${mil} mil &middot; ${um} &micro;m`], ["Material", "TPU, optically clear"], ["Topcoat", "Self-healing, gloss"],
+               ["Warranty", f.warr === "Manufacturer" ? "Manufacturer warranty" : "6 years, OneFilm USA"]]) +
+        H("Good for") + LIST(t.good, "tick") +
+        H("Full body price, Platinum coverage") +
+        TABLE(["Car size", "Price"], VEH.map((v, i) => [v[0], rs(price(f, i))]), S.veh) +
+        NOTE((car() ? `Highlighted: your ${esc(car())}. ` : "Highlighted: the size picked in the price tool. ") + "Basic and Gold are quoted on inspection."),
+      actions: [
+        { label: `Price my car with ${f.name}`, fn: () => priceWith(id) },
+        { label: "Ask on WhatsApp", ghost: true, wa: `Hi Detail Dungeon, I'd like to know more about ${f.brand} ${f.name} for my ${car() || "car"}.` },
+      ],
+    });
+  }
+
+  /* ---- glossary: TPU and the two warranties ---- */
+  const COVERED = ["Yellowing or discolouring", "Cracking, bubbling or blistering", "Peeling or edges lifting", "The adhesive letting go"];
+  const NOT_COVERED = ["Damage from an accident, or a hit that tears the film", "Stains from harsh chemicals or the wrong polish", "Film someone else has removed or reworked"];
+  const GLOSS = {
+    tpu: { key: "tpu", eye: "Material", title: "TPU, thermoplastic polyurethane",
+      lede: "What every film on our shelf is made of.",
+      body: LIST(["Stretches round bumpers, mirror caps and arch lips in one piece, without creasing",
+                  "Takes a stone and spreads the hit instead of chipping",
+                  "Stays clear in the sun, where old PVC films yellow and crack",
+                  "Peels off years later without taking paint with it"], "tick") +
+            H("Built for our weather") +
+            P("Summer heat, dust and long highway runs are what TPU is made for. The heat even helps: it is what closes light swirls in the self-healing topcoat."),
+      actions: [{ label: "See the four layers", fn: () => go("#layers") }] },
+    "warr-onefilm": { key: "warranty-onefilm", eye: "OneFilm USA", title: "6 year warranty",
+      lede: "Backed by OneFilm USA, from the day the film goes on.",
+      body: H("Covered") + LIST(COVERED, "tick") + H("Not covered") + LIST(NOT_COVERED, "cross") +
+            NOTE("Exact terms are on the OneFilm warranty card that comes with the car."),
+      actions: [{ label: "Price my car with DefenX", fn: () => priceWith("dx") }] },
+    "warr-proforce": { key: "warranty-proforce", eye: "ProForce", title: "Manufacturer warranty",
+      lede: "ProForce stands behind the film against defects.",
+      body: H("Covered") + LIST(COVERED, "tick") + H("Not covered") + LIST(NOT_COVERED, "cross") +
+            NOTE("Length depends on the series. We confirm it in writing before we start."),
+      actions: [{ label: "Price my car with Phantom", fn: () => priceWith("ph") }] },
+  };
+
+  /* ---- brands ---- */
+  function brandDrawer(b){
+    const one = b === "onefilm", ids = one ? ["dx", "dp"] : ["ph", "pp"], fs = ids.map(film);
+    open({
+      key: "brand:" + b, eye: "Authorised applicator", title: one ? "OneFilm USA" : "ProForce",
+      lede: one ? "The premium tier. American urethane, a self-healing topcoat, and a price fixed by OneFilm USA, so it is the same at every authorised applicator."
+                : "Same install, same teardown, same coverage as OneFilm. Priced Rs 25,000 below the matching DefenX in every car size.",
+      body:
+        H("What you get") +
+        LIST(one ? ["Two thicknesses: DefenX at 7 mil, DefenX Pro at 8.5 mil", "6 year warranty from the brand on both", "A brand-set price, no haggling"]
+                 : ["Two thicknesses: Phantom at 7.5 mil, Phantom Plus at 8.5 mil", "Gloss, self-healing topcoat on both", "Manufacturer warranty against defects"], "tick") +
+        H("Full body price by car size") +
+        TABLE(["Car size", fs[0].name, fs[1].name], VEH.map((v, i) => [v[0], rs(price(fs[0], i)), rs(price(fs[1], i))]), S.veh) +
+        NOTE("Platinum coverage, every painted panel. Basic and Gold are quoted on inspection."),
+      actions: [
+        { label: `Price my car with ${fs[0].name}`, fn: () => priceWith(ids[0]) },
+        { label: "Ask on WhatsApp", ghost: true, wa: `Hi Detail Dungeon, I'm interested in ${one ? "OneFilm USA" : "ProForce"} PPF for my ${car() || "car"}.` },
+      ],
+    });
+  }
+  function applicatorDrawer(){
+    open({
+      key: "applicator", eye: "Authorised applicator", title: "Fitted under the brand, not around it",
+      lede: "We buy OneFilm USA and ProForce through their official channels and fit them to the brands' install standard.",
+      body: H("What that means for you") +
+        LIST(["Genuine film, not grey import or rebranded stock", "OneFilm pricing set by the brand, the same at every authorised applicator",
+              "Warranty backed by the manufacturer, not only by us", "Paint washed, decontaminated and corrected before any film goes on",
+              "Edges wrapped round the panel wherever the panel allows"], "tick"),
+      actions: [{ label: "See the two brands", fn: () => go("#brands") }, { label: "Price my car", ghost: true, fn: findCar }],
+    });
+  }
+  function shopDrawer(){
+    open({
+      key: "in-the-bay", eye: "In the bay", title: "What we use besides film",
+      lede: "The film is only as good as the paint under it. These go on before, and after.",
+      body: H("GYEON") + P("Ceramic coatings and aftercare. Used for ceramic coating jobs, and to top film so it stays slick and easy to wash.") +
+            H("Koch-Chemie") + P("German wash and decontamination chemistry: snow foam, pre-wash and iron remover. Takes the bonded dirt off before anything touches the paint.") +
+            H("Meguiar's") + P("Compounds and polishes for paint correction. Swirls come out before the film goes on, because film seals in whatever is under it."),
+      actions: [{ label: "Ask about ceramic coating", wa: `Hi Detail Dungeon, I'd like a price for ceramic coating on my ${car() || "car"}.` }],
+    });
+  }
+
+  /* ---- layers: tap a row, that sheet lifts out of the stack ---- */
+  const LAYER_MORE = [
+    "A thin elastomeric coat on top. Fine wash swirls and light scuffs flatten out when it warms up: sun, a hot day, or warm water. It also keeps the gloss and stops stains sinking in.",
+    "Most of the sheet's thickness. It flexes on impact and spreads the energy, so a stone leaves its mark in the film instead of chipping the paint. Thicker sheet, harder hit it can take.",
+    "Pressure-sensitive acrylic. It lets us float the sheet into place on slip solution, then grabs once squeegeed. Made to release cleanly years later without pulling paint or leaving glue.",
+    "Before any film goes on, the paint is washed, decontaminated and machine polished. Whatever is under the film gets sealed in, so it has to be right first.",
+  ];
+  const FEAT = [
+    { key: "impact", eye: "Layer 02 at work", title: "High impact resistance", lede: "What the urethane body of the film is there for.",
+      body: H("What it stops") + LIST(["Stone chips from the car in front", "Gravel and grit off the road", "Sand blasting on long motorway runs", "Light key scratches and door taps in car parks"], "tick") +
+            H("What it doesn't") + LIST(["A hit hard enough to dent the metal", "A deep gouge from a sharp edge. The film tears and takes the mark, and we re-film that panel instead of repainting it."], "cross"),
+      actions: [{ label: "See the thicker films", fn: () => go("#samples") }] },
+    { key: "flex", eye: "TPU", title: "Flexible and durable", lede: "Why it can wrap a bumper in one piece and still look new years on.",
+      body: LIST(["Stretches round bumpers, mirror caps and arch lips without creasing", "No cracking in summer heat, no brittleness in winter", "Stays clear instead of yellowing", "Comes off cleanly when you want it off"], "tick"),
+      actions: [{ label: "What TPU is", stay: true, fn: () => open(GLOSS.tpu) }] },
+    { key: "clarity", eye: "Optics", title: "Optical clarity", lede: "On gloss paint you should not be able to tell it is there.",
+      body: LIST(["No orange-peel texture and no haze", "Metallic and pearl paints keep their flake", "Edges wrapped round the panel, so there is no line to spot", "Gloss finish matches factory clearcoat"], "tick") +
+            NOTE("The colours on the sample cards are paint, there to show the gloss. Every film we fit is clear."),
+      actions: [{ label: "See the samples", fn: () => go("#samples") }] },
+    { key: "heal", eye: "Layer 01 at work", title: "Self-healing topcoat", lede: "Light marks close up on their own with heat.",
+      body: H("Heals") + LIST(["Fine swirls from washing", "Fingernail marks round door handles", "Light scuffs and brush marks"], "tick") +
+            H("How") + P("Leave the car in the sun for an hour, or pour warm water over the mark. The topcoat flows back flat.") +
+            H("Doesn't heal") + LIST(["A scratch that cuts right through the topcoat. That panel's film can be replaced on its own."], "cross"),
+      actions: [{ label: "Price my car", fn: findCar }] },
+  ];
+
+  /* ---- coverage chips -> that panel on the car ---- */
+  const PANEL = {
+    "Front bumper, full height": { ids: ["bumperF"], t: "The first thing a stone hits. Film runs from the top edge down to the lip, so the part that scrapes on speed breakers is covered too." },
+    "Rear bumper, full height":  { ids: ["bumperB"], t: "Loading scuffs from the boot and gravel thrown by your own rear tyres. Covered down to the lip." },
+    "Bonnet":                    { ids: ["hood"],    t: "The biggest target at the front. Full bonnet in one sheet, edges wrapped, no line across the middle." },
+    "Front fenders":             { ids: ["fenderF"], t: "Right behind the front tyres, so they catch grit flung up off the wheel. Wrapped into the arch lip." },
+    "Side mirrors":              { ids: ["mirrors"], t: "They stick out into the wind and the traffic. Caps filmed and wrapped so the edge never lifts." },
+    "Side steps":                { ids: ["steps"],   t: "Shoes, mud and gravel off the front wheels. The tread edge gets the same film as the paint." },
+    "Four doors":                { ids: ["doorFR", "doorBR", "doorFL", "doorBL"], t: "Door edges meet walls and other doors; handle cups meet nails and rings. Edges wrapped, cups filmed." },
+    "Rear quarters":             { ids: ["fenderB", "body"], t: "Behind the rear doors, right in the spray from the rear wheels. Wrapped into the arch." },
+    "Boot lid":                  { ids: ["trunk"],   t: "Keys, bags and loading. Filmed round the handle and the plate recess." },
+    "Full roof":                 { ids: ["roof"],    t: "Here the enemy is the sun: UV, bird droppings and tree sap. One sheet, no seam on top." },
+  };
+
+  /* ---- interior rows ---- */
+  const INT = [
+    { t: "Centre console and gear surround", d: "The piece shown on the left. Piano black and carbon round the gear lever and cupholders take keys, phones and rings every day. Each piece is cut to shape and the edges tucked." },
+    { t: "Screen bezel and dash strip", d: "Gloss bezels round the screens and the dash trim swirl from being wiped. Gloss film on gloss trim, a brushed film on brushed trim, so the finish does not change." },
+    { t: "Door inserts and handle cups", d: "Inserts get kicked and brushed by bags; handle cups get nails. Front and rear doors, both sides." },
+    { t: "Door sills and boot sill", d: "Shoes on the way in, luggage on the way out. A thicker film here, because these get stood on and dragged over." },
+    { t: "Infotainment screen", d: "Clear or anti-glare film over the touchscreen. Stops ring scratches, cuts glare and fingerprints. Touch works as normal." },
+  ];
+
+  /* ---- services ---- */
+  const SVC = [
+    { key: "tint", eye: "Ceramic window tint", title: "How tint is priced",
+      lede: "Priced on the car, because the amount of glass changes from a hatchback to a Land Cruiser.",
+      body: H("What sets the price") + LIST(["How many windows, and how big", "The shade you pick for each window", "Whether old tint has to come off first"]) +
+            H("What you get") + LIST(["Infrared heat rejected, so the cabin stays cooler and the AC works less", "UV blocked, which protects the dash and seats", "Plotter cut to your glass, no blade near your seals"], "tick") +
+            NOTE("We tell you what shade is allowed on the road before we fit."),
+      wa: c => `Hi Detail Dungeon, I'd like a price for ceramic window tint on my ${c}.`,
+      more: { label: "Drag the before and after", fn: () => go("#services") } },
+    { key: "chrome", eye: "Chrome delete", title: "How chrome delete is priced",
+      lede: "Priced by how much chrome the car has, and how much of it you want gone.",
+      body: H("Pick the level") + LIST(["Badges and mirror caps only", "Add the grille and window surrounds", "Every strip of brightwork, wheels optional"]) +
+            H("Finish") + LIST(["Gloss black or satin black", "Fully reversible, the chrome is still under there"], "tick"),
+      wa: c => `Hi Detail Dungeon, I'd like a price for chrome delete on my ${c}.`,
+      more: { label: "Try it on the 3D car", fn: () => on3D("front") } },
+    { key: "colour", eye: "Colour change", title: "How a colour change is priced",
+      lede: "Priced on the size of the car and the film you choose.",
+      body: H("Two ways to do it") +
+            FACTS([["Coloured PPF", "Thick, self-healing, protects like clear PPF"], ["Vinyl wrap", "Thinner, more colours, lower price"]]) +
+            H("Choices") + LIST(["Gloss, satin or matte", "Door shuts and inner edges, optional", "Chrome delete in the same job"]) +
+            NOTE("Your factory paint stays sealed underneath. Take it off later and the original colour is still there."),
+      wa: c => `Hi Detail Dungeon, I'd like a price for a colour change on my ${c}.`,
+      more: { label: "Pick a colour on the 3D car", fn: () => go("#colour") } },
+  ];
+  const CHROME = [
+    { t: "Window surrounds", view: "side", d: "The chrome strip round every window, upper and lower, plus the A and B pillar trims and the quarter trim. Tucked under the rubbers where it can be. On a Land Cruiser this is most of the chrome you see from the side." },
+    { t: "Grille and vents", view: "front", d: "Grille slats, the surround and the lower intake brightwork. All black, or just the surround for a two-tone look. The badge can stay chrome or go black." },
+    { t: "Mirror caps and handles", view: "side", d: "Mirror caps and stalks, door handles and the handle inserts. Small pieces, big change to the side profile." },
+    { t: "Badges and exhaust", view: "rear", d: "Model badges front and back, the boot trim strip and the exhaust tip surrounds. Badges are filmed in place, not pulled off." },
+  ];
+
+  /* ---- stats ---- */
+  function catsDrawer(){
+    const ex = VEH.map((_, i) => MODELS.filter(m => m[2] === i).slice(0, 3).map(m => m[1]).join(", ") || "Ask us");
+    const lo = film("ph"), hi = film("dp");
+    open({ key: "categories", eye: "The rate card", title: "12 car sizes, 12 fixed prices",
+      lede: "You pick your car, we map it to one of these. The price for that size is fixed, so the number doesn't change when you walk in.",
+      body: TABLE(["Size", "For example", "Full body"], VEH.map((v, i) => [v[0], `<span class="dd-ex">${esc(ex[i])}</span>`, `${fmt(price(lo, i) / 1000)}k to ${fmt(price(hi, i) / 1000)}k`]), S.veh) +
+            NOTE("Full body ranges run from Phantom to DefenX Pro. Basic and Gold are quoted on inspection."),
+      actions: [{ label: "Find my car", fn: findCar }] });
+  }
+  function filmsDrawer(){
+    open({ key: "four-films", eye: "The stock", title: "Four films, side by side",
+      lede: "All gloss, all self-healing, all clear TPU. What changes is thickness and who stands behind it.",
+      body: TABLE(["Film", "Thick", "Warranty", "From"], FILMS.map(f => [`<b>${f.name}</b><br><span class="dd-ex">${f.brand}</span>`, parseFloat(f.sub) + " mil", f.warr === "Manufacturer" ? "Maker" : "6 yr", rs(price(f, 0))])) +
+            NOTE("From = city car, Platinum coverage."),
+      actions: [{ label: "See them on the shelf", fn: () => go("#samples") }, { label: "Price my car", ghost: true, fn: findCar }] });
+  }
+  function milDrawer(){
+    open({ key: "thickness", eye: "Thickness", title: "8.5 mil, the thickest we stock",
+      lede: "A mil is a thousandth of an inch, 25.4 microns. 8.5 mil is about 216 microns, roughly two sheets of printer paper.",
+      body: TABLE(["Film", "Mil", "Microns"], FILMS.map(f => [f.name, parseFloat(f.sub), Math.round(parseFloat(f.sub) * 25.4)])) +
+            H("Why it matters") + P("A thicker sheet soaks up more of a stone hit before the paint feels it. Thin and thick both self-heal and stay clear; the difference is how hard a hit they can take."),
+      actions: [{ label: "See the four layers", fn: () => go("#layers") }, { label: "Price an 8.5 mil film", ghost: true, fn: () => priceWith("dp") }] });
+  }
+  function warrantyDrawer(){
+    open({ key: "warranty", eye: "Warranty", title: "Up to 6 years, from the brand",
+      lede: "DefenX and DefenX Pro carry a 6 year OneFilm USA warranty. ProForce films carry a manufacturer warranty.",
+      body: H("Covered") + LIST(COVERED, "tick") + H("Not covered") + LIST(NOT_COVERED, "cross") +
+            NOTE("Exact terms are on the warranty card that comes with the car."),
+      actions: [{ label: "Price my car with DefenX", fn: () => priceWith("dx") }] });
+  }
+
+  /* ---- photos ---- */
+  const PHOTO = {
+    "m_audi":  ["Audi e-tron", "In the main bay, under the light grid."],
+    "m_bmw":   ["BMW M5", "On the tiled floor of the film bay."],
+    "m_merc":  ["Mercedes-Benz C-Class", "In the main bay."],
+    "m_m5":    ["BMW M5", "Rear three-quarter, in the film bay."],
+    "m_m5b":   ["BMW M5", "Through the film bay door."],
+    "g1":      ["In the bay", "Lit for the work, not the photo."],
+  };
+  const photos = [];
+  function photoDrawer(i){
+    const src = photos[i], k = (src.match(/([^/]+)\.\w+$/) || [])[1], cap = PHOTO[k] || ["In the bay", ""];
+    open({ key: "photo:" + k, media: src, alt: cap[0], eye: "Inside the Dungeon", title: cap[0], lede: cap[1],
+      body: P("Climate controlled, lit with daylight panels so every swirl shows while we work. Come and see it before you book."),
+      actions: [{ label: "Book a visit to the bay", wa: "Hi Detail Dungeon, I'd like to come and see the bay. When is a good time?" },
+                { label: "Next photo", ghost: true, stay: true, fn: () => photoDrawer((i + 1) % photos.length) }] });
+  }
+
+  /* =======================================================================
+     WIRING
+     ======================================================================= */
+
+  /* hero pill and partner logos */
+  tap(document.querySelector(".hero .eyebrow.pill"), applicatorDrawer, "What authorised applicator means");
+  document.querySelectorAll(".hero .logos img").forEach(img => {
+    const a = (img.alt || "").toLowerCase();
+    const fn = /onefilm/.test(a) ? () => brandDrawer("onefilm") : /proforce/.test(a) ? () => brandDrawer("proforce") : shopDrawer;
+    tap(img, fn, img.alt + ", details");
+  });
+
+  /* brand cards */
+  document.querySelectorAll("#brands .brandcard").forEach((c, i) => { tap(c, () => brandDrawer(i === 0 ? "onefilm" : "proforce")); cue(c); });
+
+  /* film cards and their pills (pills first, so the card ignores their taps) */
+  const SAMPLE_IDS = ["ph", "pp", "dx", "dp"];
+  document.querySelectorAll("#samples .sample").forEach((c, i) => {
+    c.querySelectorAll(".spills em").forEach(em => {
+      em.classList.add("tapchip");
+      const isTpu = /tpu/i.test(em.textContent), isOne = /onefilm/i.test((c.querySelector(".sbrand") || {}).textContent || "");
+      tap(em, () => open(GLOSS[isTpu ? "tpu" : (isOne ? "warr-onefilm" : "warr-proforce")]));
+    });
+    tap(c, () => filmDrawer(SAMPLE_IDS[i])); cue(c);
+  });
+
+  /* layers: rows and sheets */
+  const lks = [...document.querySelectorAll("#layers .lk")], stack = document.querySelector("#layers .laysheets");
+  let pick = -1;
+  function pickLayer(i){
+    pick = i;
+    lks.forEach((r, k) => { r.classList.toggle("open", k === i); r.setAttribute("aria-expanded", String(k === i)); });
+    if(!stack) return;
+    if(i < 0) stack.removeAttribute("data-pick"); else stack.dataset.pick = String(i + 1);
+  }
+  lks.forEach((r, i) => {
+    const m = document.createElement("p"); m.className = "lkmore"; m.textContent = LAYER_MORE[i];
+    const txt = r.querySelector("div"); if(txt) txt.appendChild(m);
+    const em = r.querySelector("em"); if(em){ const ch = document.createElement("span"); ch.className = "lkchev"; ch.setAttribute("aria-hidden", "true"); em.appendChild(ch); }
+    r.setAttribute("aria-expanded", "false");
+    tap(r, () => pickLayer(pick === i ? -1 : i));
+  });
+  if(stack){
+    [...stack.children].forEach((sh, k) => sh.addEventListener("click", () => pickLayer(pick === k ? -1 : k)));
+    const hint = document.createElement("span"); hint.className = "layhint"; hint.textContent = "Tap a layer to pull it out";
+    stack.parentElement.appendChild(hint);
+  }
+  document.querySelectorAll("#layers .lf").forEach((t, i) => { if(FEAT[i]){ tap(t, () => open(FEAT[i])); cue(t); } });
+
+  /* coverage chips */
+  const cl = document.getElementById("covlist"), cp = document.getElementById("covprice");
+  if(cl){
+    const eb = cl.parentElement.querySelector(".eyebrow"); if(eb) eb.innerHTML = 'What\'s covered <span class="dd-tiny">tap a panel</span>';
+    const deco = () => [...cl.children].forEach(sp => {
+      if(sp.dataset.tap) return;
+      sp.classList.add("tapchip"); sp.setAttribute("aria-pressed", "false");
+      tap(sp, () => {
+        const name = sp.textContent.trim(), info = PANEL[name]; if(!info) return;
+        [...cl.children].forEach(c => c.setAttribute("aria-pressed", String(c === sp)));
+        cp.innerHTML = `<b>${esc(name)}.</b> ${info.t}`;
+        const ok = window.DD_COV && window.DD_COV.focus && window.DD_COV.focus(info.ids, name);
+        const wrap = document.getElementById("covwrap");
+        if(ok && wrap && innerWidth < 941){ const r = wrap.getBoundingClientRect(); if(r.bottom < 80 || r.top > innerHeight - 120) wrap.scrollIntoView({ behavior: rm ? "auto" : "smooth", block: "center" }); }
+      }, name + ", show on the car");
+    });
+    deco(); new MutationObserver(deco).observe(cl, { childList: true });
+  }
+
+  /* interior rows */
+  const lst = document.querySelector("#interior .lst");
+  if(lst){
+    const more = document.createElement("div"); more.className = "lstmore"; more.setAttribute("aria-live", "polite");
+    lst.after(more);
+    const rows = [...lst.children];
+    const show = i => {
+      rows.forEach((r, k) => { r.classList.toggle("hi", k === i); r.setAttribute("aria-pressed", String(k === i)); });
+      const x = INT[i]; if(!x) return;
+      more.innerHTML = `<b>${x.t}</b>${x.d} <a href="${WA(`Hi Detail Dungeon, I'd like a price for interior film on the ${x.t.toLowerCase()} of my ${car() || "car"}.`)}" target="_blank" rel="noopener">Ask about this piece</a>`;
+      more.querySelector("a").addEventListener("click", () => typeof sendLead === "function" && sendLead({ source: "detail:interior", note: x.t }));
+    };
+    rows.forEach((r, i) => tap(r, () => show(i)));
+    show(0);
+  }
+
+  /* services: price pills and the chrome cells */
+  document.querySelectorAll("#services .svccard").forEach((c, i) => {
+    const tag = c.querySelector(".svctag"), s = SVC[i]; if(!tag || !s) return;
+    tag.textContent = "How it's priced"; tag.classList.add("tapchip");
+    tap(tag, () => open({ key: "svc:" + s.key, eye: s.eye, title: s.title, lede: s.lede, body: s.body,
+      actions: [{ label: "Get a price on WhatsApp", wa: s.wa(car() || "car") }, Object.assign({ ghost: true }, s.more)] }));
+  });
+  document.querySelectorAll("#services .chrome-spec > div").forEach((cell, i) => {
+    const x = CHROME[i]; if(!x) return;
+    tap(cell, () => open({ key: "chrome:" + i, eye: "Chrome delete", title: x.t, lede: x.d,
+      body: FACTS([["Finish", "Gloss or satin black"], ["Reversible", "Yes, film over the chrome"]]),
+      actions: [{ label: "See it on the 3D car", fn: () => on3D(x.view) }, { label: "Get a price", ghost: true, wa: `Hi Detail Dungeon, I'd like a price for chrome delete (${x.t.toLowerCase()}) on my ${car() || "car"}.` }] }));
+    cue(cell);
+  });
+
+  /* stats */
+  const ST = [catsDrawer, filmsDrawer, milDrawer, warrantyDrawer];
+  document.querySelectorAll(".stats > div").forEach((d, i) => { if(ST[i]){ tap(d, ST[i]); cue(d); } });
+
+  /* photos: strip and studio gallery */
+  document.querySelectorAll(".strip figure img, #studio .gal figure img").forEach(img => {
+    const src = img.getAttribute("src"); if(!photos.includes(src)) photos.push(src);
+    const fig = img.closest("figure");
+    tap(fig, () => photoDrawer(photos.indexOf(src)), "Open photo"); cue(fig);
+  });
+
+  window.DD_DETAILS = { open, filmDrawer, brandDrawer };
 })();
 </script>
 <script type="module">
@@ -1952,7 +2491,7 @@ if (wrap && canvas) {
       labelTimer = setTimeout(() => { label.textContent = s.label; label.classList.add('in'); }, 160);
       replay.classList.toggle('on', s.final);
     },
-    onReady: a => { covApi = a; load.classList.add('off'); wrap.classList.add('is3d'); window.DD_COV = { play: id => a.play(id), stop: () => a.stop(), seek: (id, t) => { a.play(id); a.stop(); a.seek(t); } }; a.play(pressed()); },
+    onReady: a => { covApi = a; load.classList.add('off'); wrap.classList.add('is3d'); window.DD_COV = { play: id => a.play(id), stop: () => a.stop(), seek: (id, t) => { a.play(id); a.stop(); a.seek(t); }, focus: (ids, label) => a.focus(ids, label) }; a.play(pressed()); },
     onFail: e => { console.warn('coverage 3D unavailable, keeping stills', e); load.classList.add('off'); },
   });
   if (!api) load.classList.add('off');

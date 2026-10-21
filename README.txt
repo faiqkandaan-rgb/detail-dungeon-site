@@ -79,6 +79,16 @@ Leads (WhatsApp + sheet)
   form falls back to WhatsApp with the same details. Studio number is
   DD_CFG.whatsapp.
 
+Detail drawers (Oct 21)
+  Every card, chip, tile and photo opens something: a drawer (side panel on
+  desktop, bottom sheet on phones) with real detail, prices pulled live from the
+  rate card, and a WhatsApp button that prefills the car and the service.
+  Layer rows pull their sheet out of the 3D stack; coverage chips fly the camera
+  to that panel and light it up; interior rows expand in place. All copy lives
+  in one script block in index.html (search "details: every card"). Warranty
+  wording and the GYEON / Koch-Chemie / Meguiar's lines are written from what
+  those brands make; have the studio confirm before launch.
+
 Removed on client request (Oct 21)
   The 3D process film, the Audi e-tron four-stage scroll and the "recent work"
   reels. Their assets are out of the build; the sections can come back from an

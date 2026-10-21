@@ -187,6 +187,8 @@ export function initCoverage({ canvas, stage, model = '3d/lc300.glb', noseFlip =
   let lastShotIdx = -1, lastLabel = '';
 
   function setPackage(id){
+    cancelAnimationFrame(focusRaf); focusRaf = 0;
+    for (const pid in panels) for (const p of panels[pid]) p.U.uTint.value = TINT;
     current.id = id; current.shots = PACKAGES[id].shots; current.t = 0; lastShotIdx = -1; lastLabel = '';
     let tot = 0; for (const s of current.shots) if (!s.orbit) tot += shotLen(s); current.total = tot;
     for (const pid in panels) for (const p of panels[pid]) p.U.uFilm.value = 0;
@@ -233,6 +235,34 @@ export function initCoverage({ canvas, stage, model = '3d/lc300.glb', noseFlip =
     renderer.render(scene, camera);
   }
 
+  // ---- focus: a tapped panel, everything in the package filmed, that panel pulsing ---
+  const HI = new THREE.Color(0xff2433), HI_BASE = new THREE.Color(0xff2433), WHITE = new THREE.Color(0xffffff), SOFT = new THREE.Color(0xd9a3a8);
+  let focusRaf = 0;
+  function focus(ids, label){
+    if (!ready || !ids || !ids.length) return false;
+    const shot = current.shots.find(s => s.panels.some(p => ids.includes(p))) || PACKAGES.plat.shots.find(s => s.panels.some(p => ids.includes(p)));
+    if (!shot) return false;
+    playing = false; cancelAnimationFrame(raf); raf = 0; cancelAnimationFrame(focusRaf);
+    for (const s of current.shots) if (s.panels.length) {
+      const dir = s.dir || [0, 0, 1]; const [a, b] = panelRange(s.panels, dir);
+      for (const pid of s.panels) for (const p of (panels[pid] || [])) { p.U.uDir.value.set(...dir); p.U.uA.value = a; p.U.uB.value = b; p.U.uFilm.value = 1; }
+    }
+    if (!current.shots.includes(shot)) { const dir = shot.dir || [0, 0, 1]; const [a, b] = panelRange(ids, dir); for (const pid of ids) for (const p of (panels[pid] || [])) { p.U.uDir.value.set(...dir); p.U.uA.value = a; p.U.uB.value = b; p.U.uFilm.value = 1; } }
+    for (const pid in panels) for (const p of panels[pid]) p.U.uTint.value = ids.includes(pid) ? HI : SOFT;
+    const fp = camera.position.clone(), ft = camTgt.clone(), tp = scaled(shot.cam).clone(), tt = scaled(shot.tgt).clone();
+    const start = performance.now(); lastShotIdx = -1;
+    onShot && onShot({ label: label || shot.label, index: current.shots.indexOf(shot), count: current.shots.length, final: true, pkg: current.id, focus: true });
+    const step = () => {
+      const el = (performance.now() - start) / 1000, e = ease(Math.min(1, el / 1.0));
+      camera.position.lerpVectors(fp, tp, e); camTgt.lerpVectors(ft, tt, e); camera.lookAt(camTgt);
+      HI.copy(HI_BASE).lerp(WHITE, el < 3.2 ? .28 * (.5 + .5 * Math.sin(el * 7)) : 0);
+      renderer.render(scene, camera);
+      focusRaf = (el < 3.3 && !playing) ? requestAnimationFrame(step) : 0;
+    };
+    focusRaf = requestAnimationFrame(step);
+    return true;
+  }
+
   // ---- loop ----------------------------------------------------------------------
   let raf = 0, t0 = performance.now(), playing = quality !== 'capture', visible = true;
   function tick(){ raf = 0; if (!playing || !visible) return; seek((performance.now() - t0) / 1000); raf = requestAnimationFrame(tick); }
@@ -251,7 +281,7 @@ export function initCoverage({ canvas, stage, model = '3d/lc300.glb', noseFlip =
   if (playing) raf = requestAnimationFrame(tick);
 
   const api = {
-    seek, current, PACKAGES,
+    seek, current, PACKAGES, focus,
     play(id){ if (id && id !== current.id) setPackage(id); else if (id) setPackage(id); t0 = performance.now(); playing = true; if (!raf) raf = requestAnimationFrame(tick); },
     stop(){ playing = false; },
     get ready(){ return ready; }, camera, get panels(){ return panels; },
