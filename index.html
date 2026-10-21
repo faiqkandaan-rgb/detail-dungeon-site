@@ -656,7 +656,6 @@ footer li{font-size:13.5px;color:var(--mute);padding:4px 0}
 @media(max-width:940px){.lay{grid-template-columns:1fr;gap:26px}}
 .laystage{position:relative;height:430px;perspective:1300px;perspective-origin:50% 42%;
   display:grid;place-items:center}
-@media(max-width:560px){.laystage{height:330px}}
 .laysheets{position:relative;width:min(100%,430px);height:270px;
   transform-style:preserve-3d;transform:rotateX(60deg) rotateZ(-32deg)}
 .sheet{position:absolute;inset:0;border-radius:26px;transform-style:preserve-3d;
@@ -675,6 +674,10 @@ footer li{font-size:13.5px;color:var(--mute);padding:4px 0}
 .sheet:after{content:"";position:absolute;inset:-1px;border-radius:26px;pointer-events:none;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 0 26px rgba(240,32,42,.30)}
 .sheet.base:after{box-shadow:inset 0 1px 0 rgba(255,255,255,.18)}
+@media(max-width:560px){.laystage{height:300px;perspective:2200px;perspective-origin:50% 30%}
+  .laysheets{width:min(100%,300px);height:190px;transform:scale(.92) rotateX(60deg) rotateZ(-32deg)}
+  .sheet.s1{transform:translateZ(105px)}.sheet.s2{transform:translateZ(70px)}.sheet.s3{transform:translateZ(35px)}}
+#layers{overflow:hidden}
 
 .laykey{display:flex;flex-direction:column;gap:10px}
 .lk{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px;
@@ -708,6 +711,7 @@ footer li{font-size:13.5px;color:var(--mute);padding:4px 0}
     <a href="#interior">Interior</a>
     <a href="#services">Tint &amp; wrap</a>
     <a href="#layers">The film</a>
+    <a href="#reels">Recent work</a>
     <a href="#studio">The studio</a>
   </nav>
   <a class="btn btn-red" href="#price">Get a Price</a>
@@ -1081,7 +1085,7 @@ footer li{font-size:13.5px;color:var(--mute);padding:4px 0}
       </div>
       <div class="ba" data-ba data-pending="Visual being rendered">
         <img class="before" src="svc/colour-lc-a.jpg" width="1280" height="720" alt="Land Cruiser 300 in its factory white paint">
-        <img class="after"  src="svc/colour-lc-b.jpg" width="1280" height="720" alt="The same car after a full colour change wrap in Riviera Blue">
+        <img class="after"  src="svc/colour-lc-b.jpg" width="1280" height="720" alt="The same car after a full colour change wrap in Midnight Black">
         <input type="range" min="0" max="100" value="50" aria-label="Reveal the colour change result">
         <span class="seam"></span><span class="knob"></span>
         <span class="balabel l">As it arrived</span>
@@ -1155,6 +1159,62 @@ footer li{font-size:13.5px;color:var(--mute);padding:4px 0}
   </div>
 </div></section>
 
+
+<section id="reels"><div class="wrap">
+  <div class="head">
+    <span class="eyebrow rv">Recent work</span>
+    <h2 class="rv">Cars that came through.<br><span class="accent">Filmed on the floor.</span></h2>
+    <p class="lede rv">Three jobs off the bay this month. Tap one to play it with sound.</p>
+  </div>
+  <div class="reels">
+
+    <figure class="reel rv">
+      <div class="rframe" data-reel>
+        <video src="vid/reel-1.mp4" poster="vid/reel-1.jpg" playsinline preload="none"
+               aria-label="Mercedes-AMG E63 mid colour change, front end stripped in the bay"></video>
+        <span class="rshade"></span>
+        <span class="rlen">0:44</span>
+        <button class="rplay" type="button" aria-label="Play the Mercedes-AMG E63 clip"></button>
+        <span class="rbar"><i></i></span>
+      </div>
+      <figcaption>
+        <b>Mercedes-AMG E63</b>
+        <span>Colour change. Front end stripped so the film turns every edge instead of stopping at it.</span>
+      </figcaption>
+    </figure>
+
+    <figure class="reel rv">
+      <div class="rframe" data-reel>
+        <video src="vid/reel-2.mp4" poster="vid/reel-2.jpg" playsinline preload="none"
+               aria-label="White Land Cruiser 300 washed, detailed and finished in the bay"></video>
+        <span class="rshade"></span>
+        <span class="rlen">0:23</span>
+        <button class="rplay" type="button" aria-label="Play the Land Cruiser 300 clip"></button>
+        <span class="rbar"><i></i></span>
+      </div>
+      <figcaption>
+        <b>Land Cruiser 300</b>
+        <span>Full detail, outside in. Wash and decon, then the cabin.</span>
+      </figcaption>
+    </figure>
+
+    <figure class="reel rv">
+      <div class="rframe" data-reel>
+        <video src="vid/reel-3.mp4" poster="vid/reel-3.jpg" playsinline preload="none"
+               aria-label="White BMW M5 in the bay, framed through a roll of paint protection film"></video>
+        <span class="rshade"></span>
+        <span class="rlen">0:21</span>
+        <button class="rplay" type="button" aria-label="Play the BMW M5 clip"></button>
+        <span class="rbar"><i></i></span>
+      </div>
+      <figcaption>
+        <b>BMW M5</b>
+        <span>Framed down a fresh roll of film, waiting its turn.</span>
+      </figcaption>
+    </figure>
+
+  </div>
+</div></section>
 
 <section><div class="wrap">
   <div class="banner rv">
