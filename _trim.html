@@ -1,0 +1,11 @@
+<!doctype html><html><head><meta charset="utf-8">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}</script>
+<style>html,body{margin:0;background:#0b0b0e}#st{width:1280px;height:720px;position:relative;background:radial-gradient(120% 72% at 50% 94%,#3A3B45 0%,#1F2026 40%,#0D0D11 100%)}canvas{display:block;width:100%;height:100%}</style>
+</head><body><div id="st"><canvas id="c"></canvas></div>
+<script type="module">
+import { initTrim } from './3d/trim.js';
+const q = new URLSearchParams(location.search);
+window.__trim = initTrim({ canvas:document.getElementById('c'), stage:document.getElementById('st'), pixelRatio:+(q.get('dpr')||1), quality:q.get('mode')||'capture', interactive:false,
+  onReady:(api)=>{ const c=q.get('cam'), t=q.get('tgt'); if(c){api.camera.position.set(...c.split(',').map(Number));} if(t){api.camera.lookAt(...t.split(',').map(Number));} if(q.get('fov')){api.camera.fov=+q.get('fov');api.camera.updateProjectionMatrix();} window.__ready = true; },
+  onFail:e=>{ console.log('TRIMFAIL', e && (e.message||e)); window.__ready='err'; } });
+</script></body></html>
