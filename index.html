@@ -1625,7 +1625,7 @@ addEventListener("input", e=>{ if(e.target && e.target.id==="vq") drawList(e.tar
    leads:    the Google Apps Script web-app URL that appends a row to the Leads
              sheet (see backend/README-leads.txt). Empty = nothing is sent, the
              WhatsApp buttons still work. */
-const DD_CFG = { whatsapp: "923260167777", leads: "" };
+const DD_CFG = { whatsapp: "923260167777", leads: "https://script.google.com/macros/s/AKfycbwNG7NCijxKY5E2nOzYrh8sRh9XSG3wktqDJK7drD0-ms041GdLdImmrGaDmEsBXyf6/exec" };
 function sendLead(data){
   if(!DD_CFG.leads) return Promise.resolve(false);
   const row = Object.assign({ ts:new Date().toISOString(), page:location.href, ua:navigator.userAgent.slice(0,80) }, data);

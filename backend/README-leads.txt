@@ -1,3 +1,14 @@
+LIVE SETUP (Oct 22)
+  Google account:  detaildungeonisb@gmail.com
+  Sheet:           "Detail Dungeon Leads"
+                   https://docs.google.com/spreadsheets/d/1-KBUWpH-BCuiZfqxOpWusQx0YeznvnDIvmG3ePPJcuw/edit
+  Script project:  "DD Website Leads" (script.google.com, same account)
+  Web app URL:     https://script.google.com/macros/s/AKfycbwNG7NCijxKY5E2nOzYrh8sRh9XSG3wktqDJK7drD0-ms041GdLdImmrGaDmEsBXyf6/exec
+                   (already in index.html as DD_CFG.leads)
+  Email alerts:    to detaildungeonisb@gmail.com whenever a lead leaves a phone number
+  Editing the script: change the code, then Deploy > Manage deployments > edit > Version: New version.
+                   Keeps the same URL, so the site needs no change.
+
 Leads: website -> WhatsApp + Google Sheet
 =========================================
 
