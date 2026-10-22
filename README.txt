@@ -90,9 +90,25 @@ Detail drawers (Oct 21)
   those brands make; have the studio confirm before launch.
 
 Removed on client request (Oct 21)
-  The 3D process film, the Audi e-tron four-stage scroll and the "recent work"
-  reels. Their assets are out of the build; the sections can come back from an
-  earlier zip if wanted.
+  The 3D process film and the Audi e-tron four-stage scroll. (The reels were
+  put back the same day.)
 
 Still to add
   Basic and Gold PPF prices in the quote tool (currently "quoted on inspection").
+
+QA pass (Oct 22)
+  - Page no longer jumps down to the price tool on load (the car list used
+    scrollIntoView, which scrolled the whole page).
+  - Bottom sections (colour, studio, reels, banner) could stay invisible on
+    laptops: reveals now run off IntersectionObserver instead of ScrollTrigger.
+  - Hero film trimmed to 23 s: the last second had a floating street-lamp arm
+    over the car on the final frame. Phones get a 720p file (vid/hero-720.mp4).
+  - Phone menu added (button next to Get a Price). Desktop nav in page order.
+  - Price search: Enter picks the top match, arrows walk the list, aliases
+    (e63, v8, reborn, mehran...) and more local models.
+  - Microns showed as "MM" (uppercase mu); brand-card + icon covered the price;
+    Replay button sat on the hero pill on phones; header see-through on scroll.
+  - Footer items are links; ceramic coating and paint correction open drawers.
+  - WhatsApp booking opens in a new tab on desktop; meta description, share
+    image (img/og.jpg), favicon.
+  - Customer-facing copy replaced dev notes ("Live data", "rendered" notes).
