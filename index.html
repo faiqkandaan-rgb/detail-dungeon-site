@@ -75,7 +75,7 @@ header.stuck{background:rgba(7,7,10,.95);-webkit-backdrop-filter:blur(14px);back
 .mnav[aria-expanded="true"] i:nth-child(1){transform:translateY(6px) rotate(45deg)}
 .mnav[aria-expanded="true"] i:nth-child(2){opacity:0}
 .mnav[aria-expanded="true"] i:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
-.mmenu{border-top:1px solid var(--line);background:rgba(7,7,10,.98);max-height:calc(100dvh - 70px);overflow:auto;
+.mmenu{border-top:1px solid var(--line);background:rgba(7,7,10,.98);max-height:calc(100dvh - 70px);min-height:calc(100dvh - 70px);overflow:auto;
   overscroll-behavior:contain}
 .mmenu .wrap{display:flex;flex-direction:column;padding-block:10px 22px}
 .mmenu .wrap>a{color:var(--fg);text-decoration:none;font-family:var(--hero);font-weight:600;font-size:19px;
@@ -1843,7 +1843,7 @@ if(!reduce && window.gsap && window.ScrollTrigger){
   const pend = new Set(document.querySelectorAll("section:not(.hero) .rv, .banner.rv, .cu"));
   let ticking = false;
   const check = () => { ticking = false; const line = innerHeight * 0.92;
-    pend.forEach(el => { if(el.getBoundingClientRect().top < line){ pend.delete(el); el.classList.contains("cu") ? count(el) : shown(el); } }); };
+    pend.forEach(el => { const cu = el.classList.contains("cu"); if(el.getBoundingClientRect().top < (cu ? innerHeight - 2 : line)){ pend.delete(el); el.classList.contains("cu") ? count(el) : shown(el); } }); };
   const queue = () => { if(!ticking && pend.size){ ticking = true; requestAnimationFrame(check); } };
   addEventListener("scroll", queue, {passive:true}); addEventListener("resize", queue); addEventListener("load", queue);
   check();
@@ -2201,7 +2201,7 @@ document.querySelectorAll("[data-blackout]").forEach(a => a.addEventListener("cl
           good: ["Regular motorway and GT Road runs", "SUVs and pick-ups that throw gravel at themselves", "The thickest sheet at the lower price"] },
     dx: { lede: "OneFilm USA's core film. 7 mil American urethane, self-healing topcoat, 6 year warranty from the brand. OneFilm sets the price, so it is the same at every authorised applicator.",
           good: ["New cars where a brand-backed warranty matters", "Mixed city and highway driving", "Owners keeping the car for years"] },
-    dp: { lede: "The thickest film we fit and the top of the OneFilm range. 8.5 mil with a 6 year brand warranty.",
+    dp: { lede: "The top of the OneFilm range. 8.5 mil, our thickest grade, with a 6 year brand warranty.",
           good: ["Highway miles and long trips", "Luxury cars and big SUVs", "The most protection we can put on a panel"] },
   };
   function filmDrawer(id){

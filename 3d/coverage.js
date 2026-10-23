@@ -208,7 +208,9 @@ export function initCoverage({ canvas, stage, model = '3d/lc300.glb', noseFlip =
       // the move starts where the previous shot ended (deterministic, so seek() can jump)
       const prev = shots[idx - 1] || s;
       fromPos.copy(scaled(prev.cam)); fromTgt.copy(scaled(prev.tgt));
-      for (let i = 0; i < idx; i++) for (const pid of shots[i].panels) for (const p of (panels[pid] || [])) p.U.uFilm.value = 1;
+      // every earlier shot is fully filmed; give each its own reveal range so a skipped shot (slow frames) is never left half done
+      for (let i = 0; i < idx; i++) { const si = shots[i]; if (!si.panels.length) continue; const dir = si.dir || [0, 0, 1]; const [a0, b0] = panelRange(si.panels, dir);
+        for (const pid of si.panels) for (const p of (panels[pid] || [])) { p.U.uDir.value.set(...dir); p.U.uA.value = a0; p.U.uB.value = b0; p.U.uFilm.value = 1; } }
       for (let i = idx; i < shots.length; i++) for (const pid of shots[i].panels) for (const p of (panels[pid] || [])) p.U.uFilm.value = 0;
       if (s.panels.length) {
         const [a, b] = panelRange(s.panels, s.dir || [0, 0, 1]);

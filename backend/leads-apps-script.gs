@@ -8,7 +8,7 @@ var SHEET_NAME = "Leads";
 var NOTIFY_EMAIL = "detaildungeonisb@gmail.com";   // emailed only when a lead leaves a phone number; "" = off
 var HEADERS = ["Timestamp", "Name", "Phone", "WhatsApp", "Vehicle", "Class", "Coverage", "Film", "Price (Rs)",
                "Source", "Enquiry", "Status", "Assigned to", "Notes", "Next follow-up", "Page"];
-var STATUSES = ["New", "Contacted", "Booked", "In bay", "Done", "Lost"];
+var STATUSES = ["New", "Contacted", "Booked", "Lost"];   // same as the Studio Desk; once booked, the car is tracked there
 
 function ss_() { return SHEET_ID ? SpreadsheetApp.openById(SHEET_ID) : SpreadsheetApp.getActiveSpreadsheet(); }
 

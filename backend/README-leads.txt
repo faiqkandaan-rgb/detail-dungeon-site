@@ -36,7 +36,7 @@ Set up the sheet (10 minutes, once)
   6. Test: submit the form on the site, a row appears within a second.
 
 Working the leads (staff)
-  - One row per lead. Status: New > Contacted > Booked > In bay > Done, or Lost.
+  - One row per lead. Status: New > Contacted > Booked, or Lost (same as the Studio Desk).
   - Phone is stored as text with the leading 0. Tap it on a phone to call, or
     put =HYPERLINK("https://wa.me/92"&MID(C2,2,20),"WhatsApp") in a spare column
     for a one-tap WhatsApp link per row.
