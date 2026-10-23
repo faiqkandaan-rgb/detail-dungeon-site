@@ -1,0 +1,647 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Studio Desk · Detail Dungeon</title><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#0A0A0D"><link rel="icon" href="../img/favicon.png"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Studio Desk"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&family=Montserrat:wght@600;700&display=swap"><style>html,body{margin:0;background:#0A0A0D}</style><script>
+/* Studio Desk demo: the same desk, running on example data saved in this browser only. */
+(function(){
+  var KEY = 'dd-studio-desk-demo-1', DAY = 864e5;
+  var SEED = {"jobs": [{"id": "j01", "car": "Hyundai Sonata", "cls": 5, "service": "Detailing", "coverage": "", "film": "", "products": [{"p": "kc-gsf", "qty": 0.4}, {"p": "kc-gs", "qty": 0.25}, {"p": "kc-rs", "qty": 0.2}, {"p": "kc-pol", "qty": 0.1}], "price": 18000, "status": "Delivered", "source": "Instagram", "dateIn": "2026-10-20", "dateOut": "2026-10-20", "bay": "Bay 1", "notes": "Full detail, inside and out. Koch-Chemie wash and decon."}, {"id": "j02", "car": "Toyota Land Cruiser 300", "cls": 11, "service": "PPF", "coverage": "Platinum", "film": "OneFilm DefenX", "products": [{"p": "of-dx", "qty": 68}, {"p": "mg-comp", "qty": 0.2}, {"p": "kc-gsf", "qty": 0.4}], "price": 320000, "status": "In bay", "source": "Website", "dateIn": "2026-10-21", "dateOut": "", "bay": "Film bay", "notes": "Full body. Paint corrected before film."}, {"id": "j03", "car": "Mercedes-AMG E63", "cls": 6, "service": "PPF", "coverage": "Platinum", "film": "ProForce Phantom Plus", "products": [{"p": "pf-pp", "qty": 56}, {"p": "kc-gsf", "qty": 0.3}], "price": 285000, "status": "Delivered", "source": "Website", "dateIn": "2026-10-16", "dateOut": "2026-10-16", "bay": "Film bay", "notes": "Front end stripped so edges wrap."}, {"id": "j04", "car": "BMW M5", "cls": 5, "service": "Colour change", "coverage": "Full body", "film": "OneFilm colour PPF", "products": [{"p": "of-col", "qty": 62}, {"p": "kc-gsf", "qty": 0.3}], "price": 520000, "status": "QC", "source": "Referral", "dateIn": "2026-10-18", "dateOut": "", "bay": "Film bay", "notes": "Coloured PPF, Nardo Grey gloss. Door shuts included."}, {"id": "j05", "car": "Honda Civic", "cls": 4, "service": "Ceramic coating", "coverage": "", "film": "", "products": [{"p": "gy-q2", "qty": 1}, {"p": "mg-comp", "qty": 0.15}, {"p": "kc-gsf", "qty": 0.3}], "price": 65000, "status": "Delivered", "source": "Instagram", "dateIn": "2026-10-08", "dateOut": "2026-10-09", "bay": "Bay 2", "notes": "One-step polish, then GYEON."}, {"id": "j06", "car": "Toyota Corolla", "cls": 4, "service": "Tint", "coverage": "", "film": "", "products": [{"p": "tint", "qty": 22}], "price": 28000, "status": "Delivered", "source": "Walk-in", "dateIn": "2026-10-11", "dateOut": "2026-10-11", "bay": "Bay 2", "notes": "Ceramic tint, rear 20, front 50."}, {"id": "j07", "car": "Audi e-tron", "cls": 10, "service": "Chrome delete", "coverage": "", "film": "", "products": [{"p": "wrap-blk", "qty": 18}], "price": 75000, "status": "Delivered", "source": "Website", "dateIn": "2026-10-03", "dateOut": "2026-10-04", "bay": "Bay 1", "notes": "Window surrounds and grille, gloss black."}, {"id": "j08", "car": "Kia Sportage", "cls": 8, "service": "PPF", "coverage": "Basic", "film": "ProForce Phantom", "products": [{"p": "pf-ph", "qty": 24}], "price": 95000, "status": "Delivered", "source": "Instagram", "dateIn": "2026-09-29", "dateOut": "2026-09-30", "bay": "Film bay", "notes": "Front end package."}, {"id": "j09", "car": "Toyota Fortuner", "cls": 10, "service": "Interior film", "coverage": "", "film": "", "products": [], "price": 22000, "status": "Booked", "source": "Website", "dateIn": "2026-10-24", "dateOut": "", "bay": "Bay 2", "notes": "Console, screen bezel, door inserts."}, {"id": "j10", "car": "Mercedes-Benz C-Class", "cls": 5, "service": "PPF", "coverage": "Gold", "film": "OneFilm DefenX Pro", "products": [{"p": "of-dp", "qty": 40}, {"p": "kc-gsf", "qty": 0.3}], "price": 210000, "status": "Delivered", "source": "Website", "dateIn": "2026-10-01", "dateOut": "2026-10-03", "bay": "Film bay", "notes": "Everything except the roof."}, {"id": "j11", "car": "Honda City", "cls": 3, "service": "Detailing", "coverage": "", "film": "", "products": [{"p": "kc-gsf", "qty": 0.3}, {"p": "kc-gs", "qty": 0.2}], "price": 12000, "status": "Delivered", "source": "Walk-in", "dateIn": "2026-10-17", "dateOut": "2026-10-17", "bay": "Bay 1", "notes": "Exterior detail."}, {"id": "j12", "car": "Kia Sorento", "cls": 8, "service": "PPF", "coverage": "Basic", "film": "ProForce Phantom Plus", "products": [{"p": "pf-pp", "qty": 28}], "price": 120000, "status": "Booked", "source": "Walk-in", "dateIn": "2026-10-23", "dateOut": "", "bay": "Film bay", "notes": "Wants it done by the weekend."}, {"id": "j13", "car": "Suzuki Swift", "cls": 1, "service": "Ceramic coating", "coverage": "", "film": "", "products": [{"p": "gy-q2", "qty": 1}, {"p": "kc-gsf", "qty": 0.3}], "price": 45000, "status": "Delivered", "source": "Instagram", "dateIn": "2026-09-26", "dateOut": "2026-09-27", "bay": "Bay 2", "notes": ""}, {"id": "j14", "car": "BMW X5", "cls": 10, "service": "Tint", "coverage": "", "film": "", "products": [{"p": "tint", "qty": 30}], "price": 38000, "status": "Delivered", "source": "Referral", "dateIn": "2026-10-06", "dateOut": "2026-10-06", "bay": "Bay 2", "notes": "Limo rear, 35 front."}, {"id": "j15", "car": "Toyota Prado", "cls": 10, "service": "PPF", "coverage": "Platinum", "film": "OneFilm DefenX Pro", "products": [], "price": 310000, "status": "Booked", "source": "Website", "dateIn": "2026-10-24", "dateOut": "", "bay": "Film bay", "notes": "Booked on WhatsApp for Saturday, 11am."}], "leads": [{"id": "l01", "source": "Website", "car": "Toyota Corolla", "name": "Ahmed", "phone": "03001234567", "want": "Call-back form. Platinum, DefenX, Rs 245,000", "status": "New", "ts": "2026-10-22T13:10:00+05:00", "job": ""}, {"id": "l11", "source": "Website", "car": "Toyota Prado", "want": "Tapped Book on WhatsApp. Platinum, DefenX Pro, Rs 310,000", "status": "Booked", "ts": "2026-10-22T11:42:00+05:00", "job": "j15"}, {"id": "l02", "source": "Instagram", "car": "Honda Civic", "want": "Asked the ceramic coating price in DMs", "status": "New", "ts": "2026-10-22T10:05:00+05:00", "job": ""}, {"id": "l13", "source": "Website", "car": "Lexus LX 570", "want": "Ceramic coating panel. Asked the price", "status": "Contacted", "ts": "2026-10-21T19:05:00+05:00", "job": ""}, {"id": "l03", "source": "Instagram", "car": "Kia Sportage", "want": "Commented 'price?' on the chrome delete reel", "status": "Contacted", "ts": "2026-10-21T17:30:00+05:00", "job": ""}, {"id": "l04", "source": "Website", "car": "Toyota Fortuner", "name": "Bilal", "phone": "03215550142", "want": "Call-back form. Interior film, console and doors", "status": "Booked", "ts": "2026-10-21T16:20:00+05:00", "job": "j09"}, {"id": "l12", "source": "Website", "car": "Honda Civic", "want": "Tapped Book on WhatsApp. Platinum, Phantom, Rs 220,000", "status": "Contacted", "ts": "2026-10-20T21:48:00+05:00", "job": ""}, {"id": "l07", "source": "Walk-in", "car": "Kia Sorento", "want": "PPF Basic, wants it done by the weekend", "status": "Booked", "ts": "2026-10-20T15:00:00+05:00", "job": "j12"}, {"id": "l05", "source": "Website", "car": "Toyota Land Cruiser 300", "name": "Usman", "phone": "03334441290", "want": "Call-back form. Platinum, DefenX, Rs 320,000", "status": "Booked", "ts": "2026-10-19T12:30:00+05:00", "job": "j02"}, {"id": "l08", "source": "Instagram", "car": "Hyundai Sonata", "want": "Full detail", "status": "Booked", "ts": "2026-10-18T20:40:00+05:00", "job": "j01"}, {"id": "l06", "source": "Website", "car": "Hyundai Tucson", "want": "Tapped Book a free inspection. Gold, DefenX", "status": "Contacted", "ts": "2026-10-18T10:15:00+05:00", "job": ""}, {"id": "l14", "source": "Website", "car": "Toyota Hilux Revo", "want": "Chrome delete panel. Asked the price", "status": "Contacted", "ts": "2026-10-17T18:02:00+05:00", "job": ""}, {"id": "l10", "source": "Website", "car": "Mercedes-AMG E63", "name": "Saad", "phone": "03009871234", "want": "Call-back form. Platinum, Phantom Plus, Rs 285,000", "status": "Booked", "ts": "2026-10-15T15:40:00+05:00", "job": "j03"}, {"id": "l09", "source": "Website", "car": "Suzuki Alto", "want": "Tapped Book on WhatsApp. Platinum, Phantom. Over budget", "status": "Lost", "ts": "2026-10-12T18:00:00+05:00", "job": ""}], "stock": [{"id": "pf-ph", "name": "ProForce Phantom", "kind": "Film", "unit": "ft", "opening": 100, "reorder": 25, "note": "60 in roll, 7.5 mil"}, {"id": "pf-pp", "name": "ProForce Phantom Plus", "kind": "Film", "unit": "ft", "opening": 100, "reorder": 25, "note": "60 in roll, 8.5 mil"}, {"id": "of-dx", "name": "OneFilm DefenX", "kind": "Film", "unit": "ft", "opening": 150, "reorder": 30, "note": "60 in roll, 7 mil"}, {"id": "of-dp", "name": "OneFilm DefenX Pro", "kind": "Film", "unit": "ft", "opening": 100, "reorder": 25, "note": "60 in roll, 8.5 mil"}, {"id": "of-col", "name": "OneFilm colour PPF", "kind": "Film", "unit": "ft", "opening": 100, "reorder": 40, "note": "Nardo Grey gloss"}, {"id": "tint", "name": "Nano-ceramic tint", "kind": "Film", "unit": "ft", "opening": 120, "reorder": 30, "note": "Mixed shades"}, {"id": "wrap-blk", "name": "Gloss black wrap", "kind": "Film", "unit": "ft", "opening": 60, "reorder": 15, "note": "Chrome delete"}, {"id": "int-film", "name": "Interior trim film", "kind": "Film", "unit": "ft", "opening": 30, "reorder": 8, "note": "Gloss and brushed"}, {"id": "kc-gsf", "name": "Koch-Chemie Gentle Snow Foam", "kind": "Chemical", "unit": "L", "opening": 10, "reorder": 3, "note": "Pre-wash foam"}, {"id": "kc-gs", "name": "Koch-Chemie Green Star", "kind": "Chemical", "unit": "L", "opening": 10, "reorder": 3, "note": "All-purpose cleaner"}, {"id": "kc-rs", "name": "Koch-Chemie Reactive Wheel Cleaner", "kind": "Chemical", "unit": "L", "opening": 5, "reorder": 1.5, "note": "Iron fallout"}, {"id": "kc-pol", "name": "Koch-Chemie Pol Star", "kind": "Chemical", "unit": "L", "opening": 3, "reorder": 1, "note": "Interior fabric and leather"}, {"id": "mg-comp", "name": "Meguiar's Ultimate Compound", "kind": "Chemical", "unit": "L", "opening": 3.8, "reorder": 1, "note": "Paint correction"}, {"id": "gy-q2", "name": "GYEON ceramic coating kit", "kind": "Coating", "unit": "kit", "opening": 6, "reorder": 2, "note": "One kit per car"}]};
+  function startOfDay(d){ var x = new Date(d); x.setHours(0,0,0,0); return x.getTime(); }
+  var offset = Math.max(0, Math.round((startOfDay(Date.now()) - startOfDay(new Date(2026, 9, 23))) / DAY));
+  function shiftTs(s){ return s ? new Date(new Date(s).getTime() + offset * DAY).toISOString() : s; }
+  function shiftDay(s){ if (!s) return s; var p = s.split('-'), d = new Date(Date.UTC(+p[0], +p[1] - 1, +p[2]) + offset * DAY); return d.toISOString().slice(0, 10); }
+  function fresh(){
+    var st = {};
+    ['jobs','leads','stock'].forEach(function(n){
+      st[n] = SEED[n].map(function(x){ var d = JSON.parse(JSON.stringify(x)), id = d.id; delete d.id; d.example = true;
+        if (d.ts) d.ts = shiftTs(d.ts); if (d.dateIn) d.dateIn = shiftDay(d.dateIn); if (d.dateOut) d.dateOut = shiftDay(d.dateOut);
+        return { id: id, data: d }; });
+    });
+    return st;
+  }
+  var store = null;
+  try { if (/[?&]reset\b/.test(location.search)) localStorage.removeItem(KEY); store = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) {}
+  if (!store || !store.jobs) store = fresh();
+  function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) {} }
+  save();
+  var L = {};
+  function snap(n){ return { docs: store[n].map(function(d){ return { id: d.id, exists: true, data: function(){ return JSON.parse(JSON.stringify(d.data)); } }; }) }; }
+  function fire(n){ (L[n] || []).forEach(function(f){ f(snap(n)); }); }
+  var db = {
+    collection: function(n){ return {
+      onSnapshot: function(fn){ (L[n] = L[n] || []).push(fn); setTimeout(function(){ fn(snap(n)); }, 0); return function(){}; },
+      add: function(data){ var id = n.charAt(0) + Date.now().toString(36); store[n].push({ id: id, data: data }); save(); fire(n); return Promise.resolve({ id: id }); }
+    }; },
+    doc: function(p){ var parts = p.split('/'), c = parts[0], id = parts[1]; return {
+      update: function(d){ var x = store[c].filter(function(z){ return z.id === id; })[0]; if (x) { Object.assign(x.data, d); save(); fire(c); } return Promise.resolve(); }
+    }; }
+  };
+  var user = { can: function(){ return Promise.resolve(true); } };
+  window.claude = { use: function(n){ return Promise.resolve(n === 'db' ? db : n === 'user' ? user : null); } };
+})();
+</script></head><body><style>
+/* Layout: a bay-side control desk. Summary strip, then the bay (what's in now),
+   then money, sources, film and stock. Dark like the studio, red only for state. */
+:root{
+  color-scheme:dark;
+  --bg:#0A0A0D; --panel:#121217; --panel2:#18181F; --line:#24242C; --line2:#30303A;
+  --fg:#F1F1F4; --mute:#A0A1AC; --dim:#6F707B;
+  --red:#E1141C; --red-soft:rgba(225,20,28,.14);
+  --silver:#C8CBD1;
+  --ok:#3DBB72; --ok-soft:rgba(61,187,114,.14);
+  --warn:#E3A433; --warn-soft:rgba(227,164,51,.14);
+  --blue:#5B9BF0; --blue-soft:rgba(91,155,240,.14);
+  --f-body:"Barlow","Helvetica Neue",Arial,sans-serif;
+  --f-num:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --f-label:"Montserrat",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{background:var(--bg)}
+body{color:var(--fg);font-family:var(--f-body);font-size:14px;line-height:1.45;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.num{font-family:var(--f-num);font-variant-numeric:tabular-nums}
+.lab{font-family:var(--f-label);font-weight:600;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+
+/* top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(10,10,13,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.bar{display:flex;align-items:center;gap:14px;padding-block:12px}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.brand img{width:30px;height:auto;flex:none}
+.brand b{font-family:var(--f-label);font-weight:700;letter-spacing:.16em;font-size:12px;white-space:nowrap}
+.brand span{color:var(--mute);font-size:13px;white-space:nowrap}
+.sp{flex:1}
+.chip-ex{font-family:var(--f-label);font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--warn);border:1px solid rgba(227,164,51,.35);background:var(--warn-soft);padding:5px 9px;border-radius:999px;white-space:nowrap}
+.btn{border:1px solid var(--line2);background:var(--panel2);border-radius:10px;padding:9px 14px;font-weight:600;font-size:13px;white-space:nowrap}
+.btn:hover{border-color:var(--silver)}
+.btn.red{background:var(--red);border-color:var(--red);color:#fff}
+.btn.red:hover{filter:brightness(1.1)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-bottom:0}
+.tabs::-webkit-scrollbar{display:none}
+.tab{border:0;background:none;padding:10px 14px 12px;color:var(--mute);font-weight:600;border-bottom:2px solid transparent;white-space:nowrap}
+.tab[aria-selected="true"]{color:var(--fg);border-bottom-color:var(--red)}
+.tab .ct{font-family:var(--f-num);color:var(--dim);margin-left:6px}
+
+main{padding-block:22px 60px}
+.banner{border:1px solid var(--line2);background:var(--panel);border-radius:12px;padding:12px 14px;color:var(--mute);margin-bottom:18px;display:flex;gap:10px;align-items:flex-start}
+.banner b{color:var(--fg)}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.period{display:flex;border:1px solid var(--line2);border-radius:10px;overflow:hidden}
+.period button{border:0;background:none;padding:7px 12px;color:var(--mute);font-weight:600;font-size:12.5px}
+.period button[aria-pressed="true"]{background:var(--panel2);color:var(--fg)}
+
+/* summary strip */
+.kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-block:14px 22px}
+.kpi{background:var(--panel);padding:16px 16px 14px;min-width:0}
+.kpi .v{font-family:var(--f-num);font-weight:600;font-size:clamp(26px,3.2vw,36px);line-height:1.05;margin-top:8px;font-variant-numeric:tabular-nums}
+.kpi .s{color:var(--dim);font-size:12.5px;margin-top:4px}
+@media(max-width:900px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.kpi:first-child{grid-column:1/-1}}
+
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;min-width:0}
+.card h3{margin:0;font-size:16px;font-weight:600;letter-spacing:-.01em}
+.card .hd{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:14px}
+.card .hd small{color:var(--dim)}
+.c12{grid-column:span 12}.c8{grid-column:span 8}.c7{grid-column:span 7}.c6{grid-column:span 6}.c5{grid-column:span 5}.c4{grid-column:span 4}
+@media(max-width:980px){.c8,.c7,.c6,.c5,.c4{grid-column:span 12}}
+
+/* bay */
+.bay{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.slot{border:1px solid var(--line2);border-radius:12px;padding:14px;background:var(--panel2);display:flex;flex-direction:column;gap:8px;min-width:0}
+.slot .car{font-weight:600;font-size:15px}
+.slot .what{color:var(--mute);font-size:13px}
+.slot .foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:4px}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:3px 9px;font-size:11.5px;font-weight:600;white-space:nowrap;border:1px solid transparent}
+.pill::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.st-Booked{color:var(--blue);background:var(--blue-soft)}
+.st-In-bay{color:var(--red);background:var(--red-soft)}
+.st-QC{color:var(--warn);background:var(--warn-soft)}
+.st-Delivered{color:var(--ok);background:var(--ok-soft)}
+.st-New{color:var(--red);background:var(--red-soft)}
+.st-Contacted{color:var(--warn);background:var(--warn-soft)}
+.st-Lost{color:var(--dim);background:rgba(111,112,123,.14)}
+.src{font-size:11.5px;color:var(--silver);border:1px solid var(--line2);border-radius:6px;padding:2px 7px;white-space:nowrap}
+.mini{border:1px solid var(--line2);background:none;border-radius:8px;padding:6px 10px;font-size:12px;font-weight:600;color:var(--fg);white-space:nowrap}
+.mini:hover{border-color:var(--red);background:var(--red-soft)}
+.empty{color:var(--dim);padding:18px;border:1px dashed var(--line2);border-radius:12px;text-align:center}
+
+/* bars */
+.bars{display:grid;gap:10px}
+.br{display:grid;grid-template-columns:minmax(90px,140px) minmax(0,1fr) auto;gap:10px;align-items:center}
+.br .k{color:var(--mute);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.br .t{height:10px;border-radius:5px;background:var(--panel2);overflow:hidden}
+.br .t i{display:block;height:100%;border-radius:5px;background:var(--silver)}
+.br .t i.red{background:var(--red)}
+.br .v{font-family:var(--f-num);font-size:15px;font-variant-numeric:tabular-nums;min-width:64px;text-align:right}
+
+/* weekly columns */
+.wk svg{width:100%;height:auto;display:block}
+.wk text{fill:var(--dim);font-family:var(--f-num);font-size:11px}
+.wk .val{fill:var(--fg);font-size:12px}
+
+/* lists */
+.list{display:grid;gap:8px}
+.li{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:var(--panel2)}
+.li .main{min-width:0}
+.li .main b{display:block;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.li .main span{display:block;color:var(--mute);font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.when{font-family:var(--f-num);color:var(--dim);font-size:13px;white-space:nowrap}
+
+/* tables */
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--panel)}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{text-align:left;font-family:var(--f-label);font-weight:600;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);padding:12px 14px;border-bottom:1px solid var(--line);white-space:nowrap;background:var(--panel)}
+td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:middle}
+tr:last-child td{border-bottom:0}
+tbody tr:hover td{background:var(--panel2)}
+td.r,th.r{text-align:right}
+td .sub{color:var(--dim);font-size:12px}
+.prod{display:inline-block;font-size:11.5px;color:var(--mute);border:1px solid var(--line2);border-radius:6px;padding:1px 6px;margin:2px 4px 2px 0;white-space:nowrap}
+select.stsel{background:var(--panel2);border:1px solid var(--line2);border-radius:8px;padding:5px 8px;font-size:12.5px;font-weight:600}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.fchip{border:1px solid var(--line2);background:none;border-radius:999px;padding:6px 12px;font-size:12.5px;font-weight:600;color:var(--mute)}
+.fchip[aria-pressed="true"]{color:var(--fg);border-color:var(--red);background:var(--red-soft)}
+.search{background:var(--panel);border:1px solid var(--line2);border-radius:10px;padding:8px 12px;min-width:0;width:220px;max-width:100%}
+
+/* stock */
+.stk>.pill{justify-self:end}
+.stk{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,2fr) 104px 88px;gap:14px;align-items:center;padding:12px 14px;border-bottom:1px solid var(--line)}
+.stk:last-child{border-bottom:0}
+.stk .nm b{display:block;font-weight:600}
+.stk .nm span{color:var(--dim);font-size:12px}
+.stk .gauge{height:8px;border-radius:4px;background:var(--panel2);overflow:hidden;position:relative}
+.stk .gauge i{display:block;height:100%;background:var(--silver);border-radius:4px}
+.stk .gauge u{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--warn);text-decoration:none}
+.stk.low .gauge i{background:var(--warn)}
+.stk.out .gauge i{background:var(--red)}
+.stk .left{font-family:var(--f-num);font-size:16px;text-align:right;white-space:nowrap}
+@media(max-width:640px){.stk{grid-template-columns:minmax(0,1fr) auto;row-gap:8px}.stk .gauge{grid-column:1/-1;order:3}}
+
+/* dialog */
+dialog{border:1px solid var(--line2);background:var(--panel);color:var(--fg);border-radius:16px;padding:0;width:min(560px,calc(100vw - 24px));max-height:calc(100dvh - 24px)}
+dialog::backdrop{background:rgba(0,0,0,.6)}
+.dlg{padding:20px 20px 0;overflow:auto;max-height:calc(100dvh - 24px)}
+.dlg h2{margin:0 0 4px;font-size:20px}
+.dlg p.hint{margin:0 0 16px;color:var(--mute)}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fg .full{grid-column:1/-1}
+@media(max-width:520px){.fg{grid-template-columns:1fr}}
+label.f{display:grid;gap:6px;align-content:start;font-size:12.5px;color:var(--mute);font-weight:600;min-width:0}
+label.f input,label.f select,label.f textarea{background:var(--panel2);border:1px solid var(--line2);border-radius:10px;padding:10px 12px;font-weight:500;color:var(--fg);width:100%;min-width:0}
+label.f textarea{min-height:64px;resize:vertical}
+.plines{display:grid;gap:8px}
+.pline{display:grid;grid-template-columns:minmax(0,1fr) 92px auto;gap:8px;align-items:center}
+.pline select,.pline input{background:var(--panel2);border:1px solid var(--line2);border-radius:10px;padding:9px 10px;min-width:0;width:100%}
+.x{border:1px solid var(--line2);background:none;border-radius:8px;width:34px;height:34px;color:var(--mute)}
+.dact{position:sticky;bottom:0;display:flex;gap:10px;justify-content:flex-end;padding:16px 0 20px;background:linear-gradient(rgba(18,18,23,0),var(--panel) 30%);margin-top:8px}
+.suggest{font-size:12px;color:var(--dim)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);opacity:0;background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:10px;font-weight:600;transition:.25s;pointer-events:none;z-index:50}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:640px){.brand span{display:none}.bar .btn{padding:8px 11px}.hide-s{display:none}}
+@media(max-width:440px){.bar{gap:8px}.brand{flex:none;gap:7px}.brand img{width:24px}.brand b{font-size:10.5px;letter-spacing:.1em}.chip-ex{font-size:0;padding:4px 7px;letter-spacing:.08em}.chip-ex::after{content:"Demo";font-size:8.5px}}
+/* phones: tables become stacked cards, the form becomes a full-screen sheet */
+@media(max-width:640px){
+  .tw{overflow:visible}
+  .tw table,.tw tbody{display:block}
+  .tw thead{display:none}
+  .tw tr{display:grid;gap:6px 10px;padding:13px 14px;border-bottom:1px solid var(--line);align-items:center}
+  .tw tr:last-child{border-bottom:0}
+  .tw td{display:block;padding:0;border:0;min-width:0!important;background:none!important}
+  .tl tr{grid-template-columns:auto auto 1fr;grid-template-areas:"car car when" "want want want" "src st act"}
+  .tl td:nth-child(1){grid-area:when;text-align:right}
+  .tl td:nth-child(2){grid-area:src}
+  .tl td:nth-child(3){grid-area:car;min-width:0}
+  .tl td:nth-child(4){grid-area:want;color:var(--mute)}
+  .tl td:nth-child(5){grid-area:st}
+  .tl td:nth-child(6){grid-area:act;justify-self:end}
+  .tj tr{grid-template-columns:1fr auto;grid-template-areas:"car when" "svc price" "film film" "src st"}
+  .tj td:nth-child(1){grid-area:when;text-align:right}
+  .tj td:nth-child(2){grid-area:car}
+  .tj td:nth-child(3){grid-area:svc;color:var(--mute)}
+  .tj td:nth-child(4){grid-area:film}
+  .tj td:nth-child(5){grid-area:src}
+  .tj td:nth-child(6){grid-area:price;text-align:right}
+  .tj td:nth-child(7){grid-area:st;justify-self:end}
+}
+@media(max-width:520px){
+  dialog{width:100vw;max-width:100vw;height:100dvh;max-height:100dvh;margin:0;border:0;border-radius:0}
+  .dlg{max-height:100dvh;padding-top:calc(20px + env(safe-area-inset-top,0px))}
+  .dact{padding-bottom:calc(20px + env(safe-area-inset-bottom,0px))}
+}
+.show-xs{display:none}
+@media(max-width:440px){.tab{padding:10px 11px 12px}.hide-xs{display:none}.show-xs{display:inline}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="bar">
+      <div class="brand"><img alt="" src="data:image/png;base64,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"><b>DETAIL DUNGEON</b><span>Studio Desk</span></div>
+      <span class="chip-ex" id="exChip" hidden>Example data</span>
+      <div class="sp"></div>
+      <button class="btn hide-s" type="button" data-act="new-lead" id="btnLead">Add lead</button>
+      <button class="btn red" type="button" data-act="new-job" id="btnJob">New job</button>
+    </div>
+    <nav class="tabs" role="tablist" aria-label="Sections">
+      <button class="tab" role="tab" data-tab="overview" aria-selected="true">Overview</button>
+      <button class="tab" role="tab" data-tab="jobs" aria-selected="false">Jobs<span class="ct" id="ctJobs"></span></button>
+      <button class="tab" role="tab" data-tab="leads" aria-selected="false">Leads<span class="ct" id="ctLeads"></span></button>
+      <button class="tab" role="tab" data-tab="stock" aria-selected="false"><span class="hide-xs">Film &amp; stock</span><span class="show-xs">Stock</span><span class="ct" id="ctStock"></span></button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="main">
+  <div class="empty" id="boot">Loading the studio desk. Jobs, leads and stock appear here once the data connects.</div>
+</main>
+
+<dialog id="dlg" aria-labelledby="dlgTitle"><form class="dlg" id="dlgForm" method="dialog"></form></dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+"use strict";
+/* ---- reference data ------------------------------------------------------ */
+const SERVICES = ["PPF","Detailing","Ceramic coating","Tint","Chrome delete","Colour change","Interior film"];
+const COVERAGE = ["Basic","Gold","Platinum"];
+const JOB_ST = ["Booked","In bay","QC","Delivered"];
+const LEAD_ST = ["New","Contacted","Booked","Lost"];
+const SOURCES = ["Website","Instagram","WhatsApp","Walk-in","Referral"];
+/* the DD rate card: class, full-body price on the thinner film, on the thicker film */
+const CLASSES = [
+  ["City car",200000,210000],["Hatchback",210000,220000],["Mini SUV / Crossover",230000,240000],["Compact Sedan",230000,240000],
+  ["Sedan",245000,255000],["Large Sedan",265000,275000],["Luxury Sedan",290000,310000],["Compact SUV",250000,260000],
+  ["Mid-Size SUV",270000,280000],["Large SUV",280000,295000],["Full-Size SUV / Pick-up",295000,310000],["Luxury SUV / Pick-up",320000,340000]];
+const FILMS = [
+  {name:"ProForce Phantom", stock:"pf-ph", tier:0, off:-25000},
+  {name:"ProForce Phantom Plus", stock:"pf-pp", tier:1, off:-25000},
+  {name:"OneFilm DefenX", stock:"of-dx", tier:0, off:0},
+  {name:"OneFilm DefenX Pro", stock:"of-dp", tier:1, off:0},
+  {name:"OneFilm colour PPF", stock:"of-col", tier:null, off:0}];
+const NEXT = {"Booked":"In bay","In bay":"QC","QC":"Delivered"};
+const NEXT_LABEL = {"Booked":"Car arrived","In bay":"Send to QC","QC":"Mark delivered"};
+
+/* ---- state --------------------------------------------------------------- */
+const S = { jobs:[], leads:[], stock:[], got:{jobs:false,leads:false,stock:false}, db:null, canWrite:true,
+  tab:"overview", period:"30", jf:"All", jq:"", lf:"All" };
+const $ = s => document.querySelector(s);
+const esc = v => String(v == null ? "" : v).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt = n => Math.round(n).toLocaleString("en-US");
+const rs = n => "Rs " + fmt(n);
+const lakh = n => (n / 100000).toLocaleString("en-US", {maximumFractionDigits: n >= 1e7 ? 0 : 1});
+const todayISO = () => { const d = new Date(); return new Date(d.getTime() - d.getTimezoneOffset()*60000).toISOString().slice(0,10); };
+const dayDiff = (a, b) => Math.round((new Date(b) - new Date(a)) / 864e5);
+const shortDate = iso => { if(!iso) return ""; const d = new Date(iso.length > 10 ? iso : iso + "T12:00:00"); return d.toLocaleDateString("en-GB", {day:"numeric", month:"short"}); };
+const ago = iso => { const m = Math.round((Date.now() - new Date(iso)) / 60000); if(m < 60) return m + " min ago"; const h = Math.round(m/60); if(h < 24) return h + " h ago"; const d = Math.round(h/24); return d + (d === 1 ? " day ago" : " days ago"); };
+const stockBy = id => S.stock.find(s => s.id === id);
+const cls = s => "st-" + String(s).replace(/\s+/g, "-");
+function suggestPrice(service, coverage, film, c){
+  if(service !== "PPF" || coverage !== "Platinum") return null;
+  const f = FILMS.find(x => x.name === film); if(!f || f.tier === null || CLASSES[c] == null) return null;
+  return CLASSES[c][f.tier === 0 ? 1 : 2] + f.off;
+}
+function inPeriod(iso){
+  if(S.period === "all") return true;
+  if(!iso) return false;
+  const days = dayDiff(iso.slice(0,10), todayISO());
+  return days <= +S.period && days >= -14;      /* booked a little ahead still counts */
+}
+function used(){                                  /* film and chemicals used, from every job that has started */
+  const u = {};
+  S.jobs.forEach(j => { if(j.status === "Booked") return; (j.products || []).forEach(p => { u[p.p] = (u[p.p] || 0) + (+p.qty || 0); }); });
+  return u;
+}
+function stockState(s, u){
+  const left = (+s.opening || 0) - (u[s.id] || 0);
+  return { left, state: left <= 0 ? "out" : left <= (+s.reorder || 0) ? "low" : "ok" };
+}
+
+/* ---- rendering ----------------------------------------------------------- */
+function bars(rows, opts){
+  opts = opts || {};
+  const max = Math.max(1, ...rows.map(r => r[1]));
+  if(!rows.length) return '<div class="empty">Nothing in this period yet.</div>';
+  return '<div class="bars">' + rows.map((r, i) =>
+    `<div class="br"><span class="k" title="${esc(r[0])}">${esc(r[0])}</span><span class="t"><i class="${i === 0 && opts.lead ? "red" : ""}" style="width:${(r[1]/max*100).toFixed(1)}%"></i></span><span class="v">${opts.fmt ? opts.fmt(r[1]) : fmt(r[1])}</span></div>`).join("") + '</div>';
+}
+function weekly(){
+  const W = 8, now = new Date(todayISO() + "T12:00:00");
+  const day = (now.getDay() + 6) % 7, monday = new Date(now - day*864e5);
+  const weeks = [...Array(W)].map((_, i) => ({ start: new Date(monday - (W-1-i)*7*864e5), n: 0, rev: 0 }));
+  S.jobs.forEach(j => { if(!j.dateIn) return; const d = new Date(j.dateIn + "T12:00:00");
+    weeks.forEach(w => { if(d >= w.start && d < new Date(+w.start + 7*864e5)){ w.n++; w.rev += +j.price || 0; } }); });
+  const max = Math.max(1, ...weeks.map(w => w.n)), H = 120, bw = 34, gap = 18, padL = 8, top = 18;
+  const width = padL*2 + W*bw + (W-1)*gap;
+  let g = "";
+  weeks.forEach((w, i) => {
+    const x = padL + i*(bw+gap), h = Math.round(w.n / max * (H - top)), y = H - h;
+    const cur = i === W-1;
+    g += `<rect x="${x}" y="${y}" width="${bw}" height="${Math.max(h, 2)}" rx="4" fill="${cur ? "var(--red)" : "var(--silver)"}" opacity="${cur ? 1 : .8}"></rect>`;
+    g += `<text class="val" x="${x + bw/2}" y="${y - 6}" text-anchor="middle">${w.n}</text>`;
+    g += `<text x="${x + bw/2}" y="${H + 16}" text-anchor="middle">${w.start.toLocaleDateString("en-GB",{day:"numeric",month:"short"})}</text>`;
+  });
+  return `<div class="wk"><svg viewBox="0 0 ${width} ${H + 24}" role="img" aria-label="Jobs started per week, last 8 weeks"><line x1="0" x2="${width}" y1="${H}" y2="${H}" stroke="var(--line2)"></line>${g}</svg></div>`;
+}
+function jobLine(j){
+  const p = (j.products || []).map(x => { const s = stockBy(x.p); return s ? `<span class="prod">${esc(s.name)} · ${fmt1(x.qty)} ${esc(s.unit)}</span>` : ""; }).join("");
+  return p;
+}
+const fmt1 = n => (+n).toLocaleString("en-US", {maximumFractionDigits: 2});
+
+function renderOverview(){
+  const jobs = S.jobs.filter(j => inPeriod(j.dateIn));
+  const leads = S.leads.filter(l => inPeriod(l.ts));
+  const rev = jobs.reduce((a, j) => a + (+j.price || 0), 0);
+  const booked = leads.filter(l => l.status === "Booked").length;
+  const conv = leads.length ? Math.round(booked / leads.length * 100) : 0;
+  const inBay = S.jobs.filter(j => j.status === "In bay" || j.status === "QC");
+  const coming = S.jobs.filter(j => j.status === "Booked").sort((a, b) => (a.dateIn || "").localeCompare(b.dateIn || ""));
+  const fresh = S.leads.filter(l => l.status === "New").sort((a, b) => (b.ts || "").localeCompare(a.ts || ""));
+  const u = used();
+  const alerts = S.stock.map(s => ({ s, ...stockState(s, u) })).filter(x => x.state !== "ok");
+  const by = (arr, key, val) => { const m = {}; arr.forEach(x => { const k = x[key] || "Other"; m[k] = (m[k] || 0) + (val ? val(x) : 1); }); return Object.entries(m).sort((a, b) => b[1] - a[1]); };
+  const filmUse = {}; jobs.forEach(j => (j.products || []).forEach(p => { const s = stockBy(p.p); if(s && s.kind === "Film" && j.status !== "Booked") filmUse[s.name] = (filmUse[s.name] || 0) + (+p.qty || 0); }));
+  const chemUse = {}; jobs.forEach(j => (j.products || []).forEach(p => { const s = stockBy(p.p); if(s && s.kind !== "Film" && j.status !== "Booked") chemUse[s.name] = (chemUse[s.name] || 0) + 1; }));
+  const label = S.period === "all" ? "All time" : "Last " + S.period + " days";
+
+  return `
+  <div class="row" style="justify-content:space-between">
+    <span class="lab">${label}</span>
+    <div class="period" role="group" aria-label="Period">
+      ${[["7","7 days"],["30","30 days"],["all","All"]].map(p => `<button type="button" data-act="period" data-v="${p[0]}" aria-pressed="${S.period === p[0]}">${p[1]}</button>`).join("")}
+    </div>
+  </div>
+  <section class="kpis" aria-label="Summary">
+    <div class="kpi"><span class="lab">Work booked</span><div class="v">Rs ${lakh(rev)} lakh</div><div class="s num">${rs(rev)} across ${jobs.length} ${jobs.length === 1 ? "job" : "jobs"}</div></div>
+    <div class="kpi"><span class="lab">In the bay now</span><div class="v">${inBay.length}</div><div class="s">${coming.length} booked to come in</div></div>
+    <div class="kpi"><span class="lab">Leads</span><div class="v">${leads.length}</div><div class="s">${fresh.length} waiting for a reply</div></div>
+    <div class="kpi"><span class="lab">Lead to job</span><div class="v">${conv}%</div><div class="s">${booked} of ${leads.length} leads booked</div></div>
+    <div class="kpi"><span class="lab">Average ticket</span><div class="v num">${jobs.length ? lakh(rev / jobs.length) + " lakh" : "0"}</div><div class="s num">${jobs.length ? rs(rev / jobs.length) : "No jobs yet"}</div></div>
+  </section>
+
+  <div class="grid">
+    <section class="card c12">
+      <div class="hd"><h3>In the bay</h3><small>${inBay.length ? "Tap a step when the car moves on" : ""}</small></div>
+      ${inBay.length ? `<div class="bay">${inBay.map(j => `
+        <article class="slot">
+          <div class="row" style="justify-content:space-between"><span class="pill ${cls(j.status)}">${esc(j.status)}</span><span class="when">day ${Math.max(1, dayDiff(j.dateIn, todayISO()) + 1)}</span></div>
+          <div class="car">${esc(j.car)}</div>
+          <div class="what">${esc(j.service)}${j.coverage ? " · " + esc(j.coverage) : ""}${j.film ? " · " + esc(j.film) : ""}</div>
+          <div>${jobLine(j)}</div>
+          <div class="foot"><span class="num">${rs(j.price || 0)}</span>${NEXT[j.status] ? `<button class="mini" type="button" data-act="advance" data-id="${esc(j.id)}" ${S.canWrite ? "" : "disabled"}>${NEXT_LABEL[j.status]}</button>` : ""}</div>
+        </article>`).join("")}</div>` : '<div class="empty">The bay is empty. Jobs set to In bay or QC show here.</div>'}
+    </section>
+
+    <section class="card c6">
+      <div class="hd"><h3>Coming in</h3><small>Booked</small></div>
+      ${coming.length ? `<div class="list">${coming.slice(0, 6).map(j => `
+        <div class="li"><span class="when">${shortDate(j.dateIn)}</span><div class="main"><b>${esc(j.car)}</b><span>${esc(j.service)}${j.coverage ? " · " + esc(j.coverage) : ""}${j.film ? " · " + esc(j.film) : ""}</span></div>
+        <button class="mini" type="button" data-act="advance" data-id="${esc(j.id)}" ${S.canWrite ? "" : "disabled"}>Car arrived</button></div>`).join("")}</div>` : '<div class="empty">Nothing booked yet.</div>'}
+    </section>
+
+    <section class="card c6">
+      <div class="hd"><h3>New leads</h3><small>Reply to these first</small></div>
+      ${fresh.length ? `<div class="list">${fresh.slice(0, 6).map(l => `
+        <div class="li"><span class="src">${esc(l.source)}</span><div class="main"><b>${esc(l.car || "Car not given")}</b><span>${esc(l.want || "")}</span></div><span class="when">${ago(l.ts)}</span></div>`).join("")}</div>` : '<div class="empty">No new leads. Website and Instagram enquiries land here.</div>'}
+    </section>
+
+    <section class="card c7">
+      <div class="hd"><h3>Money by service</h3><small>${label}</small></div>
+      ${bars(by(jobs, "service", j => +j.price || 0), {lead: true, fmt: v => "Rs " + lakh(v) + "L"})}
+    </section>
+
+    <section class="card c5">
+      <div class="hd"><h3>Jobs per week</h3><small>Last 8 weeks</small></div>
+      ${weekly()}
+    </section>
+
+    <section class="card c4">
+      <div class="hd"><h3>Where work comes from</h3><small>Jobs</small></div>
+      ${bars(by(jobs, "source"))}
+    </section>
+
+    <section class="card c4">
+      <div class="hd"><h3>Film used</h3><small>Feet, ${label.toLowerCase()}</small></div>
+      ${bars(Object.entries(filmUse).sort((a, b) => b[1] - a[1]), {fmt: v => fmt1(v) + " ft"})}
+    </section>
+
+    <section class="card c4">
+      <div class="hd"><h3>Stock to reorder</h3><small>${alerts.length ? alerts.length + (alerts.length === 1 ? " item" : " items") : "All good"}</small></div>
+      ${alerts.length ? `<div class="list">${alerts.map(a => `
+        <div class="li"><span class="pill ${a.state === "out" ? "st-In-bay" : "st-QC"}">${a.state === "out" ? "Out" : "Low"}</span><div class="main"><b>${esc(a.s.name)}</b><span>${fmt1(Math.max(0, a.left))} ${esc(a.s.unit)} left, reorder at ${fmt1(a.s.reorder)}</span></div><span></span></div>`).join("")}</div>` : '<div class="empty">Nothing below its reorder level.</div>'}
+      ${Object.keys(chemUse).length ? `<div class="hd" style="margin:18px 0 10px"><h3>Products on jobs</h3><small>Times used</small></div>${bars(Object.entries(chemUse).sort((a, b) => b[1] - a[1]).slice(0, 5))}` : ""}
+    </section>
+  </div>`;
+}
+
+function renderJobs(){
+  const q = S.jq.trim().toLowerCase();
+  const rows = S.jobs.filter(j => (S.jf === "All" || j.service === S.jf) && (!q || (j.car + " " + j.film + " " + j.notes).toLowerCase().includes(q)))
+    .sort((a, b) => (b.dateIn || "").localeCompare(a.dateIn || ""));
+  return `
+  <div class="row" style="justify-content:space-between;margin-bottom:12px">
+    <div class="filters" role="group" aria-label="Service" style="margin:0">${["All", ...SERVICES].map(s => `<button type="button" class="fchip" data-act="jf" data-v="${esc(s)}" aria-pressed="${S.jf === s}">${esc(s)}</button>`).join("")}</div>
+    <input class="search" id="jq" type="search" placeholder="Search car, film, notes" value="${esc(S.jq)}" aria-label="Search jobs">
+  </div>
+  ${rows.length ? `<div class="tw"><table class="tj">
+    <thead><tr><th>In</th><th>Car</th><th>Service</th><th>Film and products</th><th>Source</th><th class="r">Price</th><th>Status</th></tr></thead>
+    <tbody>${rows.map(j => `<tr>
+      <td class="num">${shortDate(j.dateIn)}${j.dateOut ? `<div class="sub">out ${shortDate(j.dateOut)}</div>` : ""}</td>
+      <td><b>${esc(j.car)}</b><div class="sub">${esc(CLASSES[j.cls] ? CLASSES[j.cls][0] : "")}</div></td>
+      <td>${esc(j.service)}${j.coverage ? `<div class="sub">${esc(j.coverage)}</div>` : ""}</td>
+      <td style="min-width:220px">${j.film ? `<div><b style="font-weight:600">${esc(j.film)}</b></div>` : ""}${jobLine(j) || '<span class="sub">No products logged</span>'}${j.notes ? `<div class="sub">${esc(j.notes)}</div>` : ""}</td>
+      <td><span class="src">${esc(j.source)}</span></td>
+      <td class="r num" style="font-size:15px">${rs(j.price || 0)}</td>
+      <td><select class="stsel" data-act="jst" data-id="${esc(j.id)}" aria-label="Status for ${esc(j.car)}" ${S.canWrite ? "" : "disabled"}>${JOB_ST.map(s => `<option ${s === j.status ? "selected" : ""}>${s}</option>`).join("")}</select></td>
+    </tr>`).join("")}</tbody></table></div>` : `<div class="empty">${S.jobs.length ? "No jobs match." : "No jobs yet. Tap New job to log the first car."}</div>`}`;
+}
+
+function renderLeads(){
+  const rows = S.leads.filter(l => S.lf === "All" || l.status === S.lf).sort((a, b) => (b.ts || "").localeCompare(a.ts || ""));
+  const counts = {}; S.leads.forEach(l => counts[l.status] = (counts[l.status] || 0) + 1);
+  return `
+  <div class="banner"><span>Website leads (price tool, call-back form, WhatsApp buttons) arrive here on their own. Instagram DMs join once ManyChat is connected. Walk-ins and calls: <b>Add lead</b>.</span></div>
+  <div class="filters" role="group" aria-label="Lead status">${["All", ...LEAD_ST].map(s => `<button type="button" class="fchip" data-act="lf" data-v="${s}" aria-pressed="${S.lf === s}">${s}${s !== "All" && counts[s] ? ` <span class="num" style="color:var(--dim)">${counts[s]}</span>` : ""}</button>`).join("")}</div>
+  ${rows.length ? `<div class="tw"><table class="tl">
+    <thead><tr><th>When</th><th>Source</th><th>Car</th><th>What they want</th><th>Status</th><th></th></tr></thead>
+    <tbody>${rows.map(l => `<tr>
+      <td class="num">${shortDate(l.ts)}<div class="sub">${ago(l.ts)}</div></td>
+      <td><span class="src">${esc(l.source)}</span></td>
+      <td><b>${esc(l.car || "Not given")}</b>${l.name ? `<div class="sub">${esc(l.name)}${l.phone ? " · " + esc(l.phone) : ""}</div>` : ""}</td>
+      <td style="min-width:220px">${esc(l.want || "").replace(/Rs (\d)/g, "Rs&nbsp;$1")}</td>
+      <td><select class="stsel" data-act="lst" data-id="${esc(l.id)}" aria-label="Status for lead ${esc(l.car)}" ${S.canWrite ? "" : "disabled"}>${LEAD_ST.map(s => `<option ${s === l.status ? "selected" : ""}>${s}</option>`).join("")}</select></td>
+      <td>${l.job ? '<span class="sub">Job logged</span>' : (l.status !== "Lost" ? `<button class="mini" type="button" data-act="lead-job" data-id="${esc(l.id)}" ${S.canWrite ? "" : "disabled"}>Make it a job</button>` : "")}</td>
+    </tr>`).join("")}</tbody></table></div>` : '<div class="empty">No leads with this status.</div>'}`;
+}
+
+function renderStock(){
+  const u = used();
+  const groups = ["Film","Chemical","Coating"];
+  return `
+  <div class="banner"><span>Stock goes down by itself as jobs are logged with their film and products. The yellow mark on each bar is the reorder level.</span></div>
+  ${groups.map(g => { const items = S.stock.filter(s => s.kind === g); if(!items.length) return "";
+    return `<section class="card" style="padding:0;margin-bottom:16px"><div class="hd" style="padding:16px 18px 0"><h3>${g === "Film" ? "Film rolls" : g === "Chemical" ? "Chemicals" : "Coatings"}</h3><small>Used on jobs since the opening count</small></div>
+    ${items.map(s => { const st = stockState(s, u), pct = Math.max(0, Math.min(100, st.left / (+s.opening || 1) * 100)), rp = Math.min(100, (+s.reorder || 0) / (+s.opening || 1) * 100);
+      return `<div class="stk ${st.state}"><div class="nm"><b>${esc(s.name)}</b><span>${esc(s.note || "")}</span></div>
+      <div class="gauge" aria-hidden="true"><i style="width:${pct.toFixed(1)}%"></i><u style="left:${rp.toFixed(1)}%"></u></div>
+      <div class="left">${fmt1(Math.max(0, st.left))} <span style="color:var(--dim);font-size:13px">${esc(s.unit)}</span><div class="sub" style="color:var(--dim);font-size:12px">of ${fmt1(s.opening)}, used ${fmt1(u[s.id] || 0)}</div></div>
+      <span class="pill ${st.state === "out" ? "st-In-bay" : st.state === "low" ? "st-QC" : "st-Delivered"}">${st.state === "out" ? "Out" : st.state === "low" ? "Reorder" : "OK"}</span></div>`; }).join("")}
+    </section>`; }).join("")}`;
+}
+
+function render(){
+  const ready = S.got.jobs && S.got.leads && S.got.stock;
+  $("#ctJobs").textContent = S.jobs.length || "";
+  $("#ctLeads").textContent = S.leads.filter(l => l.status === "New").length || "";
+  const u = used(); const low = S.stock.filter(s => stockState(s, u).state !== "ok").length;
+  $("#ctStock").textContent = low ? low + " low" : "";
+  $("#exChip").hidden = !(S.jobs.some(j => j.example) || S.leads.some(l => l.example));
+  document.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-selected", String(t.dataset.tab === S.tab)));
+  $("#btnJob").disabled = $("#btnLead").disabled = !S.canWrite || !S.db;
+  const m = $("#main");
+  if(!S.db){ m.innerHTML = `<div class="empty">${S.dbChecked ? "The studio data isn't available in this view. Open the desk from its Claude link while signed in." : "Loading the studio desk. Jobs, leads and stock appear here once the data connects."}</div>`; return; }
+  if(!ready){ m.innerHTML = '<div class="empty">Loading jobs, leads and stock…</div>'; return; }
+  const focus = document.activeElement && document.activeElement.id === "jq";
+  m.innerHTML = S.tab === "jobs" ? renderJobs() : S.tab === "leads" ? renderLeads() : S.tab === "stock" ? renderStock() : renderOverview();
+  if(focus){ const q = $("#jq"); if(q){ q.focus(); q.setSelectionRange(q.value.length, q.value.length); } }
+}
+
+/* ---- forms --------------------------------------------------------------- */
+const dlg = $("#dlg"), form = $("#dlgForm");
+function opt(list, v){ return list.map(x => { const val = Array.isArray(x) ? x[0] : x, lab = Array.isArray(x) ? x[1] : x; return `<option value="${esc(val)}" ${String(val) === String(v) ? "selected" : ""}>${esc(lab)}</option>`; }).join(""); }
+function pline(p){
+  return `<div class="pline"><select name="pp" aria-label="Product">${'<option value="">Pick film or product</option>' + S.stock.map(s => `<option value="${esc(s.id)}" ${p && p.p === s.id ? "selected" : ""}>${esc(s.name)} (${esc(s.unit)})</option>`).join("")}</select>
+    <input name="pq" type="number" min="0" step="0.1" inputmode="decimal" placeholder="Qty" value="${p ? esc(p.qty) : ""}" aria-label="Quantity"><button class="x" type="button" data-act="rm-line" aria-label="Remove line">&times;</button></div>`;
+}
+function openJob(pre){
+  pre = pre || {};
+  form.innerHTML = `
+    <h2 id="dlgTitle">New job</h2><p class="hint">Log the car when it's booked or arrives. Film and products come off stock automatically.</p>
+    <div class="fg">
+      <label class="f full">Car<input name="car" id="f-car" required placeholder="e.g. Toyota Land Cruiser 300" value="${esc(pre.car || "")}"></label>
+      <label class="f">Size class<select name="cls" id="f-cls">${opt(CLASSES.map((c, i) => [i, c[0]]), pre.cls != null ? pre.cls : 4)}</select></label>
+      <label class="f">Service<select name="service" id="f-service">${opt(SERVICES, pre.service || "PPF")}</select></label>
+      <label class="f">Coverage<select name="coverage" id="f-coverage">${opt([["", "Not PPF"], ...COVERAGE.map(c => [c, c]), ["Full body", "Full body (colour)"]], pre.coverage != null ? pre.coverage : "Platinum")}</select></label>
+      <label class="f">Film<select name="film" id="f-film">${opt([["", "No film"], ...FILMS.map(f => [f.name, f.name])], pre.film != null ? pre.film : "OneFilm DefenX")}</select></label>
+      <label class="f">Source<select name="source" id="f-source">${opt(SOURCES, pre.source || "Walk-in")}</select></label>
+      <label class="f">Status<select name="status" id="f-status">${opt(JOB_ST, pre.status || "Booked")}</select></label>
+      <label class="f">Date in<input name="dateIn" id="f-date" type="date" value="${esc(pre.dateIn || todayISO())}"></label>
+      <label class="f">Price (Rs)<input name="price" id="f-price" type="number" min="0" step="500" inputmode="numeric" value="${esc(pre.price || "")}"><span class="suggest" id="f-sug"></span></label>
+      <div class="full"><span class="lab" style="display:block;margin-bottom:8px">Film and products used</span><div class="plines" id="plines">${(pre.products && pre.products.length ? pre.products : [null]).map(pline).join("")}</div>
+        <button class="mini" type="button" data-act="add-line" style="margin-top:8px">Add another</button></div>
+      <label class="f full">Notes<textarea name="notes" id="f-notes" placeholder="Anything the next person needs to know">${esc(pre.notes || "")}</textarea></label>
+    </div>
+    <div class="dact"><button class="btn" type="button" data-act="close">Cancel</button><button class="btn red" type="submit">Save job</button></div>`;
+  form.dataset.kind = "job"; form.dataset.lead = pre.leadId || "";
+  syncPrice(); dlg.showModal(); setTimeout(() => $("#f-car").focus(), 30);
+}
+function syncPrice(){
+  const sv = $("#f-service"), c = $("#f-cls"), cov = $("#f-coverage"), fl = $("#f-film"), sug = $("#f-sug"), pr = $("#f-price");
+  if(!sv) return;
+  const p = suggestPrice(sv.value, cov.value, fl.value, +c.value);
+  sug.textContent = p ? "Rate card: " + rs(p) : (sv.value === "PPF" ? "Basic and Gold are priced on inspection" : "Priced per car");
+  if(p && (!pr.value || pr.dataset.auto === "1")){ pr.value = p; pr.dataset.auto = "1"; }
+  /* the film line follows the film picked */
+  const f = FILMS.find(x => x.name === fl.value), first = form.querySelector('select[name="pp"]');
+  if(f && first && !first.value) first.value = f.stock;
+}
+function openLead(){
+  form.innerHTML = `
+    <h2 id="dlgTitle">Add lead</h2><p class="hint">For walk-ins, calls and Instagram DMs until ManyChat is connected.</p>
+    <div class="fg">
+      <label class="f">Source<select name="source">${opt(SOURCES, "Instagram")}</select></label>
+      <label class="f">Car<input name="car" required placeholder="e.g. Honda Civic"></label>
+      <label class="f">Name<input name="name" autocomplete="off" placeholder="Optional"></label>
+      <label class="f">Phone<input name="phone" type="tel" inputmode="tel" placeholder="03xx xxxxxxx"></label>
+      <label class="f full">What they want<textarea name="want" placeholder="e.g. PPF price for the front end"></textarea></label>
+    </div>
+    <div class="dact"><button class="btn" type="button" data-act="close">Cancel</button><button class="btn red" type="submit">Save lead</button></div>`;
+  form.dataset.kind = "lead"; dlg.showModal(); setTimeout(() => form.querySelector('[name="car"]').focus(), 30);
+}
+form.addEventListener("input", e => { if(e.target.id === "f-price") e.target.dataset.auto = "0"; if(["f-service","f-cls","f-coverage","f-film"].includes(e.target.id)) syncPrice(); });
+form.addEventListener("change", e => { if(["f-service","f-cls","f-coverage","f-film"].includes(e.target.id)) syncPrice(); });
+form.addEventListener("submit", async e => {
+  e.preventDefault(); if(!S.db) return;
+  const fd = new FormData(form), kind = form.dataset.kind;
+  const btn = form.querySelector('[type="submit"]'); btn.disabled = true;
+  try{
+    if(kind === "job"){
+      const pp = fd.getAll("pp"), pq = fd.getAll("pq");
+      const products = pp.map((p, i) => ({ p, qty: +pq[i] || 0 })).filter(x => x.p && x.qty > 0);
+      const status = fd.get("status");
+      const job = { car: String(fd.get("car")).trim(), cls: +fd.get("cls"), service: fd.get("service"), coverage: fd.get("coverage"),
+        film: fd.get("film"), products, price: +fd.get("price") || 0, status, source: fd.get("source"), dateIn: fd.get("dateIn") || todayISO(),
+        dateOut: status === "Delivered" ? todayISO() : "", notes: String(fd.get("notes") || "").trim(), created: new Date().toISOString() };
+      if(!job.car){ btn.disabled = false; return; }
+      const ref = await S.db.collection("jobs").add(job);
+      if(form.dataset.lead){ await S.db.doc("leads/" + form.dataset.lead).update({ status: "Booked", job: ref.id }); }
+      toast("Job saved: " + job.car);
+    } else {
+      const lead = { source: fd.get("source"), car: String(fd.get("car")).trim(), name: String(fd.get("name") || "").trim(),
+        phone: String(fd.get("phone") || "").replace(/[^\d+ ]/g, "").trim(), want: String(fd.get("want") || "").trim(), status: "New", ts: new Date().toISOString(), job: "" };
+      if(!lead.car){ btn.disabled = false; return; }
+      await S.db.collection("leads").add(lead);
+      toast("Lead saved");
+    }
+    dlg.close();
+  } catch(err){ btn.disabled = false; writeFailed(err); }
+});
+
+/* ---- actions ------------------------------------------------------------- */
+function toast(t){ const el = $("#toast"); el.textContent = t; el.classList.add("on"); clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove("on"), 2200); }
+function writeFailed(err){
+  if(err && err.code === "invalid_argument"){ S.canWrite = false; render(); toast("You can view the desk but not change it"); }
+  else if(err && err.code === "quota_exceeded") toast("The desk is full. Delete old jobs to add more.");
+  else toast("Couldn't save. Try again in a moment.");
+}
+async function setJobStatus(id, status){
+  const j = S.jobs.find(x => x.id === id); if(!j || j.status === status) return;
+  try{ await S.db.doc("jobs/" + id).update({ status, dateOut: status === "Delivered" ? todayISO() : "" }); toast(j.car + ": " + status); }
+  catch(err){ writeFailed(err); render(); }
+}
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-act]"); if(!b) { const t = e.target.closest("[data-tab]"); if(t){ go(t.dataset.tab); } return; }
+  const a = b.dataset.act;
+  if(a === "new-job") openJob();
+  else if(a === "new-lead") openLead();
+  else if(a === "close") dlg.close();
+  else if(a === "period"){ S.period = b.dataset.v; render(); }
+  else if(a === "jf"){ S.jf = b.dataset.v; render(); }
+  else if(a === "lf"){ S.lf = b.dataset.v; render(); }
+  else if(a === "advance"){ const j = S.jobs.find(x => x.id === b.dataset.id); if(j && NEXT[j.status]) setJobStatus(j.id, NEXT[j.status]); }
+  else if(a === "add-line"){ $("#plines").insertAdjacentHTML("beforeend", pline(null)); }
+  else if(a === "rm-line"){ const lines = form.querySelectorAll(".pline"); if(lines.length > 1) b.closest(".pline").remove(); else { b.closest(".pline").querySelector("select").value = ""; b.closest(".pline").querySelector("input").value = ""; } }
+  else if(a === "lead-job"){ const l = S.leads.find(x => x.id === b.dataset.id); if(l) openJob({ car: l.car, source: l.source === "Website" || l.source === "Instagram" || l.source === "WhatsApp" ? l.source : "Walk-in", leadId: l.id, notes: l.want }); }
+});
+document.addEventListener("change", async e => {
+  const t = e.target;
+  if(t.dataset.act === "jst") setJobStatus(t.dataset.id, t.value);
+  else if(t.dataset.act === "lst"){
+    const l = S.leads.find(x => x.id === t.dataset.id); if(!l) return;
+    try{ await S.db.doc("leads/" + l.id).update({ status: t.value }); toast("Lead: " + t.value); } catch(err){ writeFailed(err); render(); }
+  }
+});
+let qTimer = 0;
+document.addEventListener("input", e => { if(e.target.id === "jq"){ S.jq = e.target.value; clearTimeout(qTimer); qTimer = setTimeout(render, 150); } });
+function go(tab){ S.tab = tab; try{ history.replaceState(null, "", "#" + tab); } catch(_){} render(); window.scrollTo({top: 0}); }
+
+/* ---- data ---------------------------------------------------------------- */
+const h = (location.hash || "").slice(1); if(["overview","jobs","leads","stock"].includes(h)) S.tab = h;
+render();
+(async function(){
+  const c = window.claude;
+  const [db, user] = await Promise.all([c && c.use ? c.use("db") : null, c && c.use ? c.use("user") : null]);
+  S.dbChecked = true; S.db = db;
+  if(user && user.can){ try{ const w = await user.can("data.write"); if(w === false) S.canWrite = false; } catch(_){} }
+  if(!db){ render(); return; }
+  const sub = (name, sortKey) => db.collection(name).onSnapshot(snap => {
+    S[name] = snap.docs.map(d => Object.assign({ id: d.id }, d.data())); S.got[name] = true; render();
+  }, err => { S.got[name] = true; render(); });
+  sub("jobs"); sub("leads"); sub("stock");
+  render();
+})();
+})();
+</script>
+</body></html>
