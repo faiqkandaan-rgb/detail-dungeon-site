@@ -1,103 +1,149 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Studio Desk · Detail Dungeon</title><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#0A0A0D"><link rel="icon" href="../img/favicon.png"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Studio Desk"><link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&family=Montserrat:wght@600;700&display=swap"><style>html,body{margin:0;background:#0A0A0D}</style><script>
-/* Studio Desk demo: the same desk, running on example data saved in this browser only. */
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&family=Montserrat:wght@600;700&display=swap"><style>html,body{margin:0;background:#0A0A0D}</style><script>/* Studio Desk demo: the same desk, running on example data saved in this browser only. */
 (function(){
-  var KEY = 'dd-studio-desk-demo-1', DAY = 864e5;
-  var SEED = {"jobs": [{"id": "j01", "car": "Hyundai Sonata", "cls": 5, "service": "Detailing", "coverage": "", "film": "", "products": [{"p": "kc-gsf", "qty": 0.4}, {"p": "kc-gs", "qty": 0.25}, {"p": "kc-rs", "qty": 0.2}, {"p": "kc-pol", "qty": 0.1}], "price": 18000, "status": "Delivered", "source": "Instagram", "dateIn": "2026-10-20", "dateOut": "2026-10-20", "bay": "Bay 1", "notes": "Full detail, inside and out. Koch-Chemie wash and decon."}, {"id": "j02", "car": "Toyota Land Cruiser 300", "cls": 11, "service": "PPF", "coverage": "Platinum", "film": "OneFilm DefenX", "products": [{"p": "of-dx", "qty": 68}, {"p": "mg-comp", "qty": 0.2}, {"p": "kc-gsf", "qty": 0.4}], "price": 320000, "status": "In bay", "source": "Website", "dateIn": "2026-10-21", "dateOut": "", "bay": "Film bay", "notes": "Full body. Paint corrected before film."}, {"id": "j03", "car": "Mercedes-AMG E63", "cls": 6, "service": "PPF", "coverage": "Platinum", "film": "ProForce Phantom Plus", "products": [{"p": "pf-pp", "qty": 56}, {"p": "kc-gsf", "qty": 0.3}], "price": 285000, "status": "Delivered", "source": "Website", "dateIn": "2026-10-16", "dateOut": "2026-10-16", "bay": "Film bay", "notes": "Front end stripped so edges wrap."}, {"id": "j04", "car": "BMW M5", "cls": 5, "service": "Colour change", "coverage": "Full body", "film": "OneFilm colour PPF", "products": [{"p": "of-col", "qty": 62}, {"p": "kc-gsf", "qty": 0.3}], "price": 520000, "status": "QC", "source": "Referral", "dateIn": "2026-10-18", "dateOut": "", "bay": "Film bay", "notes": "Coloured PPF, Nardo Grey gloss. Door shuts included."}, {"id": "j05", "car": "Honda Civic", "cls": 4, "service": "Ceramic coating", "coverage": "", "film": "", "products": [{"p": "gy-q2", "qty": 1}, {"p": "mg-comp", "qty": 0.15}, {"p": "kc-gsf", "qty": 0.3}], "price": 65000, "status": "Delivered", "source": "Instagram", "dateIn": "2026-10-08", "dateOut": "2026-10-09", "bay": "Bay 2", "notes": "One-step polish, then GYEON."}, {"id": "j06", "car": "Toyota Corolla", "cls": 4, "service": "Tint", "coverage": "", "film": "", "products": [{"p": "tint", "qty": 22}], "price": 28000, "status": "Delivered", "source": "Walk-in", "dateIn": "2026-10-11", "dateOut": "2026-10-11", "bay": "Bay 2", "notes": "Ceramic tint, rear 20, front 50."}, {"id": "j07", "car": "Audi e-tron", "cls": 10, "service": "Chrome delete", "coverage": "", "film": "", "products": [{"p": "wrap-blk", "qty": 18}], "price": 75000, "status": "Delivered", "source": "Website", "dateIn": "2026-10-03", "dateOut": "2026-10-04", "bay": "Bay 1", "notes": "Window surrounds and grille, gloss black."}, {"id": "j08", "car": "Kia Sportage", "cls": 8, "service": "PPF", "coverage": "Basic", "film": "ProForce Phantom", "products": [{"p": "pf-ph", "qty": 24}], "price": 95000, "status": "Delivered", "source": "Instagram", "dateIn": "2026-09-29", "dateOut": "2026-09-30", "bay": "Film bay", "notes": "Front end package."}, {"id": "j09", "car": "Toyota Fortuner", "cls": 10, "service": "Interior film", "coverage": "", "film": "", "products": [], "price": 22000, "status": "Booked", "source": "Website", "dateIn": "2026-10-24", "dateOut": "", "bay": "Bay 2", "notes": "Console, screen bezel, door inserts."}, {"id": "j10", "car": "Mercedes-Benz C-Class", "cls": 5, "service": "PPF", "coverage": "Gold", "film": "OneFilm DefenX Pro", "products": [{"p": "of-dp", "qty": 40}, {"p": "kc-gsf", "qty": 0.3}], "price": 210000, "status": "Delivered", "source": "Website", "dateIn": "2026-10-01", "dateOut": "2026-10-03", "bay": "Film bay", "notes": "Everything except the roof."}, {"id": "j11", "car": "Honda City", "cls": 3, "service": "Detailing", "coverage": "", "film": "", "products": [{"p": "kc-gsf", "qty": 0.3}, {"p": "kc-gs", "qty": 0.2}], "price": 12000, "status": "Delivered", "source": "Walk-in", "dateIn": "2026-10-17", "dateOut": "2026-10-17", "bay": "Bay 1", "notes": "Exterior detail."}, {"id": "j12", "car": "Kia Sorento", "cls": 8, "service": "PPF", "coverage": "Basic", "film": "ProForce Phantom Plus", "products": [{"p": "pf-pp", "qty": 28}], "price": 120000, "status": "Booked", "source": "Walk-in", "dateIn": "2026-10-23", "dateOut": "", "bay": "Film bay", "notes": "Wants it done by the weekend."}, {"id": "j13", "car": "Suzuki Swift", "cls": 1, "service": "Ceramic coating", "coverage": "", "film": "", "products": [{"p": "gy-q2", "qty": 1}, {"p": "kc-gsf", "qty": 0.3}], "price": 45000, "status": "Delivered", "source": "Instagram", "dateIn": "2026-09-26", "dateOut": "2026-09-27", "bay": "Bay 2", "notes": ""}, {"id": "j14", "car": "BMW X5", "cls": 10, "service": "Tint", "coverage": "", "film": "", "products": [{"p": "tint", "qty": 30}], "price": 38000, "status": "Delivered", "source": "Referral", "dateIn": "2026-10-06", "dateOut": "2026-10-06", "bay": "Bay 2", "notes": "Limo rear, 35 front."}, {"id": "j15", "car": "Toyota Prado", "cls": 10, "service": "PPF", "coverage": "Platinum", "film": "OneFilm DefenX Pro", "products": [], "price": 310000, "status": "Booked", "source": "Website", "dateIn": "2026-10-24", "dateOut": "", "bay": "Film bay", "notes": "Booked on WhatsApp for Saturday, 11am."}], "leads": [{"id": "l01", "source": "Website", "car": "Toyota Corolla", "name": "Ahmed", "phone": "03001234567", "want": "Call-back form. Platinum, DefenX, Rs 245,000", "status": "New", "ts": "2026-10-22T13:10:00+05:00", "job": ""}, {"id": "l11", "source": "Website", "car": "Toyota Prado", "want": "Tapped Book on WhatsApp. Platinum, DefenX Pro, Rs 310,000", "status": "Booked", "ts": "2026-10-22T11:42:00+05:00", "job": "j15"}, {"id": "l02", "source": "Instagram", "car": "Honda Civic", "want": "Asked the ceramic coating price in DMs", "status": "New", "ts": "2026-10-22T10:05:00+05:00", "job": ""}, {"id": "l13", "source": "Website", "car": "Lexus LX 570", "want": "Ceramic coating panel. Asked the price", "status": "Contacted", "ts": "2026-10-21T19:05:00+05:00", "job": ""}, {"id": "l03", "source": "Instagram", "car": "Kia Sportage", "want": "Commented 'price?' on the chrome delete reel", "status": "Contacted", "ts": "2026-10-21T17:30:00+05:00", "job": ""}, {"id": "l04", "source": "Website", "car": "Toyota Fortuner", "name": "Bilal", "phone": "03215550142", "want": "Call-back form. Interior film, console and doors", "status": "Booked", "ts": "2026-10-21T16:20:00+05:00", "job": "j09"}, {"id": "l12", "source": "Website", "car": "Honda Civic", "want": "Tapped Book on WhatsApp. Platinum, Phantom, Rs 220,000", "status": "Contacted", "ts": "2026-10-20T21:48:00+05:00", "job": ""}, {"id": "l07", "source": "Walk-in", "car": "Kia Sorento", "want": "PPF Basic, wants it done by the weekend", "status": "Booked", "ts": "2026-10-20T15:00:00+05:00", "job": "j12"}, {"id": "l05", "source": "Website", "car": "Toyota Land Cruiser 300", "name": "Usman", "phone": "03334441290", "want": "Call-back form. Platinum, DefenX, Rs 320,000", "status": "Booked", "ts": "2026-10-19T12:30:00+05:00", "job": "j02"}, {"id": "l08", "source": "Instagram", "car": "Hyundai Sonata", "want": "Full detail", "status": "Booked", "ts": "2026-10-18T20:40:00+05:00", "job": "j01"}, {"id": "l06", "source": "Website", "car": "Hyundai Tucson", "want": "Tapped Book a free inspection. Gold, DefenX", "status": "Contacted", "ts": "2026-10-18T10:15:00+05:00", "job": ""}, {"id": "l14", "source": "Website", "car": "Toyota Hilux Revo", "want": "Chrome delete panel. Asked the price", "status": "Contacted", "ts": "2026-10-17T18:02:00+05:00", "job": ""}, {"id": "l10", "source": "Website", "car": "Mercedes-AMG E63", "name": "Saad", "phone": "03009871234", "want": "Call-back form. Platinum, Phantom Plus, Rs 285,000", "status": "Booked", "ts": "2026-10-15T15:40:00+05:00", "job": "j03"}, {"id": "l09", "source": "Website", "car": "Suzuki Alto", "want": "Tapped Book on WhatsApp. Platinum, Phantom. Over budget", "status": "Lost", "ts": "2026-10-12T18:00:00+05:00", "job": ""}], "stock": [{"id": "pf-ph", "name": "ProForce Phantom", "kind": "Film", "unit": "ft", "opening": 100, "reorder": 25, "note": "60 in roll, 7.5 mil"}, {"id": "pf-pp", "name": "ProForce Phantom Plus", "kind": "Film", "unit": "ft", "opening": 100, "reorder": 25, "note": "60 in roll, 8.5 mil"}, {"id": "of-dx", "name": "OneFilm DefenX", "kind": "Film", "unit": "ft", "opening": 150, "reorder": 30, "note": "60 in roll, 7 mil"}, {"id": "of-dp", "name": "OneFilm DefenX Pro", "kind": "Film", "unit": "ft", "opening": 100, "reorder": 25, "note": "60 in roll, 8.5 mil"}, {"id": "of-col", "name": "OneFilm colour PPF", "kind": "Film", "unit": "ft", "opening": 100, "reorder": 40, "note": "Nardo Grey gloss"}, {"id": "tint", "name": "Nano-ceramic tint", "kind": "Film", "unit": "ft", "opening": 120, "reorder": 30, "note": "Mixed shades"}, {"id": "wrap-blk", "name": "Gloss black wrap", "kind": "Film", "unit": "ft", "opening": 60, "reorder": 15, "note": "Chrome delete"}, {"id": "int-film", "name": "Interior trim film", "kind": "Film", "unit": "ft", "opening": 30, "reorder": 8, "note": "Gloss and brushed"}, {"id": "kc-gsf", "name": "Koch-Chemie Gentle Snow Foam", "kind": "Chemical", "unit": "L", "opening": 10, "reorder": 3, "note": "Pre-wash foam"}, {"id": "kc-gs", "name": "Koch-Chemie Green Star", "kind": "Chemical", "unit": "L", "opening": 10, "reorder": 3, "note": "All-purpose cleaner"}, {"id": "kc-rs", "name": "Koch-Chemie Reactive Wheel Cleaner", "kind": "Chemical", "unit": "L", "opening": 5, "reorder": 1.5, "note": "Iron fallout"}, {"id": "kc-pol", "name": "Koch-Chemie Pol Star", "kind": "Chemical", "unit": "L", "opening": 3, "reorder": 1, "note": "Interior fabric and leather"}, {"id": "mg-comp", "name": "Meguiar's Ultimate Compound", "kind": "Chemical", "unit": "L", "opening": 3.8, "reorder": 1, "note": "Paint correction"}, {"id": "gy-q2", "name": "GYEON ceramic coating kit", "kind": "Coating", "unit": "kit", "opening": 6, "reorder": 2, "note": "One kit per car"}]};
+  var KEY = 'dd-studio-desk-demo-2', DAY = 864e5;
+  var SEED = {"jobs": [{"id": "j01", "car": "Hyundai Sonata", "cls": 5, "service": "Detailing", "coverage": "", "film": "", "products": [{"p": "kc-gsf", "qty": 0.4}, {"p": "kc-gs", "qty": 0.25}, {"p": "kc-rs", "qty": 0.2}, {"p": "kc-pol", "qty": 0.1}], "price": 18000, "status": "Delivered", "source": "Instagram", "dateIn": "2026-10-20", "dateOut": "2026-10-20", "bay": "Bay 1", "notes": "Full detail, inside and out. Koch-Chemie wash and decon.", "customer": "Waqas Ahmed", "phone": "0312 5550177", "plate": "RIR-4471", "assigned": "Ali", "payments": [{"amount": 18000, "method": "Cash", "date": "2026-10-20"}], "paid": 18000, "payMethod": "Cash", "warrantyYears": "", "dueDate": ""}, {"id": "j02", "car": "Toyota Land Cruiser 300", "cls": 11, "service": "PPF", "coverage": "Platinum", "film": "OneFilm DefenX", "products": [{"p": "of-dx", "qty": 68}, {"p": "mg-comp", "qty": 0.2}, {"p": "kc-gsf", "qty": 0.4}], "price": 320000, "status": "In bay", "source": "Website", "dateIn": "2026-10-21", "dateOut": "", "bay": "Film bay", "notes": "Full body. Paint corrected before film.", "customer": "Usman Tariq", "phone": "0333 4441290", "plate": "ICT-LC-300", "assigned": "Hamza", "dueDate": "2026-10-24", "warrantyYears": 6, "payments": [{"amount": 160000, "method": "Bank transfer", "date": "2026-10-19"}], "paid": 160000, "payMethod": "Bank transfer"}, {"id": "j03", "car": "Mercedes-AMG E63", "cls": 6, "service": "PPF", "coverage": "Platinum", "film": "ProForce Phantom Plus", "products": [{"p": "pf-pp", "qty": 56}, {"p": "kc-gsf", "qty": 0.3}], "price": 285000, "status": "Delivered", "source": "Website", "dateIn": "2026-10-16", "dateOut": "2026-10-16", "bay": "Film bay", "notes": "Front end stripped so edges wrap.", "customer": "Saad Malik", "phone": "0300 9871234", "plate": "LEB-6363", "assigned": "Hamza", "payments": [{"amount": 100000, "method": "Bank transfer", "date": "2026-10-15"}, {"amount": 185000, "method": "Bank transfer", "date": "2026-10-16"}], "paid": 285000, "payMethod": "Bank transfer", "warrantyYears": "", "dueDate": ""}, {"id": "j04", "car": "BMW M5", "cls": 5, "service": "Colour change", "coverage": "Full body", "film": "OneFilm colour PPF", "products": [{"p": "of-col", "qty": 62}, {"p": "kc-gsf", "qty": 0.3}], "price": 520000, "status": "QC", "source": "Referral", "dateIn": "2026-10-18", "dateOut": "", "bay": "Film bay", "notes": "Coloured PPF, Nardo Grey gloss. Door shuts included.", "customer": "Omer Siddiqui", "phone": "0301 8887766", "plate": "ICT-M5-01", "assigned": "Hamza", "dueDate": "2026-10-23", "payments": [{"amount": 300000, "method": "Bank transfer", "date": "2026-10-18"}], "paid": 300000, "payMethod": "Bank transfer", "warrantyYears": ""}, {"id": "j05", "car": "Honda Civic", "cls": 4, "service": "Ceramic coating", "coverage": "", "film": "", "products": [{"p": "gy-q2", "qty": 1}, {"p": "mg-comp", "qty": 0.15}, {"p": "kc-gsf", "qty": 0.3}], "price": 65000, "status": "Delivered", "source": "Instagram", "dateIn": "2026-10-08", "dateOut": "2026-10-09", "bay": "Bay 2", "notes": "One-step polish, then GYEON.", "customer": "Imran Qureshi", "phone": "0345 1234098", "plate": "RIK-2290", "assigned": "Ali", "warrantyYears": 2, "payments": [{"amount": 65000, "method": "Card", "date": "2026-10-09"}], "paid": 65000, "payMethod": "Card", "dueDate": ""}, {"id": "j06", "car": "Toyota Corolla", "cls": 4, "service": "Tint", "coverage": "", "film": "", "products": [{"p": "tint", "qty": 22}], "price": 28000, "status": "Delivered", "source": "Walk-in", "dateIn": "2026-10-11", "dateOut": "2026-10-11", "bay": "Bay 2", "notes": "Ceramic tint, rear 20, front 50.", "customer": "Hassan Raza", "phone": "0313 5550123", "plate": "ICT-AQ-557", "assigned": "Ali", "payments": [{"amount": 28000, "method": "Cash", "date": "2026-10-11"}], "paid": 28000, "payMethod": "Cash", "warrantyYears": "", "dueDate": ""}, {"id": "j07", "car": "Audi e-tron", "cls": 10, "service": "Chrome delete", "coverage": "", "film": "", "products": [{"p": "wrap-blk", "qty": 18}], "price": 75000, "status": "Delivered", "source": "Website", "dateIn": "2026-10-03", "dateOut": "2026-10-04", "bay": "Bay 1", "notes": "Window surrounds and grille, gloss black.", "customer": "Zain Abbasi", "phone": "0300 5553321", "plate": "ICT-ET-55", "assigned": "Hamza", "payments": [{"amount": 75000, "method": "Bank transfer", "date": "2026-10-04"}], "paid": 75000, "payMethod": "Bank transfer", "warrantyYears": "", "dueDate": ""}, {"id": "j08", "car": "Kia Sportage", "cls": 8, "service": "PPF", "coverage": "Basic", "film": "ProForce Phantom", "products": [{"p": "pf-ph", "qty": 24}], "price": 95000, "status": "Delivered", "source": "Instagram", "dateIn": "2026-09-29", "dateOut": "2026-09-30", "bay": "Film bay", "notes": "Front end package.", "customer": "Ahsan Javed", "phone": "0333 5559012", "plate": "RNA-1180", "assigned": "Hamza", "payments": [{"amount": 95000, "method": "JazzCash", "date": "2026-09-30"}], "paid": 95000, "payMethod": "JazzCash", "warrantyYears": "", "dueDate": ""}, {"id": "j09", "car": "Toyota Fortuner", "cls": 10, "service": "Interior film", "coverage": "", "film": "", "products": [], "price": 22000, "status": "Booked", "source": "Website", "dateIn": "2026-10-24", "dateOut": "", "bay": "Bay 2", "notes": "Console, screen bezel, door inserts.", "customer": "Bilal Khan", "phone": "0321 5550142", "plate": "ICT-FT-909", "assigned": "Ali", "dueDate": "2026-10-24", "payments": [{"amount": 5000, "method": "JazzCash", "date": "2026-10-21"}], "paid": 5000, "payMethod": "JazzCash", "warrantyYears": ""}, {"id": "j10", "car": "Mercedes-Benz C-Class", "cls": 5, "service": "PPF", "coverage": "Gold", "film": "OneFilm DefenX Pro", "products": [{"p": "of-dp", "qty": 40}, {"p": "kc-gsf", "qty": 0.3}], "price": 210000, "status": "Delivered", "source": "Website", "dateIn": "2026-10-01", "dateOut": "2026-10-03", "bay": "Film bay", "notes": "Everything except the roof.", "customer": "Mariam Aslam", "phone": "0321 5557789", "plate": "ICT-CC-200", "assigned": "Hamza", "warrantyYears": 6, "payments": [{"amount": 60000, "method": "Bank transfer", "date": "2026-09-30"}, {"amount": 150000, "method": "Bank transfer", "date": "2026-10-03"}], "paid": 210000, "payMethod": "Bank transfer", "dueDate": ""}, {"id": "j11", "car": "Honda City", "cls": 3, "service": "Detailing", "coverage": "", "film": "", "products": [{"p": "kc-gsf", "qty": 0.3}, {"p": "kc-gs", "qty": 0.2}], "price": 12000, "status": "Delivered", "source": "Walk-in", "dateIn": "2026-10-17", "dateOut": "2026-10-17", "bay": "Bay 1", "notes": "Exterior detail. Regular, pays at the end of the month.", "customer": "Kamran Butt", "phone": "0307 5551200", "plate": "RIM-3412", "assigned": "Ali", "payments": [], "paid": 0, "payMethod": "", "warrantyYears": "", "dueDate": ""}, {"id": "j12", "car": "Kia Sorento", "cls": 8, "service": "PPF", "coverage": "Basic", "film": "ProForce Phantom Plus", "products": [{"p": "pf-pp", "qty": 28}], "price": 120000, "status": "Booked", "source": "Walk-in", "dateIn": "2026-10-23", "dateOut": "", "bay": "Film bay", "notes": "Wants it done by the weekend.", "customer": "Danish Iqbal", "phone": "0346 5550111", "plate": "ICT-SR-786", "assigned": "Hamza", "dueDate": "2026-10-25", "payments": [{"amount": 20000, "method": "Easypaisa", "date": "2026-10-20"}], "paid": 20000, "payMethod": "Easypaisa", "warrantyYears": ""}, {"id": "j13", "car": "Suzuki Swift", "cls": 1, "service": "Ceramic coating", "coverage": "", "film": "", "products": [{"p": "gy-q2", "qty": 1}, {"p": "kc-gsf", "qty": 0.3}], "price": 45000, "status": "Delivered", "source": "Instagram", "dateIn": "2026-09-26", "dateOut": "2026-09-27", "bay": "Bay 2", "notes": "", "customer": "Shahzad Mir", "phone": "0333 5554466", "plate": "RIR-9012", "assigned": "Ali", "warrantyYears": 2, "payments": [{"amount": 45000, "method": "Cash", "date": "2026-09-27"}], "paid": 45000, "payMethod": "Cash", "dueDate": ""}, {"id": "j14", "car": "BMW X5", "cls": 10, "service": "Tint", "coverage": "", "film": "", "products": [{"p": "tint", "qty": 30}], "price": 38000, "status": "Delivered", "source": "Referral", "dateIn": "2026-10-06", "dateOut": "2026-10-06", "bay": "Bay 2", "notes": "Limo rear, 35 front.", "customer": "Waqas Ahmed", "phone": "0312 5550177", "plate": "ICT-X5-77", "assigned": "Ali", "payments": [{"amount": 38000, "method": "Card", "date": "2026-10-06"}], "paid": 38000, "payMethod": "Card", "warrantyYears": "", "dueDate": ""}, {"id": "j15", "car": "Toyota Prado", "cls": 10, "service": "PPF", "coverage": "Platinum", "film": "OneFilm DefenX Pro", "products": [], "price": 310000, "status": "Booked", "source": "Website", "dateIn": "2026-10-24", "dateOut": "", "bay": "Film bay", "notes": "Booked on WhatsApp for Saturday, 11am.", "customer": "Faisal Rehman", "phone": "0333 5550198", "plate": "ICT-PR-150", "assigned": "Hamza", "dueDate": "2026-10-25", "warrantyYears": 6, "payments": [{"amount": 50000, "method": "Bank transfer", "date": "2026-10-22"}], "paid": 50000, "payMethod": "Bank transfer"}], "leads": [{"id": "l01", "source": "Website", "car": "Toyota Corolla", "name": "Ahmed", "phone": "0300 1234567", "want": "Call-back form. Platinum, DefenX, Rs 245,000", "status": "New", "ts": "2026-10-22T13:10:00+05:00", "job": "", "followUp": "", "notes": ""}, {"id": "l11", "source": "Website", "car": "Toyota Prado", "want": "Tapped Book on WhatsApp. Platinum, DefenX Pro, Rs 310,000", "status": "Booked", "ts": "2026-10-22T11:42:00+05:00", "job": "j15", "name": "Faisal Rehman", "phone": "0333 5550198", "followUp": "", "notes": ""}, {"id": "l02", "source": "Instagram", "car": "Honda Civic", "want": "Asked the ceramic coating price in DMs", "status": "New", "ts": "2026-10-22T10:05:00+05:00", "job": "", "name": "", "phone": "", "followUp": "", "notes": ""}, {"id": "l13", "source": "Website", "car": "Lexus LX 570", "want": "Ceramic coating panel. Asked the price", "status": "Contacted", "ts": "2026-10-21T19:05:00+05:00", "job": "", "followUp": "2026-10-23", "notes": "Quoted Rs 95,000 for a 2 year coating. Wants to see a finished car first.", "name": "", "phone": ""}, {"id": "l03", "source": "Instagram", "car": "Kia Sportage", "want": "Commented 'price?' on the chrome delete reel", "status": "Contacted", "ts": "2026-10-21T17:30:00+05:00", "job": "", "followUp": "2026-10-22", "notes": "Sent the chrome delete price in DMs. Said he would check with his brother.", "name": "", "phone": ""}, {"id": "l04", "source": "Website", "car": "Toyota Fortuner", "name": "Bilal Khan", "phone": "0321 5550142", "want": "Call-back form. Interior film, console and doors", "status": "Booked", "ts": "2026-10-21T16:20:00+05:00", "job": "j09", "followUp": "", "notes": ""}, {"id": "l12", "source": "Website", "car": "Honda Civic", "want": "Tapped Book on WhatsApp. Platinum, Phantom, Rs 220,000", "status": "Contacted", "ts": "2026-10-20T21:48:00+05:00", "job": "", "followUp": "2026-10-24", "notes": "Quoted Rs 220,000 on WhatsApp. Wants to bring it in after payday.", "name": "", "phone": ""}, {"id": "l07", "source": "Walk-in", "car": "Kia Sorento", "want": "PPF Basic, wants it done by the weekend", "status": "Booked", "ts": "2026-10-20T15:00:00+05:00", "job": "j12", "name": "Danish Iqbal", "phone": "0346 5550111", "followUp": "", "notes": ""}, {"id": "l05", "source": "Website", "car": "Toyota Land Cruiser 300", "name": "Usman Tariq", "phone": "0333 4441290", "want": "Call-back form. Platinum, DefenX, Rs 320,000", "status": "Booked", "ts": "2026-10-19T12:30:00+05:00", "job": "j02", "followUp": "", "notes": ""}, {"id": "l08", "source": "Instagram", "car": "Hyundai Sonata", "want": "Full detail", "status": "Booked", "ts": "2026-10-18T20:40:00+05:00", "job": "j01", "name": "Waqas Ahmed", "phone": "0312 5550177", "followUp": "", "notes": ""}, {"id": "l06", "source": "Website", "car": "Hyundai Tucson", "want": "Tapped Book a free inspection. Gold, DefenX", "status": "Contacted", "ts": "2026-10-18T10:15:00+05:00", "job": "", "followUp": "2026-10-21", "notes": "Offered a free inspection on Saturday. No reply yet.", "name": "", "phone": ""}, {"id": "l14", "source": "Website", "car": "Toyota Hilux Revo", "want": "Chrome delete panel. Asked the price", "status": "Contacted", "ts": "2026-10-17T18:02:00+05:00", "job": "", "followUp": "2026-10-25", "notes": "Sent the chrome delete price. Asked about the grille only.", "name": "", "phone": ""}, {"id": "l10", "source": "Website", "car": "Mercedes-AMG E63", "name": "Saad Malik", "phone": "0300 9871234", "want": "Call-back form. Platinum, Phantom Plus, Rs 285,000", "status": "Booked", "ts": "2026-10-15T15:40:00+05:00", "job": "j03", "followUp": "", "notes": ""}, {"id": "l09", "source": "Website", "car": "Suzuki Alto", "want": "Tapped Book on WhatsApp. Platinum, Phantom. Over budget", "status": "Lost", "ts": "2026-10-12T18:00:00+05:00", "job": "", "notes": "Over budget. Offered the front end package instead.", "name": "", "phone": "", "followUp": ""}], "stock": [{"id": "pf-ph", "name": "ProForce Phantom", "kind": "Film", "unit": "ft", "opening": 100, "reorder": 25, "note": "60 in roll, 7.5 mil", "received": 0}, {"id": "pf-pp", "name": "ProForce Phantom Plus", "kind": "Film", "unit": "ft", "opening": 100, "reorder": 25, "note": "60 in roll, 8.5 mil", "received": 0}, {"id": "of-dx", "name": "OneFilm DefenX", "kind": "Film", "unit": "ft", "opening": 150, "reorder": 30, "note": "60 in roll, 7 mil", "received": 50, "log": [{"qty": 50, "date": "2026-10-12", "note": "OneFilm, half roll"}]}, {"id": "of-dp", "name": "OneFilm DefenX Pro", "kind": "Film", "unit": "ft", "opening": 100, "reorder": 25, "note": "60 in roll, 8.5 mil", "received": 0}, {"id": "of-col", "name": "OneFilm colour PPF", "kind": "Film", "unit": "ft", "opening": 100, "reorder": 40, "note": "Nardo Grey gloss", "received": 0}, {"id": "tint", "name": "Nano-ceramic tint", "kind": "Film", "unit": "ft", "opening": 120, "reorder": 30, "note": "Mixed shades", "received": 0}, {"id": "wrap-blk", "name": "Gloss black wrap", "kind": "Film", "unit": "ft", "opening": 60, "reorder": 15, "note": "Chrome delete", "received": 0}, {"id": "int-film", "name": "Interior trim film", "kind": "Film", "unit": "ft", "opening": 30, "reorder": 8, "note": "Gloss and brushed", "received": 0}, {"id": "kc-gsf", "name": "Koch-Chemie Gentle Snow Foam", "kind": "Chemical", "unit": "L", "opening": 10, "reorder": 3, "note": "Pre-wash foam", "received": 0}, {"id": "kc-gs", "name": "Koch-Chemie Green Star", "kind": "Chemical", "unit": "L", "opening": 10, "reorder": 3, "note": "All-purpose cleaner", "received": 0}, {"id": "kc-rs", "name": "Koch-Chemie Reactive Wheel Cleaner", "kind": "Chemical", "unit": "L", "opening": 5, "reorder": 1.5, "note": "Iron fallout", "received": 0}, {"id": "kc-pol", "name": "Koch-Chemie Pol Star", "kind": "Chemical", "unit": "L", "opening": 3, "reorder": 1, "note": "Interior fabric and leather", "received": 0}, {"id": "mg-comp", "name": "Meguiar's Ultimate Compound", "kind": "Chemical", "unit": "L", "opening": 3.8, "reorder": 1, "note": "Paint correction", "received": 0}, {"id": "gy-q2", "name": "GYEON ceramic coating kit", "kind": "Coating", "unit": "kit", "opening": 6, "reorder": 2, "note": "One kit per car", "received": 0}]};
   function startOfDay(d){ var x = new Date(d); x.setHours(0,0,0,0); return x.getTime(); }
+  /* the example data is written for 23 Oct 2026; on later days it slides forward so it always looks current */
   var offset = Math.max(0, Math.round((startOfDay(Date.now()) - startOfDay(new Date(2026, 9, 23))) / DAY));
   function shiftTs(s){ return s ? new Date(new Date(s).getTime() + offset * DAY).toISOString() : s; }
-  function shiftDay(s){ if (!s) return s; var p = s.split('-'), d = new Date(Date.UTC(+p[0], +p[1] - 1, +p[2]) + offset * DAY); return d.toISOString().slice(0, 10); }
+  function shiftDay(s){ if (!s || !/^\d{4}-\d{2}-\d{2}$/.test(s)) return s; var p = s.split('-'), d = new Date(Date.UTC(+p[0], +p[1] - 1, +p[2]) + offset * DAY); return d.toISOString().slice(0, 10); }
   function fresh(){
     var st = {};
     ['jobs','leads','stock'].forEach(function(n){
       st[n] = SEED[n].map(function(x){ var d = JSON.parse(JSON.stringify(x)), id = d.id; delete d.id; d.example = true;
-        if (d.ts) d.ts = shiftTs(d.ts); if (d.dateIn) d.dateIn = shiftDay(d.dateIn); if (d.dateOut) d.dateOut = shiftDay(d.dateOut);
+        if (d.ts) d.ts = shiftTs(d.ts);
+        ['dateIn','dateOut','dueDate','followUp'].forEach(function(k){ if (d[k]) d[k] = shiftDay(d[k]); });
+        (d.payments || []).forEach(function(p){ p.date = shiftDay(p.date); });
+        (d.log || []).forEach(function(p){ p.date = shiftDay(p.date); });
         return { id: id, data: d }; });
     });
     return st;
   }
   var store = null;
   try { if (/[?&]reset\b/.test(location.search)) localStorage.removeItem(KEY); store = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) {}
-  if (!store || !store.jobs) store = fresh();
+  if (!store || !store.jobs || !store.leads || !store.stock) store = fresh();
   function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) {} }
   save();
-  var L = {};
-  function snap(n){ return { docs: store[n].map(function(d){ return { id: d.id, exists: true, data: function(){ return JSON.parse(JSON.stringify(d.data)); } }; }) }; }
-  function fire(n){ (L[n] || []).forEach(function(f){ f(snap(n)); }); }
+  var L = {}, seq = 0;
+  function clone(o){ return JSON.parse(JSON.stringify(o)); }
+  function snap(n){ return { docs: store[n].map(function(d){ return { id: d.id, exists: true, data: function(){ return clone(d.data); } }; }) }; }
+  function fire(n){ (L[n] || []).forEach(function(f){ try { f(snap(n)); } catch (e) { setTimeout(function(){ throw e; }); } }); }
+  function find(c, id){ return (store[c] || []).filter(function(z){ return z.id === id; })[0]; }
+  /* other tabs of the demo stay in step */
+  window.addEventListener('storage', function(e){ if (e.key !== KEY || !e.newValue) return; try { store = JSON.parse(e.newValue); ['jobs','leads','stock'].forEach(fire); } catch (_) {} });
   var db = {
     collection: function(n){ return {
-      onSnapshot: function(fn){ (L[n] = L[n] || []).push(fn); setTimeout(function(){ fn(snap(n)); }, 0); return function(){}; },
-      add: function(data){ var id = n.charAt(0) + Date.now().toString(36); store[n].push({ id: id, data: data }); save(); fire(n); return Promise.resolve({ id: id }); }
+      onSnapshot: function(fn){ (L[n] = L[n] || []).push(fn); setTimeout(function(){ fn(snap(n)); }, 0); return function(){ L[n] = (L[n] || []).filter(function(f){ return f !== fn; }); }; },
+      add: function(data){ var id = n.charAt(0) + Date.now().toString(36) + (seq++).toString(36); store[n].push({ id: id, data: clone(data) }); save(); fire(n); return Promise.resolve({ id: id }); }
     }; },
     doc: function(p){ var parts = p.split('/'), c = parts[0], id = parts[1]; return {
-      update: function(d){ var x = store[c].filter(function(z){ return z.id === id; })[0]; if (x) { Object.assign(x.data, d); save(); fire(c); } return Promise.resolve(); }
+      update: function(d){ var x = find(c, id); if (!x) return Promise.reject({ code: 'not_found', message: 'No such document' }); Object.assign(x.data, clone(d)); save(); fire(c); return Promise.resolve(); },
+      set: function(d){ var x = find(c, id); if (x) x.data = clone(d); else store[c].push({ id: id, data: clone(d) }); save(); fire(c); return Promise.resolve(); },
+      delete: function(){ store[c] = store[c].filter(function(z){ return z.id !== id; }); save(); fire(c); return Promise.resolve(); }
     }; }
   };
-  var user = { can: function(){ return Promise.resolve(true); } };
+  var user = { can: function(){ return Promise.resolve(true); }, isOwner: function(){ return true; }, canEdit: function(){ return true; } };
   window.claude = { use: function(n){ return Promise.resolve(n === 'db' ? db : n === 'user' ? user : null); } };
 })();
 </script></head><body><style>
-/* Layout: a bay-side control desk. Summary strip, then the bay (what's in now),
-   then money, sources, film and stock. Dark like the studio, red only for state. */
+/* Studio Desk: the bay-side control desk. Dark like the studio, red only for state. */
 :root{
   color-scheme:dark;
-  --bg:#0A0A0D; --panel:#121217; --panel2:#18181F; --line:#24242C; --line2:#30303A;
+  --bg:#0A0A0D; --panel:#121217; --panel2:#18181F; --panel3:#1F1F28; --line:#24242C; --line2:#30303A;
   --fg:#F1F1F4; --mute:#A0A1AC; --dim:#6F707B;
   --red:#E1141C; --red-soft:rgba(225,20,28,.14);
   --silver:#C8CBD1;
   --ok:#3DBB72; --ok-soft:rgba(61,187,114,.14);
   --warn:#E3A433; --warn-soft:rgba(227,164,51,.14);
   --blue:#5B9BF0; --blue-soft:rgba(91,155,240,.14);
+  --wa:#25D366;
   --f-body:"Barlow","Helvetica Neue",Arial,sans-serif;
   --f-num:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
   --f-label:"Montserrat",system-ui,sans-serif;
 }
 *{box-sizing:border-box}
 html,body{background:var(--bg)}
-body{color:var(--fg);font-family:var(--f-body);font-size:14px;line-height:1.45;-webkit-font-smoothing:antialiased}
+body{margin:0;color:var(--fg);font-family:var(--f-body);font-size:14px;line-height:1.45;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
+html.lock,html.lock body{overflow:hidden}
 button,input,select,textarea{font:inherit;color:inherit}
 button{cursor:pointer}
+a{color:inherit}
 :focus-visible{outline:2px solid var(--red);outline-offset:2px}
 .num{font-family:var(--f-num);font-variant-numeric:tabular-nums}
 .lab{font-family:var(--f-label);font-weight:600;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+.ic{width:20px;height:20px;display:block;flex:none}
+.sub{color:var(--dim);font-size:12px}
 
 /* top bar */
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(10,10,13,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .wrap{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.bar{display:flex;align-items:center;gap:14px;padding-block:12px}
+.bar{display:flex;align-items:center;gap:12px;padding-block:12px}
 .brand{display:flex;align-items:center;gap:10px;min-width:0}
 .brand img{width:30px;height:auto;flex:none}
 .brand b{font-family:var(--f-label);font-weight:700;letter-spacing:.16em;font-size:12px;white-space:nowrap}
 .brand span{color:var(--mute);font-size:13px;white-space:nowrap}
 .sp{flex:1}
 .chip-ex{font-family:var(--f-label);font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--warn);border:1px solid rgba(227,164,51,.35);background:var(--warn-soft);padding:5px 9px;border-radius:999px;white-space:nowrap}
-.btn{border:1px solid var(--line2);background:var(--panel2);border-radius:10px;padding:9px 14px;font-weight:600;font-size:13px;white-space:nowrap}
+.ibtn{width:40px;height:40px;flex:none;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line2);background:var(--panel2);border-radius:10px;color:var(--fg);padding:0}
+.ibtn:hover{border-color:var(--silver)}
+.ibtn.ghost{border-color:transparent;background:none}
+#menuBtn{position:relative;margin-left:-8px}
+#menuBtn.dot::after{content:"";position:absolute;top:8px;right:7px;width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 0 2px var(--bg)}
+html:has(dialog[open]){overflow:hidden}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--line2);background:var(--panel2);border-radius:10px;padding:9px 14px;font-weight:600;font-size:13px;white-space:nowrap;text-decoration:none;color:var(--fg);min-height:40px}
 .btn:hover{border-color:var(--silver)}
 .btn.red{background:var(--red);border-color:var(--red);color:#fff}
 .btn.red:hover{filter:brightness(1.1)}
+.btn.wa{border-color:rgba(37,211,102,.45);color:#fff;background:rgba(37,211,102,.14)}
+.btn.wa .ic{color:var(--wa)}
+.btn.danger{color:#FF6A70;border-color:rgba(225,20,28,.4);background:none}
 .btn:disabled{opacity:.45;cursor:not-allowed}
+.btn .ic{width:18px;height:18px}
 .tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-bottom:0}
 .tabs::-webkit-scrollbar{display:none}
 .tab{border:0;background:none;padding:10px 14px 12px;color:var(--mute);font-weight:600;border-bottom:2px solid transparent;white-space:nowrap}
 .tab[aria-selected="true"]{color:var(--fg);border-bottom-color:var(--red)}
 .tab .ct{font-family:var(--f-num);color:var(--dim);margin-left:6px}
 
-main{padding-block:22px 60px}
+/* menu drawer */
+.scrim{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.6);opacity:0;transition:opacity .2s;pointer-events:none}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;z-index:61;top:0;bottom:0;left:0;width:min(320px,86vw);background:var(--panel);border-right:1px solid var(--line2);transform:translateX(-102%);transition:transform .24s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;
+  padding:calc(12px + env(safe-area-inset-top,0px)) 12px calc(14px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px));overflow-y:auto;overscroll-behavior:contain;visibility:hidden}
+.drawer.on{transform:none;visibility:visible}
+.dh{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:2px 4px 12px;border-bottom:1px solid var(--line);margin-bottom:8px}
+.dsec{font-family:var(--f-label);font-weight:600;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);padding:14px 10px 6px}
+.dnav{display:flex;align-items:center;gap:12px;width:100%;border:0;background:none;color:var(--fg);text-align:left;padding:11px 10px;border-radius:10px;font-weight:600;font-size:15px}
+.dnav:hover{background:var(--panel2)}
+.dnav[aria-current="page"]{background:var(--panel2);box-shadow:inset 3px 0 0 var(--red)}
+.dnav .ic{color:var(--mute)}
+.dnav .ct{margin-left:auto;font-family:var(--f-num);font-size:14px;color:var(--dim)}
+.dnav .ct.hot{color:#fff;background:var(--red);border-radius:999px;padding:0 8px;min-width:22px;text-align:center}
+.dfoot{margin-top:auto;padding:18px 10px 4px;color:var(--dim);font-size:12px;border-top:1px solid var(--line)}
+
+main{padding-block:22px 80px}
+.ptitle{display:none;margin:0 0 14px;font-size:24px;font-weight:600;letter-spacing:-.01em}
 .banner{border:1px solid var(--line2);background:var(--panel);border-radius:12px;padding:12px 14px;color:var(--mute);margin-bottom:18px;display:flex;gap:10px;align-items:flex-start}
 .banner b{color:var(--fg)}
 .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.toolbar .sp{min-width:8px}
 .period{display:flex;border:1px solid var(--line2);border-radius:10px;overflow:hidden}
 .period button{border:0;background:none;padding:7px 12px;color:var(--mute);font-weight:600;font-size:12.5px}
 .period button[aria-pressed="true"]{background:var(--panel2);color:var(--fg)}
 
 /* summary strip */
-.kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-block:14px 22px}
+.kpis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-block:14px 22px}
 .kpi{background:var(--panel);padding:16px 16px 14px;min-width:0}
-.kpi .v{font-family:var(--f-num);font-weight:600;font-size:clamp(26px,3.2vw,36px);line-height:1.05;margin-top:8px;font-variant-numeric:tabular-nums}
+.kpi .v{font-family:var(--f-num);font-weight:600;font-size:clamp(26px,2.5vw,34px);line-height:1.05;margin-top:8px;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kpi .v small{font-size:.58em;font-weight:500;color:var(--mute);margin-left:.18em}
+.kpi.due .v small{color:inherit;opacity:.8}
 .kpi .s{color:var(--dim);font-size:12.5px;margin-top:4px}
-@media(max-width:900px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.kpi:first-child{grid-column:1/-1}}
+.kpi.due .v{color:var(--warn)}
+@media(max-width:1100px){.kpis{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 .grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;min-width:0}
@@ -109,7 +155,8 @@ main{padding-block:22px 60px}
 
 /* bay */
 .bay{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
-.slot{border:1px solid var(--line2);border-radius:12px;padding:14px;background:var(--panel2);display:flex;flex-direction:column;gap:8px;min-width:0}
+.slot{border:1px solid var(--line2);border-radius:12px;padding:14px;background:var(--panel2);display:flex;flex-direction:column;gap:8px;min-width:0;cursor:pointer}
+.slot:hover{border-color:var(--silver)}
 .slot .car{font-weight:600;font-size:15px}
 .slot .what{color:var(--mute);font-size:13px}
 .slot .foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:4px}
@@ -122,10 +169,14 @@ main{padding-block:22px 60px}
 .st-New{color:var(--red);background:var(--red-soft)}
 .st-Contacted{color:var(--warn);background:var(--warn-soft)}
 .st-Lost{color:var(--dim);background:rgba(111,112,123,.14)}
+.st-Due{color:var(--warn);background:var(--warn-soft)}
+.st-Paid{color:var(--ok);background:var(--ok-soft)}
+.st-Follow{color:var(--blue);background:var(--blue-soft)}
 .src{font-size:11.5px;color:var(--silver);border:1px solid var(--line2);border-radius:6px;padding:2px 7px;white-space:nowrap}
-.mini{border:1px solid var(--line2);background:none;border-radius:8px;padding:6px 10px;font-size:12px;font-weight:600;color:var(--fg);white-space:nowrap}
+.mini{border:1px solid var(--line2);background:none;border-radius:8px;padding:6px 10px;font-size:12px;font-weight:600;color:var(--fg);white-space:nowrap;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
 .mini:hover{border-color:var(--red);background:var(--red-soft)}
 .empty{color:var(--dim);padding:18px;border:1px dashed var(--line2);border-radius:12px;text-align:center}
+.tag{display:inline-block;font-size:11px;font-weight:600;border-radius:6px;padding:1px 6px;margin-left:6px;vertical-align:1px}
 
 /* bars */
 .bars{display:grid;gap:10px}
@@ -144,10 +195,14 @@ main{padding-block:22px 60px}
 /* lists */
 .list{display:grid;gap:8px}
 .li{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:var(--panel2)}
+.li[data-open]{cursor:pointer}
+.li[data-open]:hover{border-color:var(--line2);background:var(--panel3)}
 .li .main{min-width:0}
 .li .main b{display:block;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .li .main span{display:block;color:var(--mute);font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.li .main span.tag{display:inline-block;font-size:11px;color:var(--blue);vertical-align:1px}
 .when{font-family:var(--f-num);color:var(--dim);font-size:13px;white-space:nowrap}
+.amt{font-family:var(--f-num);font-size:15px;white-space:nowrap;text-align:right}
 
 /* tables */
 .tw{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--panel)}
@@ -155,19 +210,29 @@ table{width:100%;border-collapse:collapse;font-size:13.5px}
 th{text-align:left;font-family:var(--f-label);font-weight:600;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);padding:12px 14px;border-bottom:1px solid var(--line);white-space:nowrap;background:var(--panel)}
 td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:middle}
 tr:last-child td{border-bottom:0}
+tbody tr[data-open]{cursor:pointer}
 tbody tr:hover td{background:var(--panel2)}
 td.r,th.r{text-align:right}
-td .sub{color:var(--dim);font-size:12px}
 .prod{display:inline-block;font-size:11.5px;color:var(--mute);border:1px solid var(--line2);border-radius:6px;padding:1px 6px;margin:2px 4px 2px 0;white-space:nowrap}
 select.stsel{background:var(--panel2);border:1px solid var(--line2);border-radius:8px;padding:5px 8px;font-size:12.5px;font-weight:600}
-.filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
-.fchip{border:1px solid var(--line2);background:none;border-radius:999px;padding:6px 12px;font-size:12.5px;font-weight:600;color:var(--mute)}
+.filters{display:flex;gap:6px;flex-wrap:wrap}
+.fchip{border:1px solid var(--line2);background:none;border-radius:999px;padding:6px 12px;font-size:12.5px;font-weight:600;color:var(--mute);white-space:nowrap}
 .fchip[aria-pressed="true"]{color:var(--fg);border-color:var(--red);background:var(--red-soft)}
-.search{background:var(--panel);border:1px solid var(--line2);border-radius:10px;padding:8px 12px;min-width:0;width:220px;max-width:100%}
+.fchip .num{color:var(--dim);margin-left:4px}
+.search{background:var(--panel);border:1px solid var(--line2);border-radius:10px;padding:8px 12px;min-width:0;width:240px;max-width:100%}
+.sel{background:var(--panel);border:1px solid var(--line2);border-radius:10px;padding:8px 10px;font-weight:600;font-size:13px;max-width:100%}
+
+/* customers */
+.cust{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.cc{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px;cursor:pointer;min-width:0}
+.cc:hover{border-color:var(--line2);background:var(--panel2)}
+.cc .nm{font-weight:600;font-size:16px}
+.cc .cars{color:var(--mute);font-size:13px}
+.cc .ft{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:2px}
 
 /* stock */
 .stk>.pill{justify-self:end}
-.stk{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,2fr) 104px 88px;gap:14px;align-items:center;padding:12px 14px;border-bottom:1px solid var(--line)}
+.stk{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,2fr) 104px 88px auto;gap:14px;align-items:center;padding:12px 14px;border-bottom:1px solid var(--line)}
 .stk:last-child{border-bottom:0}
 .stk .nm b{display:block;font-weight:600}
 .stk .nm span{color:var(--dim);font-size:12px}
@@ -177,16 +242,21 @@ select.stsel{background:var(--panel2);border:1px solid var(--line2);border-radiu
 .stk.low .gauge i{background:var(--warn)}
 .stk.out .gauge i{background:var(--red)}
 .stk .left{font-family:var(--f-num);font-size:16px;text-align:right;white-space:nowrap}
-@media(max-width:640px){.stk{grid-template-columns:minmax(0,1fr) auto;row-gap:8px}.stk .gauge{grid-column:1/-1;order:3}}
+.stk .acts{display:flex;gap:6px;justify-content:flex-end}
+@media(max-width:640px){.stk{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"nm left" "gauge gauge" "pill acts";row-gap:10px}
+  .stk .nm{grid-area:nm}.stk .left{grid-area:left}.stk .gauge{grid-area:gauge}.stk>.pill{grid-area:pill;justify-self:start}.stk .acts{grid-area:acts}}
 
-/* dialog */
+/* dialogs */
 dialog{border:1px solid var(--line2);background:var(--panel);color:var(--fg);border-radius:16px;padding:0;width:min(560px,calc(100vw - 24px));max-height:calc(100dvh - 24px)}
 dialog::backdrop{background:rgba(0,0,0,.6)}
-.dlg{padding:20px 20px 0;overflow:auto;max-height:calc(100dvh - 24px)}
-.dlg h2{margin:0 0 4px;font-size:20px}
+dialog.wide{width:min(680px,calc(100vw - 24px))}
+.dlg,.sh{padding:20px 20px 0;overflow:auto;max-height:calc(100dvh - 24px)}
+.dlg h2,.sh h2{margin:0 0 4px;font-size:20px;letter-spacing:-.01em}
 .dlg p.hint{margin:0 0 16px;color:var(--mute)}
 .fg{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .fg .full{grid-column:1/-1}
+.fsec{grid-column:1/-1;font-family:var(--f-label);font-weight:600;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);padding-top:8px;border-top:1px solid var(--line);margin-top:4px}
+.fsec:first-child{border-top:0;padding-top:0;margin-top:0}
 @media(max-width:520px){.fg{grid-template-columns:1fr}}
 label.f{display:grid;gap:6px;align-content:start;font-size:12.5px;color:var(--mute);font-weight:600;min-width:0}
 label.f input,label.f select,label.f textarea{background:var(--panel2);border:1px solid var(--line2);border-radius:10px;padding:10px 12px;font-weight:500;color:var(--fg);width:100%;min-width:0}
@@ -195,14 +265,56 @@ label.f textarea{min-height:64px;resize:vertical}
 .pline{display:grid;grid-template-columns:minmax(0,1fr) 92px auto;gap:8px;align-items:center}
 .pline select,.pline input{background:var(--panel2);border:1px solid var(--line2);border-radius:10px;padding:9px 10px;min-width:0;width:100%}
 .x{border:1px solid var(--line2);background:none;border-radius:8px;width:34px;height:34px;color:var(--mute)}
-.dact{position:sticky;bottom:0;display:flex;gap:10px;justify-content:flex-end;padding:16px 0 20px;background:linear-gradient(rgba(18,18,23,0),var(--panel) 30%);margin-top:8px}
+.dact{position:sticky;bottom:0;display:flex;gap:10px;justify-content:flex-end;align-items:center;padding:16px 0 20px;background:linear-gradient(rgba(18,18,23,0),var(--panel) 30%);margin-top:8px}
+.dact .left{margin-right:auto}
 .suggest{font-size:12px;color:var(--dim)}
-.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);opacity:0;background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:10px;font-weight:600;transition:.25s;pointer-events:none;z-index:50}
-.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
-@media(max-width:640px){.brand span{display:none}.bar .btn{padding:8px 11px}.hide-s{display:none}}
-@media(max-width:440px){.bar{gap:8px}.brand{flex:none;gap:7px}.brand img{width:24px}.brand b{font-size:10.5px;letter-spacing:.1em}.chip-ex{font-size:0;padding:4px 7px;letter-spacing:.08em}.chip-ex::after{content:"Demo";font-size:8.5px}}
-/* phones: tables become stacked cards, the form becomes a full-screen sheet */
+.shh{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}
+.shh .meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:6px}
+.shh p{margin:2px 0 0;color:var(--mute)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:14px}
+.steps button{border:1px solid var(--line2);background:var(--panel2);border-radius:10px;padding:9px 6px;font-weight:600;font-size:12.5px;color:var(--mute)}
+.steps button.done{color:var(--fg);border-color:var(--line2);background:var(--panel3)}
+.steps button.cur{color:#fff;border-color:var(--red);background:var(--red-soft)}
+.acts{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.money{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:14px}
+.money div{background:var(--panel2);padding:12px}
+.money b{display:block;font-family:var(--f-num);font-size:clamp(18px,4.8vw,22px);font-weight:600;margin-top:4px;line-height:1.15}
+.money .due b{color:var(--warn)}
+.dl{display:grid;grid-template-columns:140px minmax(0,1fr);gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:0 0 14px}
+.dl dt,.dl dd{margin:0;padding:10px 12px;border-bottom:1px solid var(--line)}
+.dl dt{color:var(--dim);font-size:12.5px;font-weight:600;background:var(--panel2)}
+.dl dd{min-width:0;overflow-wrap:anywhere}
+.dl dt:last-of-type,.dl dd:last-of-type{border-bottom:0}
+@media(max-width:520px){.dl{grid-template-columns:110px minmax(0,1fr)}}
+.hist{display:grid;gap:6px;margin-bottom:14px}
+.hist div{display:flex;justify-content:space-between;gap:10px;color:var(--mute);font-size:13px;border-bottom:1px dashed var(--line);padding-bottom:6px}
+.msgs{display:grid;gap:6px;margin-bottom:14px}
+.sfoot{position:sticky;bottom:0;display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:14px 0 20px;background:linear-gradient(rgba(18,18,23,0),var(--panel) 30%)}
+.sfoot .sp{flex:1}
+.res{display:grid;gap:6px;margin:12px 0 20px}
+.res h4{margin:10px 0 2px;font-family:var(--f-label);font-weight:600;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+dialog.small{width:min(400px,calc(100vw - 32px))}
+.cbody{padding:20px}
+.cbody p{color:var(--mute);margin:6px 0 18px}
+.cbody .row{justify-content:flex-end}
+
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);opacity:0;background:var(--fg);color:var(--bg);padding:8px 8px 8px 16px;border-radius:12px;font-weight:600;transition:.25s;pointer-events:none;z-index:80;display:flex;align-items:center;gap:12px;max-width:calc(100vw - 32px);min-height:40px}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto}
+.toast button{border:0;background:var(--bg);color:var(--fg);border-radius:8px;padding:6px 12px;font-weight:700}
+.toast span{padding-right:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.toast{max-width:min(560px,calc(100vw - 32px))}
+dialog .toast{bottom:calc(92px + env(safe-area-inset-bottom,0px))}
+h2[tabindex]:focus{outline:none}
+
+@media(max-width:640px){.brand span{display:none}.bar .btn{padding:8px 11px}.hide-s{display:none!important}}
+@media(max-width:640px){.top .chip-ex{display:none}.ptitle{display:flex;align-items:center;gap:10px}.ptitle .chip-ex{font-size:9px}}
+@media(max-width:440px){.bar{gap:8px}.brand{flex:1 1 auto;min-width:0;gap:7px}.brand img{width:24px}.brand b{font-size:10.5px;letter-spacing:.1em;overflow:hidden;text-overflow:ellipsis}.bar .sp{display:none}.bar .btn.red{padding:8px 12px}}
+@media(max-width:350px){.brand b{display:none}}
+/* phones: the menu replaces the tab row; tables become stacked cards; forms are full screen */
 @media(max-width:640px){
+  .tabs{display:none}
+  .ptitle{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  main{padding-top:16px}
   .tw{overflow:visible}
   .tw table,.tw tbody{display:block}
   .tw thead{display:none}
@@ -216,39 +328,37 @@ label.f textarea{min-height:64px;resize:vertical}
   .tl td:nth-child(4){grid-area:want;color:var(--mute)}
   .tl td:nth-child(5){grid-area:st}
   .tl td:nth-child(6){grid-area:act;justify-self:end}
-  .tj tr{grid-template-columns:1fr auto;grid-template-areas:"car when" "svc price" "film film" "src st"}
+  .tj tr{grid-template-columns:1fr auto;grid-template-areas:"car when" "svc price" "src st"}
   .tj td:nth-child(1){grid-area:when;text-align:right}
   .tj td:nth-child(2){grid-area:car}
   .tj td:nth-child(3){grid-area:svc;color:var(--mute)}
-  .tj td:nth-child(4){grid-area:film}
-  .tj td:nth-child(5){grid-area:src}
-  .tj td:nth-child(6){grid-area:price;text-align:right}
-  .tj td:nth-child(7){grid-area:st;justify-self:end}
+  .tj td:nth-child(4){grid-area:src}
+  .tj td:nth-child(5){grid-area:price;text-align:right}
+  .tj td:nth-child(6){grid-area:st;justify-self:end}
+  .toolbar .search{flex:1 1 100%;width:100%;order:3}
+  .toolbar .sel{flex:1}
+  html,body{overflow-x:hidden;max-width:100%}
+  label.f input,label.f select,label.f textarea,.pline select,.pline input,.search,.sel,select.stsel{font-size:16px}
 }
 @media(max-width:520px){
-  dialog{width:100vw;max-width:100vw;height:100dvh;max-height:100dvh;margin:0;border:0;border-radius:0}
-  .dlg{max-height:100dvh;padding-top:calc(20px + env(safe-area-inset-top,0px))}
-  .dact{padding-bottom:calc(20px + env(safe-area-inset-bottom,0px))}
+  dialog,dialog.wide{width:100vw;max-width:100vw;height:100dvh;max-height:100dvh;margin:0;border:0;border-radius:0}
+  dialog.small{width:min(400px,calc(100vw - 32px));height:auto;margin:auto;border:1px solid var(--line2);border-radius:16px}
+  .dlg,.sh{max-height:100dvh;height:100%;padding-top:calc(20px + env(safe-area-inset-top,0px))}
+  .dact,.sfoot{padding-bottom:calc(20px + env(safe-area-inset-bottom,0px))}
 }
-/* phones: 16px fields so iOS never zooms in on tap, and nothing can pan sideways */
-dialog,.dlg{overscroll-behavior:contain}
-@media(max-width:640px){
-  html,body{overflow-x:hidden;max-width:100%}
-  .dlg{overflow-x:hidden;touch-action:pan-y}
-  label.f input,label.f select,label.f textarea,.pline select,.pline input,.search,select.stsel{font-size:16px}
-  select.stsel{padding:5px 8px}
-}
-.show-xs{display:none}
-@media(max-width:440px){.tab{padding:10px 11px 12px}.hide-xs{display:none}.show-xs{display:inline}}
+dialog,.dlg,.sh{overscroll-behavior:contain}
+@media(max-width:640px){.dlg,.sh{overflow-x:hidden;touch-action:pan-y}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 
 <header class="top">
   <div class="wrap">
     <div class="bar">
+      <button class="ibtn ghost" id="menuBtn" type="button" data-act="menu" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
       <div class="brand"><img alt="" src="data:image/png;base64,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"><b>DETAIL DUNGEON</b><span>Studio Desk</span></div>
       <span class="chip-ex" id="exChip" hidden>Example data</span>
       <div class="sp"></div>
+      <button class="ibtn" type="button" data-act="search" aria-label="Search jobs, leads and customers"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
       <button class="btn hide-s" type="button" data-act="new-lead" id="btnLead">Add lead</button>
       <button class="btn red" type="button" data-act="new-job" id="btnJob">New job</button>
     </div>
@@ -256,17 +366,23 @@ dialog,.dlg{overscroll-behavior:contain}
       <button class="tab" role="tab" data-tab="overview" aria-selected="true">Overview</button>
       <button class="tab" role="tab" data-tab="jobs" aria-selected="false">Jobs<span class="ct" id="ctJobs"></span></button>
       <button class="tab" role="tab" data-tab="leads" aria-selected="false">Leads<span class="ct" id="ctLeads"></span></button>
-      <button class="tab" role="tab" data-tab="stock" aria-selected="false"><span class="hide-xs">Film &amp; stock</span><span class="show-xs">Stock</span><span class="ct" id="ctStock"></span></button>
+      <button class="tab" role="tab" data-tab="customers" aria-selected="false">Customers<span class="ct" id="ctCust"></span></button>
+      <button class="tab" role="tab" data-tab="stock" aria-selected="false">Film &amp; stock<span class="ct" id="ctStock"></span></button>
     </nav>
   </div>
 </header>
+
+<div class="scrim" id="scrim" data-act="menu-close"></div>
+<aside class="drawer" id="drawer" aria-label="Menu" aria-hidden="true"></aside>
 
 <main class="wrap" id="main">
   <div class="empty" id="boot">Loading the studio desk. Jobs, leads and stock appear here once the data connects.</div>
 </main>
 
-<dialog id="dlg" aria-labelledby="dlgTitle"><form class="dlg" id="dlgForm" method="dialog"></form></dialog>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<dialog id="sheet" class="wide" aria-label="Details"><div class="sh" id="sheetBody"></div></dialog>
+<dialog id="dlg" aria-labelledby="dlgTitle"><form class="dlg" id="dlgForm" method="dialog" novalidate></form></dialog>
+<dialog id="confirm" class="small" aria-label="Confirm"><div class="cbody" id="confirmBody"></div></dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"><span id="toastText"></span><button type="button" id="toastUndo" hidden>Undo</button></div>
 
 <script>
 (function(){
@@ -277,34 +393,78 @@ const COVERAGE = ["Basic","Gold","Platinum"];
 const JOB_ST = ["Booked","In bay","QC","Delivered"];
 const LEAD_ST = ["New","Contacted","Booked","Lost"];
 const SOURCES = ["Website","Instagram","WhatsApp","Walk-in","Referral"];
+const PAY_METHODS = ["Cash","Bank transfer","JazzCash","Easypaisa","Card"];
+const KINDS = ["Film","Chemical","Coating"];
 /* the DD rate card: class, full-body price on the thinner film, on the thicker film */
 const CLASSES = [
   ["City car",200000,210000],["Hatchback",210000,220000],["Mini SUV / Crossover",230000,240000],["Compact Sedan",230000,240000],
   ["Sedan",245000,255000],["Large Sedan",265000,275000],["Luxury Sedan",290000,310000],["Compact SUV",250000,260000],
   ["Mid-Size SUV",270000,280000],["Large SUV",280000,295000],["Full-Size SUV / Pick-up",295000,310000],["Luxury SUV / Pick-up",320000,340000]];
 const FILMS = [
-  {name:"ProForce Phantom", stock:"pf-ph", tier:0, off:-25000},
-  {name:"ProForce Phantom Plus", stock:"pf-pp", tier:1, off:-25000},
-  {name:"OneFilm DefenX", stock:"of-dx", tier:0, off:0},
-  {name:"OneFilm DefenX Pro", stock:"of-dp", tier:1, off:0},
-  {name:"OneFilm colour PPF", stock:"of-col", tier:null, off:0}];
+  {name:"ProForce Phantom", stock:"pf-ph", tier:0, off:-25000, warranty:0},
+  {name:"ProForce Phantom Plus", stock:"pf-pp", tier:1, off:-25000, warranty:0},
+  {name:"OneFilm DefenX", stock:"of-dx", tier:0, off:0, warranty:6},
+  {name:"OneFilm DefenX Pro", stock:"of-dp", tier:1, off:0, warranty:6},
+  {name:"OneFilm colour PPF", stock:"of-col", tier:null, off:0, warranty:0}];
 const NEXT = {"Booked":"In bay","In bay":"QC","QC":"Delivered"};
 const NEXT_LABEL = {"Booked":"Car arrived","In bay":"Send to QC","QC":"Mark delivered"};
+const TABS = {overview:"Overview", jobs:"Jobs", leads:"Leads", customers:"Customers", stock:"Film & stock"};
+const IC = {
+  overview:'<path d="M4 13h6V4H4zM14 20h6v-9h-6zM4 20h6v-4H4zM14 7h6V4h-6z"/>',
+  jobs:'<path d="M5 16l1.5-5.5A2 2 0 0 1 8.4 9h7.2a2 2 0 0 1 1.9 1.5L19 16M4 16h16v3H4zM7 19v1.5M17 19v1.5"/><circle cx="7.5" cy="16" r=".5"/><circle cx="16.5" cy="16" r=".5"/>',
+  leads:'<path d="M4 5h16v11H8l-4 4z"/><path d="M8 9h8M8 12h5"/>',
+  customers:'<circle cx="9" cy="8" r="3.2"/><path d="M3 20c.6-3.4 3-5.5 6-5.5s5.4 2.1 6 5.5"/><path d="M16 4.8a3.2 3.2 0 0 1 0 6.4M18 14.6c1.6.7 2.7 2.4 3 5.4"/>',
+  stock:'<path d="M4 8l8-4 8 4-8 4zM4 8v8l8 4 8-4V8M12 12v8"/>',
+  plus:'<path d="M12 5v14M5 12h14"/>',
+  box:'<path d="M4 8l8-4 8 4-8 4zM4 8v8l8 4 8-4V8"/><path d="M9 14.5l2 1.5 4-4"/>',
+  download:'<path d="M12 4v11M7 10l5 5 5-5M5 20h14"/>',
+  share:'<path d="M4 5h16v11H8l-4 4z"/><path d="M12 8v5M9.5 10.5L12 8l2.5 2.5"/>',
+  close:'<path d="M6 6l12 12M18 6L6 18"/>',
+  phone:'<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/>',
+  chat:'<path d="M12 3.5a8.5 8.5 0 0 0-7.3 12.9L3.5 20.5l4.2-1.1A8.5 8.5 0 1 0 12 3.5z"/>',
+  edit:'<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M14 6l4 4"/>',
+  trash:'<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/>',
+  coin:'<circle cx="12" cy="12" r="8"/><path d="M14.5 9.5c-.6-.8-1.5-1.2-2.5-1.2-1.4 0-2.5.8-2.5 1.9 0 2.6 5 1.4 5 4 0 1.1-1.1 2-2.5 2-1.1 0-2.1-.5-2.7-1.3M12 6.5v1.8M12 15.8v1.7"/>',
+  search:'<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>'
+};
+const icon = (k, cls) => `<svg class="ic${cls ? " " + cls : ""}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[k]}</svg>`;
 
 /* ---- state --------------------------------------------------------------- */
 const S = { jobs:[], leads:[], stock:[], got:{jobs:false,leads:false,stock:false}, db:null, canWrite:true,
-  tab:"overview", period:"30", jf:"All", jq:"", lf:"All" };
+  tab:"overview", period:"30", jf:"All", jsvc:"All", jq:"", lf:"All", lq:"", cq:"", sheet:null, dbChecked:false, jlim:100, llim:100, clim:60 };
 const $ = s => document.querySelector(s);
 const esc = v => String(v == null ? "" : v).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const fmt = n => Math.round(n).toLocaleString("en-US");
-const rs = n => "Rs " + fmt(n);
+const fmt = n => Math.round(+n || 0).toLocaleString("en-US");
+const fmt1 = n => (+n || 0).toLocaleString("en-US", {maximumFractionDigits: 2});
+const rs = n => "Rs " + fmt(n);
 const lakh = n => (n / 100000).toLocaleString("en-US", {maximumFractionDigits: n >= 1e7 ? 0 : 1});
-const todayISO = () => { const d = new Date(); return new Date(d.getTime() - d.getTimezoneOffset()*60000).toISOString().slice(0,10); };
-const dayDiff = (a, b) => Math.round((new Date(b) - new Date(a)) / 864e5);
+const isoOf = d => new Date(d.getTime() - d.getTimezoneOffset()*60000).toISOString().slice(0,10);
+const todayISO = () => isoOf(new Date());
+const dayDiff = (a, b) => Math.round((new Date(b + "T12:00:00") - new Date(a + "T12:00:00")) / 864e5);
+const addYears = (iso, y) => { const d = new Date(iso + "T12:00:00"); d.setFullYear(d.getFullYear() + y); return isoOf(d); };
 const shortDate = iso => { if(!iso) return ""; const d = new Date(iso.length > 10 ? iso : iso + "T12:00:00"); return d.toLocaleDateString("en-GB", {day:"numeric", month:"short"}); };
-const ago = iso => { const m = Math.round((Date.now() - new Date(iso)) / 60000); if(m < 60) return m + " min ago"; const h = Math.round(m/60); if(h < 24) return h + " h ago"; const d = Math.round(h/24); return d + (d === 1 ? " day ago" : " days ago"); };
+const longDate = iso => { if(!iso) return ""; const d = new Date(iso.length > 10 ? iso : iso + "T12:00:00"); return d.toLocaleDateString("en-GB", {weekday:"short", day:"numeric", month:"short", year:"numeric"}); };
+const dayOf = iso => iso ? isoOf(new Date(iso)) : "";
+const ago = iso => { const m = Math.max(0, Math.round((Date.now() - new Date(iso)) / 60000)); if(m < 1) return "just now"; if(m < 60) return m + " min ago"; const h = Math.round(m/60); if(h < 24) return h + " h ago"; const d = Math.round(h/24); return d + (d === 1 ? " day ago" : " days ago"); };
+const cmp = (a, b) => a < b ? -1 : a > b ? 1 : 0;      /* ISO dates sort as plain strings, much faster than localeCompare */
+const tsv = l => Date.parse(l.ts) || 0;
 const stockBy = id => S.stock.find(s => s.id === id);
 const cls = s => "st-" + String(s).replace(/\s+/g, "-");
+const first = n => (String(n || "").trim().split(/\s+/)[0]) || "";
+const svc = j => j.service + (j.coverage && j.service === "PPF" ? " " + j.coverage : "");
+const balance = j => Math.max(0, (+j.price || 0) - (+j.paid || 0));
+const warrantyTo = j => { const y = +j.warrantyYears || 0; const from = j.dateOut || (j.status === "Delivered" ? j.dateIn : ""); return y > 0 && from ? addYears(from, y) : ""; };
+function normPhone(p){
+  let s = String(p || "").replace(/\D/g, ""); if(!s) return "";
+  if(s.startsWith("0092")) s = s.slice(2);
+  if(s.startsWith("92") && s.length >= 12) return s;
+  if(s.startsWith("0") && s.length === 11) return "92" + s.slice(1);
+  if(s.length === 10 && s.startsWith("3")) return "92" + s;
+  return s;
+}
+const waLink = (phone, text) => "https://wa.me/" + normPhone(phone) + "?text=" + encodeURIComponent(text);
+const telLink = phone => "tel:+" + normPhone(phone);
+const custKey = x => normPhone(x.phone) || (x.customer ? "n:" + x.customer.trim().toLowerCase() : "");
 function suggestPrice(service, coverage, film, c){
   if(service !== "PPF" || coverage !== "Platinum") return null;
   const f = FILMS.find(x => x.name === film); if(!f || f.tier === null || CLASSES[c] == null) return null;
@@ -313,7 +473,7 @@ function suggestPrice(service, coverage, film, c){
 function inPeriod(iso){
   if(S.period === "all") return true;
   if(!iso) return false;
-  const days = dayDiff(iso.slice(0,10), todayISO());
+  const days = dayDiff(iso.length > 10 ? dayOf(iso) : iso, todayISO());
   return days <= +S.period && days >= -14;      /* booked a little ahead still counts */
 }
 function used(){                                  /* film and chemicals used, from every job that has started */
@@ -322,8 +482,21 @@ function used(){                                  /* film and chemicals used, fr
   return u;
 }
 function stockState(s, u){
-  const left = (+s.opening || 0) - (u[s.id] || 0);
+  const left = (+s.opening || 0) + (+s.received || 0) - (u[s.id] || 0);
   return { left, state: left <= 0 ? "out" : left <= (+s.reorder || 0) ? "low" : "ok" };
+}
+const followDue = l => !!l.followUp && (l.status === "New" || l.status === "Contacted") && l.followUp <= todayISO();
+function customers(){
+  const m = new Map();
+  S.jobs.forEach(j => { const k = custKey(j); if(!k) return;
+    const c = m.get(k) || { key:k, name:"", phone:"", cars:new Map(), jobs:[], spent:0, paid:0, last:"", warranty:"" };
+    if(j.customer && !c.name) c.name = j.customer; if(j.phone && !c.phone) c.phone = j.phone;
+    const ck = (j.car || "") + (j.plate ? " · " + j.plate : ""); if(ck) c.cars.set(ck, 1);
+    c.jobs.push(j); c.spent += +j.price || 0; c.paid += Math.min(+j.paid || 0, +j.price || 0);
+    if((j.dateIn || "") > c.last) c.last = j.dateIn || "";
+    const w = warrantyTo(j); if(w && w > c.warranty) c.warranty = w;
+    m.set(k, c); });
+  return [...m.values()].map(c => ({ ...c, cars:[...c.cars.keys()], due: c.spent - c.paid })).sort((a, b) => cmp(b.last, a.last));
 }
 
 /* ---- rendering ----------------------------------------------------------- */
@@ -337,15 +510,14 @@ function bars(rows, opts){
 function weekly(){
   const W = 8, now = new Date(todayISO() + "T12:00:00");
   const day = (now.getDay() + 6) % 7, monday = new Date(now - day*864e5);
-  const weeks = [...Array(W)].map((_, i) => ({ start: new Date(monday - (W-1-i)*7*864e5), n: 0, rev: 0 }));
+  const weeks = [...Array(W)].map((_, i) => ({ start: new Date(monday - (W-1-i)*7*864e5), n: 0 }));
   S.jobs.forEach(j => { if(!j.dateIn) return; const d = new Date(j.dateIn + "T12:00:00");
-    weeks.forEach(w => { if(d >= w.start && d < new Date(+w.start + 7*864e5)){ w.n++; w.rev += +j.price || 0; } }); });
+    weeks.forEach(w => { if(d >= w.start && d < new Date(+w.start + 7*864e5)) w.n++; }); });
   const max = Math.max(1, ...weeks.map(w => w.n)), H = 120, bw = 34, gap = 18, padL = 8, top = 18;
   const width = padL*2 + W*bw + (W-1)*gap;
   let g = "";
   weeks.forEach((w, i) => {
-    const x = padL + i*(bw+gap), h = Math.round(w.n / max * (H - top)), y = H - h;
-    const cur = i === W-1;
+    const x = padL + i*(bw+gap), h = Math.round(w.n / max * (H - top)), y = H - h, cur = i === W-1;
     g += `<rect x="${x}" y="${y}" width="${bw}" height="${Math.max(h, 2)}" rx="4" fill="${cur ? "var(--red)" : "var(--silver)"}" opacity="${cur ? 1 : .8}"></rect>`;
     g += `<text class="val" x="${x + bw/2}" y="${y - 6}" text-anchor="middle">${w.n}</text>`;
     g += `<text x="${x + bw/2}" y="${H + 16}" text-anchor="middle">${w.start.toLocaleDateString("en-GB",{day:"numeric",month:"short"})}</text>`;
@@ -353,26 +525,30 @@ function weekly(){
   return `<div class="wk"><svg viewBox="0 0 ${width} ${H + 24}" role="img" aria-label="Jobs started per week, last 8 weeks"><line x1="0" x2="${width}" y1="${H}" y2="${H}" stroke="var(--line2)"></line>${g}</svg></div>`;
 }
 function jobLine(j){
-  const p = (j.products || []).map(x => { const s = stockBy(x.p); return s ? `<span class="prod">${esc(s.name)} · ${fmt1(x.qty)} ${esc(s.unit)}</span>` : ""; }).join("");
-  return p;
+  return (j.products || []).map(x => { const s = stockBy(x.p); return s ? `<span class="prod">${esc(s.name)} · ${fmt1(x.qty)} ${esc(s.unit)}</span>` : ""; }).join("");
 }
-const fmt1 = n => (+n).toLocaleString("en-US", {maximumFractionDigits: 2});
+const dis = () => (S.canWrite ? "" : "disabled");
 
 function renderOverview(){
   const jobs = S.jobs.filter(j => inPeriod(j.dateIn));
   const leads = S.leads.filter(l => inPeriod(l.ts));
   const rev = jobs.reduce((a, j) => a + (+j.price || 0), 0);
+  const collected = jobs.reduce((a, j) => a + Math.min(+j.paid || 0, +j.price || 0), 0);
+  const dueJobs = S.jobs.filter(j => j.status !== "Booked" && balance(j) > 0).sort((a, b) => cmp((a.dateIn || ""), b.dateIn || ""));
+  const due = dueJobs.reduce((a, j) => a + balance(j), 0);
   const booked = leads.filter(l => l.status === "Booked").length;
   const conv = leads.length ? Math.round(booked / leads.length * 100) : 0;
   const inBay = S.jobs.filter(j => j.status === "In bay" || j.status === "QC");
-  const coming = S.jobs.filter(j => j.status === "Booked").sort((a, b) => (a.dateIn || "").localeCompare(b.dateIn || ""));
-  const fresh = S.leads.filter(l => l.status === "New").sort((a, b) => (b.ts || "").localeCompare(a.ts || ""));
+  const coming = S.jobs.filter(j => j.status === "Booked").sort((a, b) => cmp((a.dateIn || ""), b.dateIn || ""));
+  const answer = S.leads.filter(l => l.status === "New" || followDue(l))
+    .sort((a, b) => (a.status === "New" ? 0 : 1) - (b.status === "New" ? 0 : 1) || tsv(b) - tsv(a));
+  const fresh = S.leads.filter(l => l.status === "New");
   const u = used();
   const alerts = S.stock.map(s => ({ s, ...stockState(s, u) })).filter(x => x.state !== "ok");
   const by = (arr, key, val) => { const m = {}; arr.forEach(x => { const k = x[key] || "Other"; m[k] = (m[k] || 0) + (val ? val(x) : 1); }); return Object.entries(m).sort((a, b) => b[1] - a[1]); };
   const filmUse = {}; jobs.forEach(j => (j.products || []).forEach(p => { const s = stockBy(p.p); if(s && s.kind === "Film" && j.status !== "Booked") filmUse[s.name] = (filmUse[s.name] || 0) + (+p.qty || 0); }));
-  const chemUse = {}; jobs.forEach(j => (j.products || []).forEach(p => { const s = stockBy(p.p); if(s && s.kind !== "Film" && j.status !== "Booked") chemUse[s.name] = (chemUse[s.name] || 0) + 1; }));
   const label = S.period === "all" ? "All time" : "Last " + S.period + " days";
+  const today = todayISO();
 
   return `
   <div class="row" style="justify-content:space-between">
@@ -382,37 +558,44 @@ function renderOverview(){
     </div>
   </div>
   <section class="kpis" aria-label="Summary">
-    <div class="kpi"><span class="lab">Work booked</span><div class="v">Rs ${lakh(rev)} lakh</div><div class="s num">${rs(rev)} across ${jobs.length} ${jobs.length === 1 ? "job" : "jobs"}</div></div>
-    <div class="kpi"><span class="lab">In the bay now</span><div class="v">${inBay.length}</div><div class="s">${coming.length} booked to come in</div></div>
+    <div class="kpi"><span class="lab">Work booked</span><div class="v">Rs ${lakh(rev)}<small>lakh</small></div><div class="s num">${rs(rev)}, ${jobs.length} ${jobs.length === 1 ? "job" : "jobs"}</div></div>
+    <div class="kpi"><span class="lab">Collected</span><div class="v">Rs ${lakh(collected)}<small>lakh</small></div><div class="s num">${rs(collected)} received</div></div>
+    <div class="kpi${due ? " due" : ""}"><span class="lab">To collect</span><div class="v">${due ? "Rs " + lakh(due) + "<small>lakh</small>" : "Nothing"}</div><div class="s">${dueJobs.length ? dueJobs.length + (dueJobs.length === 1 ? " car with a balance" : " cars with a balance") : "Every started job is paid"}</div></div>
+    <div class="kpi"><span class="lab">In the bay</span><div class="v">${inBay.length}</div><div class="s">${coming.length} booked to come in</div></div>
     <div class="kpi"><span class="lab">Leads</span><div class="v">${leads.length}</div><div class="s">${fresh.length} waiting for a reply</div></div>
-    <div class="kpi"><span class="lab">Lead to job</span><div class="v">${conv}%</div><div class="s">${booked} of ${leads.length} leads booked</div></div>
-    <div class="kpi"><span class="lab">Average ticket</span><div class="v num">${jobs.length ? lakh(rev / jobs.length) + " lakh" : "0"}</div><div class="s num">${jobs.length ? rs(rev / jobs.length) : "No jobs yet"}</div></div>
+    <div class="kpi"><span class="lab">Lead to job</span><div class="v">${conv}%</div><div class="s">${booked} of ${leads.length} booked</div></div>
   </section>
 
   <div class="grid">
     <section class="card c12">
-      <div class="hd"><h3>In the bay</h3><small>${inBay.length ? "Tap a step when the car moves on" : ""}</small></div>
+      <div class="hd"><h3>In the bay</h3><small>${inBay.length ? "Tap a car for its full file" : ""}</small></div>
       ${inBay.length ? `<div class="bay">${inBay.map(j => `
-        <article class="slot">
-          <div class="row" style="justify-content:space-between"><span class="pill ${cls(j.status)}">${esc(j.status)}</span><span class="when">day ${Math.max(1, dayDiff(j.dateIn, todayISO()) + 1)}</span></div>
-          <div class="car">${esc(j.car)}</div>
-          <div class="what">${esc(j.service)}${j.coverage ? " · " + esc(j.coverage) : ""}${j.film ? " · " + esc(j.film) : ""}</div>
+        <article class="slot" data-open="job:${esc(j.id)}">
+          <div class="row" style="justify-content:space-between"><span class="pill ${cls(j.status)}">${esc(j.status)}</span><span class="when">day ${Math.max(1, dayDiff(j.dateIn, today) + 1)}${j.dueDate ? " · ready " + shortDate(j.dueDate) : ""}</span></div>
+          <div class="car">${esc(j.car)}${j.plate ? ` <span class="sub">${esc(j.plate)}</span>` : ""}</div>
+          <div class="what">${esc(svc(j))}${j.film ? " · " + esc(j.film) : ""}${j.assigned ? " · " + esc(j.assigned) : ""}</div>
           <div>${jobLine(j)}</div>
-          <div class="foot"><span class="num">${rs(j.price || 0)}</span>${NEXT[j.status] ? `<button class="mini" type="button" data-act="advance" data-id="${esc(j.id)}" ${S.canWrite ? "" : "disabled"}>${NEXT_LABEL[j.status]}</button>` : ""}</div>
-        </article>`).join("")}</div>` : '<div class="empty">The bay is empty. Jobs set to In bay or QC show here.</div>'}
+          <div class="foot"><span class="num">${rs(j.price || 0)}${balance(j) ? ` <span class="tag st-Due">${rs(balance(j))} due</span>` : ""}</span>${NEXT[j.status] ? `<button class="mini" type="button" data-act="advance" data-id="${esc(j.id)}" ${dis()}>${NEXT_LABEL[j.status]}</button>` : ""}</div>
+        </article>`).join("")}</div>` : '<div class="empty">The bay is empty. Cars set to In bay or QC show here.</div>'}
     </section>
 
-    <section class="card c6">
-      <div class="hd"><h3>Coming in</h3><small>Booked</small></div>
+    <section class="card c4">
+      <div class="hd"><h3>Coming in</h3><small>${coming.length ? "Booked" : ""}</small></div>
       ${coming.length ? `<div class="list">${coming.slice(0, 6).map(j => `
-        <div class="li"><span class="when">${shortDate(j.dateIn)}</span><div class="main"><b>${esc(j.car)}</b><span>${esc(j.service)}${j.coverage ? " · " + esc(j.coverage) : ""}${j.film ? " · " + esc(j.film) : ""}</span></div>
-        <button class="mini" type="button" data-act="advance" data-id="${esc(j.id)}" ${S.canWrite ? "" : "disabled"}>Car arrived</button></div>`).join("")}</div>` : '<div class="empty">Nothing booked yet.</div>'}
+        <div class="li" data-open="job:${esc(j.id)}"><span class="when">${j.dateIn === today ? "Today" : shortDate(j.dateIn)}</span><div class="main"><b>${esc(j.car)}</b><span>${esc(svc(j))}${j.customer ? " · " + esc(j.customer) : ""}</span></div>
+        <button class="mini" type="button" data-act="advance" data-id="${esc(j.id)}" ${dis()}>Arrived</button></div>`).join("")}</div>` : '<div class="empty">Nothing booked yet.</div>'}
     </section>
 
-    <section class="card c6">
-      <div class="hd"><h3>New leads</h3><small>Reply to these first</small></div>
-      ${fresh.length ? `<div class="list">${fresh.slice(0, 6).map(l => `
-        <div class="li"><span class="src">${esc(l.source)}</span><div class="main"><b>${esc(l.car || "Car not given")}</b><span>${esc(l.want || "")}</span></div><span class="when">${ago(l.ts)}</span></div>`).join("")}</div>` : '<div class="empty">No new leads. Website and Instagram enquiries land here.</div>'}
+    <section class="card c4">
+      <div class="hd"><h3>Leads to answer</h3><small>${answer.length ? "New first" : ""}</small></div>
+      ${answer.length ? `<div class="list">${answer.slice(0, 6).map(l => `
+        <div class="li" data-open="lead:${esc(l.id)}"><span class="src">${esc(l.source)}</span><div class="main"><b>${esc(l.car || "Car not given")}${l.status === "New" ? "" : ' <span class="tag st-Follow">Follow up</span>'}</b><span>${esc(l.want || l.name || "")}</span></div><span class="when">${l.status === "New" ? ago(l.ts) : shortDate(l.followUp)}</span></div>`).join("")}</div>` : '<div class="empty">All caught up. New enquiries and follow-ups land here.</div>'}
+    </section>
+
+    <section class="card c4">
+      <div class="hd"><h3>To collect</h3><small>${dueJobs.length ? rs(due) : ""}</small></div>
+      ${dueJobs.length ? `<div class="list">${dueJobs.slice(0, 6).map(j => `
+        <div class="li" data-open="job:${esc(j.id)}"><span class="pill ${cls(j.status)}">${esc(j.status)}</span><div class="main"><b>${esc(j.car)}</b><span>${esc(j.customer || svc(j))}</span></div><span class="amt">${rs(balance(j))}</span></div>`).join("")}</div>` : '<div class="empty">No balances outstanding.</div>'}
     </section>
 
     <section class="card c7">
@@ -438,86 +621,313 @@ function renderOverview(){
     <section class="card c4">
       <div class="hd"><h3>Stock to reorder</h3><small>${alerts.length ? alerts.length + (alerts.length === 1 ? " item" : " items") : "All good"}</small></div>
       ${alerts.length ? `<div class="list">${alerts.map(a => `
-        <div class="li"><span class="pill ${a.state === "out" ? "st-In-bay" : "st-QC"}">${a.state === "out" ? "Out" : "Low"}</span><div class="main"><b>${esc(a.s.name)}</b><span>${fmt1(Math.max(0, a.left))} ${esc(a.s.unit)} left, reorder at ${fmt1(a.s.reorder)}</span></div><span></span></div>`).join("")}</div>` : '<div class="empty">Nothing below its reorder level.</div>'}
-      ${Object.keys(chemUse).length ? `<div class="hd" style="margin:18px 0 10px"><h3>Products on jobs</h3><small>Times used</small></div>${bars(Object.entries(chemUse).sort((a, b) => b[1] - a[1]).slice(0, 5))}` : ""}
+        <div class="li" data-open="stock:${esc(a.s.id)}"><span class="pill ${a.state === "out" ? "st-In-bay" : "st-QC"}">${a.state === "out" ? "Out" : "Low"}</span><div class="main"><b>${esc(a.s.name)}</b><span>${fmt1(Math.max(0, a.left))} ${esc(a.s.unit)} left, reorder at ${fmt1(a.s.reorder)}</span></div><span></span></div>`).join("")}</div>` : '<div class="empty">Nothing below its reorder level.</div>'}
     </section>
   </div>`;
 }
 
-function renderJobs(){
+function jobRows(){
   const q = S.jq.trim().toLowerCase();
-  const rows = S.jobs.filter(j => (S.jf === "All" || j.service === S.jf) && (!q || (j.car + " " + j.film + " " + j.notes).toLowerCase().includes(q)))
-    .sort((a, b) => (b.dateIn || "").localeCompare(a.dateIn || ""));
+  return S.jobs.filter(j => (S.jf === "All" || (S.jf === "Due" ? j.status !== "Booked" && balance(j) > 0 : j.status === S.jf)) && (S.jsvc === "All" || j.service === S.jsvc)
+      && (!q || [j.car, j.plate, j.customer, j.phone, j.film, j.notes, j.assigned].join(" ").toLowerCase().includes(q)))
+    .sort((a, b) => cmp((b.dateIn || ""), a.dateIn || ""));
+}
+function renderJobs(){
+  const all = jobRows(), rows = all.slice(0, S.jlim);
+  const counts = {}; S.jobs.forEach(j => counts[j.status] = (counts[j.status] || 0) + 1);
+  const dueN = S.jobs.filter(j => j.status !== "Booked" && balance(j) > 0).length;
   return `
-  <div class="row" style="justify-content:space-between;margin-bottom:12px">
-    <div class="filters" role="group" aria-label="Service" style="margin:0">${["All", ...SERVICES].map(s => `<button type="button" class="fchip" data-act="jf" data-v="${esc(s)}" aria-pressed="${S.jf === s}">${esc(s)}</button>`).join("")}</div>
-    <input class="search" id="jq" type="search" placeholder="Search car, film, notes" value="${esc(S.jq)}" aria-label="Search jobs">
+  <div class="toolbar">
+    <div class="filters" role="group" aria-label="Status">${["All", ...JOB_ST, "Due"].map(s => `<button type="button" class="fchip" data-act="jf" data-v="${s}" aria-pressed="${S.jf === s}">${s === "Due" ? "Balance due" : s}${s === "All" ? "" : `<span class="num">${s === "Due" ? dueN : counts[s] || 0}</span>`}</button>`).join("")}</div>
+    <div class="sp"></div>
+    <select class="sel" id="jsvc" aria-label="Service">${["All", ...SERVICES].map(s => `<option value="${esc(s)}" ${S.jsvc === s ? "selected" : ""}>${s === "All" ? "All services" : esc(s)}</option>`).join("")}</select>
+    <input class="search" id="jq" type="search" placeholder="Search car, plate, customer, phone" value="${esc(S.jq)}" aria-label="Search jobs" autocomplete="off">
   </div>
   ${rows.length ? `<div class="tw"><table class="tj">
-    <thead><tr><th>In</th><th>Car</th><th>Service</th><th>Film and products</th><th>Source</th><th class="r">Price</th><th>Status</th></tr></thead>
-    <tbody>${rows.map(j => `<tr>
+    <thead><tr><th>In</th><th>Car</th><th>Work</th><th>Source</th><th class="r">Price</th><th>Status</th></tr></thead>
+    <tbody>${rows.map(j => `<tr data-open="job:${esc(j.id)}">
       <td class="num">${shortDate(j.dateIn)}${j.dateOut ? `<div class="sub">out ${shortDate(j.dateOut)}</div>` : ""}</td>
-      <td><b>${esc(j.car)}</b><div class="sub">${esc(CLASSES[j.cls] ? CLASSES[j.cls][0] : "")}</div></td>
-      <td>${esc(j.service)}${j.coverage ? `<div class="sub">${esc(j.coverage)}</div>` : ""}</td>
-      <td style="min-width:220px">${j.film ? `<div><b style="font-weight:600">${esc(j.film)}</b></div>` : ""}${jobLine(j) || '<span class="sub">No products logged</span>'}${j.notes ? `<div class="sub">${esc(j.notes)}</div>` : ""}</td>
+      <td><b>${esc(j.car)}</b>${j.plate ? ` <span class="sub">${esc(j.plate)}</span>` : ""}<div class="sub">${esc(j.customer || (CLASSES[j.cls] ? CLASSES[j.cls][0] : ""))}</div></td>
+      <td>${esc(svc(j))}${j.film ? `<div class="sub">${esc(j.film)}</div>` : ""}</td>
       <td><span class="src">${esc(j.source)}</span></td>
-      <td class="r num" style="font-size:15px">${rs(j.price || 0)}</td>
-      <td><select class="stsel" data-act="jst" data-id="${esc(j.id)}" aria-label="Status for ${esc(j.car)}" ${S.canWrite ? "" : "disabled"}>${JOB_ST.map(s => `<option ${s === j.status ? "selected" : ""}>${s}</option>`).join("")}</select></td>
-    </tr>`).join("")}</tbody></table></div>` : `<div class="empty">${S.jobs.length ? "No jobs match." : "No jobs yet. Tap New job to log the first car."}</div>`}`;
+      <td class="r num" style="font-size:15px">${rs(j.price || 0)}${j.status !== "Booked" && balance(j) ? `<div class="sub" style="color:var(--warn)">${rs(balance(j))} due</div>` : (+j.paid && balance(j) ? `<div class="sub">${rs(j.paid)} advance</div>` : "")}</td>
+      <td><select class="stsel" data-act="jst" data-id="${esc(j.id)}" aria-label="Status for ${esc(j.car)}" ${dis()}>${JOB_ST.map(s => `<option ${s === j.status ? "selected" : ""}>${s}</option>`).join("")}</select></td>
+    </tr>`).join("")}</tbody></table></div>${all.length > rows.length ? `<div class="row" style="justify-content:center;margin-top:14px"><button class="btn" type="button" data-act="more" data-v="jlim">Show more <span class="sub">${all.length - rows.length} older</span></button></div>` : ""}` : `<div class="empty">${S.jobs.length ? "No jobs match. Clear the search or pick another filter." : "No jobs yet. Tap New job to log the first car."}</div>`}`;
 }
 
+function leadRows(){
+  const q = S.lq.trim().toLowerCase();
+  return S.leads.filter(l => (S.lf === "All" || (S.lf === "Follow" ? followDue(l) : l.status === S.lf)) && (!q || [l.car, l.name, l.phone, l.want, l.notes, l.source].join(" ").toLowerCase().includes(q)))
+    .sort((a, b) => tsv(b) - tsv(a));
+}
 function renderLeads(){
-  const rows = S.leads.filter(l => S.lf === "All" || l.status === S.lf).sort((a, b) => (b.ts || "").localeCompare(a.ts || ""));
+  const all = leadRows(), rows = all.slice(0, S.llim);
   const counts = {}; S.leads.forEach(l => counts[l.status] = (counts[l.status] || 0) + 1);
+  const fu = S.leads.filter(followDue).length;
   return `
   <div class="banner"><span>Website leads (price tool, call-back form, WhatsApp buttons) arrive here on their own. Instagram DMs join once ManyChat is connected. Walk-ins and calls: <b>Add lead</b>.</span></div>
-  <div class="filters" role="group" aria-label="Lead status">${["All", ...LEAD_ST].map(s => `<button type="button" class="fchip" data-act="lf" data-v="${s}" aria-pressed="${S.lf === s}">${s}${s !== "All" && counts[s] ? ` <span class="num" style="color:var(--dim)">${counts[s]}</span>` : ""}</button>`).join("")}</div>
+  <div class="toolbar">
+    <div class="filters" role="group" aria-label="Lead status">${["All", ...LEAD_ST, "Follow"].map(s => `<button type="button" class="fchip" data-act="lf" data-v="${s}" aria-pressed="${S.lf === s}">${s === "Follow" ? "Follow-up due" : s}${s === "All" ? "" : `<span class="num">${s === "Follow" ? fu : counts[s] || 0}</span>`}</button>`).join("")}</div>
+    <div class="sp"></div>
+    <input class="search" id="lq" type="search" placeholder="Search car, name, phone" value="${esc(S.lq)}" aria-label="Search leads" autocomplete="off">
+    <button class="btn" type="button" data-act="new-lead" ${S.canWrite && S.db ? "" : "disabled"}>${icon("plus")}Add lead</button>
+  </div>
   ${rows.length ? `<div class="tw"><table class="tl">
     <thead><tr><th>When</th><th>Source</th><th>Car</th><th>What they want</th><th>Status</th><th></th></tr></thead>
-    <tbody>${rows.map(l => `<tr>
+    <tbody>${rows.map(l => `<tr data-open="lead:${esc(l.id)}">
       <td class="num">${shortDate(l.ts)}<div class="sub">${ago(l.ts)}</div></td>
       <td><span class="src">${esc(l.source)}</span></td>
-      <td><b>${esc(l.car || "Not given")}</b>${l.name ? `<div class="sub">${esc(l.name)}${l.phone ? " · " + esc(l.phone) : ""}</div>` : ""}</td>
-      <td style="min-width:220px">${esc(l.want || "").replace(/Rs (\d)/g, "Rs&nbsp;$1")}</td>
-      <td><select class="stsel" data-act="lst" data-id="${esc(l.id)}" aria-label="Status for lead ${esc(l.car)}" ${S.canWrite ? "" : "disabled"}>${LEAD_ST.map(s => `<option ${s === l.status ? "selected" : ""}>${s}</option>`).join("")}</select></td>
-      <td>${l.job ? '<span class="sub">Job logged</span>' : (l.status !== "Lost" ? `<button class="mini" type="button" data-act="lead-job" data-id="${esc(l.id)}" ${S.canWrite ? "" : "disabled"}>Make it a job</button>` : "")}</td>
-    </tr>`).join("")}</tbody></table></div>` : '<div class="empty">No leads with this status.</div>'}`;
+      <td><b>${esc(l.car || "Not given")}</b>${l.name || l.phone ? `<div class="sub">${esc(l.name || "")}${l.name && l.phone ? " · " : ""}${esc(l.phone || "")}</div>` : ""}</td>
+      <td style="min-width:220px">${esc(l.want || "").replace(/Rs (\d)/g, "Rs&nbsp;$1")}${l.followUp && (l.status === "New" || l.status === "Contacted") ? ` <span class="tag ${followDue(l) ? "st-Due" : "st-Follow"}">Follow up ${shortDate(l.followUp)}</span>` : ""}</td>
+      <td><select class="stsel" data-act="lst" data-id="${esc(l.id)}" aria-label="Status for lead ${esc(l.car)}" ${dis()}>${LEAD_ST.map(s => `<option ${s === l.status ? "selected" : ""}>${s}</option>`).join("")}</select></td>
+      <td>${l.job ? '<span class="sub">Job logged</span>' : (l.status !== "Lost" ? `<button class="mini" type="button" data-act="lead-job" data-id="${esc(l.id)}" ${dis()}>Make it a job</button>` : "")}</td>
+    </tr>`).join("")}</tbody></table></div>${all.length > rows.length ? `<div class="row" style="justify-content:center;margin-top:14px"><button class="btn" type="button" data-act="more" data-v="llim">Show more <span class="sub">${all.length - rows.length} older</span></button></div>` : ""}` : `<div class="empty">${S.leads.length ? "No leads match." : "No leads yet."}</div>`}`;
+}
+
+function renderCustomers(){
+  const all = customers(), q = S.cq.trim().toLowerCase();
+  const found = all.filter(c => !q || [c.name, c.phone, c.cars.join(" ")].join(" ").toLowerCase().includes(q)), rows = found.slice(0, S.clim);
+  const today = todayISO();
+  return `
+  <div class="toolbar">
+    <span class="lab">${all.length} ${all.length === 1 ? "customer" : "customers"} from jobs</span>
+    <div class="sp"></div>
+    <input class="search" id="cq" type="search" placeholder="Search name, phone, car, plate" value="${esc(S.cq)}" aria-label="Search customers" autocomplete="off">
+  </div>
+  ${rows.length ? `<div class="cust">${rows.map(c => `
+    <article class="cc" data-open="cust:${esc(c.key)}">
+      <div class="row" style="justify-content:space-between"><span class="nm">${esc(c.name || "Name not given")}</span><span class="when">${shortDate(c.last)}</span></div>
+      <div class="cars">${esc(c.cars.join(", "))}</div>
+      <div class="ft"><span class="num">${rs(c.spent)}</span><span class="sub">${c.jobs.length} ${c.jobs.length === 1 ? "job" : "jobs"}</span>${c.due > 0 ? `<span class="tag st-Due">${rs(c.due)} due</span>` : ""}${c.warranty && c.warranty >= today ? `<span class="tag st-Paid">Warranty to ${shortDate(c.warranty)} ${c.warranty.slice(0,4)}</span>` : ""}</div>
+    </article>`).join("")}</div>${found.length > rows.length ? `<div class="row" style="justify-content:center;margin-top:14px"><button class="btn" type="button" data-act="more" data-v="clim">Show more <span class="sub">${found.length - rows.length} more</span></button></div>` : ""}` : `<div class="empty">${all.length ? "No customers match." : "Customers appear here once jobs have a name or phone number."}</div>`}`;
 }
 
 function renderStock(){
   const u = used();
-  const groups = ["Film","Chemical","Coating"];
   return `
-  <div class="banner"><span>Stock goes down by itself as jobs are logged with their film and products. The yellow mark on each bar is the reorder level.</span></div>
-  ${groups.map(g => { const items = S.stock.filter(s => s.kind === g); if(!items.length) return "";
-    return `<section class="card" style="padding:0;margin-bottom:16px"><div class="hd" style="padding:16px 18px 0"><h3>${g === "Film" ? "Film rolls" : g === "Chemical" ? "Chemicals" : "Coatings"}</h3><small>Used on jobs since the opening count</small></div>
-    ${items.map(s => { const st = stockState(s, u), pct = Math.max(0, Math.min(100, st.left / (+s.opening || 1) * 100)), rp = Math.min(100, (+s.reorder || 0) / (+s.opening || 1) * 100);
-      return `<div class="stk ${st.state}"><div class="nm"><b>${esc(s.name)}</b><span>${esc(s.note || "")}</span></div>
+  <div class="banner"><span>Stock goes down by itself as jobs are logged with their film and products. Tap <b>Receive</b> when a delivery comes in. The yellow mark on each bar is the reorder level.</span></div>
+  <div class="toolbar"><div class="sp"></div><button class="btn" type="button" data-act="receive" ${S.canWrite ? "" : "disabled"}>${icon("box")}Receive stock</button><button class="btn" type="button" data-act="new-item" ${S.canWrite ? "" : "disabled"}>${icon("plus")}Add item</button></div>
+  ${S.stock.length ? KINDS.map(g => { const items = S.stock.filter(s => (s.kind || "Chemical") === g); if(!items.length) return "";
+    return `<section class="card" style="padding:0;margin-bottom:16px"><div class="hd" style="padding:16px 18px 0"><h3>${g === "Film" ? "Film rolls" : g === "Chemical" ? "Chemicals" : "Coatings"}</h3><small>Opening count, plus deliveries, minus jobs</small></div>
+    ${items.map(s => { const st = stockState(s, u), total = (+s.opening || 0) + (+s.received || 0), pct = Math.max(0, Math.min(100, st.left / (total || 1) * 100)), rp = Math.min(100, (+s.reorder || 0) / (total || 1) * 100);
+      return `<div class="stk ${st.state}" id="stk-${esc(s.id)}"><div class="nm"><b>${esc(s.name)}</b><span>${esc(s.note || "")}</span></div>
       <div class="gauge" aria-hidden="true"><i style="width:${pct.toFixed(1)}%"></i><u style="left:${rp.toFixed(1)}%"></u></div>
-      <div class="left">${fmt1(Math.max(0, st.left))} <span style="color:var(--dim);font-size:13px">${esc(s.unit)}</span><div class="sub" style="color:var(--dim);font-size:12px">of ${fmt1(s.opening)}, used ${fmt1(u[s.id] || 0)}</div></div>
-      <span class="pill ${st.state === "out" ? "st-In-bay" : st.state === "low" ? "st-QC" : "st-Delivered"}">${st.state === "out" ? "Out" : st.state === "low" ? "Reorder" : "OK"}</span></div>`; }).join("")}
-    </section>`; }).join("")}`;
+      <div class="left">${fmt1(Math.max(0, st.left))} <span style="color:var(--dim);font-size:13px">${esc(s.unit)}</span><div class="sub">of ${fmt1(total)}, used ${fmt1(u[s.id] || 0)}</div></div>
+      <span class="pill ${st.state === "out" ? "st-In-bay" : st.state === "low" ? "st-QC" : "st-Delivered"}">${st.state === "out" ? "Out" : st.state === "low" ? "Reorder" : "OK"}</span>
+      <div class="acts"><button class="mini" type="button" data-act="receive" data-id="${esc(s.id)}" ${dis()}>Receive</button><button class="mini" type="button" data-act="edit-item" data-id="${esc(s.id)}" ${dis()} aria-label="Edit ${esc(s.name)}">${icon("edit")}</button></div></div>`; }).join("")}
+    </section>`; }).join("") : '<div class="empty">No stock items yet. Add your film rolls and chemicals with their opening counts.</div>'}`;
+}
+
+function renderDrawer(){
+  const nNew = S.leads.filter(l => l.status === "New").length, u = used(), low = S.stock.filter(s => stockState(s, u).state !== "ok").length;
+  const due = S.jobs.filter(j => j.status !== "Booked" && balance(j) > 0).length;
+  const counts = { overview:"", jobs: S.jobs.length || "", leads: nNew ? `<span class="ct hot">${nNew}</span>` : "", customers: customers().length || "", stock: low ? `<span class="ct hot">${low}</span>` : "" };
+  const w = S.canWrite && S.db ? "" : "disabled";
+  $("#drawer").innerHTML = `
+    <div class="dh"><div class="brand"><img alt="" src="data:image/png;base64,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"><b>DETAIL DUNGEON</b></div><button class="ibtn ghost" type="button" data-act="menu-close" aria-label="Close menu">${icon("close")}</button></div>
+    <div class="dsec">Sections</div>
+    ${Object.keys(TABS).map(k => `<button class="dnav" type="button" data-tab="${k}" ${S.tab === k ? 'aria-current="page"' : ""}>${icon(k)}${TABS[k]}${String(counts[k]).startsWith("<") ? counts[k] : counts[k] ? `<span class="ct">${counts[k]}</span>` : ""}</button>`).join("")}
+    <div class="dsec">Quick add</div>
+    <button class="dnav" type="button" data-act="new-job" ${w}>${icon("plus")}New job</button>
+    <button class="dnav" type="button" data-act="new-lead" ${w}>${icon("leads")}Add lead</button>
+    <button class="dnav" type="button" data-act="receive" ${w}>${icon("box")}Receive stock</button>
+    <div class="dsec">Tools</div>
+    <button class="dnav" type="button" data-act="search">${icon("search")}Search</button>
+    <button class="dnav" type="button" data-act="share-day">${icon("share")}Share today's summary</button>
+    <button class="dnav" type="button" data-act="export-jobs">${icon("download")}Export jobs (CSV)</button>
+    <button class="dnav" type="button" data-act="export-leads">${icon("download")}Export leads (CSV)</button>
+    ${due ? `<button class="dnav" type="button" data-act="goto-due">${icon("coin")}Balances due<span class="ct">${due}</span></button>` : ""}
+    <div class="dfoot">Studio Desk<br>Built and managed by Bastion Studio</div>`;
 }
 
 function render(){
   const ready = S.got.jobs && S.got.leads && S.got.stock;
+  const nNew = S.leads.filter(l => l.status === "New").length;
   $("#ctJobs").textContent = S.jobs.length || "";
-  $("#ctLeads").textContent = S.leads.filter(l => l.status === "New").length || "";
+  $("#ctLeads").textContent = nNew || "";
+  $("#ctCust").textContent = ready ? (customers().length || "") : "";
   const u = used(); const low = S.stock.filter(s => stockState(s, u).state !== "ok").length;
   $("#ctStock").textContent = low ? low + " low" : "";
   $("#exChip").hidden = !(S.jobs.some(j => j.example) || S.leads.some(l => l.example));
   document.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-selected", String(t.dataset.tab === S.tab)));
   $("#btnJob").disabled = $("#btnLead").disabled = !S.canWrite || !S.db;
+  $("#menuBtn").classList.toggle("dot", nNew > 0);
+  renderDrawer();
   const m = $("#main");
-  if(!S.db){ m.innerHTML = `<div class="empty">${S.dbChecked ? "The studio data isn't available in this view. Open the desk from its Claude link while signed in." : "Loading the studio desk. Jobs, leads and stock appear here once the data connects."}</div>`; return; }
+  if(!S.db){ m.innerHTML = `<div class="empty">${S.dbChecked ? "The studio data isn't connected in this view." : "Loading the studio desk. Jobs, leads and stock appear here once the data connects."}</div>`; return; }
   if(!ready){ m.innerHTML = '<div class="empty">Loading jobs, leads and stock…</div>'; return; }
-  const focus = document.activeElement && document.activeElement.id === "jq";
-  m.innerHTML = S.tab === "jobs" ? renderJobs() : S.tab === "leads" ? renderLeads() : S.tab === "stock" ? renderStock() : renderOverview();
-  if(focus){ const q = $("#jq"); if(q){ q.focus(); q.setSelectionRange(q.value.length, q.value.length); } }
+  const act = document.activeElement, keep = act && ["jq","lq","cq"].includes(act.id) ? act.id : "";
+  const title = `<h1 class="ptitle">${TABS[S.tab]}${$("#exChip").hidden ? "" : '<span class="chip-ex">Example data</span>'}</h1>`;
+  m.innerHTML = title + (S.tab === "jobs" ? renderJobs() : S.tab === "leads" ? renderLeads() : S.tab === "customers" ? renderCustomers() : S.tab === "stock" ? renderStock() : renderOverview());
+  tabbable(m);
+  if(keep){ const q = document.getElementById(keep); if(q){ q.focus(); q.setSelectionRange(q.value.length, q.value.length); } }
+  if(S.sheet && $("#sheet").open) refreshSheet();
+}
+
+function tabbable(root){ root.querySelectorAll("[data-open]:not(button)").forEach(el => { el.tabIndex = 0; if(el.tagName !== "TR") el.setAttribute("role", "button"); }); }
+/* ---- menu ------------------------------------------------------------------ */
+function menu(open){
+  const d = $("#drawer"), s = $("#scrim");
+  d.classList.toggle("on", open); s.classList.toggle("on", open);
+  d.setAttribute("aria-hidden", String(!open)); $("#menuBtn").setAttribute("aria-expanded", String(open));
+  document.documentElement.classList.toggle("lock", open);
+  if(open){ const f = d.querySelector('.dnav[aria-current="page"]') || d.querySelector(".dnav"); if(f) setTimeout(() => f.focus({preventScroll:true}), 60); }
+  else if(document.activeElement && d.contains(document.activeElement)) $("#menuBtn").focus({preventScroll:true});
+}
+
+/* ---- detail sheets --------------------------------------------------------- */
+const sheet = $("#sheet"), sheetBody = $("#sheetBody");
+let stack = [];
+function openSheet(kind, id, opts){
+  opts = opts || {};
+  if(sheet.open && S.sheet && !opts.back && !(S.sheet.kind === kind && S.sheet.id === id)) stack.push(S.sheet);
+  if(!sheet.open && !opts.keep) stack = [];
+  S.sheet = { kind, id }; sheetBody.innerHTML = ""; refreshSheet(); modal(sheet); sheetBody.scrollTop = 0;
+}
+function closeSheet(){ stack = []; S.sheet = null; if(sheet.open) sheet.close(); }
+sheet.addEventListener("close", () => { S.sheet = null; if(!holdStack) stack = []; });
+let holdStack = false;
+function refreshSheet(){
+  const s = S.sheet; if(!s) return;
+  let html = "";
+  if(s.kind === "job") html = jobSheet(s.id);
+  else if(s.kind === "lead") html = leadSheet(s.id);
+  else if(s.kind === "cust") html = custSheet(s.id);
+  else if(s.kind === "search"){ if(!sheetBody.querySelector("#gq")) sheetBody.innerHTML = searchSheet(); searchResults(); return; }
+  if(html === null){ closeSheet(); return; }
+  /* keep anything typed but not saved yet across live refreshes */
+  const kept = [...sheetBody.querySelectorAll("[data-keep]")].filter(el => el.dataset.dirty === "1").map(el => [el.id, el.value]);
+  const foc = document.activeElement && sheetBody.contains(document.activeElement) ? document.activeElement.id : "";
+  const top = sheetBody.scrollTop; sheetBody.innerHTML = html; sheetBody.scrollTop = top;
+  tabbable(sheetBody);
+  kept.forEach(([id, v]) => { const el = document.getElementById(id); if(el){ el.value = v; el.dataset.dirty = "1"; } });
+  if(foc){ const el = document.getElementById(foc); if(el) el.focus({preventScroll:true}); }
+}
+const closeBtn = () => `<div class="row" style="flex-wrap:nowrap;gap:4px">${stack.length ? `<button class="ibtn ghost" type="button" data-act="sheet-back" aria-label="Back"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>` : ""}<button class="ibtn ghost" type="button" data-act="sheet-close" aria-label="Close">${icon("close")}</button></div>`;
+function msgFor(j, kind){
+  const hi = "Hi" + (first(j.customer) ? " " + first(j.customer) : "") + ", this is Detail Dungeon.";
+  const bal = balance(j), w = warrantyTo(j);
+  if(kind === "booked") return `${hi} Your ${j.car} is booked in for ${svc(j)}${j.film ? " (" + j.film + ")" : ""} on ${longDate(j.dateIn)}.${+j.price ? " Price: " + rs(j.price) + "." : ""}${+j.paid ? " Advance received: " + rs(j.paid) + "." : ""} See you then.`;
+  if(kind === "ready") return `${hi} Your ${j.car} is ready for pickup.${bal ? " Balance due: " + rs(bal) + "." : " It's fully paid."}${w ? " Your " + j.film + " warranty runs until " + longDate(w) + "." : ""} Thank you.`;
+  if(kind === "thanks") return `${hi} Thank you for bringing your ${j.car} to us.${w ? " Your " + j.film + " warranty runs until " + longDate(w) + ". Keep this message for your records." : ""} Any questions, just message us here.`;
+  if(kind === "receipt") return `${hi} Payment received for your ${j.car} (${svc(j)}). Total ${rs(j.price)}, paid ${rs(Math.min(+j.paid || 0, +j.price || 0))}${bal ? ", balance " + rs(bal) : ", fully paid"}. Thank you.`;
+  return `${hi} A quick reminder that ${rs(bal)} is still due for your ${j.car} (${svc(j)}). Thank you.`;
+}
+function jobSheet(id){
+  const j = S.jobs.find(x => x.id === id); if(!j) return null;
+  const bal = balance(j), w = warrantyTo(j), lead = S.leads.find(l => l.job === j.id);
+  const idx = JOB_ST.indexOf(j.status);
+  const msgs = j.phone ? [
+    j.status === "Booked" ? ["booked", "Booking confirmation"] : null,
+    j.status === "QC" ? ["ready", "Car is ready"] : null,
+    j.status === "Delivered" ? ["thanks", w ? "Thank you + warranty" : "Thank you"] : null,
+    bal && j.status !== "Booked" ? ["pay", "Payment reminder"] : null,
+    +j.paid ? ["receipt", "Payment receipt"] : null].filter(Boolean) : [];
+  const rows = [
+    ["Customer", esc(j.customer || "Not given")],
+    ["Phone", j.phone ? `<a href="${telLink(j.phone)}">${esc(j.phone)}</a>` : '<span class="sub">Not given</span>'],
+    ["Number plate", esc(j.plate || "") || '<span class="sub">Not given</span>'],
+    ["Car size", esc(CLASSES[j.cls] ? CLASSES[j.cls][0] : "")],
+    ["Work", esc(svc(j))],
+    ["Film", esc(j.film || "None")],
+    ["Products", jobLine(j) || '<span class="sub">None logged</span>'],
+    ["Source", esc(j.source || "") + (lead ? ` <button class="mini" type="button" data-open="lead:${esc(lead.id)}" style="margin-left:6px">Open lead</button>` : "")],
+    ["Date in", esc(longDate(j.dateIn))],
+    ["Ready by", j.dueDate ? esc(longDate(j.dueDate)) : '<span class="sub">Not set</span>'],
+    ["Delivered", j.dateOut ? esc(longDate(j.dateOut)) : '<span class="sub">Not yet</span>'],
+    ["Assigned to", esc(j.assigned || "") || '<span class="sub">Nobody yet</span>'],
+    ["Warranty", w ? `${esc(j.warrantyYears)} years, to ${esc(longDate(w))}` : (+j.warrantyYears ? `${esc(j.warrantyYears)} years from delivery` : '<span class="sub">None recorded</span>')],
+    ["Notes", j.notes ? esc(j.notes) : '<span class="sub">None</span>']];
+  const pays = Array.isArray(j.payments) ? j.payments : [];
+  return `
+    <div class="shh"><div><div class="meta"><span class="pill ${cls(j.status)}">${esc(j.status)}</span>${bal && j.status !== "Booked" ? `<span class="pill st-Due">${rs(bal)} due</span>` : (+j.price && !bal ? '<span class="pill st-Paid">Paid</span>' : "")}</div>
+      <h2 tabindex="-1" autofocus>${esc(j.car)}</h2><p>${esc([j.plate, j.customer].filter(Boolean).join(" · ") || svc(j))}</p></div>${closeBtn()}</div>
+    <div class="steps" role="group" aria-label="Status">${JOB_ST.map((s, i) => `<button type="button" class="${i < idx ? "done" : i === idx ? "cur" : ""}" data-act="job-step" data-id="${esc(j.id)}" data-v="${s}" ${dis()} aria-pressed="${i === idx}">${s}</button>`).join("")}</div>
+    <div class="acts">
+      ${j.phone ? `<a class="btn wa" href="${waLink(j.phone, "Hi" + (first(j.customer) ? " " + first(j.customer) : "") + ", this is Detail Dungeon.")}" target="_blank" rel="noopener">${icon("chat")}WhatsApp</a><a class="btn" href="${telLink(j.phone)}">${icon("phone")}Call</a>` : `<span class="sub">Add a phone number to message or call the customer.</span>`}
+    </div>
+    ${msgs.length ? `<div class="lab" style="margin-bottom:8px">Send on WhatsApp</div><div class="acts">${msgs.map(m => `<a class="mini" href="${waLink(j.phone, msgFor(j, m[0]))}" target="_blank" rel="noopener">${icon("chat")}${m[1]}</a>`).join("")}</div>` : ""}
+    <div class="money"><div><span class="lab">Price</span><b>${rs(j.price || 0)}</b></div><div><span class="lab">Paid</span><b>${rs(Math.min(+j.paid || 0, +j.price || 0))}</b></div><div class="${bal ? "due" : ""}"><span class="lab">Balance</span><b>${rs(bal)}</b></div></div>
+    ${pays.length ? `<div class="hist">${pays.map(p => `<div><span>${esc(shortDate(p.date))} · ${esc(p.method || "")}</span><span class="num">${rs(p.amount)}</span></div>`).join("")}</div>` : ""}
+    <dl class="dl">${rows.map(r => `<dt>${r[0]}</dt><dd>${r[1]}</dd>`).join("")}</dl>
+    <div class="sfoot">
+      <button class="btn danger" type="button" data-act="job-del" data-id="${esc(j.id)}" ${dis()} aria-label="Delete job">${icon("trash")}</button>
+      <div class="sp"></div>
+      <button class="btn" type="button" data-act="job-edit" data-id="${esc(j.id)}" ${dis()}>${icon("edit")}Edit</button>
+      ${bal ? `<button class="btn red" type="button" data-act="job-pay" data-id="${esc(j.id)}" ${dis()}>${icon("coin")}Record payment</button>` : ""}
+    </div>`;
+}
+function leadSheet(id){
+  const l = S.leads.find(x => x.id === id); if(!l) return null;
+  const job = l.job ? S.jobs.find(j => j.id === l.job) : null;
+  const hello = "Hi" + (first(l.name) ? " " + first(l.name) : "") + ", this is Detail Dungeon. Thanks for your enquiry about your " + (l.car || "car") + ".";
+  return `
+    <div class="shh"><div><div class="meta"><span class="src">${esc(l.source)}</span><span class="pill ${cls(l.status)}">${esc(l.status)}</span>${followDue(l) ? '<span class="pill st-Due">Follow-up due</span>' : ""}</div>
+      <h2 tabindex="-1" autofocus>${esc(l.car || "Car not given")}</h2><p>${esc([l.name, l.phone].filter(Boolean).join(" · ") || "No contact details yet")}</p></div>${closeBtn()}</div>
+    <div class="steps" role="group" aria-label="Lead status">${LEAD_ST.map(s => `<button type="button" class="${s === l.status ? "cur" : ""}" data-act="lead-step" data-id="${esc(l.id)}" data-v="${s}" ${dis()} aria-pressed="${s === l.status}">${s}</button>`).join("")}</div>
+    <div class="acts">${l.phone ? `<a class="btn wa" href="${waLink(l.phone, hello)}" target="_blank" rel="noopener">${icon("chat")}WhatsApp</a><a class="btn" href="${telLink(l.phone)}">${icon("phone")}Call</a>` : '<span class="sub">No phone number. Reply where they asked (Instagram or WhatsApp), or add their number with Edit.</span>'}</div>
+    <dl class="dl">
+      <dt>What they want</dt><dd>${esc(l.want || "") || '<span class="sub">Not given</span>'}</dd>
+      <dt>Received</dt><dd>${esc(longDate(l.ts))}, ${esc(ago(l.ts))}</dd>
+      <dt>Job</dt><dd>${job ? `<button class="mini" type="button" data-open="job:${esc(job.id)}">${esc(job.car)} · ${esc(job.status)}</button>` : '<span class="sub">Not booked yet</span>'}</dd>
+    </dl>
+    <div class="fg" style="margin-bottom:14px">
+      <label class="f">Follow up on<input type="date" id="l-fu" data-keep value="${esc(l.followUp || "")}" ${dis()}></label>
+      <label class="f full">Notes<textarea id="l-notes" data-keep placeholder="What was said, what they asked for, the price you quoted" ${dis()}>${esc(l.notes || "")}</textarea></label>
+      <div class="full" style="display:flex;justify-content:flex-end;margin-top:-4px"><button class="mini" type="button" data-act="lead-save" data-id="${esc(l.id)}" ${dis()}>Save notes</button></div>
+    </div>
+    <div class="sfoot">
+      <button class="btn danger" type="button" data-act="lead-del" data-id="${esc(l.id)}" ${dis()} aria-label="Delete lead">${icon("trash")}</button>
+      <div class="sp"></div>
+      <button class="btn" type="button" data-act="lead-edit" data-id="${esc(l.id)}" ${dis()}>${icon("edit")}Edit</button>
+      ${!l.job && l.status !== "Lost" ? `<button class="btn red" type="button" data-act="lead-job" data-id="${esc(l.id)}" ${dis()}>Make it a job</button>` : ""}
+    </div>`;
+}
+function custSheet(key){
+  const c = customers().find(x => x.key === key); if(!c) return null;
+  const today = todayISO();
+  return `
+    <div class="shh"><div><div class="meta">${c.due > 0 ? `<span class="pill st-Due">${rs(c.due)} due</span>` : '<span class="pill st-Paid">Nothing due</span>'}${c.warranty && c.warranty >= today ? `<span class="pill st-Paid">Warranty to ${esc(longDate(c.warranty))}</span>` : ""}</div>
+      <h2 tabindex="-1" autofocus>${esc(c.name || "Name not given")}</h2><p>${esc(c.phone || "No phone")}</p></div>${closeBtn()}</div>
+    <div class="acts">${c.phone ? `<a class="btn wa" href="${waLink(c.phone, "Hi" + (first(c.name) ? " " + first(c.name) : "") + ", this is Detail Dungeon.")}" target="_blank" rel="noopener">${icon("chat")}WhatsApp</a><a class="btn" href="${telLink(c.phone)}">${icon("phone")}Call</a>` : ""}</div>
+    <div class="money"><div><span class="lab">Spent</span><b>${rs(c.spent)}</b></div><div><span class="lab">Jobs</span><b>${c.jobs.length}</b></div><div class="${c.due > 0 ? "due" : ""}"><span class="lab">Due</span><b>${rs(Math.max(0, c.due))}</b></div></div>
+    <div class="lab" style="margin-bottom:8px">Cars</div><p style="margin:0 0 14px">${esc(c.cars.join(", "))}</p>
+    <div class="lab" style="margin-bottom:8px">Jobs</div>
+    <div class="list" style="margin-bottom:20px">${c.jobs.slice().sort((a, b) => cmp((b.dateIn || ""), a.dateIn || "")).map(j => `
+      <div class="li" data-open="job:${esc(j.id)}"><span class="when">${shortDate(j.dateIn)}</span><div class="main"><b>${esc(j.car)}</b><span>${esc(svc(j))}${warrantyTo(j) ? " · warranty to " + esc(shortDate(warrantyTo(j))) + " " + warrantyTo(j).slice(0,4) : ""}</span></div><span class="pill ${cls(j.status)}">${esc(j.status)}</span></div>`).join("")}</div>`;
+}
+function searchSheet(){
+  return `<div class="shh"><div style="flex:1"><h2>Search</h2><p>Car, number plate, customer name or phone.</p></div>${closeBtn()}</div>
+    <input class="search" id="gq" type="search" placeholder="Start typing" autocomplete="off" style="width:100%">
+    <div class="res" id="gres"></div>`;
+}
+function searchResults(){
+  const box = $("#gres"), q = ($("#gq") || {}).value || ""; if(!box) return;
+  const t = q.trim().toLowerCase();
+  if(t.length < 2){ box.innerHTML = '<div class="sub">Type at least two letters or digits.</div>'; return; }
+  const digits = t.replace(/\D/g, "");
+  const hit = (arr) => arr.join(" ").toLowerCase().includes(t) || (digits.length >= 4 && arr.join(" ").replace(/\D/g, "").includes(digits));
+  const jobs = S.jobs.filter(j => hit([j.car, j.plate, j.customer, j.phone, j.film, j.notes])).slice(0, 8);
+  const leads = S.leads.filter(l => hit([l.car, l.name, l.phone, l.want, l.notes])).slice(0, 8);
+  const custs = customers().filter(c => hit([c.name, c.phone, c.cars.join(" ")])).slice(0, 6);
+  box.innerHTML = (!jobs.length && !leads.length && !custs.length) ? '<div class="empty">Nothing found.</div>' :
+    (custs.length ? `<h4>Customers</h4>${custs.map(c => `<div class="li" data-open="cust:${esc(c.key)}">${icon("customers")}<div class="main"><b>${esc(c.name || "Name not given")}</b><span>${esc([c.phone, c.cars.join(", ")].filter(Boolean).join(" · "))}</span></div><span class="amt">${rs(c.spent)}</span></div>`).join("")}` : "") +
+    (jobs.length ? `<h4>Jobs</h4>${jobs.map(j => `<div class="li" data-open="job:${esc(j.id)}"><span class="when">${shortDate(j.dateIn)}</span><div class="main"><b>${esc(j.car)}${j.plate ? " · " + esc(j.plate) : ""}</b><span>${esc([svc(j), j.customer].filter(Boolean).join(" · "))}</span></div><span class="pill ${cls(j.status)}">${esc(j.status)}</span></div>`).join("")}` : "") +
+    (leads.length ? `<h4>Leads</h4>${leads.map(l => `<div class="li" data-open="lead:${esc(l.id)}"><span class="src">${esc(l.source)}</span><div class="main"><b>${esc(l.car || "Car not given")}</b><span>${esc([l.name, l.phone, l.want].filter(Boolean).join(" · "))}</span></div><span class="pill ${cls(l.status)}">${esc(l.status)}</span></div>`).join("")}` : "");
+  tabbable(box);
+}
+
+/* ---- confirm ---------------------------------------------------------------- */
+const confirmDlg = $("#confirm");
+function confirmBox(title, text, yes, onYes){
+  $("#confirmBody").innerHTML = `<h2 style="margin:0;font-size:18px">${esc(title)}</h2><p>${esc(text)}</p><div class="row"><button class="btn" type="button" data-act="confirm-no">Cancel</button><button class="btn red" type="button" data-act="confirm-yes">${esc(yes)}</button></div>`;
+  confirmBox.cb = onYes; modal(confirmDlg);
 }
 
 /* ---- forms --------------------------------------------------------------- */
 const dlg = $("#dlg"), form = $("#dlgForm");
+let formReturn = null;
+dlg.addEventListener("close", () => { const r = formReturn; formReturn = null; if(r && (r.kind !== "job" || S.jobs.some(j => j.id === r.id)) && (r.kind !== "lead" || S.leads.some(l => l.id === r.id))) openSheet(r.kind, r.id, { keep: true, back: true }); else stack = []; });
 // phones: no auto-focus, so the keyboard and the page do not jump when the form opens
 const FINE = window.matchMedia && matchMedia("(hover: hover) and (pointer: fine)").matches;
 function opt(list, v){ return list.map(x => { const val = Array.isArray(x) ? x[0] : x, lab = Array.isArray(x) ? x[1] : x; return `<option value="${esc(val)}" ${String(val) === String(v) ? "selected" : ""}>${esc(lab)}</option>`; }).join(""); }
@@ -525,120 +935,319 @@ function pline(p){
   return `<div class="pline"><select name="pp" aria-label="Product">${'<option value="">Pick film or product</option>' + S.stock.map(s => `<option value="${esc(s.id)}" ${p && p.p === s.id ? "selected" : ""}>${esc(s.name)} (${esc(s.unit)})</option>`).join("")}</select>
     <input name="pq" type="number" min="0" step="0.1" inputmode="decimal" placeholder="Qty" value="${p ? esc(p.qty) : ""}" aria-label="Quantity"><button class="x" type="button" data-act="rm-line" aria-label="Remove line">&times;</button></div>`;
 }
-function openJob(pre){
+function openForm(html, kind, data){
+  form.innerHTML = html; form.dataset.kind = kind; Object.keys(form.dataset).forEach(k => { if(k !== "kind") delete form.dataset[k]; });
+  Object.entries(data || {}).forEach(([k, v]) => form.dataset[k] = v == null ? "" : v);
+  formReturn = S.sheet && S.sheet.kind !== "search" ? { ...S.sheet } : null;
+  if(sheet.open){ holdStack = true; sheet.close(); holdStack = false; }
+  modal(dlg); form.scrollTop = 0;
+  const f = form.querySelector("[data-autofocus]"); if(FINE && f) setTimeout(() => f.focus(), 30);
+}
+function openJob(pre, editId){
   pre = pre || {};
-  form.innerHTML = `
-    <h2 id="dlgTitle">New job</h2><p class="hint">Log the car when it's booked or arrives. Film and products come off stock automatically.</p>
+  const assignees = [...new Set(S.jobs.map(j => (j.assigned || "").trim()).filter(Boolean))];
+  openForm(`
+    <h2 id="dlgTitle" tabindex="-1" autofocus>${editId ? "Edit job" : "New job"}</h2><p class="hint">${editId ? "Change anything and save. Stock updates itself." : "Log the car when it's booked or arrives. Film and products come off stock when the car is in the bay."}</p>
     <div class="fg">
-      <label class="f full">Car<input name="car" id="f-car" required placeholder="e.g. Toyota Land Cruiser 300" value="${esc(pre.car || "")}"></label>
+      <div class="fsec">Car and customer</div>
+      <label class="f full">Car<input name="car" id="f-car" required data-autofocus placeholder="e.g. Toyota Land Cruiser 300" value="${esc(pre.car || "")}" autocomplete="off"></label>
+      <label class="f">Number plate<input name="plate" placeholder="e.g. LEA-1234" value="${esc(pre.plate || "")}" autocomplete="off" autocapitalize="characters"></label>
       <label class="f">Size class<select name="cls" id="f-cls">${opt(CLASSES.map((c, i) => [i, c[0]]), pre.cls != null ? pre.cls : 4)}</select></label>
+      <label class="f">Customer name<input name="customer" placeholder="Optional" value="${esc(pre.customer || "")}" autocomplete="off"></label>
+      <label class="f">Phone<input name="phone" type="tel" inputmode="tel" placeholder="03xx xxxxxxx" value="${esc(pre.phone || "")}" autocomplete="off"></label>
+      <div class="fsec">Work</div>
       <label class="f">Service<select name="service" id="f-service">${opt(SERVICES, pre.service || "PPF")}</select></label>
       <label class="f">Coverage<select name="coverage" id="f-coverage">${opt([["", "Not PPF"], ...COVERAGE.map(c => [c, c]), ["Full body", "Full body (colour)"]], pre.coverage != null ? pre.coverage : "Platinum")}</select></label>
       <label class="f">Film<select name="film" id="f-film">${opt([["", "No film"], ...FILMS.map(f => [f.name, f.name])], pre.film != null ? pre.film : "OneFilm DefenX")}</select></label>
-      <label class="f">Source<select name="source" id="f-source">${opt(SOURCES, pre.source || "Walk-in")}</select></label>
+      <label class="f">Warranty (years)<input name="warrantyYears" id="f-war" type="number" min="0" max="15" step="1" inputmode="numeric" placeholder="None" value="${esc(pre.warrantyYears != null && pre.warrantyYears !== "" ? pre.warrantyYears : "")}"></label>
       <label class="f">Status<select name="status" id="f-status">${opt(JOB_ST, pre.status || "Booked")}</select></label>
+      <label class="f">Source<select name="source">${opt(SOURCES, pre.source || "Walk-in")}</select></label>
       <label class="f">Date in<input name="dateIn" id="f-date" type="date" value="${esc(pre.dateIn || todayISO())}"></label>
+      <label class="f">Ready by<input name="dueDate" type="date" value="${esc(pre.dueDate || "")}"></label>
+      <label class="f">Assigned to<input name="assigned" list="f-team" placeholder="Who's on it" value="${esc(pre.assigned || "")}" autocomplete="off"><datalist id="f-team">${assignees.map(a => `<option value="${esc(a)}">`).join("")}</datalist></label>
+      <label class="f">Bay<input name="bay" placeholder="e.g. Film bay" value="${esc(pre.bay || "")}" autocomplete="off"></label>
+      <div class="fsec">Money</div>
       <label class="f">Price (Rs)<input name="price" id="f-price" type="number" min="0" step="500" inputmode="numeric" value="${esc(pre.price || "")}"><span class="suggest" id="f-sug"></span></label>
-      <div class="full"><span class="lab" style="display:block;margin-bottom:8px">Film and products used</span><div class="plines" id="plines">${(pre.products && pre.products.length ? pre.products : [null]).map(pline).join("")}</div>
+      ${editId ? `<label class="f">Paid so far (Rs)<input name="paid" type="number" min="0" step="500" inputmode="numeric" value="${esc(pre.paid || "")}"><span class="suggest">Use Record payment to log new payments</span></label>` :
+      `<label class="f">Advance paid (Rs)<input name="paid" type="number" min="0" step="500" inputmode="numeric" placeholder="0" value=""></label>
+      <label class="f">Paid by<select name="payMethod">${opt(PAY_METHODS, "Cash")}</select></label>`}
+      <div class="fsec">Film and products used</div>
+      <div class="full"><div class="plines" id="plines">${(pre.products && pre.products.length ? pre.products : [null]).map(pline).join("")}</div>
         <button class="mini" type="button" data-act="add-line" style="margin-top:8px">Add another</button></div>
-      <label class="f full">Notes<textarea name="notes" id="f-notes" placeholder="Anything the next person needs to know">${esc(pre.notes || "")}</textarea></label>
+      <label class="f full">Notes<textarea name="notes" placeholder="Anything the next person needs to know">${esc(pre.notes || "")}</textarea></label>
     </div>
-    <div class="dact"><button class="btn" type="button" data-act="close">Cancel</button><button class="btn red" type="submit">Save job</button></div>`;
-  form.dataset.kind = "job"; form.dataset.lead = pre.leadId || "";
-  syncPrice(); dlg.showModal(); if(FINE) setTimeout(() => $("#f-car").focus(), 30);
+    <div class="dact"><button class="btn" type="button" data-act="close">Cancel</button><button class="btn red" type="submit">${editId ? "Save changes" : "Save job"}</button></div>`,
+    "job", { lead: pre.leadId || "", edit: editId || "" });
+  syncPrice(!editId);
 }
-function syncPrice(){
-  const sv = $("#f-service"), c = $("#f-cls"), cov = $("#f-coverage"), fl = $("#f-film"), sug = $("#f-sug"), pr = $("#f-price");
+function syncPrice(isNew){
+  const sv = $("#f-service"), c = $("#f-cls"), cov = $("#f-coverage"), fl = $("#f-film"), sug = $("#f-sug"), pr = $("#f-price"), war = $("#f-war");
   if(!sv) return;
   const p = suggestPrice(sv.value, cov.value, fl.value, +c.value);
   sug.textContent = p ? "Rate card: " + rs(p) : (sv.value === "PPF" ? "Basic and Gold are priced on inspection" : "Priced per car");
   if(p && (!pr.value || pr.dataset.auto === "1")){ pr.value = p; pr.dataset.auto = "1"; }
-  /* the film line follows the film picked */
-  const f = FILMS.find(x => x.name === fl.value), first = form.querySelector('select[name="pp"]');
-  if(f && first && !first.value) first.value = f.stock;
+  /* the first product line follows the film until someone picks a product by hand */
+  const f = FILMS.find(x => x.name === fl.value), firstLine = form.querySelector('select[name="pp"]');
+  if(firstLine && (!firstLine.value || firstLine.dataset.auto === "1")){ firstLine.value = f ? f.stock : ""; firstLine.dataset.auto = "1"; }
+  if(war && (war.dataset.auto === "1" || (isNew && !war.value))){ war.value = f && f.warranty ? f.warranty : ""; war.dataset.auto = "1"; }
 }
-function openLead(){
-  form.innerHTML = `
-    <h2 id="dlgTitle">Add lead</h2><p class="hint">For walk-ins, calls and Instagram DMs until ManyChat is connected.</p>
+function openLead(pre, editId){
+  pre = pre || {};
+  openForm(`
+    <h2 id="dlgTitle" tabindex="-1" autofocus>${editId ? "Edit lead" : "Add lead"}</h2><p class="hint">${editId ? "Update their details." : "For walk-ins, calls and Instagram DMs until ManyChat is connected."}</p>
     <div class="fg">
-      <label class="f">Source<select name="source">${opt(SOURCES, "Instagram")}</select></label>
-      <label class="f">Car<input name="car" required placeholder="e.g. Honda Civic"></label>
-      <label class="f">Name<input name="name" autocomplete="off" placeholder="Optional"></label>
-      <label class="f">Phone<input name="phone" type="tel" inputmode="tel" placeholder="03xx xxxxxxx"></label>
-      <label class="f full">What they want<textarea name="want" placeholder="e.g. PPF price for the front end"></textarea></label>
+      <label class="f">Source<select name="source">${opt(SOURCES, pre.source || "Instagram")}</select></label>
+      <label class="f">Car<input name="car" required data-autofocus placeholder="e.g. Honda Civic" value="${esc(pre.car || "")}" autocomplete="off"></label>
+      <label class="f">Name<input name="name" autocomplete="off" placeholder="Optional" value="${esc(pre.name || "")}"></label>
+      <label class="f">Phone<input name="phone" type="tel" inputmode="tel" placeholder="03xx xxxxxxx" value="${esc(pre.phone || "")}" autocomplete="off"></label>
+      <label class="f full">What they want<textarea name="want" placeholder="e.g. PPF price for the front end">${esc(pre.want || "")}</textarea></label>
+      <label class="f">Follow up on<input name="followUp" type="date" value="${esc(pre.followUp || "")}"></label>
     </div>
-    <div class="dact"><button class="btn" type="button" data-act="close">Cancel</button><button class="btn red" type="submit">Save lead</button></div>`;
-  form.dataset.kind = "lead"; dlg.showModal(); if(FINE) setTimeout(() => form.querySelector('[name="car"]').focus(), 30);
+    <div class="dact"><button class="btn" type="button" data-act="close">Cancel</button><button class="btn red" type="submit">${editId ? "Save changes" : "Save lead"}</button></div>`,
+    "lead", { edit: editId || "" });
 }
-form.addEventListener("input", e => { if(e.target.id === "f-price") e.target.dataset.auto = "0"; if(["f-service","f-cls","f-coverage","f-film"].includes(e.target.id)) syncPrice(); });
-form.addEventListener("change", e => { if(["f-service","f-cls","f-coverage","f-film"].includes(e.target.id)) syncPrice(); });
+function openPayment(id){
+  const j = S.jobs.find(x => x.id === id); if(!j) return;
+  openForm(`
+    <h2 id="dlgTitle" tabindex="-1" autofocus>Record payment</h2><p class="hint">${esc(j.car)}${j.customer ? " · " + esc(j.customer) : ""}. Balance ${rs(balance(j))}.</p>
+    <div class="fg">
+      <label class="f">Amount (Rs)<input name="amount" type="number" min="1" step="500" inputmode="numeric" required data-autofocus value="${balance(j)}"></label>
+      <label class="f">Paid by<select name="method">${opt(PAY_METHODS, j.payMethod || "Cash")}</select></label>
+      <label class="f">Date<input name="date" type="date" value="${todayISO()}"></label>
+    </div>
+    <div class="dact"><button class="btn" type="button" data-act="close">Cancel</button><button class="btn red" type="submit">Save payment</button></div>`,
+    "pay", { id });
+}
+function openReceive(id){
+  openForm(`
+    <h2 id="dlgTitle" tabindex="-1" autofocus>Receive stock</h2><p class="hint">Adds to what's on the shelf. Use the item's edit button to correct a count instead.</p>
+    <div class="fg">
+      <label class="f full">Item<select name="item" required>${opt([["", "Pick an item"], ...S.stock.map(s => [s.id, s.name + " (" + s.unit + ")"])], id || "")}</select></label>
+      <label class="f">Quantity received<input name="qty" type="number" min="0.1" step="0.1" inputmode="decimal" required data-autofocus placeholder="e.g. 50"></label>
+      <label class="f">Note<input name="note" placeholder="Supplier, invoice" autocomplete="off"></label>
+    </div>
+    <div class="dact"><button class="btn" type="button" data-act="close">Cancel</button><button class="btn red" type="submit">Add to stock</button></div>`,
+    "receive");
+}
+function openItem(id){
+  const s = id ? stockBy(id) : null, pre = s || { kind:"Film", unit:"ft" };
+  openForm(`
+    <h2 id="dlgTitle" tabindex="-1" autofocus>${s ? "Edit item" : "Add item"}</h2><p class="hint">${s ? "Correct the opening count or the reorder level here." : "A film roll, chemical or coating kit to track."}</p>
+    <div class="fg">
+      <label class="f full">Name<input name="name" required data-autofocus value="${esc(pre.name || "")}" placeholder="e.g. OneFilm DefenX" autocomplete="off"></label>
+      <label class="f">Type<select name="kind">${opt(KINDS, pre.kind || "Film")}</select></label>
+      <label class="f">Unit<select name="unit">${opt(["ft","L","kit","pcs"], pre.unit || "ft")}</select></label>
+      <label class="f">Opening count<input name="opening" type="number" min="0" step="0.1" inputmode="decimal" value="${esc(pre.opening != null ? pre.opening : "")}"></label>
+      <label class="f">Warn me at<input name="reorder" type="number" min="0" step="0.1" inputmode="decimal" value="${esc(pre.reorder != null ? pre.reorder : "")}"></label>
+      <label class="f full">Note<input name="note" value="${esc(pre.note || "")}" placeholder="e.g. 60 in roll, 7 mil" autocomplete="off"></label>
+    </div>
+    <div class="dact">${s ? `<button class="btn danger left" type="button" data-act="item-del" data-id="${esc(s.id)}" aria-label="Delete item">${icon("trash")}</button>` : ""}<button class="btn" type="button" data-act="close">Cancel</button><button class="btn red" type="submit">${s ? "Save changes" : "Add item"}</button></div>`,
+    "item", { edit: id || "" });
+}
+form.addEventListener("input", e => { if(e.target.name === "pp") e.target.dataset.auto = "0"; if(e.target.id === "f-price") e.target.dataset.auto = "0"; if(e.target.id === "f-war") e.target.dataset.auto = "0"; if(["f-service","f-cls","f-coverage","f-film"].includes(e.target.id)) syncPrice(false); });
+form.addEventListener("change", e => { if(["f-service","f-cls","f-coverage","f-film"].includes(e.target.id)) syncPrice(false); });
+function invalid(el, msg){ el.setCustomValidity(msg); el.reportValidity(); el.addEventListener("input", () => el.setCustomValidity(""), { once: true }); return false; }
 form.addEventListener("submit", async e => {
   e.preventDefault(); if(!S.db) return;
-  const fd = new FormData(form), kind = form.dataset.kind;
+  const fd = new FormData(form), kind = form.dataset.kind, edit = form.dataset.edit;
   const btn = form.querySelector('[type="submit"]'); btn.disabled = true;
+  const done = (t) => { dlg.close(); toast(t); };
   try{
     if(kind === "job"){
+      const car = String(fd.get("car") || "").trim(); if(!car){ btn.disabled = false; return invalid(form.elements.car, "Add the car"); }
       const pp = fd.getAll("pp"), pq = fd.getAll("pq");
-      const products = pp.map((p, i) => ({ p, qty: +pq[i] || 0 })).filter(x => x.p && x.qty > 0);
+      const products = pp.map((p, i) => ({ p, qty: Math.max(0, +pq[i] || 0) })).filter(x => x.p && x.qty > 0);
       const status = fd.get("status");
-      const job = { car: String(fd.get("car")).trim(), cls: +fd.get("cls"), service: fd.get("service"), coverage: fd.get("coverage"),
-        film: fd.get("film"), products, price: +fd.get("price") || 0, status, source: fd.get("source"), dateIn: fd.get("dateIn") || todayISO(),
-        dateOut: status === "Delivered" ? todayISO() : "", notes: String(fd.get("notes") || "").trim(), created: new Date().toISOString() };
-      if(!job.car){ btn.disabled = false; return; }
-      const ref = await S.db.collection("jobs").add(job);
-      if(form.dataset.lead){ await S.db.doc("leads/" + form.dataset.lead).update({ status: "Booked", job: ref.id }); }
-      toast("Job saved: " + job.car);
-    } else {
-      const lead = { source: fd.get("source"), car: String(fd.get("car")).trim(), name: String(fd.get("name") || "").trim(),
-        phone: String(fd.get("phone") || "").replace(/[^\d+ ]/g, "").trim(), want: String(fd.get("want") || "").trim(), status: "New", ts: new Date().toISOString(), job: "" };
-      if(!lead.car){ btn.disabled = false; return; }
-      await S.db.collection("leads").add(lead);
-      toast("Lead saved");
+      const price = Math.max(0, +fd.get("price") || 0), paidIn = Math.max(0, +fd.get("paid") || 0);
+      const job = { car, plate: String(fd.get("plate") || "").trim().toUpperCase(), cls: +fd.get("cls"), customer: String(fd.get("customer") || "").trim(), phone: String(fd.get("phone") || "").replace(/[^\d+ ]/g, "").trim(),
+        service: fd.get("service"), coverage: fd.get("service") === "PPF" || fd.get("service") === "Colour change" ? fd.get("coverage") : "", film: fd.get("film"), warrantyYears: fd.get("warrantyYears") === "" ? "" : Math.max(0, +fd.get("warrantyYears") || 0),
+        products, price, status, source: fd.get("source"), dateIn: fd.get("dateIn") || todayISO(), dueDate: fd.get("dueDate") || "",
+        assigned: String(fd.get("assigned") || "").trim(), bay: String(fd.get("bay") || "").trim(), notes: String(fd.get("notes") || "").trim() };
+      if(edit){
+        const old = S.jobs.find(x => x.id === edit) || {};
+        job.paid = paidIn;
+        job.dateOut = status === "Delivered" ? (old.dateOut || todayISO()) : "";
+        await S.db.doc("jobs/" + edit).update(job);
+        done("Saved: " + car);
+      } else {
+        job.paid = paidIn; job.payMethod = paidIn ? fd.get("payMethod") : "";
+        job.payments = paidIn ? [{ amount: paidIn, method: fd.get("payMethod"), date: todayISO() }] : [];
+        job.dateOut = status === "Delivered" ? todayISO() : ""; job.created = new Date().toISOString();
+        const ref = await S.db.collection("jobs").add(job);
+        if(form.dataset.lead){ await S.db.doc("leads/" + form.dataset.lead).update({ status: "Booked", job: ref.id }); }
+        done("Job saved: " + car);
+      }
+    } else if(kind === "lead"){
+      const car = String(fd.get("car") || "").trim(); if(!car){ btn.disabled = false; return invalid(form.elements.car, "Add the car, even roughly"); }
+      const lead = { source: fd.get("source"), car, name: String(fd.get("name") || "").trim(),
+        phone: String(fd.get("phone") || "").replace(/[^\d+ ]/g, "").trim(), want: String(fd.get("want") || "").trim(), followUp: fd.get("followUp") || "" };
+      if(edit){ await S.db.doc("leads/" + edit).update(lead); done("Lead updated"); }
+      else { Object.assign(lead, { status: "New", ts: new Date().toISOString(), job: "", notes: "" }); await S.db.collection("leads").add(lead); done("Lead saved"); }
+    } else if(kind === "pay"){
+      const j = S.jobs.find(x => x.id === form.dataset.id); if(!j){ dlg.close(); return; }
+      const amount = Math.max(0, +fd.get("amount") || 0); if(!amount){ btn.disabled = false; return invalid(form.elements.amount, "Enter the amount received"); }
+      const payments = (Array.isArray(j.payments) ? j.payments : []).concat([{ amount, method: fd.get("method"), date: fd.get("date") || todayISO() }]);
+      await S.db.doc("jobs/" + j.id).update({ paid: (+j.paid || 0) + amount, payMethod: fd.get("method"), payments });
+      done(rs(amount) + " recorded");
+    } else if(kind === "receive"){
+      const s = stockBy(fd.get("item")); if(!s){ btn.disabled = false; return invalid(form.elements.item, "Pick the item that arrived"); }
+      const qty = Math.max(0, +fd.get("qty") || 0); if(!qty){ btn.disabled = false; return invalid(form.elements.qty, "Enter how much arrived"); }
+      const log = (Array.isArray(s.log) ? s.log : []).concat([{ qty, date: todayISO(), note: String(fd.get("note") || "").trim() }]).slice(-50);
+      await S.db.doc("stock/" + s.id).update({ received: (+s.received || 0) + qty, log });
+      done(fmt1(qty) + " " + s.unit + " added to " + s.name);
+    } else if(kind === "item"){
+      const name = String(fd.get("name") || "").trim(); if(!name){ btn.disabled = false; return invalid(form.elements.name, "Name the item"); }
+      const item = { name, kind: fd.get("kind"), unit: fd.get("unit"), opening: Math.max(0, +fd.get("opening") || 0), reorder: Math.max(0, +fd.get("reorder") || 0), note: String(fd.get("note") || "").trim() };
+      if(edit){ await S.db.doc("stock/" + edit).update(item); done("Saved: " + name); }
+      else { item.received = 0; await S.db.collection("stock").add(item); done("Added: " + name); }
     }
-    dlg.close();
   } catch(err){ btn.disabled = false; writeFailed(err); }
 });
 
 /* ---- actions ------------------------------------------------------------- */
-function toast(t){ const el = $("#toast"); el.textContent = t; el.classList.add("on"); clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove("on"), 2200); }
+/* open dialogs sit in the browser's top layer, so the toast travels into whichever one is on top */
+function raiseToast(){ const el = $("#toast"), top = [...document.querySelectorAll("dialog[open]")].pop() || document.body; if(el.parentNode !== top) top.appendChild(el); }
+function modal(d){ if(!d.open) d.showModal(); raiseToast(); }
+document.querySelectorAll("dialog").forEach(d => d.addEventListener("close", () => setTimeout(raiseToast, 0)));
+function toast(t, undo){
+  const el = $("#toast"), u = $("#toastUndo"); $("#toastText").textContent = t; raiseToast();
+  u.hidden = !undo; toast.undo = undo || null;
+  el.classList.add("on"); clearTimeout(toast.t); toast.t = setTimeout(() => { el.classList.remove("on"); toast.undo = null; }, undo ? 6000 : 2400);
+}
+$("#toastUndo").addEventListener("click", async () => { const f = toast.undo; toast.undo = null; $("#toast").classList.remove("on"); if(f){ try{ await f(); toast("Undone"); } catch(err){ writeFailed(err); } } });
 function writeFailed(err){
-  if(err && err.code === "invalid_argument"){ S.canWrite = false; render(); toast("You can view the desk but not change it"); }
+  if(err && (err.code === "invalid_argument" || err.code === "permission_denied" || err.code === "not_granted")){ S.canWrite = false; render(); toast("You can view the desk but not change it"); }
   else if(err && err.code === "quota_exceeded") toast("The desk is full. Delete old jobs to add more.");
-  else toast("Couldn't save. Try again in a moment.");
+  else toast("Couldn't save. Check the connection and try again.");
 }
 async function setJobStatus(id, status){
   const j = S.jobs.find(x => x.id === id); if(!j || j.status === status) return;
-  try{ await S.db.doc("jobs/" + id).update({ status, dateOut: status === "Delivered" ? todayISO() : "" }); toast(j.car + ": " + status); }
-  catch(err){ writeFailed(err); render(); }
+  const before = { status: j.status, dateOut: j.dateOut || "" };
+  try{
+    await S.db.doc("jobs/" + id).update({ status, dateOut: status === "Delivered" ? (j.dateOut || todayISO()) : "" });
+    toast(j.car + ": " + status, () => S.db.doc("jobs/" + id).update(before));
+  } catch(err){ writeFailed(err); render(); }
+}
+async function setLead(id, patch, msg){
+  try{ await S.db.doc("leads/" + id).update(patch); if(msg) toast(msg); } catch(err){ writeFailed(err); render(); }
+}
+async function delDoc(coll, id, label, extra){
+  const doc = S[coll].find(x => x.id === id); if(!doc) return;
+  const data = Object.assign({}, doc); delete data.id;
+  confirmBox("Delete " + label + "?", "This removes it for everyone. You can undo for a few seconds.", "Delete", async () => {
+    try{
+      await S.db.doc(coll + "/" + id).delete();
+      if(extra) await extra.after();
+      closeSheet(); if(dlg.open) dlg.close();
+      toast(label.charAt(0).toUpperCase() + label.slice(1) + " deleted", async () => { await S.db.doc(coll + "/" + id).set(data); if(extra && extra.undo) await extra.undo(); });
+    } catch(err){ writeFailed(err); }
+  });
+}
+function csv(rows){ return rows.map(r => r.map(v => { const s = String(v == null ? "" : v); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; }).join(",")).join("\n"); }
+async function saveFile(name, text){
+  const blob = new Blob(["﻿" + text], { type: "text/csv;charset=utf-8" });
+  try{ const c = window.claude, dl = c && c.use ? await c.use("downloads") : null; if(dl){ await dl.save({ filename: name, data: blob }); return; } }
+  catch(err){ if(err && err.code === "declined") return; }
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+  toast("Saved " + name);
+}
+function exportJobs(){
+  const rows = [["Date in","Ready by","Delivered","Car","Plate","Size","Customer","Phone","Service","Coverage","Film","Price","Paid","Balance","Status","Source","Assigned to","Warranty to","Notes"]]
+    .concat(S.jobs.slice().sort((a, b) => cmp((b.dateIn || ""), a.dateIn || "")).map(j => [j.dateIn, j.dueDate, j.dateOut, j.car, j.plate, CLASSES[j.cls] ? CLASSES[j.cls][0] : "", j.customer, j.phone, j.service, j.coverage, j.film, +j.price || 0, Math.min(+j.paid || 0, +j.price || 0), balance(j), j.status, j.source, j.assigned, warrantyTo(j), j.notes]));
+  saveFile("detail-dungeon-jobs-" + todayISO() + ".csv", csv(rows));
+}
+function exportLeads(){
+  const rows = [["Received","Source","Car","Name","Phone","What they want","Status","Follow up","Notes"]]
+    .concat(S.leads.slice().sort((a, b) => tsv(b) - tsv(a)).map(l => [l.ts ? l.ts.slice(0, 16).replace("T", " ") : "", l.source, l.car, l.name, l.phone, l.want, l.status, l.followUp, l.notes]));
+  saveFile("detail-dungeon-leads-" + todayISO() + ".csv", csv(rows));
+}
+function daySummary(){
+  const t = todayISO(), inBay = S.jobs.filter(j => j.status === "In bay" || j.status === "QC"), arriving = S.jobs.filter(j => j.status === "Booked" && j.dateIn <= t);
+  const out = S.jobs.filter(j => j.dateOut === t), newLeads = S.leads.filter(l => dayOf(l.ts) === t), due = S.jobs.filter(j => j.status !== "Booked" && balance(j) > 0);
+  const paidToday = S.jobs.reduce((a, j) => a + (Array.isArray(j.payments) ? j.payments.filter(p => p.date === t).reduce((b, p) => b + (+p.amount || 0), 0) : 0), 0);
+  return [`Detail Dungeon, ${longDate(t)}`, "",
+    `In the bay: ${inBay.length}${inBay.length ? " (" + inBay.map(j => j.car + ", " + j.status).join("; ") + ")" : ""}`,
+    `Arriving today: ${arriving.length}${arriving.length ? " (" + arriving.map(j => j.car).join(", ") + ")" : ""}`,
+    `Delivered today: ${out.length}${out.length ? " (" + out.map(j => j.car).join(", ") + ")" : ""}`,
+    `New leads today: ${newLeads.length}, ${S.leads.filter(l => l.status === "New").length} waiting for a reply`,
+    `Collected today: ${rs(paidToday)}`,
+    `Still to collect: ${rs(due.reduce((a, j) => a + balance(j), 0))} on ${due.length} ${due.length === 1 ? "car" : "cars"}`].join("\n");
+}
+function openFromKey(k){
+  const i = k.indexOf(":"), kind = k.slice(0, i), id = k.slice(i + 1);
+  if(kind === "job" || kind === "lead" || kind === "cust") openSheet(kind, id);
+  else if(kind === "stock"){ go("stock"); setTimeout(() => { const el = document.getElementById("stk-" + id); if(el) el.scrollIntoView({ block: "center" }); }, 50); }
 }
 document.addEventListener("click", e => {
-  const b = e.target.closest("[data-act]"); if(!b) { const t = e.target.closest("[data-tab]"); if(t){ go(t.dataset.tab); } return; }
-  const a = b.dataset.act;
-  if(a === "new-job") openJob();
-  else if(a === "new-lead") openLead();
+  const b = e.target.closest("[data-act]");
+  if(!b){
+    const t = e.target.closest("[data-tab]"); if(t){ go(t.dataset.tab); menu(false); return; }
+    const o = e.target.closest("[data-open]");
+    if(o && !e.target.closest("select,a,input,textarea,label")){ if($("#drawer").classList.contains("on")) menu(false); openFromKey(o.dataset.open); }
+    return;
+  }
+  const a = b.dataset.act, id = b.dataset.id;
+  if(b.disabled) return;
+  if(a === "menu") menu(!$("#drawer").classList.contains("on"));
+  else if(a === "menu-close") menu(false);
+  else if(a === "new-job"){ menu(false); openJob(); }
+  else if(a === "new-lead"){ menu(false); openLead(); }
+  else if(a === "receive"){ menu(false); openReceive(id); }
+  else if(a === "new-item") openItem();
+  else if(a === "edit-item") openItem(id);
+  else if(a === "item-del"){ const s = stockBy(id); if(s) delDoc("stock", id, s.name); }
+  else if(a === "search"){ menu(false); stack = []; S.lastQ = ""; S.sheet = { kind: "search" }; sheetBody.innerHTML = searchSheet(); searchResults(); modal(sheet); setTimeout(() => $("#gq") && $("#gq").focus(), 40); }
+  else if(a === "share-day"){ menu(false); window.open("https://wa.me/?text=" + encodeURIComponent(daySummary()), "_blank", "noopener"); }
+  else if(a === "export-jobs"){ menu(false); exportJobs(); }
+  else if(a === "export-leads"){ menu(false); exportLeads(); }
+  else if(a === "goto-due"){ menu(false); S.jf = "Due"; go("jobs"); }
   else if(a === "close") dlg.close();
+  else if(a === "sheet-close") closeSheet();
+  else if(a === "sheet-back"){ const prev = stack.pop(); if(prev){ if(prev.kind === "search"){ S.sheet = prev; sheetBody.innerHTML = searchSheet(); const g = $("#gq"); if(g){ g.value = S.lastQ || ""; } searchResults(); } else openSheet(prev.kind, prev.id, { back: true }); } }
+  else if(a === "confirm-no") confirmDlg.close();
+  else if(a === "confirm-yes"){ confirmDlg.close(); const f = confirmBox.cb; confirmBox.cb = null; if(f) f(); }
   else if(a === "period"){ S.period = b.dataset.v; render(); }
-  else if(a === "jf"){ S.jf = b.dataset.v; render(); }
-  else if(a === "lf"){ S.lf = b.dataset.v; render(); }
-  else if(a === "advance"){ const j = S.jobs.find(x => x.id === b.dataset.id); if(j && NEXT[j.status]) setJobStatus(j.id, NEXT[j.status]); }
+  else if(a === "jf"){ S.jf = b.dataset.v; S.jlim = 100; render(); }
+  else if(a === "lf"){ S.lf = b.dataset.v; S.llim = 100; render(); }
+  else if(a === "more"){ S[b.dataset.v] += b.dataset.v === "clim" ? 60 : 100; render(); }
+  else if(a === "advance"){ const j = S.jobs.find(x => x.id === id); if(j && NEXT[j.status]) setJobStatus(j.id, NEXT[j.status]); }
+  else if(a === "job-step") setJobStatus(id, b.dataset.v);
+  else if(a === "job-edit"){ const j = S.jobs.find(x => x.id === id); if(j) openJob(j, id); }
+  else if(a === "job-pay") openPayment(id);
+  else if(a === "job-del"){ const j = S.jobs.find(x => x.id === id); if(!j) return; const lead = S.leads.find(l => l.job === id);
+    delDoc("jobs", id, "the job for " + j.car, lead ? { after: () => S.db.doc("leads/" + lead.id).update({ job: "", status: "Contacted" }), undo: () => S.db.doc("leads/" + lead.id).update({ job: id, status: lead.status }) } : null); }
+  else if(a === "lead-step"){ const l = S.leads.find(x => x.id === id); if(l && l.status !== b.dataset.v) setLead(id, { status: b.dataset.v }, "Lead: " + b.dataset.v); }
+  else if(a === "lead-save"){ const fu = $("#l-fu"), nt = $("#l-notes"); setLead(id, { followUp: fu ? fu.value : "", notes: nt ? nt.value.trim() : "" }, "Notes saved").then(() => sheetBody.querySelectorAll("[data-keep]").forEach(el => delete el.dataset.dirty)); }
+  else if(a === "lead-edit"){ const l = S.leads.find(x => x.id === id); if(l) openLead(l, id); }
+  else if(a === "lead-del"){ const l = S.leads.find(x => x.id === id); if(l) delDoc("leads", id, "this lead"); }
+  else if(a === "lead-job"){ const l = S.leads.find(x => x.id === id); if(l) openJob({ car: l.car, customer: l.name, phone: l.phone, source: SOURCES.includes(l.source) ? l.source : "Walk-in", leadId: l.id, notes: l.want }); }
   else if(a === "add-line"){ $("#plines").insertAdjacentHTML("beforeend", pline(null)); }
   else if(a === "rm-line"){ const lines = form.querySelectorAll(".pline"); if(lines.length > 1) b.closest(".pline").remove(); else { b.closest(".pline").querySelector("select").value = ""; b.closest(".pline").querySelector("input").value = ""; } }
-  else if(a === "lead-job"){ const l = S.leads.find(x => x.id === b.dataset.id); if(l) openJob({ car: l.car, source: l.source === "Website" || l.source === "Instagram" || l.source === "WhatsApp" ? l.source : "Walk-in", leadId: l.id, notes: l.want }); }
 });
 document.addEventListener("change", async e => {
   const t = e.target;
   if(t.dataset.act === "jst") setJobStatus(t.dataset.id, t.value);
-  else if(t.dataset.act === "lst"){
-    const l = S.leads.find(x => x.id === t.dataset.id); if(!l) return;
-    try{ await S.db.doc("leads/" + l.id).update({ status: t.value }); toast("Lead: " + t.value); } catch(err){ writeFailed(err); render(); }
-  }
+  else if(t.dataset.act === "lst"){ const l = S.leads.find(x => x.id === t.dataset.id); if(l) setLead(l.id, { status: t.value }, "Lead: " + t.value); }
+  else if(t.id === "jsvc"){ S.jsvc = t.value; S.jlim = 100; render(); }
+  else if(t.id === "l-fu" && S.sheet && S.sheet.kind === "lead"){ delete t.dataset.dirty; setLead(S.sheet.id, { followUp: t.value }, t.value ? "Follow-up set for " + shortDate(t.value) : "Follow-up cleared"); }
 });
 let qTimer = 0;
-document.addEventListener("input", e => { if(e.target.id === "jq"){ S.jq = e.target.value; clearTimeout(qTimer); qTimer = setTimeout(render, 150); } });
-function go(tab){ S.tab = tab; try{ history.replaceState(null, "", "#" + tab); } catch(_){} render(); window.scrollTo({top: 0}); }
+document.addEventListener("input", e => {
+  const id = e.target.id;
+  if(id === "jq" || id === "lq" || id === "cq"){ S[id] = e.target.value; S.jlim = S.llim = 100; S.clim = 60; clearTimeout(qTimer); qTimer = setTimeout(render, 150); }
+  else if(id === "gq"){ S.lastQ = e.target.value; searchResults(); }
+  else if(e.target.dataset && "keep" in e.target.dataset) e.target.dataset.dirty = "1";
+});
+document.addEventListener("keydown", e => {
+  if(e.key === "Escape" && $("#drawer").classList.contains("on")) menu(false);
+  if(e.key === "/" && !/INPUT|TEXTAREA|SELECT/.test((document.activeElement || {}).tagName || "") && !dlg.open && !sheet.open){ e.preventDefault(); document.querySelector('[data-act="search"]').click(); }
+  if((e.key === "Enter" || e.key === " ") && e.target.matches && e.target.matches("[data-open]") && !e.target.matches("button")){ e.preventDefault(); openFromKey(e.target.dataset.open); }
+});
+function go(tab){ if(!TABS[tab]) tab = "overview"; S.tab = tab; try{ history.replaceState(null, "", "#" + tab); } catch(_){} render(); window.scrollTo({top: 0}); }
 
 /* ---- data ---------------------------------------------------------------- */
-const h = (location.hash || "").slice(1); if(["overview","jobs","leads","stock"].includes(h)) S.tab = h;
+const h = (location.hash || "").slice(1); if(TABS[h]) S.tab = h;
 render();
 (async function(){
   const c = window.claude;
@@ -646,9 +1255,9 @@ render();
   S.dbChecked = true; S.db = db;
   if(user && user.can){ try{ const w = await user.can("data.write"); if(w === false) S.canWrite = false; } catch(_){} }
   if(!db){ render(); return; }
-  const sub = (name, sortKey) => db.collection(name).onSnapshot(snap => {
+  const sub = name => db.collection(name).onSnapshot(snap => {
     S[name] = snap.docs.map(d => Object.assign({ id: d.id }, d.data())); S.got[name] = true; render();
-  }, err => { S.got[name] = true; render(); });
+  }, () => { S.got[name] = true; render(); });
   sub("jobs"); sub("leads"); sub("stock");
   render();
 })();
