@@ -23,7 +23,7 @@ What the site does now
     studio sees interest even when nobody fills the form.
 
 Set up the sheet (10 minutes, once)
-  1. Open the Google Sheet "Detail Dungeon Leads" (created in Faiq's Drive) or
+  1. Open the Google Sheet "Detail Dungeon Leads" (in the Detail Dungeon Google account) or
      make a new one with the same headers as leads-apps-script.gs.
   2. Extensions > Apps Script. Delete what is there, paste leads-apps-script.gs.
      Optional: put the studio email in NOTIFY_EMAIL for an email per lead.
