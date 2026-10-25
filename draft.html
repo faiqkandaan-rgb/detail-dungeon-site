@@ -4,6 +4,8 @@
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}</script>
 <meta charset="utf-8">
 <meta name="robots" content="noindex,nofollow">
+<link rel="preload" as="image" href="seq/l/f000.webp" media="(min-aspect-ratio: 1/1)" fetchpriority="high">
+<link rel="preload" as="image" href="seq/p/f000.webp" media="(max-aspect-ratio: 1/1)" fetchpriority="high">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Detail Dungeon | PPF, ceramic coating and detailing in Islamabad &amp; Rawalpindi</title>
 <meta name="description" content="Authorised OneFilm USA and ProForce applicator. Self-healing paint protection film with fixed prices by car size, plus ceramic coating, tint, chrome delete and colour change. Get your price in 30 seconds.">
@@ -858,76 +860,79 @@ html:has(.dd-dlg[open]){overflow:hidden}
 .cfgload.nudge{animation:nudge .5s}
 @keyframes nudge{30%{filter:brightness(1.6)}}
 
-/* ---- scroll film story: pinned car, the film goes on as you scroll ---- */
-.wrapfilm{position:relative;height:640vh;padding:0;background:#08080B;scroll-margin-top:0}
-.wf-stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
-.wf-stage{position:absolute;inset:0;background:radial-gradient(120% 80% at 50% 92%,#34353F 0%,#1B1C22 42%,#09090C 100%)}
-.wf-stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity .9s}
-.wf-stage.is3d canvas{opacity:1}
-.wf-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s}
-.wf-stage img.on{opacity:1}
-.wf-stage.is3d img{display:none}
-.wf-shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(8,8,11,.92) 0%,rgba(8,8,11,.25) 24%,rgba(8,8,11,0) 40%,rgba(8,8,11,0) 62%,rgba(8,8,11,.92) 100%)}
-.wf-head{position:absolute;left:0;right:0;top:calc(92px + 2vh);z-index:3;text-align:center;padding-inline:22px;transition:opacity .45s,transform .45s}
-.wf-head h2{font-size:clamp(34px,5vw,62px);line-height:1}
-.wf-head p{color:var(--mute);margin:14px auto 0;max-width:46ch;font-size:15px}
-.wf-head.gone{opacity:0;transform:translateY(-16px);pointer-events:none}
-.wf-cap{position:absolute;left:max(26px,calc((100vw - var(--max))/2 + 26px));right:26px;bottom:calc(44px + env(safe-area-inset-bottom,0px));z-index:3;pointer-events:none}
-.wf-cap small{display:block;font-family:var(--disp);font-weight:600;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
-.wf-cap b{display:block;font-family:var(--hero);font-weight:700;font-size:clamp(26px,3.6vw,44px);letter-spacing:-.025em;line-height:1.05;max-width:16ch;
-  text-shadow:0 2px 18px rgba(0,0,0,.6);transition:opacity .25s,transform .25s}
-.wf-cap b.swap{opacity:0;transform:translateY(8px)}
-.wf-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;opacity:0;transform:translateY(10px);transition:opacity .4s,transform .4s}
-.wf-cap.end .wf-cta{opacity:1;transform:none;pointer-events:auto}
-.wf-tiers{position:absolute;right:max(26px,calc((100vw - var(--max))/2 + 26px));top:50%;transform:translateY(-50%);z-index:3;display:grid;gap:10px;width:260px;
-  opacity:0;transition:opacity .45s}
-.wf-tiers.on{opacity:1}
-.wf-tier{border:1px solid var(--line2);background:rgba(14,14,19,.74);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-radius:14px;padding:12px 14px;transition:border-color .3s,background .3s}
-.wf-tier .tn{display:flex;justify-content:space-between;align-items:center;font-family:var(--hero);font-weight:600;font-size:15px}
-.wf-tier em{font-style:normal;color:var(--red2);opacity:0;transform:scale(.4);transition:opacity .25s,transform .3s cubic-bezier(.2,1.6,.4,1)}
-.wf-tier .bar{height:3px;background:rgba(255,255,255,.1);border-radius:2px;margin-top:9px;overflow:hidden}
-.wf-tier .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#8E0A10,var(--red2))}
-.wf-tier small{display:block;color:var(--mute);font-size:12.5px;margin-top:7px;line-height:1.35}
-.wf-tier.done{border-color:rgba(217,13,20,.55);background:rgba(36,10,13,.74)}
-.wf-tier.done em{opacity:1;transform:none}
-.wf-hint{position:absolute;left:50%;bottom:calc(30px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;
-  font-family:var(--disp);font-weight:600;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);transition:opacity .4s;pointer-events:none}
-.wf-hint i{width:22px;height:34px;border:1.5px solid rgba(255,255,255,.35);border-radius:12px;position:relative}
-.wf-hint i::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;border-radius:2px;background:#fff;transform:translateX(-50%);animation:wfscroll 1.6s infinite}
+/* ---- scroll film story: pre-rendered frames on a canvas, pinned while you scroll ---- */
+.wrapfilm{position:relative;height:620vh;padding:0;background:#08080B;scroll-margin-top:0}
+.wf-stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:radial-gradient(62% 50% at 50% 66%,#33343D 0%,#1A1B21 45%,#08080B 100%)}
+.wf-poster,.wf-poster img,.wf-cv{position:absolute;inset:0;width:100%;height:100%;display:block}
+.wf-poster img{object-fit:cover}
+.wf-cv{opacity:0;transition:opacity .35s}
+.wf-cv.on{opacity:1}
+.wf-head{position:absolute;left:0;right:0;bottom:calc(26px + env(safe-area-inset-bottom,0px));z-index:3;text-align:center;padding-inline:22px;
+  display:flex;flex-direction:column;align-items:center;transition:opacity .4s ease,transform .4s ease;will-change:opacity,transform}
+.wf-head .eyebrow{font-size:12px}
+.wf-head h2{font-size:clamp(30px,3.6vw,46px);line-height:1.05;margin-top:10px}
+.wf-head p{color:var(--mute);margin:10px auto 0;max-width:34ch;font-size:15px;text-wrap:balance}
+.wf-head.gone{opacity:0;transform:translateY(14px);pointer-events:none}
+.wf-foot{position:absolute;left:0;right:0;bottom:calc(30px + env(safe-area-inset-bottom,0px));z-index:3;display:flex;flex-direction:column;align-items:center;
+  text-align:center;padding-inline:20px;transition:opacity .4s ease,transform .4s ease;will-change:opacity,transform}
+.wf-foot.gone{opacity:0;transform:translateY(16px);pointer-events:none}
+.wf-cap{display:flex;flex-direction:column;align-items:center;max-width:720px;width:100%}
+.wf-cap small{display:block;font-family:var(--disp);font-weight:600;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--red2);margin-bottom:10px}
+.wf-cap b{display:block;font-family:var(--hero);font-weight:600;font-size:clamp(19px,2.2vw,27px);letter-spacing:-.018em;line-height:1.22;text-wrap:balance;
+  min-height:2.44em;text-shadow:0 2px 18px rgba(0,0,0,.7)}
+.wf-cap.swap small,.wf-cap.swap b{opacity:0;transform:translateY(6px)}
+.wf-cap small,.wf-cap b{transition:opacity .22s ease,transform .22s ease}
+.wf-tiers{display:flex;gap:8px;margin-top:16px}
+.wf-tier{position:relative;flex:0 0 118px;height:40px;display:flex;align-items:center;justify-content:center;gap:7px;border-radius:999px;border:1px solid var(--line2);
+  background:rgba(14,14,19,.9);overflow:hidden;font-family:var(--hero);font-weight:600;font-size:14.5px;color:var(--mute);transition:color .3s,border-color .3s}
+.wf-tier>i{position:absolute;inset:0;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,rgba(142,10,16,.55),rgba(217,13,20,.42))}
+.wf-tier span,.wf-tier svg{position:relative}
+.wf-tier svg{width:12px;height:12px;color:#fff;opacity:0;transform:scale(.5);transition:opacity .25s,transform .3s cubic-bezier(.2,1.6,.4,1)}
+.wf-tier.live{color:var(--fg);border-color:#4A4A56}
+.wf-tier.done{color:#fff;border-color:rgba(240,32,42,.7)}
+.wf-tier.done svg{opacity:1;transform:none}
+.wf-cta{display:flex;gap:10px;justify-content:center;margin-top:16px;width:100%;max-width:360px;opacity:0;visibility:hidden;transform:translateY(6px);
+  transition:opacity .35s ease,transform .35s ease,visibility 0s .35s}
+.wf-cta .btn{flex:1 1 0;min-width:0;text-align:center;white-space:nowrap}
+.wf-foot.end .wf-cta{opacity:1;visibility:visible;transform:none;transition:opacity .35s ease,transform .35s ease}
+.wf-hint{margin-top:18px;pointer-events:none;height:34px}
+.wf-hint .mouse{display:block;width:22px;height:34px;border:1.5px solid rgba(255,255,255,.35);border-radius:12px;position:relative}
+.wf-hint .mouse::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;border-radius:2px;background:#fff;transform:translateX(-50%);animation:wfscroll 1.6s infinite}
+.wf-hint .chev{display:none;width:14px;height:14px;border-right:2px solid rgba(255,255,255,.6);border-bottom:2px solid rgba(255,255,255,.6);transform:rotate(45deg);animation:wfchev 1.6s infinite}
+@media(hover:none){.wf-hint .mouse{display:none}.wf-hint .chev{display:block}}
 @keyframes wfscroll{0%{opacity:0;transform:translate(-50%,0)}30%{opacity:1}100%{opacity:0;transform:translate(-50%,12px)}}
-.wf-hint.gone{opacity:0}
-.wf-prog{position:absolute;left:0;bottom:0;height:3px;width:0;z-index:4;background:linear-gradient(90deg,#8E0A10,var(--red2));box-shadow:0 0 12px rgba(240,32,42,.6)}
+@keyframes wfchev{0%{opacity:0;transform:translateY(-4px) rotate(45deg)}40%{opacity:1}100%{opacity:0;transform:translateY(8px) rotate(45deg)}}
+.wf-prog{position:absolute;left:0;right:0;bottom:0;height:3px;z-index:4;background:rgba(255,255,255,.06)}
+.wf-prog i{display:block;height:100%;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,#8E0A10,var(--red2));box-shadow:0 0 12px rgba(240,32,42,.55)}
 @media(max-width:760px){
-  .wrapfilm{height:560vh}
-  .wf-head{top:86px}
-  .wf-head p{font-size:14px}
-  .wf-tiers{top:84px;left:14px;right:14px;width:auto;transform:none;grid-template-columns:repeat(3,1fr);gap:6px}
-  .wf-tier{padding:9px 10px;border-radius:12px}
-  .wf-tier .tn{font-size:13px}
-  .wf-tier small{display:none}
-  .wf-cap{left:18px;right:18px;bottom:calc(34px + env(safe-area-inset-bottom,0px))}
-  .wf-cta .btn{flex:1 1 140px;text-align:center}
+  .wrapfilm{height:540vh}
+  .wf-head h2{font-size:30px}
+  .wf-head p{font-size:14.5px;max-width:30ch}
+  .wf-cap b{font-size:18px;max-width:30ch}
+  .wf-tiers{width:100%;max-width:360px;justify-content:center}
+  .wf-tier{flex:1 1 0;height:38px;font-size:13.5px}
+  .wf-cta .btn{padding:12px 10px;font-size:14px}
 }
-@media(prefers-reduced-motion:reduce){.wf-hint i::after{animation:none}}
+@media(prefers-reduced-motion:reduce){.wf-hint .mouse::after,.wf-hint .chev{animation:none}}
+html.inwrap header.stuck{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(7,7,10,.97)}
 
 /* ---- film meter: page progress as film coverage ---- */
 .fmeter{position:fixed;left:18px;bottom:18px;z-index:55;display:flex;align-items:center;gap:11px;padding:8px 16px 8px 10px;border-radius:999px;
   border:1px solid var(--line2);background:rgba(14,14,19,.9);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);text-decoration:none;color:var(--fg);
   opacity:0;transform:translateY(14px);transition:opacity .3s,transform .3s,border-color .3s;pointer-events:none}
-.fmeter.on{opacity:1;transform:none;pointer-events:auto}
+.fmeter.on{opacity:1;transform:none;pointer-events:auto;visibility:visible}
+.fmeter:not(.on){visibility:hidden;transition:opacity .3s,transform .3s,visibility 0s .3s}
 .fmeter:hover{border-color:#4A4A56}
 .fmeter svg{width:78px;height:29px;display:block;overflow:visible}
 .fmeter b{display:block;font-family:var(--disp);font-weight:700;font-size:13px;line-height:1.15;font-variant-numeric:tabular-nums}
 .fmeter small{display:block;font-size:11px;color:var(--mute);line-height:1.2}
 .fmeter.full{border-color:rgba(217,13,20,.6)}
-.fmeter.full svg{filter:drop-shadow(0 0 6px rgba(240,32,42,.55))}
 .fbar{display:none}
 @media(max-width:760px){
   .fmeter{display:none}
   .fbar{display:block;position:fixed;left:0;right:0;top:var(--hh,69px);height:2px;z-index:59;pointer-events:none;opacity:0;transition:opacity .3s}
   .fbar.on{opacity:1}
-  .fbar>i{position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,rgba(142,10,16,.6),var(--red2));box-shadow:0 0 8px rgba(240,32,42,.6)}
-  .fbar svg{position:absolute;top:-5px;left:0;width:26px;height:10px;transform:translateX(-50%);overflow:visible}
+  .fbar>i{position:absolute;left:0;top:0;bottom:0;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,rgba(142,10,16,.6),var(--red2));box-shadow:0 0 8px rgba(240,32,42,.6)}
 }
 </style>
 </head>
@@ -997,33 +1002,22 @@ html:has(.dd-dlg[open]){overflow:hidden}
   </div>
 </section>
 
-<section class="wrapfilm" id="wrap" aria-label="Scroll to watch the film go on, panel by panel">
+<section class="wrapfilm" id="wrap" aria-label="Scroll to watch paint protection film go onto a Land Cruiser, one package at a time">
   <div class="wf-stick">
-    <div class="wf-stage" id="wfstage">
-      <img data-k="0" class="on" src="cov/pkg-base.jpg" alt="">
-      <img data-k="1" src="cov/pkg-basic.jpg" alt="" loading="lazy">
-      <img data-k="2" src="cov/pkg-gold.jpg" alt="" loading="lazy">
-      <img data-k="3" src="cov/pkg-plat.jpg" alt="" loading="lazy">
-      <canvas id="wfcanvas" aria-hidden="true"></canvas>
-    </div>
-    <div class="wf-shade"></div>
+    <picture class="wf-poster"><source media="(max-aspect-ratio: 1/1)" srcset="seq/p/f000.webp"><img src="seq/l/f000.webp" alt="A white Land Cruiser 300 in the Detail Dungeon bay"></picture>
+    <canvas class="wf-cv" id="wfcv" aria-hidden="true"></canvas>
     <div class="wf-head" id="wfhead">
       <span class="eyebrow">Watch it go on</span>
-      <h2>Scroll.<br><span class="accent">We wrap it.</span></h2>
-      <p>The same Land Cruiser, in our bay. Every panel you scroll past gets filmed, the way we lay it by hand. Red is film.</p>
+      <h2>Scroll. <span class="accent">We wrap it.</span></h2>
+      <p>One Land Cruiser, three levels of film. Red shows you where it goes.</p>
+      <div class="wf-hint" id="wfhint" aria-hidden="true"><i class="mouse"></i><i class="chev"></i></div>
     </div>
-    <div class="wf-tiers" id="wftiers">
-      <div class="wf-tier" data-t="0"><div class="tn"><span>Basic</span><em>&#10003;</em></div><div class="bar"><i></i></div><small>The panels that take the stone chips</small></div>
-      <div class="wf-tier" data-t="1"><div class="tn"><span>Gold</span><em>&#10003;</em></div><div class="bar"><i></i></div><small>Every painted panel except the roof</small></div>
-      <div class="wf-tier" data-t="2"><div class="tn"><span>Platinum</span><em>&#10003;</em></div><div class="bar"><i></i></div><small>The whole car, roof included</small></div>
+    <div class="wf-foot" id="wffoot">
+      <div class="wf-cap" aria-live="polite"><small id="wfk">Basic</small><b id="wft">Bumpers, bonnet, fenders, mirrors and sills. Where the stone chips land.</b></div>
+      <div class="wf-tiers"><div class="wf-tier" data-t="0"><i aria-hidden="true"></i><span>Basic</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.2 6.3l2.4 2.4 5.2-5.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wf-tier" data-t="1"><i aria-hidden="true"></i><span>Gold</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.2 6.3l2.4 2.4 5.2-5.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wf-tier" data-t="2"><i aria-hidden="true"></i><span>Platinum</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.2 6.3l2.4 2.4 5.2-5.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      <div class="wf-cta"><a class="btn btn-red" href="#price">Get a price</a><a class="btn btn-ghost" href="#colour">Pick a colour</a></div>
     </div>
-    <div class="wf-cap" id="wfcap">
-      <small id="wfstep">Panel 1 of 8</small>
-      <b id="wflabel">Front bumper</b>
-      <div class="wf-cta"><a class="btn btn-red" href="#price">Get my price</a><a class="btn btn-ghost" href="#colour">Now pick a colour</a></div>
-    </div>
-    <div class="wf-hint" id="wfhint"><span>Scroll to wrap it</span><i></i></div>
-    <div class="wf-prog" id="wfprog"></div>
+    <div class="wf-prog" aria-hidden="true"><i id="wfprog"></i></div>
   </div>
 </section>
 
@@ -1541,12 +1535,11 @@ html:has(.dd-dlg[open]){overflow:hidden}
     <path d="M7 31V23.5Q7 19.5 12 18.6L30 16.6 41 7.6Q43 6.2 46 6.2H88Q91 6.2 92.6 8L101 16.6 110.5 17.6Q115 18.2 115 22.5V31Z" fill="#1B1C22" stroke="#4A4B56" stroke-width="1.2"/>
     <path d="M7 31V23.5Q7 19.5 12 18.6L30 16.6 41 7.6Q43 6.2 46 6.2H88Q91 6.2 92.6 8L101 16.6 110.5 17.6Q115 18.2 115 22.5V31Z" fill="url(#fmg)" clip-path="url(#fmclip)"/>
     <path d="M44.5 9.2H66V15.4H38.3ZM69 9.2H87.5Q89 9.2 90 10.4L94.8 15.4H69Z" fill="#0B0B0F" opacity=".85"/>
-    <line id="fmedge" x1="0" y1="2" x2="0" y2="40" stroke="#fff" stroke-width="1.3" opacity="0"/>
     <circle cx="28" cy="31" r="7.5" fill="#0B0B0F" stroke="#4A4B56" stroke-width="1.6"/><circle cx="94" cy="31" r="7.5" fill="#0B0B0F" stroke="#4A4B56" stroke-width="1.6"/>
   </svg>
   <span><b id="fmpct">0%</b><small id="fmtxt">Film coverage</small></span>
 </a>
-<div class="fbar" id="fbar" aria-hidden="true"><i></i><svg viewBox="0 0 120 44"><path d="M7 31V23.5Q7 19.5 12 18.6L30 16.6 41 7.6Q43 6.2 46 6.2H88Q91 6.2 92.6 8L101 16.6 110.5 17.6Q115 18.2 115 22.5V31Z" fill="#F0202A"/><circle cx="28" cy="31" r="8" fill="#0B0B0F"/><circle cx="94" cy="31" r="8" fill="#0B0B0F"/></svg></div>
+<div class="fbar" id="fbar" aria-hidden="true"><i></i></div>
 
 <div class="wa-done" id="wa-done" role="status" aria-live="polite" hidden>
   <button class="wd-x" type="button" data-close aria-label="Close">&times;</button>
@@ -2717,11 +2710,21 @@ document.querySelectorAll("[data-blackout]").forEach(a => a.addEventListener("cl
   window.DD_DETAILS = { open, filmDrawer, brandDrawer, ceramicDrawer, correctionDrawer };
 })();
 </script>
+<script>
+/* start heavy work only when its section is within a screen or two, or when the page is idle */
+window.ddNear = function(el, fn, margin){
+  let done = false; const go = () => { if (done) return; done = true; try { fn(); } catch (e) { console.warn(e); } };
+  if (!el || !('IntersectionObserver' in window)) return go();
+  const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { io.disconnect(); go(); } }, { rootMargin: (margin || '150%') + ' 0px' });
+  io.observe(el);
+  return go;
+};
+</script>
 <script type="module">
 import { initConfigurator } from './3d/configurator.js';
 const ui = window.DD_CC;
 window.__cfgsay && window.__cfgsay("module loaded");
-if (ui) {
+if (ui) window.DD_CFG_GO = window.ddNear(document.getElementById('cfgstage'), () => {
   let settled = false;
   const fallback = () => { if (!settled) { settled = true; window.__cfgsay && window.__cfgsay("falling back to images"); ui.useImages(); } };
   const t = setTimeout(fallback, window.__noFallback ? 600000 : 25000);
@@ -2734,13 +2737,13 @@ if (ui) {
   });
   if (!api) { clearTimeout(t); fallback(); }
   window.DD_3D = () => api;
-}
+}, '120%');
 </script>
 <script type="module">
 /* ---- interior trim: the clear sheet over the console ------------------------ */
 import { initTrim } from './3d/trim.js';
 const istage = document.getElementById('intstage'), icanvas = document.getElementById('intcanvas');
-if (istage && icanvas) {
+if (istage && icanvas) window.ddNear(istage, () => {
   const load = document.getElementById('intload'), lines = document.getElementById('intlines'), calls = [...document.querySelectorAll('#intcall .ic')];
   const phase = document.getElementById('intphase'), hint = document.getElementById('inthint');
   const COPY = { hover: 'Clear film, cut to the console', lowering: 'Laid by hand, edges tucked under the trim', applied: 'Applied. You cannot see it. That is the point.', reset: 'Applied. You cannot see it. That is the point.' };
@@ -2776,13 +2779,13 @@ if (istage && icanvas) {
   if (!api) load.textContent = 'Preview unavailable on this device';
   window.DD_INT = api;
   istage.addEventListener('pointerdown', () => hint.classList.add('off'), { once: true });
-}
+});
 </script>
 <script type="module">
 /* ---- coverage: the same car, the film going on panel by panel ------------- */
 import { initCoverage } from './3d/coverage.js';
 const wrap = document.getElementById('covwrap'), canvas = document.getElementById('covcanvas');
-if (wrap && canvas) {
+if (wrap && canvas) window.ddNear(wrap, () => {
   const load = document.getElementById('covload'), label = document.getElementById('covlabel'), dots = document.getElementById('covdots'), replay = document.getElementById('covreplay');
   const pressed = () => { const b = document.querySelector('#covbtns .pkg[aria-pressed="true"]'); return b ? b.dataset.pkg : 'basic'; };
   let covApi = null, labelTimer = 0;
@@ -2801,108 +2804,179 @@ if (wrap && canvas) {
   replay.addEventListener('click', () => covApi && covApi.play(pressed()));
   // stills stay underneath until the 3D is up; a slow network never shows a blank box
   setTimeout(() => { if (!covApi) load.classList.add('off'); }, 20000);
-}
+});
 </script>
-<script type="module">
-/* ---- scroll film story: the coverage car, scrubbed by the scroll ---------- */
-import { initCoverage, PACKAGES } from './3d/coverage.js';
-const sec = document.getElementById('wrap'), stage = document.getElementById('wfstage'), canvas = document.getElementById('wfcanvas');
-if (sec && stage && canvas) {
-  // one pass, ordered by package so Basic, then Gold, then Platinum complete in turn
-  PACKAGES.story = { label: 'Platinum', shots: [
-    { label: 'Front bumper. Where the stone chips land.', panels: ['bumperF'], cam: [2.3, .95, -6.1], tgt: [0, .7, -2.3], dir: [0, -1, 0] },
-    { label: 'Bonnet', panels: ['hood'], cam: [1.6, 2.35, -4.3], tgt: [0, 1.15, -1.45], dir: [0, 0, 1] },
-    { label: 'Front fenders and mirrors', panels: ['fenderF', 'mirrors'], cam: [3.4, 1.3, -3.0], tgt: [.9, .95, -1.3], dir: [0, 0, 1] },
-    { label: 'Side steps and sills', panels: ['steps'], cam: [5.6, 1.15, .5], tgt: [.95, .6, .2], dir: [0, 0, 1] },
-    { label: 'Rear bumper. That is Basic.', panels: ['bumperB'], cam: [-2.5, 1.1, 6.1], tgt: [0, .8, 2.3], dir: [0, -1, 0] },
-    { label: 'Four doors', panels: ['doorFR', 'doorBR', 'doorFL', 'doorBL'], cam: [5.2, 1.25, .3], tgt: [1.0, .95, .25], dir: [0, 0, 1] },
-    { label: 'Rear quarters and boot. That is Gold.', panels: ['fenderB', 'body', 'trunk'], cam: [3.6, 1.6, 4.6], tgt: [.5, 1.0, 2.0], dir: [0, 0, 1] },
-    { label: 'Full roof', panels: ['roof'], cam: [3.2, 4.4, -1.0], tgt: [0, 1.6, .3], dir: [0, 0, 1] },
-    { label: 'Platinum. The whole car.', panels: [], cam: [4.9, 1.55, -4.9], tgt: [0, .85, -.15], orbit: true },
-  ] };
-  const SHOT = 2.5, ORBIT = 3.4, PANELS = 8;              // seconds of timeline per panel (coverage.js), plus the closing turn
-  const TOTAL = PANELS * SHOT + ORBIT;
-  const TIERS = [[0, 5], [5, 7], [7, 8]];                // which panels finish each package
-  const head = document.getElementById('wfhead'), tiers = document.getElementById('wftiers'), tierEls = [...tiers.children],
-        cap = document.getElementById('wfcap'), lab = document.getElementById('wflabel'), step = document.getElementById('wfstep'),
-        hint = document.getElementById('wfhint'), prog = document.getElementById('wfprog'), stills = [...stage.querySelectorAll('img')];
-  let api = null, cur = 0, target = 0, raf = 0, lastLabel = '';
-  const small = innerWidth < 760;
-  const progress = () => { const r = sec.getBoundingClientRect(), span = sec.offsetHeight - innerHeight; return Math.min(1, Math.max(0, -r.top / Math.max(1, span))); };
-  const setLabel = (text) => { if (text === lastLabel) return; lastLabel = text; lab.classList.add('swap'); setTimeout(() => { lab.textContent = text; lab.classList.remove('swap'); }, 160); };
-  function ui(t){
-    const panel = Math.min(PANELS, Math.floor(t / SHOT));              // panels fully started
-    const done = k => Math.min(1, Math.max(0, (t - k * SHOT - .9) / .95)); // film laid on panel k (matches coverage.js timing)
-    head.classList.toggle('gone', t > .5);
-    hint.classList.toggle('gone', t > .25);
-    tiers.classList.toggle('on', t > .5);
-    tierEls.forEach((el, i) => {
-      const [a, b] = TIERS[i]; let f = 0; for (let k = a; k < b; k++) f += done(k); f /= (b - a);
-      el.querySelector('.bar i').style.width = (f * 100).toFixed(1) + '%';
-      el.classList.toggle('done', f >= .999);
-    });
-    const end = t >= PANELS * SHOT;
-    cap.classList.toggle('end', end);
-    step.textContent = end ? 'Fully protected' : 'Panel ' + Math.min(PANELS, panel + 1) + ' of ' + PANELS;
-    prog.style.width = (Math.min(1, t / TOTAL) * 100).toFixed(2) + '%';
-    if (!api) {                                                          // no WebGL: the four stills stand in
-      const k = t >= 7.9 * SHOT ? 3 : t >= 6.9 * SHOT ? 2 : t >= 4.9 * SHOT ? 1 : 0;
-      stills.forEach(im => im.classList.toggle('on', +im.dataset.k <= k));
-      const L = PACKAGES.story.shots[Math.min(PACKAGES.story.shots.length - 1, panel)];
-      setLabel(L.label);
+<script>
+/* ---- scroll film story -------------------------------------------------------
+   160 pre-rendered frames (one per orbit step) drawn to a canvas from the scroll position.
+   Frames arrive as small WebP blobs; only the ones near the current position are decoded,
+   off the main thread, so memory stays low and scrolling never waits on a decode. */
+(function(){
+  const sec = document.getElementById('wrap'); if (!sec) return;
+  const N = 200;
+  const cv = document.getElementById('wfcv'), ctx = cv.getContext('2d', { alpha: false });
+  const head = document.getElementById('wfhead'), foot = document.getElementById('wffoot');
+  const capEl = foot.querySelector('.wf-cap'), kEl = document.getElementById('wfk'), tEl = document.getElementById('wft');
+  const tiers = [...foot.querySelectorAll('.wf-tier')], bars = tiers.map(t => t.querySelector('i')), prog = document.getElementById('wfprog');
+  const ss = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
+  // timings match the renderer: Basic, Gold, Platinum waves, then the red clears
+  const WAVE = [[.10, .34], [.40, .62], [.68, .80]];
+  // each caption arrives as its wave starts, never ahead of the car
+  const CAPS = [
+    [0,    'Basic',    'Bumpers, bonnet, fenders, mirrors and sills. Where the stone chips land.'],
+    [.39,  'Gold',     'Doors, rear quarters and boot. Every painted panel but the roof.'],
+    [.67,  'Platinum', 'The roof as well. Nothing left bare.'],
+    [.855, 'Then it disappears', 'Red was just to show you. On your car, the film is invisible.'],
+    [.96,  'Fully protected', 'Invisible. Self-healing. Up to a 6-year warranty.'],
+  ];
+  const HEAD_UNTIL = .08, END_AT = .96;
+  let kind = '', blobs = [], bm = new Map(), want = 0, shown = -1, lastCap = -1, raf = 0, W = 0, H = 0, inflight = 0, loading = false, ready = false;
+  const MAXBM = innerWidth < 760 ? 16 : 14, SRC = { l: [2400, 1350], p: [900, 1950] }, BLEND = false;   // whole frames only: blending ghosts the badges
+  const url = i => 'seq/' + kind + '/f' + String(i).padStart(3, '0') + '.webp';
+
+  /* where are we: 0..1 across the pinned stretch, with a short hold at each end */
+  function progress(){ const r = sec.getBoundingClientRect(), span = sec.offsetHeight - innerHeight; return Math.min(1, Math.max(0, -r.top / Math.max(1, span))); }
+  const toU = p => Math.min(1, Math.max(0, (p - .015) / .9));
+
+  /* canvas at device resolution, image drawn to cover */
+  function size(){
+    // device resolution, but never more pixels than the frames actually have once cover-scaled (less work, same sharpness)
+    const r = cv.getBoundingClientRect(), d = Math.min(2, devicePixelRatio || 1), [sw, sh] = SRC[kind] || [1920, 1080];
+    const k = Math.max(r.width * d / sw, r.height * d / sh), m = k > 1 ? 1 / k : 1;    // k > 1 means the frames would be upscaled
+    const w = Math.round(r.width * d * m), h = Math.round(r.height * d * m);
+    if (w === W && h === H) return false;
+    W = cv.width = w; H = cv.height = h; shown = -1; return true;
+  }
+  function cover(img){ const s = Math.max(W / img.width, H / img.height), w = img.width * s, h = img.height * s; return [(W - w) / 2, (H - h) / 2, w, h]; }
+  function nearest(i){ for (let d = 0; d < N; d++) { if (bm.has(i - d)) return i - d; if (bm.has(i + d)) return i + d; } return -1; }
+  let drawMs = 0;
+  function draw(){
+    const t0 = performance.now();
+    const f = want * (N - 1), i0 = Math.floor(f), i1 = Math.min(N - 1, i0 + 1), a = f - i0;
+    // big screens blend neighbouring frames for silky motion; phones draw whole frames only (half the work, frames are dense enough)
+    const blend = BLEND && bm.has(i0) && bm.has(i1);
+    const key = blend ? i0 + Math.round(a * 20) / 20 : nearest(Math.round(f));
+    if (key === shown || key < 0) return;
+    shown = key;
+    if (blend) {
+      const A = bm.get(i0), B = bm.get(i1); ctx.globalAlpha = 1; ctx.drawImage(A, ...cover(A));
+      if (a > .03) { ctx.globalAlpha = a; ctx.drawImage(B, ...cover(B)); ctx.globalAlpha = 1; }
+    } else { const B = bm.get(key); ctx.globalAlpha = 1; ctx.drawImage(B, ...cover(B)); }
+    if (!ready) { ready = true; cv.classList.add('on'); }
+    drawMs = drawMs * .9 + (performance.now() - t0) * .1;
+  }
+
+  /* decode the frames around the current position, nearest first, in the direction of travel */
+  let dir = 1;
+  function pump(){
+    const c = Math.round(want * (N - 1)), order = [c];
+    for (let d = 1; d < 9; d++) { order.push(c + d * dir); if (d < 5) order.push(c - d * dir); }   // 8 ahead, 4 behind: fits the cache
+    for (const i of order) {
+      if (inflight >= 3) break;
+      if (i < 0 || i >= N || bm.has(i) || !blobs[i] || blobs[i].busy) continue;
+      inflight++; blobs[i].busy = true;
+      const done = b => { inflight--; blobs[i].busy = false; if (b) { bm.set(i, b); trim(c); if (Math.abs(i - want * (N - 1)) < 2) schedule(); } pump(); };
+      // decode straight to the size it is drawn at when that is smaller than the frame (less memory on phones)
+      const [sw, sh] = SRC[kind], s = Math.max(W / sw, H / sh), opt = s < .98 && W ? { resizeWidth: Math.round(sw * s), resizeHeight: Math.round(sh * s), resizeQuality: 'high' } : null;
+      (opt ? createImageBitmap(blobs[i].blob, opt).catch(() => createImageBitmap(blobs[i].blob)) : createImageBitmap(blobs[i].blob)).then(done, () => done(null));
     }
   }
-  let last = 0;
-  function frame(now){
-    raf = 0;
-    const dt = last ? Math.min(.25, (now - last) / 1000) : 1 / 60; last = now;
-    cur += (target - cur) * (1 - Math.exp(-dt / .11));                  // same feel at 30 or 120 fps
-    if (Math.abs(target - cur) < .003) cur = target;
-    if (api) api.seek(cur);
-    ui(cur);
-    if (cur !== target) raf = requestAnimationFrame(frame); else last = 0;
+  function trim(c){
+    if (bm.size <= MAXBM) return;
+    const keys = [...bm.keys()].sort((x, y) => Math.abs(y - c) - Math.abs(x - c));
+    while (bm.size > MAXBM) { const k = keys.shift(); const b = bm.get(k); bm.delete(k); b && b.close && b.close(); }
   }
-  const onScroll = () => { target = progress() * TOTAL; if (!raf) raf = requestAnimationFrame(frame); };
+
+  /* fetch every frame as a small blob: first, last, then coarse to fine so scrubbing works early */
+  function load(){
+    if (loading) return; loading = true;
+    const seen = new Set(), order = [];
+    for (const step of [N - 1, 32, 16, 8, 4, 2, 1]) for (let i = 0; i < N; i += step) if (!seen.has(i)) { seen.add(i); order.push(i); }
+    if (!seen.has(N - 1)) order.push(N - 1);
+    let next = 0, active = 0; const myKind = kind;
+    const go = () => {
+      while (active < 6 && next < order.length) {
+        const i = order[next++]; active++;
+        fetch(url(i)).then(r => r.ok ? r.blob() : null).then(b => {
+          active--; if (myKind !== kind) return;
+          if (b) { blobs[i] = { blob: b, busy: false }; pump(); }
+          go();
+        }, () => { active--; go(); });
+      }
+    };
+    go();
+  }
+  function setKind(){
+    const k = matchMedia('(min-aspect-ratio: 1/1)').matches ? 'l' : 'p';
+    if (k === kind) return;
+    kind = k; blobs = new Array(N); bm.forEach(b => b.close && b.close()); bm.clear(); shown = -1; loading = false; ready = false; cv.classList.remove('on');
+    load();
+  }
+
+  /* captions, package chips and progress follow the same position */
+  let pinned = null;
+  function pin(){
+    const r = sec.getBoundingClientRect(), p = r.top <= 1 && r.bottom >= innerHeight - 1;
+    if (p !== pinned) { pinned = p; document.documentElement.classList.toggle('inwrap', p); }
+  }
+  function ui(u){
+    head.classList.toggle('gone', u > HEAD_UNTIL);
+    foot.classList.toggle('gone', u <= HEAD_UNTIL);
+    foot.classList.toggle('end', u >= END_AT);
+    let ci = 0; for (let i = 0; i < CAPS.length; i++) if (u >= CAPS[i][0]) ci = i;
+    if (ci !== lastCap) {
+      const first = lastCap < 0; lastCap = ci;
+      if (first) { kEl.textContent = CAPS[ci][1]; tEl.textContent = CAPS[ci][2]; }
+      else { capEl.classList.add('swap'); setTimeout(() => { kEl.textContent = CAPS[ci][1]; tEl.textContent = CAPS[ci][2]; capEl.classList.remove('swap'); }, 200); }
+    }
+    WAVE.forEach(([a, b], i) => {
+      const f = ss(a, b, u); bars[i].style.transform = 'scaleX(' + f.toFixed(4) + ')';
+      tiers[i].classList.toggle('done', f >= .999); tiers[i].classList.toggle('live', f > 0 && f < .999);
+    });
+    prog.style.transform = 'scaleX(' + u.toFixed(4) + ')';
+  }
+  function frame(){ raf = 0; size(); draw(); pump(); }
+  const schedule = () => { if (!raf) raf = requestAnimationFrame(frame); };
+  function onScroll(){
+    pin();
+    const u = toU(progress());
+    if (u !== want) { dir = u > want ? 1 : -1; want = u; ui(u); schedule(); }
+  }
   addEventListener('scroll', onScroll, { passive: true });
-  addEventListener('resize', onScroll);
-  // the four stills show until the car is ready (or for good, without WebGL)
-  initCoverage({
-    canvas, stage, model: '3d/lc300.glb', noseFlip: true, pixelRatio: Math.min(devicePixelRatio || 1, small ? 1.5 : 2),
-    onShot: s => { if (api) setLabel(s.label); },
-    onReady: a => { a.play('story'); a.stop();
-      // frame the car clear of the overlays: left of the package list on wide screens, a touch lower on phones
-      const frameCar = () => { if (innerWidth > 900) a.camera.setViewOffset(100, 100, 12, 0, 100, 100); else a.camera.setViewOffset(100, 100, 0, -5, 100, 100); a.camera.updateProjectionMatrix(); };
-      frameCar(); addEventListener('resize', () => { frameCar(); a.seek(cur); });
-      stage.classList.add('is3d'); api = a; target = progress() * TOTAL; cur = target; a.seek(cur); ui(cur); },
-    onFail: e => { console.warn('story 3D unavailable, using stills', e); api = null; onScroll(); },
-  });
-  onScroll();
-  window.DD_STORY = { get t(){ return cur; }, TOTAL };
-}
+  addEventListener('resize', () => { setKind(); size(); schedule(); });
+  want = toU(progress()); ui(want);
+  setKind(); size(); schedule();
+  window.DD_STORY = { get u(){ return want; }, get shown(){ return shown; }, get decoded(){ return bm.size; }, get loaded(){ return blobs.filter(Boolean).length; }, get drawMs(){ return drawMs; }, get canvas(){ return [W, H]; }, N };
+  /* warm the colour picker up while nobody is scrolling and the story is not on screen (or is finished),
+     so its one-off setup never lands in the middle of the film */
+  let lastScroll = 0; addEventListener('scroll', () => { lastScroll = performance.now(); }, { passive: true });
+  const tryWarm = () => {
+    if (!window.DD_CFG_GO) return;
+    const r = sec.getBoundingClientRect(), pinned = r.top <= 0 && r.bottom >= innerHeight;
+    if (performance.now() - lastScroll > 700 && (!pinned || want > .93) && r.top > -1e9) { window.DD_CFG_GO(); return; }
+    setTimeout(tryWarm, 900);
+  };
+  addEventListener('load', () => setTimeout(tryWarm, 2200));
+})();
 </script>
 <script>
 /* ---- film meter: how far down the page you are, as film on a car ----------- */
 (function(){
   const m = document.getElementById('fmeter'), bar = document.getElementById('fbar'); if (!m || !bar) return;
-  const rect = document.getElementById('fmrect'), edge = document.getElementById('fmedge'), pct = document.getElementById('fmpct'), txt = document.getElementById('fmtxt');
-  const fill = bar.querySelector('i'), glyph = bar.querySelector('svg');
+  const rect = document.getElementById('fmrect'), pct = document.getElementById('fmpct'), txt = document.getElementById('fmtxt'), fill = bar.querySelector('i');
   const hero = document.getElementById('top'), story = document.getElementById('wrap'), hdr = document.getElementById('hdr');
-  let raf = 0;
+  let raf = 0, lastP = -1, lastShow = null;
   function paint(){
     raf = 0;
     const max = document.documentElement.scrollHeight - innerHeight, p = Math.min(1, Math.max(0, scrollY / Math.max(1, max)));
-    const sr = story ? story.getBoundingClientRect() : null, inStory = sr && sr.top < innerHeight * .4 && sr.bottom > innerHeight * .6;
+    const sr = story.getBoundingClientRect(), inStory = sr.top < innerHeight * .5 && sr.bottom > innerHeight * .5;
     const show = scrollY > hero.offsetHeight * .6 && !inStory;
-    const x = p * 120;
-    rect.setAttribute('width', x.toFixed(2));
-    edge.setAttribute('x1', x.toFixed(2)); edge.setAttribute('x2', x.toFixed(2)); edge.setAttribute('opacity', p > .01 && p < .995 ? .85 : 0);
-    const full = p >= .995;
-    pct.textContent = full ? 'Fully protected' : Math.round(p * 100) + '%';
-    txt.textContent = full ? 'Get your price' : 'Film coverage';
-    m.classList.toggle('full', full); m.classList.toggle('on', show);
-    document.documentElement.style.setProperty('--hh', hdr.offsetHeight + 'px');
-    fill.style.width = (p * 100).toFixed(2) + '%'; glyph.style.left = (p * 100).toFixed(2) + '%';
-    bar.classList.toggle('on', show);
+    if (show !== lastShow) { lastShow = show; m.classList.toggle('on', show); bar.classList.toggle('on', show); document.documentElement.style.setProperty('--hh', hdr.offsetHeight + 'px'); }
+    const q = Math.round(p * 200) / 200; if (q === lastP) return; lastP = q;
+    rect.setAttribute('width', (q * 120).toFixed(1));
+    const full = q >= .995; pct.textContent = full ? 'Fully protected' : Math.round(q * 100) + '%'; txt.textContent = full ? 'Get your price' : 'Film coverage';
+    m.classList.toggle('full', full);
+    fill.style.transform = 'scaleX(' + q + ')';
   }
   const go = () => { if (!raf) raf = requestAnimationFrame(paint); };
   addEventListener('scroll', go, { passive: true }); addEventListener('resize', go); go();
