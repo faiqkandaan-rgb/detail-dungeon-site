@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Thank you | Detail Dungeon</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#07070A">
+<link rel="icon" type="image/png" href="../img/favicon.png">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&family=Montserrat:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#07070A;--panel:#0E0E13;--panel2:#13131A;--line:#23232C;--line2:#2E2E38;--fg:#F4F4F6;--mute:#9A9BA5;--dim:#6E6F79;--red:#D90D14;--red2:#F0202A;--ok:#3DBB72;
+  --hero:"Instrument Sans","Helvetica Neue",Arial,sans-serif;--disp:"Montserrat",system-ui,sans-serif;--body:"Barlow","Helvetica Neue",Arial,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg)}
+body{font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100svh;display:flex;flex-direction:column;overflow-x:hidden}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:max(22px,env(safe-area-inset-left))}
+header{border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:16px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+.brand img{width:28px;display:block}
+.brand b{font-family:var(--disp);font-weight:700;letter-spacing:.17em;font-size:13px}
+.back{color:var(--mute);text-decoration:none;font-size:14px}
+.back:hover{color:var(--fg)}
+main{flex:1;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:stretch}
+.copy{padding:clamp(40px,7vw,88px) clamp(22px,5vw,64px) clamp(40px,6vw,72px) max(22px,calc((100vw - 1120px)/2 + 22px))}
+.tick{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:rgba(61,187,114,.12);border:1px solid rgba(61,187,114,.4);margin-bottom:26px}
+.tick svg{width:26px;height:26px}
+.eyebrow{font-family:var(--disp);font-weight:600;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute)}
+h1{font-family:var(--hero);font-weight:700;letter-spacing:-.03em;line-height:1.04;margin:12px 0 0;font-size:clamp(36px,5.4vw,60px)}
+.lede{color:var(--mute);margin:18px 0 0;font-size:17px;max-width:46ch}
+.lede b{color:var(--fg);font-weight:600}
+.card{margin-top:30px;border:1px solid var(--line2);background:var(--panel);border-radius:16px;padding:20px 22px;max-width:520px}
+.card dl{margin:12px 0 0;display:grid;gap:0}
+.card dl div{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-top:1px solid var(--line)}
+.card dt{color:var(--mute);font-size:14px}
+.card dd{margin:0;font-weight:600;text-align:right}
+.card .price{font-family:var(--hero);font-size:20px;letter-spacing:-.01em}
+.steps{list-style:none;margin:34px 0 0;padding:0;display:grid;gap:18px;max-width:520px;counter-reset:s}
+.steps li{display:grid;grid-template-columns:34px 1fr;gap:14px;counter-increment:s}
+.steps li::before{content:counter(s);width:34px;height:34px;border-radius:50%;border:1px solid var(--line2);display:grid;place-items:center;font-family:var(--disp);font-weight:700;font-size:13px;color:var(--fg)}
+.steps b{display:block;font-family:var(--hero);font-weight:600;font-size:16px;letter-spacing:-.01em}
+.steps span{color:var(--mute);font-size:14.5px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:999px;padding:14px 24px;font-weight:600;font-size:14.5px;text-decoration:none;border:1px solid transparent;transition:.18s}
+.btn svg{width:18px;height:18px}
+.btn-red{background:var(--red);color:#fff}.btn-red:hover{background:var(--red2)}
+.btn-ghost{border-color:var(--line2);background:var(--panel)}.btn-ghost:hover{border-color:#44444F}
+.note{margin-top:18px;color:var(--dim);font-size:13.5px}
+.note a{color:var(--mute)}
+.pic{position:relative;overflow:hidden;min-height:420px}
+.pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 55%}
+.pic::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--bg) 0%,rgba(7,7,10,.35) 28%,rgba(7,7,10,0) 60%),linear-gradient(0deg,rgba(7,7,10,.7),rgba(7,7,10,0) 40%)}
+.pic p{position:absolute;left:28px;right:28px;bottom:26px;z-index:2;margin:0;font-family:var(--hero);font-weight:600;font-size:clamp(20px,2.2vw,26px);letter-spacing:-.02em;line-height:1.2}
+.pic p span{display:block;color:var(--mute);font-family:var(--body);font-weight:400;font-size:14px;letter-spacing:0;margin-top:6px}
+footer{border-top:1px solid var(--line);padding-block:20px;color:var(--dim);font-size:12.5px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer b{color:var(--mute);font-weight:600}
+@media(max-width:900px){
+  main{grid-template-columns:1fr}
+  .pic{min-height:240px;order:-1}
+  .pic::after{background:linear-gradient(0deg,var(--bg) 0%,rgba(7,7,10,.2) 55%,rgba(7,7,10,.35) 100%)}
+  .pic p{display:none}
+  .copy{padding:28px 22px 48px}
+  .tick{margin-top:-58px;position:relative;z-index:3;background:#0d1a12}
+  .btn{flex:1 1 220px}
+}
+@media(prefers-reduced-motion:no-preference){
+  .tick{animation:pop .5s cubic-bezier(.2,1.4,.4,1) both}
+  .copy>*:not(.tick){animation:rise .6s ease both}
+  .copy>*:nth-child(2){animation-delay:.05s}.copy>*:nth-child(3){animation-delay:.1s}.copy>*:nth-child(4){animation-delay:.15s}
+  .copy>*:nth-child(5){animation-delay:.2s}.copy>*:nth-child(6){animation-delay:.25s}.copy>*:nth-child(7){animation-delay:.3s}
+  @keyframes pop{from{transform:scale(.4);opacity:0}}
+  @keyframes rise{from{transform:translateY(10px);opacity:0}}
+}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+  <a class="brand" href="../"><img src="../img/sym.png" alt=""><b>DETAIL DUNGEON</b></a>
+  <a class="back" href="../">Back to the site</a>
+</div></header>
+
+<main>
+  <div class="copy">
+    <div class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#3DBB72" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg></div>
+    <span class="eyebrow" id="eb">Request received</span>
+    <h1 id="title">Thank you.</h1>
+    <p class="lede" id="lede">The studio has your details and will message you on WhatsApp to confirm a time.</p>
+    <div class="card" id="card" hidden>
+      <span class="eyebrow">Your request</span>
+      <dl id="rows"></dl>
+    </div>
+    <ol class="steps">
+      <li><div><b>We message you on WhatsApp</b><span>To confirm the car, the package and a time that suits you.</span></div></li>
+      <li><div><b>Bring the car in</b><span>We check the paint and lock in the price before any work starts.</span></div></li>
+      <li><div><b>Drive out protected</b><span>Applied, checked under the lights, and handed back with your warranty details.</span></div></li>
+    </ol>
+    <div class="cta">
+      <a class="btn btn-red" id="wa" href="https://wa.me/923260167777?text=Hi%20Detail%20Dungeon%2C%20I%20just%20sent%20a%20request%20on%20your%20website." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3.5a8.5 8.5 0 0 0-7.3 12.9L3.5 20.5l4.2-1.1A8.5 8.5 0 1 0 12 3.5z"/></svg><span id="walab">Message us on WhatsApp</span></a>
+      <a class="btn btn-ghost" href="../">Back to the site</a>
+    </div>
+    <p class="note">Need us sooner? Call <a href="tel:03260167777">0326 0167777</a> or follow the work on <a href="https://www.instagram.com/detaildungeon/" target="_blank" rel="noopener">@detaildungeon</a>.</p>
+  </div>
+  <div class="pic"><img src="../img/cta.jpg" alt="A white Land Cruiser in the Detail Dungeon bay"><p>Nothing touches the paint.<span>PPF, ceramic coating and detailing in Islamabad and Rawalpindi.</span></p></div>
+</main>
+
+<footer><div class="wrap">
+  <span>© 2026 Detail Dungeon. All rights reserved.</span>
+  <span>Website built, hosted and managed by <b>Bastion Studio</b>.</span>
+</div></footer>
+
+<script>
+/* the request the visitor just sent, handed over by the price tool (kept in this tab only) */
+(function(){
+  var d = null;
+  try { d = JSON.parse(sessionStorage.getItem("dd-thanks") || "null"); } catch (e) {}
+  if (!d) return;
+  var $ = function(id){ return document.getElementById(id); };
+  var esc = function(t){ return String(t == null ? "" : t).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); };
+  var fmt = function(n){ return Number(n).toLocaleString("en-US"); };
+  var first = String(d.name || "").trim().split(/\s+/)[0];
+  if (first) $("title").textContent = "Thank you, " + first + ".";
+  var num = d.phone ? String(d.phone).replace(/^92/, "0").replace(/^(\d{4})(\d+)$/, "$1 $2") : "";
+  if (d.sent === false) {
+    $("eb").textContent = "One last step";
+    $("lede").innerHTML = "Tap <b>Send on WhatsApp</b> below so the studio gets your request. Your car and package are already in the message.";
+    $("walab").textContent = "Send on WhatsApp";
+  } else if (num) {
+    $("lede").innerHTML = "The studio has your request and will message you on WhatsApp at <b>" + esc(num) + "</b> to confirm a time.";
+  }
+  var rows = [["Car", d.vehicle], ["Coverage", d.coverage], ["Film", d.film]];
+  rows.push(["Price", d.price ? "Rs " + fmt(d.price) : "Quoted on inspection"]);
+  $("rows").innerHTML = rows.filter(function(r){ return r[1]; }).map(function(r, i, a){
+    return "<div><dt>" + r[0] + "</dt><dd" + (i === a.length - 1 ? ' class="price"' : "") + ">" + esc(r[1]) + "</dd></div>"; }).join("");
+  $("card").hidden = false;
+  var text = "Hi Detail Dungeon, " + (first ? "this is " + first + ". " : "") + "I sent a request on your website: " +
+    [d.vehicle, d.coverage, d.film].filter(Boolean).join(", ") + (d.price ? " (Rs " + fmt(d.price) + ")" : "") + "." + (num ? " My number: " + num + "." : "");
+  $("wa").href = "https://wa.me/923260167777?text=" + encodeURIComponent(text);
+})();
+</script>
+</body>
+</html>

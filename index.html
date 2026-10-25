@@ -246,6 +246,22 @@ header.menu-open{background:rgba(7,7,10,.98);border-bottom-color:var(--line)}
 .quote .lead .btn{margin-top:10px;width:100%;box-sizing:border-box}
 .lmsg{font-size:12px;color:var(--dim);margin:10px 0 0;min-height:1em}
 .lmsg.ok{color:#8fd18f}
+/* after a WhatsApp tap: a short closing note when they come back */
+.wa-done{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:90;width:min(440px,calc(100vw - 28px));
+  transform:translate(-50%,24px);opacity:0;transition:transform .32s cubic-bezier(.2,.9,.3,1),opacity .25s;
+  background:rgba(19,19,26,.97);border:1px solid var(--line2);border-radius:18px;padding:18px 18px 16px;box-shadow:0 18px 50px rgba(0,0,0,.55);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.wa-done.on{transform:translate(-50%,0);opacity:1}
+.wa-done .wd-top{display:flex;gap:13px;align-items:flex-start}
+.wa-done .wd-ic{flex:none;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.45)}
+.wa-done .wd-ic svg{width:19px;height:19px}
+.wa-done b{display:block;font-family:var(--hero);font-size:16.5px;letter-spacing:-.01em;line-height:1.25;padding-right:26px}
+.wa-done p{color:var(--mute);font-size:14px;line-height:1.5;margin-top:4px}
+.wa-done .wd-x{position:absolute;top:10px;right:10px;width:32px;height:32px;border-radius:50%;border:0;background:none;color:var(--mute);cursor:pointer;font-size:20px;line-height:1}
+.wa-done .wd-x:hover{color:var(--fg);background:var(--panel2)}
+.wa-done .wd-act{display:flex;gap:8px;margin-top:14px;padding-left:51px}
+.wa-done .wd-act .btn{padding:10px 16px;font-size:13px}
+@media(prefers-reduced-motion:reduce){.wa-done{transition:none}}
 
 /* strip */
 .strip{overflow:hidden;padding-block:clamp(40px,5vw,64px)}
@@ -1416,6 +1432,13 @@ html:has(.dd-dlg[open]){overflow:hidden}
   <p class="credit">3D car: <a href="https://sketchfab.com/3d-models/2022-toyota-land-cruiser-300-vxr-3dfcd7904cdb4e52afa3ce59fa59e1a5" rel="noopener" target="_blank">2022 Toyota Land Cruiser 300 VX.R</a> by <a href="https://sketchfab.com/ddiaz-design" rel="noopener" target="_blank">Ddiaz Design</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">CC BY-NC-SA 4.0</a>.</p>
 </div></footer>
 
+<div class="wa-done" id="wa-done" role="status" aria-live="polite" hidden>
+  <button class="wd-x" type="button" data-close aria-label="Close">&times;</button>
+  <div class="wd-top"><span class="wd-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span>
+    <div><b data-t>Your message is ready in WhatsApp</b><p data-p>Press send and the studio will reply there.</p></div></div>
+  <div class="wd-act"><a class="btn btn-ghost" data-again href="#" target="_blank" rel="noopener">Open WhatsApp again</a><button class="btn btn-red" type="button" data-close>Done</button></div>
+</div>
+
 <dialog class="dd-dlg" id="dd-dlg" aria-labelledby="dd-title">
   <button class="dd-x" type="button" aria-label="Close">&times;</button>
   <div class="dd-in"></div>
@@ -1786,15 +1809,15 @@ $("#qcta").addEventListener("click", () => { sendLead(Object.assign({ source:"wh
     const q = currentQuote();
     const lead = Object.assign({ source:"callback-form", name: name.value.trim(), phone: digits }, q);
     msg.className = "lmsg"; msg.textContent = "Sending…";
+    const btn = f.querySelector("button[type=submit]"); if(btn) btn.disabled = true;
     const ok = await sendLead(lead);
-    msg.className = "lmsg ok";
-    msg.textContent = ok ? "Got it. We will message you on WhatsApp." : "Got it. Opening WhatsApp so the studio has your details.";
-    if(!ok){
-      const text = encodeURIComponent(`Hi Detail Dungeon, ${lead.name || "I"} would like a call back. ${q.vehicle}, ${q.coverage}, ${q.film}` + (q.price ? ` (Rs ${fmt(q.price)})` : "") + `. My number: ${digits}`);
-      window.open("https://wa.me/" + DD_CFG.whatsapp + "?text=" + text, "_blank", "noopener");
-    }
-    f.reset();
+    /* hand the request to the thank-you page; if the sheet could not be reached it asks them to send it on WhatsApp */
+    try { sessionStorage.setItem("dd-thanks", JSON.stringify({ name: lead.name, phone: digits, vehicle: q.vehicle, coverage: q.coverage, film: q.film, price: q.price, sent: ok })); } catch(err){}
+    msg.className = "lmsg ok"; msg.textContent = "Sent. One moment…";
+    location.href = "thanks/";
   });
+  /* coming back from the thank-you page: the form is ready again */
+  addEventListener("pageshow", () => { const btn = f.querySelector("button[type=submit]"); if(btn) btn.disabled = false; msg.textContent = ""; f.reset(); });
 })();
 
 /* ---- motion -------------------------------------------------------------- */
@@ -1825,6 +1848,31 @@ document.querySelectorAll("a[data-wa]").forEach(a => {
   a.target = "_blank"; a.rel = "noopener";
   a.addEventListener("click", () => sendLead({ source: "whatsapp-link", note: decodeURIComponent((a.href.split("text=")[1] || "")) }));
 });
+
+/* closing note: after any WhatsApp tap, thank them when they come back to the tab */
+(function(){
+  const box = document.getElementById("wa-done"); if(!box) return;
+  let pending = null, timer = 0, hideT = 0;
+  const show = () => {
+    if(!pending) return;
+    box.querySelector("[data-again]").href = pending.href;
+    box.querySelector("[data-p]").textContent = pending.quote
+      ? "Press send and the studio will reply there. Your car and package are already in the message."
+      : "Press send and the studio will reply there.";
+    pending = null; clearTimeout(hideT); box.hidden = false;
+    requestAnimationFrame(() => requestAnimationFrame(() => box.classList.add("on")));
+  };
+  const hide = () => { box.classList.remove("on"); hideT = setTimeout(() => { box.hidden = true; }, 320); };
+  document.addEventListener("click", e => {
+    const a = e.target.closest('a[href*="wa.me/"]'); if(!a || box.contains(a)) return;
+    pending = { href: a.href, quote: a.id === "qcta" || /text=Hi%20Detail%20Dungeon%2C%20[^&]*(book|price|Rs)/i.test(a.href) };
+    const dlg = a.closest("dialog[open]"); if(dlg) setTimeout(() => dlg.close(), 250);
+    clearTimeout(timer); timer = setTimeout(() => { if(document.visibilityState === "visible") show(); }, 1600);
+  }, true);
+  document.addEventListener("visibilitychange", () => { if(document.visibilityState === "visible" && pending){ clearTimeout(timer); setTimeout(show, 350); } });
+  box.addEventListener("click", e => { if(e.target.closest("[data-close]")) hide(); });
+  addEventListener("keydown", e => { if(e.key === "Escape" && !box.hidden) hide(); });
+})();
 
 if(window.gsap && window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
 
