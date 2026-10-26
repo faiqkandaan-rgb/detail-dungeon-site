@@ -4,8 +4,8 @@
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}</script>
 <meta charset="utf-8">
 <meta name="robots" content="noindex,nofollow">
-<link rel="preload" as="image" href="seq/l/f000.webp" media="(min-aspect-ratio: 1/1)" fetchpriority="high">
-<link rel="preload" as="image" href="seq/p/f000.webp" media="(max-aspect-ratio: 1/1)" fetchpriority="high">
+<link rel="preload" as="image" href="film/l/poster.webp" media="not all and (max-aspect-ratio: 1/1)" fetchpriority="high">
+<link rel="preload" as="image" href="film/p/poster.webp" media="(max-aspect-ratio: 1/1)" fetchpriority="high">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Detail Dungeon | PPF, ceramic coating and detailing in Islamabad &amp; Rawalpindi</title>
 <meta name="description" content="Authorised OneFilm USA and ProForce applicator. Self-healing paint protection film with fixed prices by car size, plus ceramic coating, tint, chrome delete and colour change. Get your price in 30 seconds.">
@@ -862,11 +862,12 @@ html:has(.dd-dlg[open]){overflow:hidden}
 
 /* ---- scroll film story: pre-rendered frames on a canvas, pinned while you scroll ---- */
 .wrapfilm{position:relative;height:620vh;padding:0;background:#08080B;scroll-margin-top:0}
-.wf-stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:radial-gradient(62% 50% at 50% 66%,#33343D 0%,#1A1B21 45%,#08080B 100%)}
-.wf-poster,.wf-poster img,.wf-cv{position:absolute;inset:0;width:100%;height:100%;display:block}
-.wf-poster img{object-fit:cover}
-.wf-cv{opacity:0;transition:opacity .35s}
-.wf-cv.on{opacity:1}
+.wf-stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#08080B}
+.wf-bg,.wf-bg img,.wf-poster,.wf-poster img{position:absolute;inset:0;width:100%;height:100%;display:block}
+.wf-bg img,.wf-poster img{object-fit:cover;object-position:50% 50%}
+.wf-stick.live .wf-poster{visibility:hidden}
+.wf-cv{position:absolute;left:0;top:0;width:10px;height:10px;display:block;visibility:hidden}
+.wf-stick.live .wf-cv{visibility:visible}
 .wf-head{position:absolute;left:0;right:0;bottom:calc(26px + env(safe-area-inset-bottom,0px));z-index:3;text-align:center;padding-inline:22px;
   display:flex;flex-direction:column;align-items:center;transition:opacity .4s ease,transform .4s ease;will-change:opacity,transform}
 .wf-head .eyebrow{font-size:12px}
@@ -1004,7 +1005,8 @@ html.inwrap header.stuck{-webkit-backdrop-filter:none;backdrop-filter:none;backg
 
 <section class="wrapfilm" id="wrap" aria-label="Scroll to watch paint protection film go onto a Land Cruiser, one package at a time">
   <div class="wf-stick">
-    <picture class="wf-poster"><source media="(max-aspect-ratio: 1/1)" srcset="seq/p/f000.webp"><img src="seq/l/f000.webp" alt="A white Land Cruiser 300 in the Detail Dungeon bay"></picture>
+    <picture class="wf-bg"><source media="(max-aspect-ratio: 1/1)" srcset="film/p/bg.webp"><img src="film/l/bg.webp" alt=""></picture>
+    <picture class="wf-poster"><source media="(max-aspect-ratio: 1/1)" srcset="film/p/poster.webp"><img src="film/l/poster.webp" alt="A white Land Cruiser 300 in the Detail Dungeon bay"></picture>
     <canvas class="wf-cv" id="wfcv" aria-hidden="true"></canvas>
     <div class="wf-head" id="wfhead">
       <span class="eyebrow">Watch it go on</span>
@@ -1662,6 +1664,7 @@ html.inwrap header.stuck{-webkit-backdrop-filter:none;backdrop-filter:none;backg
   let raf = 0;
   function frame(){
     raf = 0;
+    if (document.documentElement.classList.contains("inwrap")) return;
     const span = sec.offsetHeight - innerHeight;
     const top  = sec.getBoundingClientRect().top;
     show(span <= 0 ? 0 : Math.max(0, Math.min(1, -top / span)));
@@ -1999,7 +2002,7 @@ if(!reduce && window.gsap && window.ScrollTrigger){
      screen gets revealed, including things a jump link skipped over */
   const pend = new Set(document.querySelectorAll("section:not(.hero) .rv, .banner.rv, .cu"));
   let ticking = false;
-  const check = () => { ticking = false; const line = innerHeight * 0.92;
+  const check = () => { ticking = false; if (document.documentElement.classList.contains("inwrap")) return; const line = innerHeight * 0.92;
     pend.forEach(el => { const cu = el.classList.contains("cu"); if(el.getBoundingClientRect().top < (cu ? innerHeight - 2 : line)){ pend.delete(el); el.classList.contains("cu") ? count(el) : shown(el); } }); };
   const queue = () => { if(!ticking && pend.size){ ticking = true; requestAnimationFrame(check); } };
   addEventListener("scroll", queue, {passive:true}); addEventListener("resize", queue); addEventListener("load", queue);
@@ -2711,9 +2714,15 @@ document.querySelectorAll("[data-blackout]").forEach(a => a.addEventListener("cl
 })();
 </script>
 <script>
-/* start heavy work only when its section is within a screen or two, or when the page is idle */
-window.ddNear = function(el, fn, margin){
-  let done = false; const go = () => { if (done) return; done = true; try { fn(); } catch (e) { console.warn(e); } };
+/* start heavy work only when its section is within a screen or two. An optional gate holds it back
+   (the colour picker's one-off setup waits until the film has finished, so it never lands mid-scroll) */
+window.ddNear = function(el, fn, margin, gate){
+  let done = false, waiting = false;
+  const go = () => {
+    if (done) return;
+    if (gate && !gate()) { if (!waiting) { waiting = true; setTimeout(() => { waiting = false; go(); }, 250); } return; }
+    done = true; try { fn(); } catch (e) { console.warn(e); }
+  };
   if (!el || !('IntersectionObserver' in window)) return go();
   const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { io.disconnect(); go(); } }, { rootMargin: (margin || '150%') + ' 0px' });
   io.observe(el);
@@ -2737,7 +2746,7 @@ if (ui) window.DD_CFG_GO = window.ddNear(document.getElementById('cfgstage'), ()
   });
   if (!api) { clearTimeout(t); fallback(); }
   window.DD_3D = () => api;
-}, '120%');
+}, '120%', () => !(window.DD_STORY && window.DD_STORY.busy));
 </script>
 <script type="module">
 /* ---- interior trim: the clear sheet over the console ------------------------ */
@@ -2808,13 +2817,20 @@ if (wrap && canvas) window.ddNear(wrap, () => {
 </script>
 <script>
 /* ---- scroll film story -------------------------------------------------------
-   160 pre-rendered frames (one per orbit step) drawn to a canvas from the scroll position.
-   Frames arrive as small WebP blobs; only the ones near the current position are decoded,
-   off the main thread, so memory stays low and scrolling never waits on a decode. */
+   Pre-rendered frames of the car (one set per screen shape), cut to the car alone (with alpha), drawn over a static bay
+   background as you scroll. Frames are spaced evenly in how much the picture changes (more of them
+   where the camera swings fast), so every step is equally small. What keeps it smooth on any phone:
+   - the playhead glides after the scroll position instead of jumping with it, so wheel notches and
+     finger jitter come out as one motion, and it settles on a whole frame when you stop
+   - between two frames it cross-fades, so the car moves on every screen refresh, not in steps
+   - a low-res copy of every second frame stays decoded: however fast you fling, there is always a
+     frame within a step. Crisp frames are decoded just ahead of where you are heading
+   - decoding runs in a worker, off the thread that scrolls, and scrolling itself reads no layout */
 (function(){
   const sec = document.getElementById('wrap'); if (!sec) return;
-  const N = 200;
-  const cv = document.getElementById('wfcv'), ctx = cv.getContext('2d', { alpha: false });
+  const stick = sec.querySelector('.wf-stick'), cv = document.getElementById('wfcv');
+  const META = {"l":{"W":2400,"H":1350,"crop":[438,252,1492,842],"N":240,"U":[0.0,0.0067,0.01363,0.02088,0.02845,0.03621,0.04408,0.05191,0.05959,0.06703,0.07419,0.08103,0.08756,0.09378,0.09966,0.10519,0.11037,0.11523,0.11978,0.12404,0.12809,0.13202,0.13587,0.13965,0.14345,0.14731,0.15125,0.15531,0.15945,0.16366,0.16793,0.17227,0.17667,0.18112,0.18566,0.19029,0.19503,0.19988,0.20485,0.20995,0.21518,0.22054,0.22603,0.23162,0.23729,0.24302,0.24885,0.25476,0.26077,0.26682,0.27294,0.27915,0.28545,0.29193,0.29872,0.30598,0.31395,0.32245,0.33105,0.33963,0.34814,0.35649,0.36392,0.3706,0.3767,0.38202,0.38698,0.39168,0.39616,0.40049,0.4048,0.40913,0.41348,0.41782,0.42217,0.42649,0.43079,0.43507,0.43931,0.44353,0.44771,0.45185,0.45594,0.45999,0.46399,0.46794,0.47183,0.47566,0.47945,0.48319,0.4869,0.49055,0.49416,0.49775,0.50129,0.50481,0.50831,0.51179,0.51525,0.51871,0.52215,0.52559,0.52901,0.53243,0.53582,0.5392,0.54256,0.54588,0.54917,0.55242,0.5556,0.55875,0.56185,0.56492,0.56797,0.57096,0.57392,0.57683,0.57968,0.58251,0.58528,0.58805,0.5908,0.59356,0.59638,0.59925,0.60221,0.60529,0.60845,0.6119,0.61557,0.61949,0.62374,0.6283,0.63299,0.63745,0.64165,0.64557,0.64927,0.65278,0.6561,0.65932,0.66238,0.6653,0.66817,0.67088,0.67357,0.67614,0.67871,0.68127,0.68384,0.68645,0.68908,0.69178,0.69454,0.69739,0.70037,0.70343,0.70674,0.7102,0.71385,0.71782,0.72203,0.72644,0.731,0.73567,0.74036,0.74502,0.74964,0.75417,0.7586,0.76293,0.76717,0.77134,0.77545,0.77949,0.78347,0.78737,0.7912,0.79496,0.79864,0.80221,0.80571,0.80915,0.81251,0.81583,0.81912,0.82233,0.82553,0.82869,0.83182,0.83494,0.83805,0.84116,0.84429,0.84744,0.85061,0.8538,0.85695,0.86007,0.86315,0.86615,0.86911,0.87188,0.87462,0.87721,0.87978,0.88228,0.88476,0.88714,0.88952,0.89181,0.89409,0.89636,0.89862,0.90088,0.90313,0.90538,0.90764,0.90991,0.91224,0.91457,0.917,0.91942,0.92198,0.92455,0.9273,0.93009,0.93306,0.93613,0.93933,0.94283,0.94661,0.95079,0.9556,0.96147,0.96893,0.97855,0.98937,1.0]},"p":{"W":900,"H":1950,"crop":[0,536,900,720],"N":240,"U":[0.0,0.0067,0.01363,0.02088,0.02845,0.03621,0.04408,0.05191,0.05959,0.06703,0.07419,0.08103,0.08756,0.09378,0.09966,0.10519,0.11037,0.11523,0.11978,0.12404,0.12809,0.13202,0.13587,0.13965,0.14345,0.14731,0.15125,0.15531,0.15945,0.16366,0.16793,0.17227,0.17667,0.18112,0.18566,0.19029,0.19503,0.19988,0.20485,0.20995,0.21518,0.22054,0.22603,0.23162,0.23729,0.24302,0.24885,0.25476,0.26077,0.26682,0.27294,0.27915,0.28545,0.29193,0.29872,0.30598,0.31395,0.32245,0.33105,0.33963,0.34814,0.35649,0.36392,0.3706,0.3767,0.38202,0.38698,0.39168,0.39616,0.40049,0.4048,0.40913,0.41348,0.41782,0.42217,0.42649,0.43079,0.43507,0.43931,0.44353,0.44771,0.45185,0.45594,0.45999,0.46399,0.46794,0.47183,0.47566,0.47945,0.48319,0.4869,0.49055,0.49416,0.49775,0.50129,0.50481,0.50831,0.51179,0.51525,0.51871,0.52215,0.52559,0.52901,0.53243,0.53582,0.5392,0.54256,0.54588,0.54917,0.55242,0.5556,0.55875,0.56185,0.56492,0.56797,0.57096,0.57392,0.57683,0.57968,0.58251,0.58528,0.58805,0.5908,0.59356,0.59638,0.59925,0.60221,0.60529,0.60845,0.6119,0.61557,0.61949,0.62374,0.6283,0.63299,0.63745,0.64165,0.64557,0.64927,0.65278,0.6561,0.65932,0.66238,0.6653,0.66817,0.67088,0.67357,0.67614,0.67871,0.68127,0.68384,0.68645,0.68908,0.69178,0.69454,0.69739,0.70037,0.70343,0.70674,0.7102,0.71385,0.71782,0.72203,0.72644,0.731,0.73567,0.74036,0.74502,0.74964,0.75417,0.7586,0.76293,0.76717,0.77134,0.77545,0.77949,0.78347,0.78737,0.7912,0.79496,0.79864,0.80221,0.80571,0.80915,0.81251,0.81583,0.81912,0.82233,0.82553,0.82869,0.83182,0.83494,0.83805,0.84116,0.84429,0.84744,0.85061,0.8538,0.85695,0.86007,0.86315,0.86615,0.86911,0.87188,0.87462,0.87721,0.87978,0.88228,0.88476,0.88714,0.88952,0.89181,0.89409,0.89636,0.89862,0.90088,0.90313,0.90538,0.90764,0.90991,0.91224,0.91457,0.917,0.91942,0.92198,0.92455,0.9273,0.93009,0.93306,0.93613,0.93933,0.94283,0.94661,0.95079,0.9556,0.96147,0.96893,0.97855,0.98937,1.0]}};                           // per screen shape: frame size, the car's box, frame count, timeline
+  let N = 2, U = [0, 1];                           // U[i]: where frame i sits on the 0..1 timeline (set with the screen shape)
   const head = document.getElementById('wfhead'), foot = document.getElementById('wffoot');
   const capEl = foot.querySelector('.wf-cap'), kEl = document.getElementById('wfk'), tEl = document.getElementById('wft');
   const tiers = [...foot.querySelectorAll('.wf-tier')], bars = tiers.map(t => t.querySelector('i')), prog = document.getElementById('wfprog');
@@ -2830,134 +2846,332 @@ if (wrap && canvas) window.ddNear(wrap, () => {
     [.96,  'Fully protected', 'Invisible. Self-healing. Up to a 6-year warranty.'],
   ];
   const HEAD_UNTIL = .08, END_AT = .96;
-  let kind = '', blobs = [], bm = new Map(), want = 0, shown = -1, lastCap = -1, raf = 0, W = 0, H = 0, inflight = 0, loading = false, ready = false;
-  const MAXBM = innerWidth < 760 ? 16 : 14, SRC = { l: [2400, 1350], p: [900, 1950] }, BLEND = false;   // whole frames only: blending ghosts the badges
-  const url = i => 'seq/' + kind + '/f' + String(i).padStart(3, '0') + '.webp';
-
-  /* where are we: 0..1 across the pinned stretch, with a short hold at each end */
-  function progress(){ const r = sec.getBoundingClientRect(), span = sec.offsetHeight - innerHeight; return Math.min(1, Math.max(0, -r.top / Math.max(1, span))); }
-  const toU = p => Math.min(1, Math.max(0, (p - .015) / .9));
-
-  /* canvas at device resolution, image drawn to cover */
-  function size(){
-    // device resolution, but never more pixels than the frames actually have once cover-scaled (less work, same sharpness)
-    const r = cv.getBoundingClientRect(), d = Math.min(2, devicePixelRatio || 1), [sw, sh] = SRC[kind] || [1920, 1080];
-    const k = Math.max(r.width * d / sw, r.height * d / sh), m = k > 1 ? 1 / k : 1;    // k > 1 means the frames would be upscaled
-    const w = Math.round(r.width * d * m), h = Math.round(r.height * d * m);
-    if (w === W && h === H) return false;
-    W = cv.width = w; H = cv.height = h; shown = -1; return true;
+  const toU = p => Math.min(1, Math.max(0, (p - .015) / .9));          // a short hold at each end
+  function frameOf(u){                                                  // timeline -> fractional frame
+    if (u <= U[0]) return 0; if (u >= U[N - 1]) return N - 1;
+    let a = 0, b = N - 1; while (b - a > 1) { const m = (a + b) >> 1; if (U[m] <= u) a = m; else b = m; }
+    return a + (u - U[a]) / (U[b] - U[a]);
   }
-  function cover(img){ const s = Math.max(W / img.width, H / img.height), w = img.width * s, h = img.height * s; return [(W - w) / 2, (H - h) / 2, w, h]; }
-  function nearest(i){ for (let d = 0; d < N; d++) { if (bm.has(i - d)) return i - d; if (bm.has(i + d)) return i + d; } return -1; }
-  let drawMs = 0;
+  const uOf = f => { const i = Math.min(N - 2, Math.max(0, Math.floor(f))); return U[i] + (U[i + 1] - U[i]) * (f - i); };
+  const fade = a => Math.min(1, Math.max(0, (a - .12) / .76));          // each step holds crisp at both ends, fades between
+  const PHONE = matchMedia('(pointer: coarse)').matches || innerWidth < 760;
+  const MAXHI0 = PHONE ? 18 : 16; let MAXHI = MAXHI0;  // crisp frames kept around the playhead
+  const HI_BUDGET = (PHONE ? 44 : 100) * 1048576;
+  const LO = PHONE ? .5 : .42, LO_BUDGET = (PHONE ? 56 : 120) * 1048576;   // the low-res safety net: scale and memory cap
+  const JOBS = 2;                                      // decodes in flight
+  const TAU = matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : .1;   // playhead glide, seconds
+
+  let ctx = cv.getContext('2d');
+  let kind = '', gen = 0, szGen = 0, blobs = [], hi = new Map(), lo = new Map(), loStride = 2;
+  let secTop = 0, span = 1, vh = innerHeight, W = 0, H = 0, LW = 0, LH = 0, pinned = null, live = false, lastY = scrollY, lastScrollAt = -1e9;
+  let target = 0, cur = 0, vel = 0, dir = 1, idle = true, idleT = 0, loop = 0, last = 0;
+  let drawn = '', shownF = -1, shownTier = '', drawMs = 0, allLoaded = false, glbReady = false, hold = null;
+
+  /* ---------------------------------------------------------------- geometry, measured once, not per scroll */
+  function measure(){
+    const r = sec.getBoundingClientRect();
+    secTop = r.top + scrollY; span = Math.max(1, sec.offsetHeight - stick.offsetHeight); vh = innerHeight;
+    const m = META[kind], sw = stick.clientWidth, sh = stick.clientHeight; if (!m || !sw || !sh) return;
+    // the full frame is cover-fitted to the pinned stage exactly like the background image; the canvas covers the car's box in it
+    const s = Math.max(sw / m.W, sh / m.H), ox = (sw - m.W * s) / 2, oy = (sh - m.H * s) / 2, [cx, cy, cw, ch] = m.crop;
+    const st = cv.style; st.left = (ox + cx * s) + 'px'; st.top = (oy + cy * s) + 'px'; st.width = (cw * s) + 'px'; st.height = (ch * s) + 'px';
+    const q = Math.min(1, s * Math.min(2, devicePixelRatio || 1));   // device pixels, never more than the frame has
+    const w = Math.round(cw * q), h = Math.round(ch * q);
+    if (w === W && h === H) return;
+    W = cv.width = w; H = cv.height = h; LW = Math.max(1, Math.round(w * LO)); LH = Math.max(1, Math.round(h * LO));
+    ctx = cv.getContext('2d'); drawn = ''; szGen++;
+    loStride = Math.max(2, Math.ceil(N * LW * LH * 4 / LO_BUDGET)); pruneLo();
+    draw();                                               // resizing cleared the canvas: repaint now, not a frame later
+  }
+  const close = b => { try { b && b.close && b.close(); } catch (e) {} };
+
+  /* ---------------------------------------------------------------- scroll -> where the playhead should be */
+  function sync(){
+    const y = lastY = scrollY, p = Math.min(1, Math.max(0, (y - secTop) / span));
+    const pin = y >= secTop - 1 && y <= secTop + span + 1;
+    if (pin !== pinned) { pinned = pin; document.documentElement.classList.toggle('inwrap', pin); }
+    const t = frameOf(toU(p));
+    if (t !== target) { dir = t > target ? 1 : -1; target = t; }
+  }
+  function onScroll(){
+    sync(); farCheck(); idle = false; lastScrollAt = performance.now();
+    clearTimeout(idleT); idleT = setTimeout(() => { idle = true; kick(); }, 150);
+    kick();
+  }
+
+  /* ---------------------------------------------------------------- the loop: runs only while something moves */
+  function kick(){ if (!loop) loop = requestAnimationFrame(tick); }
+  function tick(now){
+    loop = 0;
+    const dt = last ? Math.min(.05, (now - last) / 1000) : 1 / 60; last = now;
+    const goal = hold !== null ? hold : idle ? Math.round(target) : target, prev = cur;   // at rest: a whole frame, never a blend
+    const near = lastY > secTop - vh * 1.2 && lastY < secTop + span + vh * 1.2;
+    if (!near || !TAU) cur = goal;
+    else { cur += (goal - cur) * (1 - Math.exp(-dt / TAU)); if (Math.abs(goal - cur) < .01) cur = goal; }
+    vel = (cur - prev) / (dt * 60);                                         // frames per 60 Hz refresh
+    if (vel) dir = vel > 0 ? 1 : -1;
+    ui(uOf(cur));
+    if (near || !live) draw();
+    pump();
+    if (cur !== goal) kick(); else last = 0;
+  }
+
+  /* ---------------------------------------------------------------- drawing */
+  const onStride = i => i % loStride === 0 || i === N - 1;                // the safety net: every loStride-th frame, plus the last
+  const HB = i => { const e = hi.get(i); return e ? e.b : null; };
+  const LB = i => { const e = onStride(i) ? lo.get(i) : null; return e ? e.b : null; };
   function draw(){
-    const t0 = performance.now();
-    const f = want * (N - 1), i0 = Math.floor(f), i1 = Math.min(N - 1, i0 + 1), a = f - i0;
-    // big screens blend neighbouring frames for silky motion; phones draw whole frames only (half the work, frames are dense enough)
-    const blend = BLEND && bm.has(i0) && bm.has(i1);
-    const key = blend ? i0 + Math.round(a * 20) / 20 : nearest(Math.round(f));
-    if (key === shown || key < 0) return;
-    shown = key;
-    if (blend) {
-      const A = bm.get(i0), B = bm.get(i1); ctx.globalAlpha = 1; ctx.drawImage(A, ...cover(A));
-      if (a > .03) { ctx.globalAlpha = a; ctx.drawImage(B, ...cover(B)); ctx.globalAlpha = 1; }
-    } else { const B = bm.get(key); ctx.globalAlpha = 1; ctx.drawImage(B, ...cover(B)); }
-    if (!ready) { ready = true; cv.classList.add('on'); }
+    if (!W) return;
+    const f = Math.min(N - 1, Math.max(0, cur)), i0 = Math.floor(f), i1 = Math.min(N - 1, i0 + 1), r = Math.round(f);
+    let A = null, B = null, t = 0, k = '', tier = 'h', sf = f;
+    const pair = (a0, a1, frac, get, tag) => {           // two neighbours, cross-faded by where we are between them
+      const x = get(a0), w = fade(frac);
+      if (w <= 0 && x) { A = x; k = tag + a0; sf = a0; return true; }
+      const y = get(a1);
+      if (w >= 1 && y) { A = y; k = tag + a1; sf = a1; return true; }
+      if (x && y) { A = x; B = y; t = w; k = tag + a0 + '+' + Math.round(w * 48); sf = f; return true; }
+      return false;
+    };
+    const one = i => { const x = HB(i); if (x) { A = x; k = 'h' + i; sf = i; } return !!x; };
+    // crisp pair, else the nearest crisp frame; then the low-res net, which is blurrier but in the right place (while moving,
+    // a crisp frame half a step behind would read as the car stepping back); at rest the crisp frames are decoded first anyway
+    const L = loStride, l0 = Math.floor(f / L) * L, l1 = Math.min(N - 1, l0 + L);
+    if (pair(i0, i1, f - i0, HB, 'h') || one(r)) {}
+    else if ((tier = 'l', pair(l0, l1, l1 > l0 ? (f - l0) / (l1 - l0) : 0, LB, 'l'))) {}
+    else if ((tier = 'h', one(r === i0 ? i1 : i0))) {}
+    else {
+      for (let d = 0; d < N && !A; d++) for (const i of [r - d, r + d]) {                     // whatever is closest
+        if (i < 0 || i >= N) continue; const x = HB(i) || LB(i); if (x) { A = x; sf = i; tier = hi.has(i) ? 'h' : 'l'; k = 'n' + tier + i; break; }
+      }
+      if (!A) return;
+    }
+    if (k === drawn) return;
+    const t0 = performance.now(); drawn = k; shownF = sf; shownTier = tier;
+    // cross-fade: (1-t)A + tB, added in premultiplied space, so frames with alpha stay solid mid-fade
+    ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1; ctx.clearRect(0, 0, W, H);
+    ctx.globalAlpha = B ? 1 - t : 1; ctx.drawImage(A, 0, 0, W, H);
+    if (B) { ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = t; ctx.drawImage(B, 0, 0, W, H); ctx.globalCompositeOperation = 'source-over'; }
+    ctx.globalAlpha = 1;
+    if (!live) { live = true; stick.classList.add('live'); }
     drawMs = drawMs * .9 + (performance.now() - t0) * .1;
   }
 
-  /* decode the frames around the current position, nearest first, in the direction of travel */
-  let dir = 1;
-  function pump(){
-    const c = Math.round(want * (N - 1)), order = [c];
-    for (let d = 1; d < 9; d++) { order.push(c + d * dir); if (d < 5) order.push(c - d * dir); }   // 8 ahead, 4 behind: fits the cache
-    for (const i of order) {
-      if (inflight >= 3) break;
-      if (i < 0 || i >= N || bm.has(i) || !blobs[i] || blobs[i].busy) continue;
-      inflight++; blobs[i].busy = true;
-      const done = b => { inflight--; blobs[i].busy = false; if (b) { bm.set(i, b); trim(c); if (Math.abs(i - want * (N - 1)) < 2) schedule(); } pump(); };
-      // decode straight to the size it is drawn at when that is smaller than the frame (less memory on phones)
-      const [sw, sh] = SRC[kind], s = Math.max(W / sw, H / sh), opt = s < .98 && W ? { resizeWidth: Math.round(sw * s), resizeHeight: Math.round(sh * s), resizeQuality: 'high' } : null;
-      (opt ? createImageBitmap(blobs[i].blob, opt).catch(() => createImageBitmap(blobs[i].blob)) : createImageBitmap(blobs[i].blob)).then(done, () => done(null));
-    }
+  /* ---------------------------------------------------------------- decoding: what to decode next */
+  const busyH = new Set(), busyL = new Set(), fails = new Map();
+  const ahead = () => Math.max(2, Math.min(9, MAXHI - 6));
+  function need(t, i){
+    if (i < 0 || i >= N || !blobs[i] || (t === 'h' ? busyH : busyL).has(i) || (t === 'l' && !onStride(i))) return false;
+    const f = fails.get(t + i); if (f && (f.n >= 3 || performance.now() < f.at)) return false;   // a frame that keeps failing is skipped
+    const e = (t === 'h' ? hi : lo).get(i); return !e || e.sz !== szGen;
   }
-  function trim(c){
-    if (bm.size <= MAXBM) return;
-    const keys = [...bm.keys()].sort((x, y) => Math.abs(y - c) - Math.abs(x - c));
-    while (bm.size > MAXBM) { const k = keys.shift(); const b = bm.get(k); bm.delete(k); b && b.close && b.close(); }
+  function inWindow(i){                                  // the crisp frames we want around the playhead
+    const c = Math.round(cur), d = (i - c) * dir, i0 = Math.floor(cur);
+    return i === i0 || i === i0 + 1 || (d >= -3 && d <= ahead());
+  }
+  function nextJob(urgentOnly){
+    const c = Math.round(cur), i0 = Math.floor(cur), fast = Math.abs(vel) > 1.5, L = loStride, lc = Math.round(cur / L) * L;
+    if (!fast || urgentOnly) {                                                                           // what is on screen now
+      if (need('h', i0)) return ['h', i0]; if (need('h', i0 + 1)) return ['h', i0 + 1];
+      if (urgentOnly) return null;
+    }
+    if (need('l', lc)) return ['l', lc];
+    for (let k = 1; k <= 10; k++) {                                                                       // safety net around us
+      if (need('l', lc + k * L * dir)) return ['l', lc + k * L * dir];
+      if (k <= 4 && need('l', lc - k * L * dir)) return ['l', lc - k * L * dir];
+    }
+    for (let k = 1, A = fast ? 3 : ahead(); k <= A; k++) {                                              // crisp frames ahead, a few behind
+      if (need('h', c + k * dir)) return ['h', c + k * dir];
+      if (k <= 3 && need('h', c - k * dir)) return ['h', c - k * dir];
+    }
+    if (need('l', N - 1)) return ['l', N - 1];
+    for (let k = 1; k * L < N; k++) {                                                                     // the rest of the net
+      if (need('l', lc + k * L)) return ['l', lc + k * L];
+      if (need('l', lc - k * L)) return ['l', lc - k * L];
+    }
+    return null;
+  }
+  function pump(){
+    if (!W) return;
+    // without a worker, decoding blocks the page: one at a time, and mid-scroll only for the frame on screen
+    const max = mode === 'worker' ? JOBS : 1, urgent = mode !== 'worker' && !idle;
+    while (inflight < max) { const j = nextJob(urgent); if (!j) break; decode(j[0], j[1]); }
+  }
+  function trim(){
+    if (hi.size <= MAXHI) return;
+    // never evict what the scheduler would ask for again: outside the window first, farthest first
+    const ks = [...hi.keys()].sort((x, y) => ((inWindow(y) ? 0 : 1e4) + Math.abs(y - cur)) - ((inWindow(x) ? 0 : 1e4) + Math.abs(x - cur)));
+    while (hi.size > MAXHI) { const k = ks.shift(); close(hi.get(k).b); hi.delete(k); }
   }
 
-  /* fetch every frame as a small blob: first, last, then coarse to fine so scrubbing works early */
+  /* ---------------------------------------------------------------- decoding: in a worker, with fallbacks */
+  const WSRC = `let resize = true;
+onmessage = async e => {
+  const { id, blob, w, h } = e.data;
+  try {
+    let b = null;
+    if (resize) { try { b = await createImageBitmap(blob, { resizeWidth: w, resizeHeight: h, resizeQuality: 'high' }); } catch (x) { if (x && x.name === 'TypeError') resize = false; } }
+    if (!b) b = await createImageBitmap(blob);
+    if ((b.width !== w || b.height !== h) && typeof OffscreenCanvas !== 'undefined') {
+      const oc = new OffscreenCanvas(w, h), c = oc.getContext('2d'); c.imageSmoothingQuality = 'high'; c.drawImage(b, 0, 0, w, h); b.close(); b = oc.transferToImageBitmap();
+    }
+    postMessage({ id, b }, [b]);
+  } catch (err) { postMessage({ id, err: String((err && err.message) || err) }); }
+};`;
+  let worker = null, mode = 'main', proven = false, watchdog = 0, jobs = new Map(), jid = 0, inflight = 0;
+  try {
+    if (window.Worker && window.createImageBitmap) {
+      worker = new Worker(URL.createObjectURL(new Blob([WSRC], { type: 'text/javascript' })));
+      worker.onmessage = e => finish(e.data.id, e.data.b, e.data.err);
+      worker.onerror = () => toMain();
+      mode = 'worker';
+    }
+  } catch (e) { worker = null; mode = 'main'; }
+  function dropJobs(){ jobs.forEach(j => clearTimeout(j.timer)); jobs.clear(); busyH.clear(); busyL.clear(); inflight = 0; }
+  function toMain(){
+    if (mode === 'main') return;
+    mode = 'main'; clearTimeout(watchdog); try { worker && worker.terminate(); } catch (e) {} worker = null;
+    dropJobs(); pump();
+  }
+  function decode(t, i){
+    const id = ++jid, w = t === 'h' ? W : LW, h = t === 'h' ? H : LH;
+    // a decode that never answers must not hold its slot for the rest of the visit
+    jobs.set(id, { t, i, g: gen, sz: szGen, w, timer: setTimeout(() => finish(id, null, 'timeout'), 4000) });
+    (t === 'h' ? busyH : busyL).add(i); inflight++;
+    if (mode === 'worker') {
+      worker.postMessage({ id, blob: blobs[i], w, h });
+      if (!proven && !watchdog) watchdog = setTimeout(() => { if (!proven) toMain(); }, 4000);
+    } else mainDecode(id, blobs[i], w, h);
+  }
+  function mainDecode(id, blob, w, h){
+    const viaImg = () => new Promise((res, rej) => {
+      const u = URL.createObjectURL(blob), im = new Image();
+      im.onload = () => (im.decode ? im.decode() : Promise.resolve()).catch(() => {}).then(() => { URL.revokeObjectURL(u); res(im); });
+      im.onerror = () => { URL.revokeObjectURL(u); rej(new Error('decode')); };
+      im.src = u;
+    });
+    const p = window.createImageBitmap
+      ? createImageBitmap(blob, { resizeWidth: w, resizeHeight: h, resizeQuality: 'high' }).catch(() => createImageBitmap(blob)).catch(viaImg)
+      : viaImg();
+    p.then(b => finish(id, b), e => finish(id, null, e));
+  }
+  function finish(id, b, err){
+    const j = jobs.get(id);
+    if (!j) { close(b); return; }
+    jobs.delete(id); clearTimeout(j.timer); (j.t === 'h' ? busyH : busyL).delete(j.i); inflight--;
+    if (!b) {
+      if (mode === 'worker' && !proven && err !== 'timeout') { toMain(); return; }
+      const key = j.t + j.i, f = fails.get(key) || { n: 0, at: 0 }; f.n++; f.at = performance.now() + 600 * f.n; fails.set(key, f);
+      setTimeout(pump, 650 * f.n); pump(); return;
+    }
+    if (mode === 'worker' && !proven) { proven = true; clearTimeout(watchdog); }
+    if (j.g !== gen || (j.t === 'l' && !onStride(j.i))) { close(b); pump(); return; }
+    const bytes = (b.width || 0) * (b.height || 0) * 4;
+    if ((b.width || 0) > j.w * 1.2) {
+      // this browser ignored the resize: keep both sets inside the memory budget by keeping fewer frames
+      if (j.t === 'l') { const s2 = Math.max(loStride, Math.ceil(N * bytes / LO_BUDGET)); if (s2 !== loStride) { loStride = s2; pruneLo(); } if (!onStride(j.i)) { close(b); pump(); return; } }
+      else MAXHI = Math.max(8, Math.min(MAXHI, Math.floor(HI_BUDGET / bytes)));
+    }
+    const map = j.t === 'h' ? hi : lo, old = map.get(j.i);
+    if (old && old.b !== b) close(old.b);
+    map.set(j.i, { b, sz: j.sz });
+    if (j.t === 'h') trim();
+    // redraw if this frame can change what is on screen: it is next to the playhead, or closer than what is shown, or crisper
+    const d = Math.abs(j.i - cur);
+    if (!live || d <= loStride + .5 || d < Math.abs(shownF - cur) || (j.t === 'h' && shownTier !== 'h' && d < 2)) { drawn = ''; kick(); }
+    pump();
+  }
+  function pruneLo(){ for (const [i, e] of lo) if (!onStride(i)) { close(e.b); lo.delete(i); } }
+
+  /* ---------------------------------------------------------------- fetching: every frame as a small blob, coarse to fine */
   function load(){
-    if (loading) return; loading = true;
-    const seen = new Set(), order = [];
+    const g = gen, k = kind, seen = new Set(), order = []; let next = 0, active = 0, settled = 0;
     for (const step of [N - 1, 32, 16, 8, 4, 2, 1]) for (let i = 0; i < N; i += step) if (!seen.has(i)) { seen.add(i); order.push(i); }
-    if (!seen.has(N - 1)) order.push(N - 1);
-    let next = 0, active = 0; const myKind = kind;
-    const go = () => {
-      while (active < 6 && next < order.length) {
-        const i = order[next++]; active++;
-        fetch(url(i)).then(r => r.ok ? r.blob() : null).then(b => {
-          active--; if (myKind !== kind) return;
-          if (b) { blobs[i] = { blob: b, busy: false }; pump(); }
-          go();
-        }, () => { active--; go(); });
-      }
+    const one = (i, tries) => {
+      active++;
+      fetch('film/' + k + '/' + String(i).padStart(3, '0') + '.webp').then(r => { if (!r.ok) throw new Error(r.status); return r.blob(); }).then(b => {
+        active--; if (g !== gen) return;
+        blobs[i] = b; pump(); if (++settled === N) loadedAll(); go();
+      }, () => {
+        active--; if (g !== gen) return;
+        if (tries < 3) setTimeout(() => { if (g === gen) one(i, tries + 1); }, 800 * (tries + 1));   // a dropped request is tried again
+        else if (++settled === N) loadedAll();
+        go();
+      });
     };
+    const go = () => { while (active < 6 && next < order.length) one(order[next++], 0); };
     go();
   }
+  function loadedAll(){
+    allLoaded = true;
+    // fetch the colour picker's car now (network only, into the cache), so its setup later is quick
+    if (!glbReady) setTimeout(() => fetch('3d/lc300.glb').then(r => r.ok && r.arrayBuffer()).catch(() => {}).then(() => { glbReady = true; }), 600);
+  }
   function setKind(){
-    const k = matchMedia('(min-aspect-ratio: 1/1)').matches ? 'l' : 'p';
-    if (k === kind) return;
-    kind = k; blobs = new Array(N); bm.forEach(b => b.close && b.close()); bm.clear(); shown = -1; loading = false; ready = false; cv.classList.remove('on');
-    load();
+    const k = matchMedia('(max-aspect-ratio: 1/1)').matches ? 'p' : 'l';   // same test as the <picture> sources
+    if (k === kind) return false;
+    kind = k; gen++; N = META[k].N; U = META[k].U;
+    for (const m of [hi, lo]) { m.forEach(e => close(e.b)); m.clear(); }
+    blobs = new Array(N); dropJobs(); fails.clear(); W = H = 0; drawn = ''; allLoaded = false; MAXHI = MAXHI0;
+    if (live) { live = false; stick.classList.remove('live'); }
+    measure(); load(); return true;
+  }
+  /* far from the film for a while: let the crisp frames go (the low-res net stays, so coming back is instant) */
+  let farT = 0;
+  function farCheck(){
+    const near = lastY > secTop - vh * 2 && lastY < secTop + span + vh * 2;
+    if (near) { clearTimeout(farT); farT = 0; }
+    else if (!farT) farT = setTimeout(() => { farT = 0; if (!(lastY > secTop - vh * 2 && lastY < secTop + span + vh * 2)) { hi.forEach(e => close(e.b)); hi.clear(); drawn = ''; } }, 4000);
   }
 
-  /* captions, package chips and progress follow the same position */
-  let pinned = null;
-  function pin(){
-    const r = sec.getBoundingClientRect(), p = r.top <= 1 && r.bottom >= innerHeight - 1;
-    if (p !== pinned) { pinned = p; document.documentElement.classList.toggle('inwrap', p); }
-  }
+  /* ---------------------------------------------------------------- captions, package chips and progress follow the playhead */
+  const S = { head: null, end: null, bars: [-1, -1, -1], tier: ['', '', ''], prog: -1 }; let lastCap = -1, capT = 0;
   function ui(u){
-    head.classList.toggle('gone', u > HEAD_UNTIL);
-    foot.classList.toggle('gone', u <= HEAD_UNTIL);
-    foot.classList.toggle('end', u >= END_AT);
+    const h = u > HEAD_UNTIL; if (h !== S.head) { S.head = h; head.classList.toggle('gone', h); foot.classList.toggle('gone', !h); }
+    const e = u >= END_AT; if (e !== S.end) { S.end = e; foot.classList.toggle('end', e); }
     let ci = 0; for (let i = 0; i < CAPS.length; i++) if (u >= CAPS[i][0]) ci = i;
     if (ci !== lastCap) {
-      const first = lastCap < 0; lastCap = ci;
-      if (first) { kEl.textContent = CAPS[ci][1]; tEl.textContent = CAPS[ci][2]; }
-      else { capEl.classList.add('swap'); setTimeout(() => { kEl.textContent = CAPS[ci][1]; tEl.textContent = CAPS[ci][2]; capEl.classList.remove('swap'); }, 200); }
+      const first = lastCap < 0; lastCap = ci; clearTimeout(capT);
+      const set = () => { kEl.textContent = CAPS[lastCap][1]; tEl.textContent = CAPS[lastCap][2]; capEl.classList.remove('swap'); };
+      if (first) set(); else { capEl.classList.add('swap'); capT = setTimeout(set, 200); }
     }
-    WAVE.forEach(([a, b], i) => {
-      const f = ss(a, b, u); bars[i].style.transform = 'scaleX(' + f.toFixed(4) + ')';
-      tiers[i].classList.toggle('done', f >= .999); tiers[i].classList.toggle('live', f > 0 && f < .999);
-    });
-    prog.style.transform = 'scaleX(' + u.toFixed(4) + ')';
+    for (let i = 0; i < 3; i++) {
+      const f = Math.round(ss(WAVE[i][0], WAVE[i][1], u) * 1000) / 1000; if (f === S.bars[i]) continue;
+      S.bars[i] = f; bars[i].style.transform = 'scaleX(' + f + ')';
+      const s = f >= .999 ? 'done' : f > 0 ? 'live' : '';
+      if (s !== S.tier[i]) { S.tier[i] = s; tiers[i].classList.toggle('done', s === 'done'); tiers[i].classList.toggle('live', s === 'live'); }
+    }
+    const q = Math.round(u * 1000) / 1000; if (q !== S.prog) { S.prog = q; prog.style.transform = 'scaleX(' + q + ')'; }
   }
-  function frame(){ raf = 0; size(); draw(); pump(); }
-  const schedule = () => { if (!raf) raf = requestAnimationFrame(frame); };
-  function onScroll(){
-    pin();
-    const u = toU(progress());
-    if (u !== want) { dir = u > want ? 1 : -1; want = u; ui(u); schedule(); }
-  }
+
+  /* ---------------------------------------------------------------- wiring */
   addEventListener('scroll', onScroll, { passive: true });
-  addEventListener('resize', () => { setKind(); size(); schedule(); });
-  want = toU(progress()); ui(want);
-  setKind(); size(); schedule();
-  window.DD_STORY = { get u(){ return want; }, get shown(){ return shown; }, get decoded(){ return bm.size; }, get loaded(){ return blobs.filter(Boolean).length; }, get drawMs(){ return drawMs; }, get canvas(){ return [W, H]; }, N };
-  /* warm the colour picker up while nobody is scrolling and the story is not on screen (or is finished),
-     so its one-off setup never lands in the middle of the film */
-  let lastScroll = 0; addEventListener('scroll', () => { lastScroll = performance.now(); }, { passive: true });
-  const tryWarm = () => {
-    if (!window.DD_CFG_GO) return;
-    const r = sec.getBoundingClientRect(), pinned = r.top <= 0 && r.bottom >= innerHeight;
-    if (performance.now() - lastScroll > 700 && (!pinned || want > .93) && r.top > -1e9) { window.DD_CFG_GO(); return; }
-    setTimeout(tryWarm, 900);
+  addEventListener('resize', () => { if (!setKind()) measure(); sync(); kick(); });
+  addEventListener('load', () => { measure(); sync(); kick(); });
+  if (window.ResizeObserver) new ResizeObserver(() => { measure(); sync(); kick(); }).observe(document.documentElement);   // the page above grew or shrank
+  // back from another tab or app, or the browser dropped the canvas: paint again
+  const repaint = () => { drawn = ''; kick(); };
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) repaint(); });
+  addEventListener('pageshow', repaint); cv.addEventListener('contextrestored', repaint);
+  setKind(); sync(); cur = target; ui(uOf(cur)); kick();
+
+  const idleFor = () => performance.now() - lastScrollAt;
+  window.DD_STORY = {
+    get u(){ return uOf(target); }, get want(){ return target; }, get cur(){ return cur; }, get uc(){ return uOf(cur); }, get shown(){ return shownF; }, get tier(){ return shownTier; },
+    get decoded(){ return hi.size + lo.size; }, get maxHi(){ return MAXHI; }, get jobsStarted(){ return jid; }, get hiCount(){ return hi.size; }, get loCount(){ return lo.size; }, get loStride(){ return loStride; },
+    get loaded(){ return blobs.filter(Boolean).length; }, get drawMs(){ return drawMs; }, get canvas(){ return [W, H]; }, get mode(){ return mode; },
+    get bytes(){ let s = 0; for (const m of [hi, lo]) m.forEach(e => { s += (e.b.width || 0) * (e.b.height || 0) * 4; }); return s; },
+    // the colour picker's one-off setup must not land while the film is being scrolled: it waits until you are past the film,
+    // resting on its last card, or resting anywhere once its car is already downloaded
+    get busy(){ return lastY < secTop + span && !(glbReady && idleFor() > 1200) && !(uOf(cur) >= .97 && idleFor() > 300); },
+    inView(frac){ return lastY > secTop - vh * frac && lastY < secTop + span + vh * frac; },
+    hold(f){ const x = Number(f); hold = f == null || !isFinite(x) ? null : Math.min(N - 1, Math.max(0, x)); kick(); },                        // for checks: park the playhead on an exact (fractional) frame
+    get N(){ return N; }
   };
-  addEventListener('load', () => setTimeout(tryWarm, 2200));
+  // warm the colour picker up during a pause, so it is ready before you reach it
+  const warm = () => { if (window.DD_CFG_GO && !window.DD_STORY.busy) { window.DD_CFG_GO(); return; } setTimeout(warm, 400); };
+  setTimeout(warm, 1500);
 })();
+
 </script>
 <script>
 /* ---- film meter: how far down the page you are, as film on a car ----------- */
@@ -2969,7 +3183,7 @@ if (wrap && canvas) window.ddNear(wrap, () => {
   function paint(){
     raf = 0;
     const max = document.documentElement.scrollHeight - innerHeight, p = Math.min(1, Math.max(0, scrollY / Math.max(1, max)));
-    const sr = story.getBoundingClientRect(), inStory = sr.top < innerHeight * .5 && sr.bottom > innerHeight * .5;
+    const inStory = window.DD_STORY ? window.DD_STORY.inView(.5) : false;
     const show = scrollY > hero.offsetHeight * .6 && !inStory;
     if (show !== lastShow) { lastShow = show; m.classList.toggle('on', show); bar.classList.toggle('on', show); document.documentElement.style.setProperty('--hh', hdr.offsetHeight + 'px'); }
     const q = Math.round(p * 200) / 200; if (q === lastP) return; lastP = q;
