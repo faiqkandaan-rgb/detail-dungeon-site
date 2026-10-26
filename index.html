@@ -3171,9 +3171,9 @@ onmessage = async e => {
     get decoded(){ return hi.size + lo.size; }, get maxHi(){ return MAXHI; }, get jobsStarted(){ return jid; }, get hiCount(){ return hi.size; }, get loCount(){ return lo.size; }, get loStride(){ return loStride; },
     get loaded(){ return blobs.filter(Boolean).length; }, get drawMs(){ return drawMs; }, get canvas(){ return [W, H]; }, get mode(){ return mode; },
     get bytes(){ let s = 0; for (const m of [hi, lo]) m.forEach(e => { s += (e.b.width || 0) * (e.b.height || 0) * 4; }); return s; },
-    // the colour picker's one-off setup must not land while the film is being scrolled: it waits until you are past the film,
-    // resting on its last card, or resting anywhere once its car is already downloaded
-    get busy(){ return lastY < secTop + span && !(glbReady && idleFor() > 1200) && !(uOf(cur) >= .97 && idleFor() > 300); },
+    // the colour picker's one-off setup (seconds of work on a phone) must never land while anyone could be scrolling the film:
+    // it waits until you are resting on the film's last card, or are past it
+    get busy(){ return lastY < secTop + span && !(uOf(cur) >= .97 && idleFor() > 300); },
     inView(frac){ return lastY > secTop - vh * frac && lastY < secTop + span + vh * frac; },
     hold(f){ const x = Number(f); hold = f == null || !isFinite(x) ? null : Math.min(N - 1, Math.max(0, x)); kick(); },                        // for checks: park the playhead on an exact (fractional) frame
     get N(){ return N; }
