@@ -1,0 +1,18 @@
+# Netlify: let browsers keep the heavy files instead of re-checking each one on every visit.
+# Frame URLs carry a version tag, and new videos get new names, so updates still show straight away.
+/film/*
+  Cache-Control: public, max-age=31536000, immutable
+/vid/*
+  Cache-Control: public, max-age=604800
+/img/*
+  Cache-Control: public, max-age=604800
+/svc/*
+  Cache-Control: public, max-age=604800
+/cov/*
+  Cache-Control: public, max-age=604800
+/cc/*
+  Cache-Control: public, max-age=604800
+/3d/*
+  Cache-Control: public, max-age=604800
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable

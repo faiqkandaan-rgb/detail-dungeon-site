@@ -4,8 +4,6 @@
 <script>if(/\.github\.io$/.test(location.hostname))location.replace("https://bastionstudio-dd.netlify.app"+location.pathname.replace(/^\/detail-dungeon-site/,"")+location.search+location.hash)</script>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}</script>
 <meta charset="utf-8">
-<link rel="preload" as="image" href="film/l/poster.webp" media="not all and (max-aspect-ratio: 1/1)" fetchpriority="high">
-<link rel="preload" as="image" href="film/p/poster.webp" media="(max-aspect-ratio: 1/1)" fetchpriority="high">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Detail Dungeon | PPF, ceramic coating and detailing in Islamabad &amp; Rawalpindi</title>
 <meta name="description" content="Authorised OneFilm USA and ProForce applicator. Self-healing paint protection film with fixed prices by car size, plus ceramic coating, tint, chrome delete and colour change. Get your price in 30 seconds.">
@@ -977,9 +975,8 @@ html.inwrap header.stuck{-webkit-backdrop-filter:none;backdrop-filter:none;backg
   <div class="hshot">
     <video id="herovid" autoplay muted playsinline preload="auto" poster="vid/hero-poster.jpg"
            disablepictureinpicture aria-label="A Land Cruiser on an open road: clear film arrives panel by panel and is squeegeed on, then the camera pulls back on a clean, protected car">
-      <source src="vid/hero-720.mp4" type="video/mp4" media="(max-width: 760px)">
-      <source src="vid/hero.mp4" type="video/mp4">
-      <source src="vid/hero.webm" type="video/webm">
+      <source src="vid/hero-720p.mp4" type="video/mp4" media="(max-width: 760px)">
+      <source src="vid/hero-1080p.mp4" type="video/mp4">
     </video>
     <button class="hreplay" id="hreplay" type="button" aria-label="Replay">&#8635; Replay</button>
   </div>
@@ -1005,8 +1002,8 @@ html.inwrap header.stuck{-webkit-backdrop-filter:none;backdrop-filter:none;backg
 
 <section class="wrapfilm" id="wrap" aria-label="Scroll to watch paint protection film go onto a Land Cruiser, one package at a time">
   <div class="wf-stick">
-    <picture class="wf-bg"><source media="(max-aspect-ratio: 1/1)" srcset="film/p/bg.webp"><img src="film/l/bg.webp" alt=""></picture>
-    <picture class="wf-poster"><source media="(max-aspect-ratio: 1/1)" srcset="film/p/poster.webp"><img src="film/l/poster.webp" alt="A white Land Cruiser 300 in the Detail Dungeon bay"></picture>
+    <picture class="wf-bg"><source media="(max-aspect-ratio: 1/1)" srcset="film/p/bg.webp"><img loading="lazy" decoding="async" src="film/l/bg.webp" alt=""></picture>
+    <picture class="wf-poster"><source media="(max-aspect-ratio: 1/1)" srcset="film/p/poster.webp"><img loading="lazy" decoding="async" src="film/l/poster.webp" alt="A white Land Cruiser 300 in the Detail Dungeon bay"></picture>
     <canvas class="wf-cv" id="wfcv" aria-hidden="true"></canvas>
     <div class="wf-head" id="wfhead">
       <span class="eyebrow">Watch it go on</span>
@@ -1063,7 +1060,7 @@ html.inwrap header.stuck{-webkit-backdrop-filter:none;backdrop-filter:none;backg
   </div>
   <template id="ccfallback">
     <div class="ccwrap" id="ccwrap">
-      <img src="svc/colour-a.avif" width="1280" height="720"
+      <img loading="lazy" decoding="async" src="svc/colour-a.avif" width="1280" height="720"
            alt="A Mercedes S-Class in the Detail Dungeon bay, shown in the selected wrap colour">
       <span class="ccpaint"></span><span class="ccshade"></span><span class="ccspec"></span><span class="ccsheen"></span>
     </div>
@@ -1137,7 +1134,7 @@ html.inwrap header.stuck{-webkit-backdrop-filter:none;backdrop-filter:none;backg
         <div class="covload" id="covload">Loading the car<span></span></div>
         <div class="covshot"><div><small id="covstep">Basic</small><b id="covlabel"></b></div><div class="covdots" id="covdots"></div></div>
         <button class="covreplay" id="covreplay" type="button">&#8635; Replay</button>
-        <img class="base" src="cov/pkg-base.jpg" width="860" height="1290"
+        <img loading="lazy" decoding="async" class="base" src="cov/pkg-base.jpg" width="860" height="1290"
              alt="Land Cruiser 300 in the Detail Dungeon bay with no film on it">
         <img data-pkg="basic" src="cov/pkg-basic.jpg" width="860" height="1290" loading="lazy"
              alt="The same car with the bumpers, bonnet, front fenders and mirrors covered">
@@ -1169,12 +1166,12 @@ html.inwrap header.stuck{-webkit-backdrop-filter:none;backdrop-filter:none;backg
 </div></section>
 
 <div class="strip"><div class="track" id="track">
-  <figure><img src="img/m_audi.jpg" alt=""></figure>
-  <figure><img src="img/m_bmw.jpg" alt=""></figure>
-  <figure><img src="img/m_merc.jpg" alt=""></figure>
-  <figure><img src="img/m_m5.jpg" alt=""></figure>
-  <figure><img src="img/m_m5b.jpg" alt=""></figure>
-  <figure><img src="img/g1.jpg" alt=""></figure>
+  <figure><img loading="lazy" decoding="async" src="img/m_audi.jpg" alt=""></figure>
+  <figure><img loading="lazy" decoding="async" src="img/m_bmw.jpg" alt=""></figure>
+  <figure><img loading="lazy" decoding="async" src="img/m_merc.jpg" alt=""></figure>
+  <figure><img loading="lazy" decoding="async" src="img/m_m5.jpg" alt=""></figure>
+  <figure><img loading="lazy" decoding="async" src="img/m_m5b.jpg" alt=""></figure>
+  <figure><img loading="lazy" decoding="async" src="img/g1.jpg" alt=""></figure>
 </div></div>
 
 <section id="layers"><div class="wrap">
@@ -1217,7 +1214,7 @@ html.inwrap header.stuck{-webkit-backdrop-filter:none;backdrop-filter:none;backg
   </div>
   <div class="grid2">
     <div class="brandcard rv">
-      <div class="top"><img src="img/onefilm-usa-white.png" alt="OneFilm USA"><span>Authorised applicator</span></div>
+      <div class="top"><img loading="lazy" decoding="async" src="img/onefilm-usa-white.png" alt="OneFilm USA"><span>Authorised applicator</span></div>
       <div class="in">
         <p>The premium tier. American urethane with a self-healing topcoat that closes light
            swirls with heat. Fixed pricing set by OneFilm USA, identical at every authorised applicator.</p>
@@ -1230,7 +1227,7 @@ html.inwrap header.stuck{-webkit-backdrop-filter:none;backdrop-filter:none;backg
       </div>
     </div>
     <div class="brandcard rv">
-      <div class="top"><img class="pf" src="img/proforce-white.png" alt="ProForce"><span>Authorised applicator</span></div>
+      <div class="top"><img loading="lazy" decoding="async" class="pf" src="img/proforce-white.png" alt="ProForce"><span>Authorised applicator</span></div>
       <div class="in">
         <p>Same install standard, same teardown, same coverage. Priced PKR 25,000 below the
            equivalent DefenX product across every category.</p>
@@ -1365,8 +1362,8 @@ html.inwrap header.stuck{-webkit-backdrop-filter:none;backdrop-filter:none;backg
         <span class="svctag">Priced per car</span>
       </div>
       <div class="ba" data-ba data-pending="Visual being rendered">
-        <img class="before" src="svc/tint-lc-a.jpg" width="1280" height="720" alt="Black Land Cruiser 300 in the Detail Dungeon bay, factory glass with the cabin visible through it">
-        <img class="after"  src="svc/tint-lc-b.jpg" width="1280" height="720" alt="The same car after ceramic window tint, the cabin no longer visible through the glass">
+        <img loading="lazy" decoding="async" class="before" src="svc/tint-lc-a.jpg" width="1280" height="720" alt="Black Land Cruiser 300 in the Detail Dungeon bay, factory glass with the cabin visible through it">
+        <img loading="lazy" decoding="async" class="after"  src="svc/tint-lc-b.jpg" width="1280" height="720" alt="The same car after ceramic window tint, the cabin no longer visible through the glass">
         <input type="range" min="0" max="100" value="50" aria-label="Reveal the tinted result">
         <span class="seam"></span><span class="knob"></span>
         <span class="balabel l">Factory glass</span>
@@ -1383,8 +1380,8 @@ html.inwrap header.stuck{-webkit-backdrop-filter:none;backdrop-filter:none;backg
         <span class="svctag">Priced per car</span>
       </div>
       <div class="ba" data-ba>
-        <img class="before" src="svc/chrome-a.jpg" alt="The car as delivered: chrome trim, silver wheels, clear glass">
-        <img class="after"  src="svc/chrome-b.jpg" alt="The same car blacked out: trim and wheels in gloss black, limo tint on the glass">
+        <img loading="lazy" decoding="async" class="before" src="svc/chrome-a.jpg" alt="The car as delivered: chrome trim, silver wheels, clear glass">
+        <img loading="lazy" decoding="async" class="after"  src="svc/chrome-b.jpg" alt="The same car blacked out: trim and wheels in gloss black, limo tint on the glass">
         <input type="range" min="0" max="100" value="50" aria-label="Reveal the chrome delete result">
         <span class="seam"></span><span class="knob"></span>
         <span class="balabel l">As it arrived</span>
@@ -1408,8 +1405,8 @@ html.inwrap header.stuck{-webkit-backdrop-filter:none;backdrop-filter:none;backg
         <span class="svctag">Priced per car</span>
       </div>
       <div class="ba" data-ba data-pending="Visual being rendered">
-        <img class="before" src="svc/colour-lc-a.jpg" width="1280" height="720" alt="Land Cruiser 300 in its factory white paint">
-        <img class="after"  src="svc/colour-lc-b.jpg" width="1280" height="720" alt="The same car after a full colour change wrap in Midnight Black">
+        <img loading="lazy" decoding="async" class="before" src="svc/colour-lc-a.jpg" width="1280" height="720" alt="Land Cruiser 300 in its factory white paint">
+        <img loading="lazy" decoding="async" class="after"  src="svc/colour-lc-b.jpg" width="1280" height="720" alt="The same car after a full colour change wrap in Midnight Black">
         <input type="range" min="0" max="100" value="50" aria-label="Reveal the colour change result">
         <span class="seam"></span><span class="knob"></span>
         <span class="balabel l">As it arrived</span>
@@ -1426,13 +1423,13 @@ html.inwrap header.stuck{-webkit-backdrop-filter:none;backdrop-filter:none;backg
     <h2 class="rv">Climate-controlled bays.<br><span class="accent">Lit for the work, not the photo.</span></h2>
   </div>
   <div class="gal">
-    <figure class="rv"><img src="img/m_audi.jpg" alt=""></figure>
-    <figure class="rv"><img src="img/m_bmw.jpg" alt=""></figure>
+    <figure class="rv"><img loading="lazy" decoding="async" src="img/m_audi.jpg" alt=""></figure>
+    <figure class="rv"><img loading="lazy" decoding="async" src="img/m_bmw.jpg" alt=""></figure>
   </div>
   <div class="gal three">
-    <figure class="rv"><img src="img/m_merc.jpg" alt=""></figure>
-    <figure class="rv"><img src="img/m_m5.jpg" alt=""></figure>
-    <figure class="rv"><img src="img/m_m5b.jpg" alt=""></figure>
+    <figure class="rv"><img loading="lazy" decoding="async" src="img/m_merc.jpg" alt=""></figure>
+    <figure class="rv"><img loading="lazy" decoding="async" src="img/m_m5.jpg" alt=""></figure>
+    <figure class="rv"><img loading="lazy" decoding="async" src="img/m_m5b.jpg" alt=""></figure>
   </div>
 </div></section>
 
@@ -1494,7 +1491,7 @@ html.inwrap header.stuck{-webkit-backdrop-filter:none;backdrop-filter:none;backg
 
 <section><div class="wrap">
   <div class="banner rv">
-    <img src="img/cta.jpg" alt="">
+    <img loading="lazy" decoding="async" src="img/cta.jpg" alt="">
     <div class="in">
       <h2>Bring the car in.<br>We quote on the panels.</h2>
       <p>No phone estimates. We look at the paint, tell you exactly what it needs,
@@ -1508,7 +1505,7 @@ html.inwrap header.stuck{-webkit-backdrop-filter:none;backdrop-filter:none;backg
   <div class="fgrid">
     <div>
       <a class="brand" href="#top" style="margin-bottom:13px;text-decoration:none">
-        <img src="img/sym.png" alt=""><b>DETAIL DUNGEON</b></a>
+        <img loading="lazy" decoding="async" src="img/sym.png" alt=""><b>DETAIL DUNGEON</b></a>
       <p style="color:var(--mute);font-size:13.5px;max-width:34ch">Paint protection, ceramic coating
         and detailing studio serving Islamabad and Rawalpindi.</p>
     </div>
@@ -2297,7 +2294,7 @@ document.querySelectorAll("[data-blackout]").forEach(a => a.addEventListener("cl
   function open(d){
     if(!dlg.open) back = document.activeElement;
     box.innerHTML =
-      (d.media ? `<figure class="dd-media"><img src="${d.media}" alt="${esc(d.alt || d.title)}"></figure>` : "") +
+      (d.media ? `<figure class="dd-media"><img loading="lazy" decoding="async" src="${d.media}" alt="${esc(d.alt || d.title)}"></figure>` : "") +
       `<span class="eyebrow dd-eye">${d.eye || ""}</span>` +
       `<h3 class="dd-title" id="dd-title">${d.title}</h3>` +
       (d.lede ? `<p class="dd-lede">${d.lede}</p>` : "") +
@@ -2730,10 +2727,10 @@ window.ddNear = function(el, fn, margin, gate){
 };
 </script>
 <script type="module">
-import { initConfigurator } from './3d/configurator.js';
 const ui = window.DD_CC;
 window.__cfgsay && window.__cfgsay("module loaded");
-if (ui) window.DD_CFG_GO = window.ddNear(document.getElementById('cfgstage'), () => {
+if (ui) window.DD_CFG_GO = window.ddNear(document.getElementById('cfgstage'), async () => {
+  let initConfigurator; try { ({ initConfigurator } = await import('./3d/configurator.js')); } catch (e) { ui.useImages(); return; }
   let settled = false;
   const fallback = () => { if (!settled) { settled = true; window.__cfgsay && window.__cfgsay("falling back to images"); ui.useImages(); } };
   const t = setTimeout(fallback, window.__noFallback ? 600000 : 25000);
@@ -2750,9 +2747,9 @@ if (ui) window.DD_CFG_GO = window.ddNear(document.getElementById('cfgstage'), ()
 </script>
 <script type="module">
 /* ---- interior trim: the clear sheet over the console ------------------------ */
-import { initTrim } from './3d/trim.js';
 const istage = document.getElementById('intstage'), icanvas = document.getElementById('intcanvas');
-if (istage && icanvas) window.ddNear(istage, () => {
+if (istage && icanvas) window.ddNear(istage, async () => {
+  let initTrim; try { ({ initTrim } = await import('./3d/trim.js')); } catch (e) { return; }
   const load = document.getElementById('intload'), lines = document.getElementById('intlines'), calls = [...document.querySelectorAll('#intcall .ic')];
   const phase = document.getElementById('intphase'), hint = document.getElementById('inthint');
   const COPY = { hover: 'Clear film, cut to the console', lowering: 'Laid by hand, edges tucked under the trim', applied: 'Applied. You cannot see it. That is the point.', reset: 'Applied. You cannot see it. That is the point.' };
@@ -2792,9 +2789,9 @@ if (istage && icanvas) window.ddNear(istage, () => {
 </script>
 <script type="module">
 /* ---- coverage: the same car, the film going on panel by panel ------------- */
-import { initCoverage } from './3d/coverage.js';
 const wrap = document.getElementById('covwrap'), canvas = document.getElementById('covcanvas');
-if (wrap && canvas) window.ddNear(wrap, () => {
+if (wrap && canvas) window.ddNear(wrap, async () => {
+  let initCoverage; try { ({ initCoverage } = await import('./3d/coverage.js')); } catch (e) { return; }
   const load = document.getElementById('covload'), label = document.getElementById('covlabel'), dots = document.getElementById('covdots'), replay = document.getElementById('covreplay');
   const pressed = () => { const b = document.querySelector('#covbtns .pkg[aria-pressed="true"]'); return b ? b.dataset.pkg : 'basic'; };
   let covApi = null, labelTimer = 0;
@@ -2829,7 +2826,7 @@ if (wrap && canvas) window.ddNear(wrap, () => {
 (function(){
   const sec = document.getElementById('wrap'); if (!sec) return;
   const stick = sec.querySelector('.wf-stick'), cv = document.getElementById('wfcv');
-  const META = {"l":{"W":2400,"H":1350,"crop":[438,252,1492,842],"N":240,"U":[0.0,0.0067,0.01363,0.02088,0.02845,0.03621,0.04408,0.05191,0.05959,0.06703,0.07419,0.08103,0.08756,0.09378,0.09966,0.10519,0.11037,0.11523,0.11978,0.12404,0.12809,0.13202,0.13587,0.13965,0.14345,0.14731,0.15125,0.15531,0.15945,0.16366,0.16793,0.17227,0.17667,0.18112,0.18566,0.19029,0.19503,0.19988,0.20485,0.20995,0.21518,0.22054,0.22603,0.23162,0.23729,0.24302,0.24885,0.25476,0.26077,0.26682,0.27294,0.27915,0.28545,0.29193,0.29872,0.30598,0.31395,0.32245,0.33105,0.33963,0.34814,0.35649,0.36392,0.3706,0.3767,0.38202,0.38698,0.39168,0.39616,0.40049,0.4048,0.40913,0.41348,0.41782,0.42217,0.42649,0.43079,0.43507,0.43931,0.44353,0.44771,0.45185,0.45594,0.45999,0.46399,0.46794,0.47183,0.47566,0.47945,0.48319,0.4869,0.49055,0.49416,0.49775,0.50129,0.50481,0.50831,0.51179,0.51525,0.51871,0.52215,0.52559,0.52901,0.53243,0.53582,0.5392,0.54256,0.54588,0.54917,0.55242,0.5556,0.55875,0.56185,0.56492,0.56797,0.57096,0.57392,0.57683,0.57968,0.58251,0.58528,0.58805,0.5908,0.59356,0.59638,0.59925,0.60221,0.60529,0.60845,0.6119,0.61557,0.61949,0.62374,0.6283,0.63299,0.63745,0.64165,0.64557,0.64927,0.65278,0.6561,0.65932,0.66238,0.6653,0.66817,0.67088,0.67357,0.67614,0.67871,0.68127,0.68384,0.68645,0.68908,0.69178,0.69454,0.69739,0.70037,0.70343,0.70674,0.7102,0.71385,0.71782,0.72203,0.72644,0.731,0.73567,0.74036,0.74502,0.74964,0.75417,0.7586,0.76293,0.76717,0.77134,0.77545,0.77949,0.78347,0.78737,0.7912,0.79496,0.79864,0.80221,0.80571,0.80915,0.81251,0.81583,0.81912,0.82233,0.82553,0.82869,0.83182,0.83494,0.83805,0.84116,0.84429,0.84744,0.85061,0.8538,0.85695,0.86007,0.86315,0.86615,0.86911,0.87188,0.87462,0.87721,0.87978,0.88228,0.88476,0.88714,0.88952,0.89181,0.89409,0.89636,0.89862,0.90088,0.90313,0.90538,0.90764,0.90991,0.91224,0.91457,0.917,0.91942,0.92198,0.92455,0.9273,0.93009,0.93306,0.93613,0.93933,0.94283,0.94661,0.95079,0.9556,0.96147,0.96893,0.97855,0.98937,1.0]},"p":{"W":900,"H":1950,"crop":[0,536,900,720],"N":240,"U":[0.0,0.0067,0.01363,0.02088,0.02845,0.03621,0.04408,0.05191,0.05959,0.06703,0.07419,0.08103,0.08756,0.09378,0.09966,0.10519,0.11037,0.11523,0.11978,0.12404,0.12809,0.13202,0.13587,0.13965,0.14345,0.14731,0.15125,0.15531,0.15945,0.16366,0.16793,0.17227,0.17667,0.18112,0.18566,0.19029,0.19503,0.19988,0.20485,0.20995,0.21518,0.22054,0.22603,0.23162,0.23729,0.24302,0.24885,0.25476,0.26077,0.26682,0.27294,0.27915,0.28545,0.29193,0.29872,0.30598,0.31395,0.32245,0.33105,0.33963,0.34814,0.35649,0.36392,0.3706,0.3767,0.38202,0.38698,0.39168,0.39616,0.40049,0.4048,0.40913,0.41348,0.41782,0.42217,0.42649,0.43079,0.43507,0.43931,0.44353,0.44771,0.45185,0.45594,0.45999,0.46399,0.46794,0.47183,0.47566,0.47945,0.48319,0.4869,0.49055,0.49416,0.49775,0.50129,0.50481,0.50831,0.51179,0.51525,0.51871,0.52215,0.52559,0.52901,0.53243,0.53582,0.5392,0.54256,0.54588,0.54917,0.55242,0.5556,0.55875,0.56185,0.56492,0.56797,0.57096,0.57392,0.57683,0.57968,0.58251,0.58528,0.58805,0.5908,0.59356,0.59638,0.59925,0.60221,0.60529,0.60845,0.6119,0.61557,0.61949,0.62374,0.6283,0.63299,0.63745,0.64165,0.64557,0.64927,0.65278,0.6561,0.65932,0.66238,0.6653,0.66817,0.67088,0.67357,0.67614,0.67871,0.68127,0.68384,0.68645,0.68908,0.69178,0.69454,0.69739,0.70037,0.70343,0.70674,0.7102,0.71385,0.71782,0.72203,0.72644,0.731,0.73567,0.74036,0.74502,0.74964,0.75417,0.7586,0.76293,0.76717,0.77134,0.77545,0.77949,0.78347,0.78737,0.7912,0.79496,0.79864,0.80221,0.80571,0.80915,0.81251,0.81583,0.81912,0.82233,0.82553,0.82869,0.83182,0.83494,0.83805,0.84116,0.84429,0.84744,0.85061,0.8538,0.85695,0.86007,0.86315,0.86615,0.86911,0.87188,0.87462,0.87721,0.87978,0.88228,0.88476,0.88714,0.88952,0.89181,0.89409,0.89636,0.89862,0.90088,0.90313,0.90538,0.90764,0.90991,0.91224,0.91457,0.917,0.91942,0.92198,0.92455,0.9273,0.93009,0.93306,0.93613,0.93933,0.94283,0.94661,0.95079,0.9556,0.96147,0.96893,0.97855,0.98937,1.0]}};                           // per screen shape: frame size, the car's box, frame count, timeline
+  const META = {"l":{"W":2400,"H":1350,"crop":[438,252,1492,842],"N":240,"U":[0.0,0.0067,0.01363,0.02088,0.02845,0.03621,0.04408,0.05191,0.05959,0.06703,0.07419,0.08103,0.08756,0.09378,0.09966,0.10519,0.11037,0.11523,0.11978,0.12404,0.12809,0.13202,0.13587,0.13965,0.14345,0.14731,0.15125,0.15531,0.15945,0.16366,0.16793,0.17227,0.17667,0.18112,0.18566,0.19029,0.19503,0.19988,0.20485,0.20995,0.21518,0.22054,0.22603,0.23162,0.23729,0.24302,0.24885,0.25476,0.26077,0.26682,0.27294,0.27915,0.28545,0.29193,0.29872,0.30598,0.31395,0.32245,0.33105,0.33963,0.34814,0.35649,0.36392,0.3706,0.3767,0.38202,0.38698,0.39168,0.39616,0.40049,0.4048,0.40913,0.41348,0.41782,0.42217,0.42649,0.43079,0.43507,0.43931,0.44353,0.44771,0.45185,0.45594,0.45999,0.46399,0.46794,0.47183,0.47566,0.47945,0.48319,0.4869,0.49055,0.49416,0.49775,0.50129,0.50481,0.50831,0.51179,0.51525,0.51871,0.52215,0.52559,0.52901,0.53243,0.53582,0.5392,0.54256,0.54588,0.54917,0.55242,0.5556,0.55875,0.56185,0.56492,0.56797,0.57096,0.57392,0.57683,0.57968,0.58251,0.58528,0.58805,0.5908,0.59356,0.59638,0.59925,0.60221,0.60529,0.60845,0.6119,0.61557,0.61949,0.62374,0.6283,0.63299,0.63745,0.64165,0.64557,0.64927,0.65278,0.6561,0.65932,0.66238,0.6653,0.66817,0.67088,0.67357,0.67614,0.67871,0.68127,0.68384,0.68645,0.68908,0.69178,0.69454,0.69739,0.70037,0.70343,0.70674,0.7102,0.71385,0.71782,0.72203,0.72644,0.731,0.73567,0.74036,0.74502,0.74964,0.75417,0.7586,0.76293,0.76717,0.77134,0.77545,0.77949,0.78347,0.78737,0.7912,0.79496,0.79864,0.80221,0.80571,0.80915,0.81251,0.81583,0.81912,0.82233,0.82553,0.82869,0.83182,0.83494,0.83805,0.84116,0.84429,0.84744,0.85061,0.8538,0.85695,0.86007,0.86315,0.86615,0.86911,0.87188,0.87462,0.87721,0.87978,0.88228,0.88476,0.88714,0.88952,0.89181,0.89409,0.89636,0.89862,0.90088,0.90313,0.90538,0.90764,0.90991,0.91224,0.91457,0.917,0.91942,0.92198,0.92455,0.9273,0.93009,0.93306,0.93613,0.93933,0.94283,0.94661,0.95079,0.9556,0.96147,0.96893,0.97855,0.98937,1.0],"v":"eb3a7827"},"p":{"W":900,"H":1950,"crop":[0,536,900,720],"N":240,"U":[0.0,0.0067,0.01363,0.02088,0.02845,0.03621,0.04408,0.05191,0.05959,0.06703,0.07419,0.08103,0.08756,0.09378,0.09966,0.10519,0.11037,0.11523,0.11978,0.12404,0.12809,0.13202,0.13587,0.13965,0.14345,0.14731,0.15125,0.15531,0.15945,0.16366,0.16793,0.17227,0.17667,0.18112,0.18566,0.19029,0.19503,0.19988,0.20485,0.20995,0.21518,0.22054,0.22603,0.23162,0.23729,0.24302,0.24885,0.25476,0.26077,0.26682,0.27294,0.27915,0.28545,0.29193,0.29872,0.30598,0.31395,0.32245,0.33105,0.33963,0.34814,0.35649,0.36392,0.3706,0.3767,0.38202,0.38698,0.39168,0.39616,0.40049,0.4048,0.40913,0.41348,0.41782,0.42217,0.42649,0.43079,0.43507,0.43931,0.44353,0.44771,0.45185,0.45594,0.45999,0.46399,0.46794,0.47183,0.47566,0.47945,0.48319,0.4869,0.49055,0.49416,0.49775,0.50129,0.50481,0.50831,0.51179,0.51525,0.51871,0.52215,0.52559,0.52901,0.53243,0.53582,0.5392,0.54256,0.54588,0.54917,0.55242,0.5556,0.55875,0.56185,0.56492,0.56797,0.57096,0.57392,0.57683,0.57968,0.58251,0.58528,0.58805,0.5908,0.59356,0.59638,0.59925,0.60221,0.60529,0.60845,0.6119,0.61557,0.61949,0.62374,0.6283,0.63299,0.63745,0.64165,0.64557,0.64927,0.65278,0.6561,0.65932,0.66238,0.6653,0.66817,0.67088,0.67357,0.67614,0.67871,0.68127,0.68384,0.68645,0.68908,0.69178,0.69454,0.69739,0.70037,0.70343,0.70674,0.7102,0.71385,0.71782,0.72203,0.72644,0.731,0.73567,0.74036,0.74502,0.74964,0.75417,0.7586,0.76293,0.76717,0.77134,0.77545,0.77949,0.78347,0.78737,0.7912,0.79496,0.79864,0.80221,0.80571,0.80915,0.81251,0.81583,0.81912,0.82233,0.82553,0.82869,0.83182,0.83494,0.83805,0.84116,0.84429,0.84744,0.85061,0.8538,0.85695,0.86007,0.86315,0.86615,0.86911,0.87188,0.87462,0.87721,0.87978,0.88228,0.88476,0.88714,0.88952,0.89181,0.89409,0.89636,0.89862,0.90088,0.90313,0.90538,0.90764,0.90991,0.91224,0.91457,0.917,0.91942,0.92198,0.92455,0.9273,0.93009,0.93306,0.93613,0.93933,0.94283,0.94661,0.95079,0.9556,0.96147,0.96893,0.97855,0.98937,1.0],"v":"21f4e987"}};                           // per screen shape: frame size, the car's box, frame count, timeline
   let N = 2, U = [0, 1];                           // U[i]: where frame i sits on the 0..1 timeline (set with the screen shape)
   const head = document.getElementById('wfhead'), foot = document.getElementById('wffoot');
   const capEl = foot.querySelector('.wf-cap'), kEl = document.getElementById('wfk'), tEl = document.getElementById('wft');
@@ -2895,6 +2892,7 @@ if (wrap && canvas) window.ddNear(wrap, () => {
   }
   function onScroll(){
     sync(); farCheck(); idle = false; lastScrollAt = performance.now();
+    if (!gateOpen && gateGo && lastY > secTop * .35) gateGo();
     clearTimeout(idleT); idleT = setTimeout(() => { idle = true; kick(); }, 150);
     kick();
   }
@@ -3088,7 +3086,7 @@ onmessage = async e => {
     for (const step of [N - 1, 32, 16, 8, 4, 2, 1]) for (let i = 0; i < N; i += step) if (!seen.has(i)) { seen.add(i); order.push(i); }
     const one = (i, tries) => {
       active++;
-      fetch('film/' + k + '/' + String(i).padStart(3, '0') + '.webp').then(r => { if (!r.ok) throw new Error(r.status); return r.blob(); }).then(b => {
+      fetch('film/' + k + '/' + String(i).padStart(3, '0') + '.webp?v=' + META[k].v, { priority: 'low' }).then(r => { if (!r.ok) throw new Error(r.status); return r.blob(); }).then(b => {
         active--; if (g !== gen) return;
         blobs[i] = b; pump(); if (++settled === N) loadedAll(); go();
       }, () => {
@@ -3098,8 +3096,21 @@ onmessage = async e => {
         go();
       });
     };
-    const go = () => { while (active < 6 && next < order.length) one(order[next++], 0); };
+    const go = () => { while (active < 4 && next < order.length) one(order[next++], 0); };
     go();
+  }
+  /* the hero video gets the connection first: frames start once it is playing, after a few seconds regardless,
+     or straight away if you head for the film */
+  let gateOpen = false, gateGo = null;
+  function startLoad(){
+    if (gateOpen) { load(); return; }
+    const go = () => { if (gateOpen) return; gateOpen = true; load(); };
+    gateGo = go;
+    const v = document.getElementById('herovid');
+    if (v && !v.paused && v.readyState > 2) setTimeout(go, 1200);
+    else if (v) { v.addEventListener('playing', () => setTimeout(go, 1200), { once: true }); v.addEventListener('error', go, { once: true }); }
+    setTimeout(go, v ? 6000 : 1200);
+    if (lastY > secTop * .35) go();                       // already scrolled down (a reload mid-page)
   }
   function loadedAll(){
     allLoaded = true;
@@ -3113,7 +3124,7 @@ onmessage = async e => {
     for (const m of [hi, lo]) { m.forEach(e => close(e.b)); m.clear(); }
     blobs = new Array(N); dropJobs(); fails.clear(); W = H = 0; drawn = ''; allLoaded = false; MAXHI = MAXHI0;
     if (live) { live = false; stick.classList.remove('live'); }
-    measure(); load(); return true;
+    measure(); startLoad(); return true;
   }
   /* far from the film for a while: let the crisp frames go (the low-res net stays, so coming back is instant) */
   let farT = 0;
