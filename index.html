@@ -3,6 +3,8 @@
 <head>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}</script>
 <meta charset="utf-8">
+<link rel="preload" as="image" href="film/l/poster.webp" media="not all and (max-aspect-ratio: 1/1)" fetchpriority="high">
+<link rel="preload" as="image" href="film/p/poster.webp" media="(max-aspect-ratio: 1/1)" fetchpriority="high">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Detail Dungeon | PPF, ceramic coating and detailing in Islamabad &amp; Rawalpindi</title>
 <meta name="description" content="Authorised OneFilm USA and ProForce applicator. Self-healing paint protection film with fixed prices by car size, plus ceramic coating, tint, chrome delete and colour change. Get your price in 30 seconds.">
@@ -856,6 +858,82 @@ html:has(.dd-dlg[open]){overflow:hidden}
 }
 .cfgload.nudge{animation:nudge .5s}
 @keyframes nudge{30%{filter:brightness(1.6)}}
+
+/* ---- scroll film story: pre-rendered frames on a canvas, pinned while you scroll ---- */
+.wrapfilm{position:relative;height:620vh;padding:0;background:#08080B;scroll-margin-top:0}
+.wf-stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#08080B}
+.wf-bg,.wf-bg img,.wf-poster,.wf-poster img{position:absolute;inset:0;width:100%;height:100%;display:block}
+.wf-bg img,.wf-poster img{object-fit:cover;object-position:50% 50%}
+.wf-stick.live .wf-poster{visibility:hidden}
+.wf-cv{position:absolute;left:0;top:0;width:10px;height:10px;display:block;visibility:hidden}
+.wf-stick.live .wf-cv{visibility:visible}
+.wf-head{position:absolute;left:0;right:0;bottom:calc(26px + env(safe-area-inset-bottom,0px));z-index:3;text-align:center;padding-inline:22px;
+  display:flex;flex-direction:column;align-items:center;transition:opacity .4s ease,transform .4s ease;will-change:opacity,transform}
+.wf-head .eyebrow{font-size:12px}
+.wf-head h2{font-size:clamp(30px,3.6vw,46px);line-height:1.05;margin-top:10px}
+.wf-head p{color:var(--mute);margin:10px auto 0;max-width:34ch;font-size:15px;text-wrap:balance}
+.wf-head.gone{opacity:0;transform:translateY(14px);pointer-events:none}
+.wf-foot{position:absolute;left:0;right:0;bottom:calc(30px + env(safe-area-inset-bottom,0px));z-index:3;display:flex;flex-direction:column;align-items:center;
+  text-align:center;padding-inline:20px;transition:opacity .4s ease,transform .4s ease;will-change:opacity,transform}
+.wf-foot.gone{opacity:0;transform:translateY(16px);pointer-events:none}
+.wf-cap{display:flex;flex-direction:column;align-items:center;max-width:720px;width:100%}
+.wf-cap small{display:block;font-family:var(--disp);font-weight:600;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--red2);margin-bottom:10px}
+.wf-cap b{display:block;font-family:var(--hero);font-weight:600;font-size:clamp(19px,2.2vw,27px);letter-spacing:-.018em;line-height:1.22;text-wrap:balance;
+  min-height:2.44em;text-shadow:0 2px 18px rgba(0,0,0,.7)}
+.wf-cap.swap small,.wf-cap.swap b{opacity:0;transform:translateY(6px)}
+.wf-cap small,.wf-cap b{transition:opacity .22s ease,transform .22s ease}
+.wf-tiers{display:flex;gap:8px;margin-top:16px}
+.wf-tier{position:relative;flex:0 0 118px;height:40px;display:flex;align-items:center;justify-content:center;gap:7px;border-radius:999px;border:1px solid var(--line2);
+  background:rgba(14,14,19,.9);overflow:hidden;font-family:var(--hero);font-weight:600;font-size:14.5px;color:var(--mute);transition:color .3s,border-color .3s}
+.wf-tier>i{position:absolute;inset:0;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,rgba(142,10,16,.55),rgba(217,13,20,.42))}
+.wf-tier span,.wf-tier svg{position:relative}
+.wf-tier svg{width:12px;height:12px;color:#fff;opacity:0;transform:scale(.5);transition:opacity .25s,transform .3s cubic-bezier(.2,1.6,.4,1)}
+.wf-tier.live{color:var(--fg);border-color:#4A4A56}
+.wf-tier.done{color:#fff;border-color:rgba(240,32,42,.7)}
+.wf-tier.done svg{opacity:1;transform:none}
+.wf-cta{display:flex;gap:10px;justify-content:center;margin-top:16px;width:100%;max-width:360px;opacity:0;visibility:hidden;transform:translateY(6px);
+  transition:opacity .35s ease,transform .35s ease,visibility 0s .35s}
+.wf-cta .btn{flex:1 1 0;min-width:0;text-align:center;white-space:nowrap}
+.wf-foot.end .wf-cta{opacity:1;visibility:visible;transform:none;transition:opacity .35s ease,transform .35s ease}
+.wf-hint{margin-top:18px;pointer-events:none;height:34px}
+.wf-hint .mouse{display:block;width:22px;height:34px;border:1.5px solid rgba(255,255,255,.35);border-radius:12px;position:relative}
+.wf-hint .mouse::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;border-radius:2px;background:#fff;transform:translateX(-50%);animation:wfscroll 1.6s infinite}
+.wf-hint .chev{display:none;width:14px;height:14px;border-right:2px solid rgba(255,255,255,.6);border-bottom:2px solid rgba(255,255,255,.6);transform:rotate(45deg);animation:wfchev 1.6s infinite}
+@media(hover:none){.wf-hint .mouse{display:none}.wf-hint .chev{display:block}}
+@keyframes wfscroll{0%{opacity:0;transform:translate(-50%,0)}30%{opacity:1}100%{opacity:0;transform:translate(-50%,12px)}}
+@keyframes wfchev{0%{opacity:0;transform:translateY(-4px) rotate(45deg)}40%{opacity:1}100%{opacity:0;transform:translateY(8px) rotate(45deg)}}
+.wf-prog{position:absolute;left:0;right:0;bottom:0;height:3px;z-index:4;background:rgba(255,255,255,.06)}
+.wf-prog i{display:block;height:100%;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,#8E0A10,var(--red2));box-shadow:0 0 12px rgba(240,32,42,.55)}
+@media(max-width:760px){
+  .wrapfilm{height:540vh}
+  .wf-head h2{font-size:30px}
+  .wf-head p{font-size:14.5px;max-width:30ch}
+  .wf-cap b{font-size:18px;max-width:30ch}
+  .wf-tiers{width:100%;max-width:360px;justify-content:center}
+  .wf-tier{flex:1 1 0;height:38px;font-size:13.5px}
+  .wf-cta .btn{padding:12px 10px;font-size:14px}
+}
+@media(prefers-reduced-motion:reduce){.wf-hint .mouse::after,.wf-hint .chev{animation:none}}
+html.inwrap header.stuck{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(7,7,10,.97)}
+
+/* ---- film meter: page progress as film coverage ---- */
+.fmeter{position:fixed;left:18px;bottom:18px;z-index:55;display:flex;align-items:center;gap:11px;padding:8px 16px 8px 10px;border-radius:999px;
+  border:1px solid var(--line2);background:rgba(14,14,19,.9);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);text-decoration:none;color:var(--fg);
+  opacity:0;transform:translateY(14px);transition:opacity .3s,transform .3s,border-color .3s;pointer-events:none}
+.fmeter.on{opacity:1;transform:none;pointer-events:auto;visibility:visible}
+.fmeter:not(.on){visibility:hidden;transition:opacity .3s,transform .3s,visibility 0s .3s}
+.fmeter:hover{border-color:#4A4A56}
+.fmeter svg{width:78px;height:29px;display:block;overflow:visible}
+.fmeter b{display:block;font-family:var(--disp);font-weight:700;font-size:13px;line-height:1.15;font-variant-numeric:tabular-nums}
+.fmeter small{display:block;font-size:11px;color:var(--mute);line-height:1.2}
+.fmeter.full{border-color:rgba(217,13,20,.6)}
+.fbar{display:none}
+@media(max-width:760px){
+  .fmeter{display:none}
+  .fbar{display:block;position:fixed;left:0;right:0;top:var(--hh,69px);height:2px;z-index:59;pointer-events:none;opacity:0;transition:opacity .3s}
+  .fbar.on{opacity:1}
+  .fbar>i{position:absolute;left:0;top:0;bottom:0;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,rgba(142,10,16,.6),var(--red2));box-shadow:0 0 8px rgba(240,32,42,.6)}
+}
 </style>
 </head>
 <body>
@@ -863,12 +941,12 @@ html:has(.dd-dlg[open]){overflow:hidden}
 <header id="hdr"><div class="wrap nav">
   <a class="brand" href="#top"><img src="img/sym.png" alt=""><b>DETAIL DUNGEON</b></a>
   <nav>
+    <a href="#wrap">Watch it go on</a>
+    <a href="#colour">Colours</a>
     <a href="#price">Pricing</a>
-    <a href="#brands">Brands</a>
+    <a href="#coverage">Packages</a>
     <a href="#layers">The film</a>
     <a href="#interior">Interior</a>
-    <a href="#services">Tint &amp; wrap</a>
-    <a href="#studio">The studio</a>
     <a href="#reels">Recent work</a>
   </nav>
   <a class="btn btn-red" href="#price">Get a Price</a>
@@ -876,14 +954,15 @@ html:has(.dd-dlg[open]){overflow:hidden}
 </div>
 <div class="mmenu" id="mmenu" hidden>
   <div class="wrap">
+    <a href="#wrap">Watch the film go on</a>
+    <a href="#colour">Pick a colour in 3D</a>
     <a href="#price">Instant price</a>
+    <a href="#coverage">Coverage packages</a>
+    <a href="#layers">What the film is</a>
     <a href="#brands">OneFilm USA &amp; ProForce</a>
     <a href="#samples">The four films</a>
-    <a href="#layers">What the film is</a>
-    <a href="#coverage">Coverage packages</a>
     <a href="#interior">Interior film</a>
     <a href="#services">Tint, chrome delete, colour</a>
-    <a href="#colour">Pick a colour in 3D</a>
     <a href="#studio">The studio</a>
     <a href="#reels">Recent work</a>
     <div class="mmact">
@@ -911,7 +990,7 @@ html:has(.dd-dlg[open]){overflow:hidden}
        Fixed pricing by vehicle category, so you know the number before you walk in.</p>
     <div class="hcta rv">
       <a class="btn btn-red" href="#price">Get my price in 30 seconds</a>
-      <a class="btn btn-ghost" href="#coverage">See the coverage</a>
+      <a class="btn btn-ghost" href="#wrap">Watch the film go on</a>
     </div>
     <div class="logos">
       <img class="rv" src="img/onefilm-usa-white.png" alt="OneFilm USA">
@@ -923,13 +1002,71 @@ html:has(.dd-dlg[open]){overflow:hidden}
   </div>
 </section>
 
-<section><div class="wrap">
-  <div class="stats">
-    <div><b><span class="cu" data-to="12">0</span></b><span class="eyebrow">Vehicle categories priced</span></div>
-    <div><b><span class="cu" data-to="4">0</span></b><span class="eyebrow">Films on the shelf</span></div>
-    <div><b><span class="cu" data-to="8">0</span>.5</b><span class="eyebrow">Mil, thickest option</span></div>
-    <div><b><span class="cu" data-to="6">0</span></b><span class="eyebrow">Years max warranty</span></div>
+<section class="wrapfilm" id="wrap" aria-label="Scroll to watch paint protection film go onto a Land Cruiser, one package at a time">
+  <div class="wf-stick">
+    <picture class="wf-bg"><source media="(max-aspect-ratio: 1/1)" srcset="film/p/bg.webp"><img src="film/l/bg.webp" alt=""></picture>
+    <picture class="wf-poster"><source media="(max-aspect-ratio: 1/1)" srcset="film/p/poster.webp"><img src="film/l/poster.webp" alt="A white Land Cruiser 300 in the Detail Dungeon bay"></picture>
+    <canvas class="wf-cv" id="wfcv" aria-hidden="true"></canvas>
+    <div class="wf-head" id="wfhead">
+      <span class="eyebrow">Watch it go on</span>
+      <h2>Scroll. <span class="accent">We wrap it.</span></h2>
+      <p>One Land Cruiser, three levels of film. Red shows you where it goes.</p>
+      <div class="wf-hint" id="wfhint" aria-hidden="true"><i class="mouse"></i><i class="chev"></i></div>
+    </div>
+    <div class="wf-foot" id="wffoot">
+      <div class="wf-cap" aria-live="polite"><small id="wfk">Basic</small><b id="wft">Bumpers, bonnet, fenders, mirrors and sills. Where the stone chips land.</b></div>
+      <div class="wf-tiers"><div class="wf-tier" data-t="0"><i aria-hidden="true"></i><span>Basic</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.2 6.3l2.4 2.4 5.2-5.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wf-tier" data-t="1"><i aria-hidden="true"></i><span>Gold</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.2 6.3l2.4 2.4 5.2-5.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wf-tier" data-t="2"><i aria-hidden="true"></i><span>Platinum</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.2 6.3l2.4 2.4 5.2-5.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      <div class="wf-cta"><a class="btn btn-red" href="#price">Get a price</a><a class="btn btn-ghost" href="#colour">Pick a colour</a></div>
+    </div>
+    <div class="wf-prog" aria-hidden="true"><i id="wfprog"></i></div>
   </div>
+</section>
+
+<section id="colour"><div class="wrap">
+  <div class="head">
+    <span class="eyebrow rv">Colour change</span>
+    <h2 class="rv">Pick a colour.<br><span class="accent">See it on the car.</span></h2>
+    <p class="lede rv">Every swatch applies to the same car, in our own bay. Gloss, satin and matte
+       each hold the light differently, so the finish changes the car as much as the colour does.</p>
+  </div>
+  <div class="cc rv">
+    <div class="ccstage">
+      <div class="cfgstage" id="cfgstage">
+        <canvas id="cfgcanvas" aria-label="A 3D car in the Detail Dungeon bay, shown in the selected wrap colour. Drag to turn it."></canvas>
+        <div class="cfgload" id="cfgload"><div>Loading the car<i id="cfgbar"></i><small id="cfgdiag" hidden></small></div></div>
+        <div class="cfghint" id="cfghint">Drag to turn</div>
+        <div class="cfghud">
+          <div class="grp">
+            <button type="button" data-view="front" aria-pressed="true">Front</button>
+            <button type="button" data-view="side">Side</button>
+            <button type="button" data-view="rear">Rear</button>
+          </div>
+          <div class="grp"><button type="button" id="cfgspin" aria-pressed="true">Spin</button></div>
+        </div>
+      </div>
+      <div class="ccnow"><b id="ccname">Frozen White</b><span id="ccfin">Gloss</span></div>
+    </div>
+    <div class="ccctl">
+      <div>
+        <div class="fintabs" id="fintabs"></div>
+        <div class="swgrid" id="swgrid"></div>
+        <label class="cfgtog" id="cfgtogwrap">
+          <input type="checkbox" id="cfgblack"><span class="k"></span>
+          <span><b>Blackout</b><span class="d">Chrome delete, black wheels, limo tint. Same car, nothing else changes.</span></span>
+        </label>
+      </div>
+      <p class="note"><b>The paint only.</b> Glass, grille, lights and wheels stay as they are,
+         because the film does too. Screen colours are a guide; ask to see the physical swatch
+         before you commit.</p>
+    </div>
+  </div>
+  <template id="ccfallback">
+    <div class="ccwrap" id="ccwrap">
+      <img src="svc/colour-a.avif" width="1280" height="720"
+           alt="A Mercedes S-Class in the Detail Dungeon bay, shown in the selected wrap colour">
+      <span class="ccpaint"></span><span class="ccshade"></span><span class="ccspec"></span><span class="ccsheen"></span>
+    </div>
+  </template>
 </div></section>
 
 <section id="price"><div class="wrap">
@@ -986,6 +1123,50 @@ html:has(.dd-dlg[open]){overflow:hidden}
      Platinum coverage. Basic and Gold are quoted after a quick look at the car.</p>
 </div></section>
 
+<section id="coverage"><div class="wrap">
+  <div class="head">
+    <span class="eyebrow rv">Coverage packages</span>
+    <h2 class="rv">Three levels.<br><span class="accent">Tap one to see it on the car.</span></h2>
+    <p class="lede rv">Same Land Cruiser, our bay. Pick a package and watch the film go on, panel by panel. Red is film.</p>
+  </div>
+  <div class="cov rv">
+    <div class="stage">
+      <div class="covwrap" id="covwrap">
+        <canvas id="covcanvas" aria-label="Land Cruiser 300: the camera moves panel to panel while the film lays onto what the package covers"></canvas>
+        <div class="covload" id="covload">Loading the car<span></span></div>
+        <div class="covshot"><div><small id="covstep">Basic</small><b id="covlabel"></b></div><div class="covdots" id="covdots"></div></div>
+        <button class="covreplay" id="covreplay" type="button">&#8635; Replay</button>
+        <img class="base" src="cov/pkg-base.jpg" width="860" height="1290"
+             alt="Land Cruiser 300 in the Detail Dungeon bay with no film on it">
+        <img data-pkg="basic" src="cov/pkg-basic.jpg" width="860" height="1290" loading="lazy"
+             alt="The same car with the bumpers, bonnet, front fenders and mirrors covered">
+        <img data-pkg="gold" src="cov/pkg-gold.jpg" width="860" height="1290" loading="lazy"
+             alt="The same car with every painted panel except the roof covered">
+        <img data-pkg="plat" src="cov/pkg-plat.jpg" width="860" height="1290" loading="lazy"
+             alt="The same car with every painted panel including the roof covered">
+      </div>
+      <div class="covcap"><span>Land Cruiser 300 &middot; our own bay</span><span>Red is film &middot; both sides covered</span></div>
+    </div>
+<aside class="covside">
+      <div class="covbtns" id="covbtns"></div>
+      <div class="covinfo">
+        <span class="eyebrow">What's covered</span>
+        <div class="chk" id="covlist"></div>
+        <p class="covprice" id="covprice"></p>
+      </div>
+    </aside>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="stats">
+    <div><b><span class="cu" data-to="12">0</span></b><span class="eyebrow">Vehicle categories priced</span></div>
+    <div><b><span class="cu" data-to="4">0</span></b><span class="eyebrow">Films on the shelf</span></div>
+    <div><b><span class="cu" data-to="8">0</span>.5</b><span class="eyebrow">Mil, thickest option</span></div>
+    <div><b><span class="cu" data-to="6">0</span></b><span class="eyebrow">Years max warranty</span></div>
+  </div>
+</div></section>
+
 <div class="strip"><div class="track" id="track">
   <figure><img src="img/m_audi.jpg" alt=""></figure>
   <figure><img src="img/m_bmw.jpg" alt=""></figure>
@@ -994,6 +1175,39 @@ html:has(.dd-dlg[open]){overflow:hidden}
   <figure><img src="img/m_m5b.jpg" alt=""></figure>
   <figure><img src="img/g1.jpg" alt=""></figure>
 </div></div>
+
+<section id="layers"><div class="wrap">
+  <div class="head">
+    <span class="eyebrow rv">What the film is</span>
+    <h2 class="rv">Four layers thick.<br><span class="accent">Only one of them you see.</span></h2>
+    <p class="lede rv">Paint protection film is not a sticker. It is a built sheet, and every layer in it
+       is doing a different job between a stone and your paint.</p>
+  </div>
+  <div class="lay rv">
+    <div class="laystage">
+      <div class="laysheets">
+        <div class="sheet s1"></div>
+        <div class="sheet s2"></div>
+        <div class="sheet s3"></div>
+        <div class="sheet s4 base"></div>
+      </div>
+    </div>
+    <div class="laykey">
+      <div class="lk"><i></i><div><b>Self-healing topcoat</b><span>Elastomeric. Light swirls close with heat from the sun or warm water.</span></div><em>Layer 01</em></div>
+      <div class="lk"><i></i><div><b>Urethane film</b><span>The body of the sheet. This is what takes the stone and spreads the hit.</span></div><em>Layer 02</em></div>
+      <div class="lk"><i></i><div><b>Acrylic adhesive</b><span>Bonds to the clearcoat and releases cleanly years later without lifting paint.</span></div><em>Layer 03</em></div>
+      <div class="lk paint"><i></i><div><b>Your paint</b><span>Corrected first, then sealed under the film. Untouched from that day on.</span></div><em>The panel</em></div>
+    </div>
+  </div>
+  <div class="layfeat">
+    <div class="lf rv"><svg viewBox="0 0 46 52" aria-hidden="true"><path d="M23 1.5 43.5 13.2 43.5 38.8 23 50.5 2.5 38.8 2.5 13.2 Z" fill="none" stroke="#F0202A" stroke-width="1.6"/><circle cx="23" cy="26" r="4.2" fill="none" stroke="#F0202A" stroke-width="1.6"/><path d="M23 11 L23 21.5 M23 30.5 L23 41 M10.5 18.5 L19 23.5 M27 28.5 L35.5 33.5 M35.5 18.5 L27 23.5 M19 28.5 L10.5 33.5" stroke="#F0202A" stroke-width="1.6" fill="none"/></svg><b>High impact<br>resistance</b></div>
+    <div class="lf rv"><svg viewBox="0 0 46 52" aria-hidden="true"><path d="M23 1.5 43.5 13.2 43.5 38.8 23 50.5 2.5 38.8 2.5 13.2 Z" fill="none" stroke="#F0202A" stroke-width="1.6"/><path d="M11 21 Q23 14 35 21 M11 26 Q23 19 35 26 M11 31 Q23 24 35 31" fill="none" stroke="#F0202A" stroke-width="1.6"/></svg><b>Flexible<br>and durable</b></div>
+    <div class="lf rv"><svg viewBox="0 0 46 52" aria-hidden="true"><path d="M23 1.5 43.5 13.2 43.5 38.8 23 50.5 2.5 38.8 2.5 13.2 Z" fill="none" stroke="#F0202A" stroke-width="1.6"/><circle cx="23" cy="26" r="9.5" fill="none" stroke="#F0202A" stroke-width="1.6"/><circle cx="23" cy="26" r="2.6" fill="#F0202A"/><path d="M23 11 L23 16 M23 36 L23 41 M8 26 L13 26 M33 26 L38 26" stroke="#F0202A" stroke-width="1.6"/></svg><b>Optical<br>clarity</b></div>
+    <div class="lf rv"><svg viewBox="0 0 46 52" aria-hidden="true"><path d="M23 1.5 43.5 13.2 43.5 38.8 23 50.5 2.5 38.8 2.5 13.2 Z" fill="none" stroke="#F0202A" stroke-width="1.6"/><path d="M14 30 Q19 20 23 26 Q27 32 32 22" fill="none" stroke="#F0202A" stroke-width="1.8"/><path d="M29.5 21.5 L32.5 21.2 L32.8 24.4" fill="none" stroke="#F0202A" stroke-width="1.6"/></svg><b>Self-healing<br>topcoat</b></div>
+  </div>
+  <p class="note"><b>7 to 8.5 mil in total.</b> That is the whole stack measured together, which is the
+     number worth comparing between films. A thicker sheet absorbs more before the paint feels it.</p>
+</div></section>
 
 <section id="brands"><div class="wrap">
   <div class="head">
@@ -1097,74 +1311,6 @@ html:has(.dd-dlg[open]){overflow:hidden}
   <p class="note"><b>Microns, not marketing.</b> One mil is 25.4 microns. The bar on each card is that
      film's thickness against the thickest we stock, so you can see the real gap rather than read it. Paint colours on the samples are
      there to show the gloss; every film we fit is optically clear.</p>
-</div></section>
-
-<section id="layers"><div class="wrap">
-  <div class="head">
-    <span class="eyebrow rv">What the film is</span>
-    <h2 class="rv">Four layers thick.<br><span class="accent">Only one of them you see.</span></h2>
-    <p class="lede rv">Paint protection film is not a sticker. It is a built sheet, and every layer in it
-       is doing a different job between a stone and your paint.</p>
-  </div>
-  <div class="lay rv">
-    <div class="laystage">
-      <div class="laysheets">
-        <div class="sheet s1"></div>
-        <div class="sheet s2"></div>
-        <div class="sheet s3"></div>
-        <div class="sheet s4 base"></div>
-      </div>
-    </div>
-    <div class="laykey">
-      <div class="lk"><i></i><div><b>Self-healing topcoat</b><span>Elastomeric. Light swirls close with heat from the sun or warm water.</span></div><em>Layer 01</em></div>
-      <div class="lk"><i></i><div><b>Urethane film</b><span>The body of the sheet. This is what takes the stone and spreads the hit.</span></div><em>Layer 02</em></div>
-      <div class="lk"><i></i><div><b>Acrylic adhesive</b><span>Bonds to the clearcoat and releases cleanly years later without lifting paint.</span></div><em>Layer 03</em></div>
-      <div class="lk paint"><i></i><div><b>Your paint</b><span>Corrected first, then sealed under the film. Untouched from that day on.</span></div><em>The panel</em></div>
-    </div>
-  </div>
-  <div class="layfeat">
-    <div class="lf rv"><svg viewBox="0 0 46 52" aria-hidden="true"><path d="M23 1.5 43.5 13.2 43.5 38.8 23 50.5 2.5 38.8 2.5 13.2 Z" fill="none" stroke="#F0202A" stroke-width="1.6"/><circle cx="23" cy="26" r="4.2" fill="none" stroke="#F0202A" stroke-width="1.6"/><path d="M23 11 L23 21.5 M23 30.5 L23 41 M10.5 18.5 L19 23.5 M27 28.5 L35.5 33.5 M35.5 18.5 L27 23.5 M19 28.5 L10.5 33.5" stroke="#F0202A" stroke-width="1.6" fill="none"/></svg><b>High impact<br>resistance</b></div>
-    <div class="lf rv"><svg viewBox="0 0 46 52" aria-hidden="true"><path d="M23 1.5 43.5 13.2 43.5 38.8 23 50.5 2.5 38.8 2.5 13.2 Z" fill="none" stroke="#F0202A" stroke-width="1.6"/><path d="M11 21 Q23 14 35 21 M11 26 Q23 19 35 26 M11 31 Q23 24 35 31" fill="none" stroke="#F0202A" stroke-width="1.6"/></svg><b>Flexible<br>and durable</b></div>
-    <div class="lf rv"><svg viewBox="0 0 46 52" aria-hidden="true"><path d="M23 1.5 43.5 13.2 43.5 38.8 23 50.5 2.5 38.8 2.5 13.2 Z" fill="none" stroke="#F0202A" stroke-width="1.6"/><circle cx="23" cy="26" r="9.5" fill="none" stroke="#F0202A" stroke-width="1.6"/><circle cx="23" cy="26" r="2.6" fill="#F0202A"/><path d="M23 11 L23 16 M23 36 L23 41 M8 26 L13 26 M33 26 L38 26" stroke="#F0202A" stroke-width="1.6"/></svg><b>Optical<br>clarity</b></div>
-    <div class="lf rv"><svg viewBox="0 0 46 52" aria-hidden="true"><path d="M23 1.5 43.5 13.2 43.5 38.8 23 50.5 2.5 38.8 2.5 13.2 Z" fill="none" stroke="#F0202A" stroke-width="1.6"/><path d="M14 30 Q19 20 23 26 Q27 32 32 22" fill="none" stroke="#F0202A" stroke-width="1.8"/><path d="M29.5 21.5 L32.5 21.2 L32.8 24.4" fill="none" stroke="#F0202A" stroke-width="1.6"/></svg><b>Self-healing<br>topcoat</b></div>
-  </div>
-  <p class="note"><b>7 to 8.5 mil in total.</b> That is the whole stack measured together, which is the
-     number worth comparing between films. A thicker sheet absorbs more before the paint feels it.</p>
-</div></section>
-
-<section id="coverage"><div class="wrap">
-  <div class="head">
-    <span class="eyebrow rv">Coverage packages</span>
-    <h2 class="rv">Three levels.<br><span class="accent">Tap one to see it on the car.</span></h2>
-    <p class="lede rv">Same Land Cruiser, our bay. Pick a package and watch the film go on, panel by panel. Red is film.</p>
-  </div>
-  <div class="cov rv">
-    <div class="stage">
-      <div class="covwrap" id="covwrap">
-        <canvas id="covcanvas" aria-label="Land Cruiser 300: the camera moves panel to panel while the film lays onto what the package covers"></canvas>
-        <div class="covload" id="covload">Loading the car<span></span></div>
-        <div class="covshot"><div><small id="covstep">Basic</small><b id="covlabel"></b></div><div class="covdots" id="covdots"></div></div>
-        <button class="covreplay" id="covreplay" type="button">&#8635; Replay</button>
-        <img class="base" src="cov/pkg-base.jpg" width="860" height="1290"
-             alt="Land Cruiser 300 in the Detail Dungeon bay with no film on it">
-        <img data-pkg="basic" src="cov/pkg-basic.jpg" width="860" height="1290" loading="lazy"
-             alt="The same car with the bumpers, bonnet, front fenders and mirrors covered">
-        <img data-pkg="gold" src="cov/pkg-gold.jpg" width="860" height="1290" loading="lazy"
-             alt="The same car with every painted panel except the roof covered">
-        <img data-pkg="plat" src="cov/pkg-plat.jpg" width="860" height="1290" loading="lazy"
-             alt="The same car with every painted panel including the roof covered">
-      </div>
-      <div class="covcap"><span>Land Cruiser 300 &middot; our own bay</span><span>Red is film &middot; both sides covered</span></div>
-    </div>
-<aside class="covside">
-      <div class="covbtns" id="covbtns"></div>
-      <div class="covinfo">
-        <span class="eyebrow">What's covered</span>
-        <div class="chk" id="covlist"></div>
-        <p class="covprice" id="covprice"></p>
-      </div>
-    </aside>
-  </div>
 </div></section>
 
 <section id="interior"><div class="wrap">
@@ -1273,53 +1419,6 @@ html:has(.dd-dlg[open]){overflow:hidden}
   </div>
 </div></section>
 
-<section id="colour"><div class="wrap">
-  <div class="head">
-    <span class="eyebrow rv">Colour change</span>
-    <h2 class="rv">Pick a colour.<br><span class="accent">See it on the car.</span></h2>
-    <p class="lede rv">Every swatch applies to the same car, in our own bay. Gloss, satin and matte
-       each hold the light differently, so the finish changes the car as much as the colour does.</p>
-  </div>
-  <div class="cc rv">
-    <div class="ccstage">
-      <div class="cfgstage" id="cfgstage">
-        <canvas id="cfgcanvas" aria-label="A 3D car in the Detail Dungeon bay, shown in the selected wrap colour. Drag to turn it."></canvas>
-        <div class="cfgload" id="cfgload"><div>Loading the car<i id="cfgbar"></i><small id="cfgdiag" hidden></small></div></div>
-        <div class="cfghint" id="cfghint">Drag to turn</div>
-        <div class="cfghud">
-          <div class="grp">
-            <button type="button" data-view="front" aria-pressed="true">Front</button>
-            <button type="button" data-view="side">Side</button>
-            <button type="button" data-view="rear">Rear</button>
-          </div>
-          <div class="grp"><button type="button" id="cfgspin" aria-pressed="true">Spin</button></div>
-        </div>
-      </div>
-      <div class="ccnow"><b id="ccname">Frozen White</b><span id="ccfin">Gloss</span></div>
-    </div>
-    <div class="ccctl">
-      <div>
-        <div class="fintabs" id="fintabs"></div>
-        <div class="swgrid" id="swgrid"></div>
-        <label class="cfgtog" id="cfgtogwrap">
-          <input type="checkbox" id="cfgblack"><span class="k"></span>
-          <span><b>Blackout</b><span class="d">Chrome delete, black wheels, limo tint. Same car, nothing else changes.</span></span>
-        </label>
-      </div>
-      <p class="note"><b>The paint only.</b> Glass, grille, lights and wheels stay as they are,
-         because the film does too. Screen colours are a guide; ask to see the physical swatch
-         before you commit.</p>
-    </div>
-  </div>
-  <template id="ccfallback">
-    <div class="ccwrap" id="ccwrap">
-      <img src="svc/colour-a.avif" width="1280" height="720"
-           alt="A Mercedes S-Class in the Detail Dungeon bay, shown in the selected wrap colour">
-      <span class="ccpaint"></span><span class="ccshade"></span><span class="ccspec"></span><span class="ccsheen"></span>
-    </div>
-  </template>
-</div></section>
-
 <section id="studio"><div class="wrap">
   <div class="head">
     <span class="eyebrow rv">Inside the Dungeon</span>
@@ -1335,7 +1434,6 @@ html:has(.dd-dlg[open]){overflow:hidden}
     <figure class="rv"><img src="img/m_m5b.jpg" alt=""></figure>
   </div>
 </div></section>
-
 
 <section id="reels"><div class="wrap">
   <div class="head">
@@ -1431,6 +1529,18 @@ html:has(.dd-dlg[open]){overflow:hidden}
   </div>
   <p class="credit">3D car: <a href="https://sketchfab.com/3d-models/2022-toyota-land-cruiser-300-vxr-3dfcd7904cdb4e52afa3ce59fa59e1a5" rel="noopener" target="_blank">2022 Toyota Land Cruiser 300 VX.R</a> by <a href="https://sketchfab.com/ddiaz-design" rel="noopener" target="_blank">Ddiaz Design</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">CC BY-NC-SA 4.0</a>.</p>
 </div></footer>
+
+<a class="fmeter" id="fmeter" href="#price" aria-label="How far down the page you are, shown as film coverage. Opens the price tool.">
+  <svg viewBox="0 0 120 44" aria-hidden="true"><defs><linearGradient id="fmg" x1="0" x2="1"><stop offset="0" stop-color="#8E0A10"/><stop offset="1" stop-color="#F0202A"/></linearGradient>
+    <clipPath id="fmclip"><rect id="fmrect" x="0" y="0" width="0" height="44"/></clipPath></defs>
+    <path d="M7 31V23.5Q7 19.5 12 18.6L30 16.6 41 7.6Q43 6.2 46 6.2H88Q91 6.2 92.6 8L101 16.6 110.5 17.6Q115 18.2 115 22.5V31Z" fill="#1B1C22" stroke="#4A4B56" stroke-width="1.2"/>
+    <path d="M7 31V23.5Q7 19.5 12 18.6L30 16.6 41 7.6Q43 6.2 46 6.2H88Q91 6.2 92.6 8L101 16.6 110.5 17.6Q115 18.2 115 22.5V31Z" fill="url(#fmg)" clip-path="url(#fmclip)"/>
+    <path d="M44.5 9.2H66V15.4H38.3ZM69 9.2H87.5Q89 9.2 90 10.4L94.8 15.4H69Z" fill="#0B0B0F" opacity=".85"/>
+    <circle cx="28" cy="31" r="7.5" fill="#0B0B0F" stroke="#4A4B56" stroke-width="1.6"/><circle cx="94" cy="31" r="7.5" fill="#0B0B0F" stroke="#4A4B56" stroke-width="1.6"/>
+  </svg>
+  <span><b id="fmpct">0%</b><small id="fmtxt">Film coverage</small></span>
+</a>
+<div class="fbar" id="fbar" aria-hidden="true"><i></i></div>
 
 <div class="wa-done" id="wa-done" role="status" aria-live="polite" hidden>
   <button class="wd-x" type="button" data-close aria-label="Close">&times;</button>
@@ -1553,6 +1663,7 @@ html:has(.dd-dlg[open]){overflow:hidden}
   let raf = 0;
   function frame(){
     raf = 0;
+    if (document.documentElement.classList.contains("inwrap")) return;
     const span = sec.offsetHeight - innerHeight;
     const top  = sec.getBoundingClientRect().top;
     show(span <= 0 ? 0 : Math.max(0, Math.min(1, -top / span)));
@@ -1890,7 +2001,7 @@ if(!reduce && window.gsap && window.ScrollTrigger){
      screen gets revealed, including things a jump link skipped over */
   const pend = new Set(document.querySelectorAll("section:not(.hero) .rv, .banner.rv, .cu"));
   let ticking = false;
-  const check = () => { ticking = false; const line = innerHeight * 0.92;
+  const check = () => { ticking = false; if (document.documentElement.classList.contains("inwrap")) return; const line = innerHeight * 0.92;
     pend.forEach(el => { const cu = el.classList.contains("cu"); if(el.getBoundingClientRect().top < (cu ? innerHeight - 2 : line)){ pend.delete(el); el.classList.contains("cu") ? count(el) : shown(el); } }); };
   const queue = () => { if(!ticking && pend.size){ ticking = true; requestAnimationFrame(check); } };
   addEventListener("scroll", queue, {passive:true}); addEventListener("resize", queue); addEventListener("load", queue);
@@ -2601,11 +2712,27 @@ document.querySelectorAll("[data-blackout]").forEach(a => a.addEventListener("cl
   window.DD_DETAILS = { open, filmDrawer, brandDrawer, ceramicDrawer, correctionDrawer };
 })();
 </script>
+<script>
+/* start heavy work only when its section is within a screen or two. An optional gate holds it back
+   (the colour picker's one-off setup waits until the film has finished, so it never lands mid-scroll) */
+window.ddNear = function(el, fn, margin, gate){
+  let done = false, waiting = false;
+  const go = () => {
+    if (done) return;
+    if (gate && !gate()) { if (!waiting) { waiting = true; setTimeout(() => { waiting = false; go(); }, 250); } return; }
+    done = true; try { fn(); } catch (e) { console.warn(e); }
+  };
+  if (!el || !('IntersectionObserver' in window)) return go();
+  const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { io.disconnect(); go(); } }, { rootMargin: (margin || '150%') + ' 0px' });
+  io.observe(el);
+  return go;
+};
+</script>
 <script type="module">
 import { initConfigurator } from './3d/configurator.js';
 const ui = window.DD_CC;
 window.__cfgsay && window.__cfgsay("module loaded");
-if (ui) {
+if (ui) window.DD_CFG_GO = window.ddNear(document.getElementById('cfgstage'), () => {
   let settled = false;
   const fallback = () => { if (!settled) { settled = true; window.__cfgsay && window.__cfgsay("falling back to images"); ui.useImages(); } };
   const t = setTimeout(fallback, window.__noFallback ? 600000 : 25000);
@@ -2618,13 +2745,13 @@ if (ui) {
   });
   if (!api) { clearTimeout(t); fallback(); }
   window.DD_3D = () => api;
-}
+}, '120%', () => !(window.DD_STORY && window.DD_STORY.busy));
 </script>
 <script type="module">
 /* ---- interior trim: the clear sheet over the console ------------------------ */
 import { initTrim } from './3d/trim.js';
 const istage = document.getElementById('intstage'), icanvas = document.getElementById('intcanvas');
-if (istage && icanvas) {
+if (istage && icanvas) window.ddNear(istage, () => {
   const load = document.getElementById('intload'), lines = document.getElementById('intlines'), calls = [...document.querySelectorAll('#intcall .ic')];
   const phase = document.getElementById('intphase'), hint = document.getElementById('inthint');
   const COPY = { hover: 'Clear film, cut to the console', lowering: 'Laid by hand, edges tucked under the trim', applied: 'Applied. You cannot see it. That is the point.', reset: 'Applied. You cannot see it. That is the point.' };
@@ -2660,13 +2787,13 @@ if (istage && icanvas) {
   if (!api) load.textContent = 'Preview unavailable on this device';
   window.DD_INT = api;
   istage.addEventListener('pointerdown', () => hint.classList.add('off'), { once: true });
-}
+});
 </script>
 <script type="module">
 /* ---- coverage: the same car, the film going on panel by panel ------------- */
 import { initCoverage } from './3d/coverage.js';
 const wrap = document.getElementById('covwrap'), canvas = document.getElementById('covcanvas');
-if (wrap && canvas) {
+if (wrap && canvas) window.ddNear(wrap, () => {
   const load = document.getElementById('covload'), label = document.getElementById('covlabel'), dots = document.getElementById('covdots'), replay = document.getElementById('covreplay');
   const pressed = () => { const b = document.querySelector('#covbtns .pkg[aria-pressed="true"]'); return b ? b.dataset.pkg : 'basic'; };
   let covApi = null, labelTimer = 0;
@@ -2685,7 +2812,388 @@ if (wrap && canvas) {
   replay.addEventListener('click', () => covApi && covApi.play(pressed()));
   // stills stay underneath until the 3D is up; a slow network never shows a blank box
   setTimeout(() => { if (!covApi) load.classList.add('off'); }, 20000);
-}
+});
+</script>
+<script>
+/* ---- scroll film story -------------------------------------------------------
+   Pre-rendered frames of the car (one set per screen shape), cut to the car alone (with alpha), drawn over a static bay
+   background as you scroll. Frames are spaced evenly in how much the picture changes (more of them
+   where the camera swings fast), so every step is equally small. What keeps it smooth on any phone:
+   - the playhead glides after the scroll position instead of jumping with it, so wheel notches and
+     finger jitter come out as one motion, and it settles on a whole frame when you stop
+   - between two frames it cross-fades, so the car moves on every screen refresh, not in steps
+   - a low-res copy of every second frame stays decoded: however fast you fling, there is always a
+     frame within a step. Crisp frames are decoded just ahead of where you are heading
+   - decoding runs in a worker, off the thread that scrolls, and scrolling itself reads no layout */
+(function(){
+  const sec = document.getElementById('wrap'); if (!sec) return;
+  const stick = sec.querySelector('.wf-stick'), cv = document.getElementById('wfcv');
+  const META = {"l":{"W":2400,"H":1350,"crop":[438,252,1492,842],"N":240,"U":[0.0,0.0067,0.01363,0.02088,0.02845,0.03621,0.04408,0.05191,0.05959,0.06703,0.07419,0.08103,0.08756,0.09378,0.09966,0.10519,0.11037,0.11523,0.11978,0.12404,0.12809,0.13202,0.13587,0.13965,0.14345,0.14731,0.15125,0.15531,0.15945,0.16366,0.16793,0.17227,0.17667,0.18112,0.18566,0.19029,0.19503,0.19988,0.20485,0.20995,0.21518,0.22054,0.22603,0.23162,0.23729,0.24302,0.24885,0.25476,0.26077,0.26682,0.27294,0.27915,0.28545,0.29193,0.29872,0.30598,0.31395,0.32245,0.33105,0.33963,0.34814,0.35649,0.36392,0.3706,0.3767,0.38202,0.38698,0.39168,0.39616,0.40049,0.4048,0.40913,0.41348,0.41782,0.42217,0.42649,0.43079,0.43507,0.43931,0.44353,0.44771,0.45185,0.45594,0.45999,0.46399,0.46794,0.47183,0.47566,0.47945,0.48319,0.4869,0.49055,0.49416,0.49775,0.50129,0.50481,0.50831,0.51179,0.51525,0.51871,0.52215,0.52559,0.52901,0.53243,0.53582,0.5392,0.54256,0.54588,0.54917,0.55242,0.5556,0.55875,0.56185,0.56492,0.56797,0.57096,0.57392,0.57683,0.57968,0.58251,0.58528,0.58805,0.5908,0.59356,0.59638,0.59925,0.60221,0.60529,0.60845,0.6119,0.61557,0.61949,0.62374,0.6283,0.63299,0.63745,0.64165,0.64557,0.64927,0.65278,0.6561,0.65932,0.66238,0.6653,0.66817,0.67088,0.67357,0.67614,0.67871,0.68127,0.68384,0.68645,0.68908,0.69178,0.69454,0.69739,0.70037,0.70343,0.70674,0.7102,0.71385,0.71782,0.72203,0.72644,0.731,0.73567,0.74036,0.74502,0.74964,0.75417,0.7586,0.76293,0.76717,0.77134,0.77545,0.77949,0.78347,0.78737,0.7912,0.79496,0.79864,0.80221,0.80571,0.80915,0.81251,0.81583,0.81912,0.82233,0.82553,0.82869,0.83182,0.83494,0.83805,0.84116,0.84429,0.84744,0.85061,0.8538,0.85695,0.86007,0.86315,0.86615,0.86911,0.87188,0.87462,0.87721,0.87978,0.88228,0.88476,0.88714,0.88952,0.89181,0.89409,0.89636,0.89862,0.90088,0.90313,0.90538,0.90764,0.90991,0.91224,0.91457,0.917,0.91942,0.92198,0.92455,0.9273,0.93009,0.93306,0.93613,0.93933,0.94283,0.94661,0.95079,0.9556,0.96147,0.96893,0.97855,0.98937,1.0]},"p":{"W":900,"H":1950,"crop":[0,536,900,720],"N":240,"U":[0.0,0.0067,0.01363,0.02088,0.02845,0.03621,0.04408,0.05191,0.05959,0.06703,0.07419,0.08103,0.08756,0.09378,0.09966,0.10519,0.11037,0.11523,0.11978,0.12404,0.12809,0.13202,0.13587,0.13965,0.14345,0.14731,0.15125,0.15531,0.15945,0.16366,0.16793,0.17227,0.17667,0.18112,0.18566,0.19029,0.19503,0.19988,0.20485,0.20995,0.21518,0.22054,0.22603,0.23162,0.23729,0.24302,0.24885,0.25476,0.26077,0.26682,0.27294,0.27915,0.28545,0.29193,0.29872,0.30598,0.31395,0.32245,0.33105,0.33963,0.34814,0.35649,0.36392,0.3706,0.3767,0.38202,0.38698,0.39168,0.39616,0.40049,0.4048,0.40913,0.41348,0.41782,0.42217,0.42649,0.43079,0.43507,0.43931,0.44353,0.44771,0.45185,0.45594,0.45999,0.46399,0.46794,0.47183,0.47566,0.47945,0.48319,0.4869,0.49055,0.49416,0.49775,0.50129,0.50481,0.50831,0.51179,0.51525,0.51871,0.52215,0.52559,0.52901,0.53243,0.53582,0.5392,0.54256,0.54588,0.54917,0.55242,0.5556,0.55875,0.56185,0.56492,0.56797,0.57096,0.57392,0.57683,0.57968,0.58251,0.58528,0.58805,0.5908,0.59356,0.59638,0.59925,0.60221,0.60529,0.60845,0.6119,0.61557,0.61949,0.62374,0.6283,0.63299,0.63745,0.64165,0.64557,0.64927,0.65278,0.6561,0.65932,0.66238,0.6653,0.66817,0.67088,0.67357,0.67614,0.67871,0.68127,0.68384,0.68645,0.68908,0.69178,0.69454,0.69739,0.70037,0.70343,0.70674,0.7102,0.71385,0.71782,0.72203,0.72644,0.731,0.73567,0.74036,0.74502,0.74964,0.75417,0.7586,0.76293,0.76717,0.77134,0.77545,0.77949,0.78347,0.78737,0.7912,0.79496,0.79864,0.80221,0.80571,0.80915,0.81251,0.81583,0.81912,0.82233,0.82553,0.82869,0.83182,0.83494,0.83805,0.84116,0.84429,0.84744,0.85061,0.8538,0.85695,0.86007,0.86315,0.86615,0.86911,0.87188,0.87462,0.87721,0.87978,0.88228,0.88476,0.88714,0.88952,0.89181,0.89409,0.89636,0.89862,0.90088,0.90313,0.90538,0.90764,0.90991,0.91224,0.91457,0.917,0.91942,0.92198,0.92455,0.9273,0.93009,0.93306,0.93613,0.93933,0.94283,0.94661,0.95079,0.9556,0.96147,0.96893,0.97855,0.98937,1.0]}};                           // per screen shape: frame size, the car's box, frame count, timeline
+  let N = 2, U = [0, 1];                           // U[i]: where frame i sits on the 0..1 timeline (set with the screen shape)
+  const head = document.getElementById('wfhead'), foot = document.getElementById('wffoot');
+  const capEl = foot.querySelector('.wf-cap'), kEl = document.getElementById('wfk'), tEl = document.getElementById('wft');
+  const tiers = [...foot.querySelectorAll('.wf-tier')], bars = tiers.map(t => t.querySelector('i')), prog = document.getElementById('wfprog');
+  const ss = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
+  // timings match the renderer: Basic, Gold, Platinum waves, then the red clears
+  const WAVE = [[.10, .34], [.40, .62], [.68, .80]];
+  // each caption arrives as its wave starts, never ahead of the car
+  const CAPS = [
+    [0,    'Basic',    'Bumpers, bonnet, fenders, mirrors and sills. Where the stone chips land.'],
+    [.39,  'Gold',     'Doors, rear quarters and boot. Every painted panel but the roof.'],
+    [.67,  'Platinum', 'The roof as well. Nothing left bare.'],
+    [.855, 'Then it disappears', 'Red was just to show you. On your car, the film is invisible.'],
+    [.96,  'Fully protected', 'Invisible. Self-healing. Up to a 6-year warranty.'],
+  ];
+  const HEAD_UNTIL = .08, END_AT = .96;
+  const toU = p => Math.min(1, Math.max(0, (p - .015) / .9));          // a short hold at each end
+  function frameOf(u){                                                  // timeline -> fractional frame
+    if (u <= U[0]) return 0; if (u >= U[N - 1]) return N - 1;
+    let a = 0, b = N - 1; while (b - a > 1) { const m = (a + b) >> 1; if (U[m] <= u) a = m; else b = m; }
+    return a + (u - U[a]) / (U[b] - U[a]);
+  }
+  const uOf = f => { const i = Math.min(N - 2, Math.max(0, Math.floor(f))); return U[i] + (U[i + 1] - U[i]) * (f - i); };
+  const fade = a => Math.min(1, Math.max(0, (a - .12) / .76));          // each step holds crisp at both ends, fades between
+  const PHONE = matchMedia('(pointer: coarse)').matches || innerWidth < 760;
+  const MAXHI0 = PHONE ? 18 : 16; let MAXHI = MAXHI0;  // crisp frames kept around the playhead
+  const HI_BUDGET = (PHONE ? 44 : 100) * 1048576;
+  const LO = PHONE ? .5 : .42, LO_BUDGET = (PHONE ? 56 : 120) * 1048576;   // the low-res safety net: scale and memory cap
+  const JOBS = 2;                                      // decodes in flight
+  const TAU = matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : .1;   // playhead glide, seconds
+
+  let ctx = cv.getContext('2d');
+  let kind = '', gen = 0, szGen = 0, blobs = [], hi = new Map(), lo = new Map(), loStride = 2;
+  let secTop = 0, span = 1, vh = innerHeight, W = 0, H = 0, LW = 0, LH = 0, pinned = null, live = false, lastY = scrollY, lastScrollAt = -1e9;
+  let target = 0, cur = 0, vel = 0, dir = 1, idle = true, idleT = 0, loop = 0, last = 0;
+  let drawn = '', shownF = -1, shownTier = '', drawMs = 0, allLoaded = false, glbReady = false, hold = null;
+
+  /* ---------------------------------------------------------------- geometry, measured once, not per scroll */
+  function measure(){
+    const r = sec.getBoundingClientRect();
+    secTop = r.top + scrollY; span = Math.max(1, sec.offsetHeight - stick.offsetHeight); vh = innerHeight;
+    const m = META[kind], sw = stick.clientWidth, sh = stick.clientHeight; if (!m || !sw || !sh) return;
+    // the full frame is cover-fitted to the pinned stage exactly like the background image; the canvas covers the car's box in it
+    const s = Math.max(sw / m.W, sh / m.H), ox = (sw - m.W * s) / 2, oy = (sh - m.H * s) / 2, [cx, cy, cw, ch] = m.crop;
+    const st = cv.style; st.left = (ox + cx * s) + 'px'; st.top = (oy + cy * s) + 'px'; st.width = (cw * s) + 'px'; st.height = (ch * s) + 'px';
+    const q = Math.min(1, s * Math.min(2, devicePixelRatio || 1));   // device pixels, never more than the frame has
+    const w = Math.round(cw * q), h = Math.round(ch * q);
+    if (w === W && h === H) return;
+    W = cv.width = w; H = cv.height = h; LW = Math.max(1, Math.round(w * LO)); LH = Math.max(1, Math.round(h * LO));
+    ctx = cv.getContext('2d'); drawn = ''; szGen++;
+    loStride = Math.max(2, Math.ceil(N * LW * LH * 4 / LO_BUDGET)); pruneLo();
+    draw();                                               // resizing cleared the canvas: repaint now, not a frame later
+  }
+  const close = b => { try { b && b.close && b.close(); } catch (e) {} };
+
+  /* ---------------------------------------------------------------- scroll -> where the playhead should be */
+  function sync(){
+    const y = lastY = scrollY, p = Math.min(1, Math.max(0, (y - secTop) / span));
+    const pin = y >= secTop - 1 && y <= secTop + span + 1;
+    if (pin !== pinned) { pinned = pin; document.documentElement.classList.toggle('inwrap', pin); }
+    const t = frameOf(toU(p));
+    if (t !== target) { dir = t > target ? 1 : -1; target = t; }
+  }
+  function onScroll(){
+    sync(); farCheck(); idle = false; lastScrollAt = performance.now();
+    clearTimeout(idleT); idleT = setTimeout(() => { idle = true; kick(); }, 150);
+    kick();
+  }
+
+  /* ---------------------------------------------------------------- the loop: runs only while something moves */
+  function kick(){ if (!loop) loop = requestAnimationFrame(tick); }
+  function tick(now){
+    loop = 0;
+    const dt = last ? Math.min(.05, (now - last) / 1000) : 1 / 60; last = now;
+    const goal = hold !== null ? hold : idle ? Math.round(target) : target, prev = cur;   // at rest: a whole frame, never a blend
+    const near = lastY > secTop - vh * 1.2 && lastY < secTop + span + vh * 1.2;
+    if (!near || !TAU) cur = goal;
+    else { cur += (goal - cur) * (1 - Math.exp(-dt / TAU)); if (Math.abs(goal - cur) < .01) cur = goal; }
+    vel = (cur - prev) / (dt * 60);                                         // frames per 60 Hz refresh
+    if (vel) dir = vel > 0 ? 1 : -1;
+    ui(uOf(cur));
+    if (near || !live) draw();
+    pump();
+    if (cur !== goal) kick(); else last = 0;
+  }
+
+  /* ---------------------------------------------------------------- drawing */
+  const onStride = i => i % loStride === 0 || i === N - 1;                // the safety net: every loStride-th frame, plus the last
+  const HB = i => { const e = hi.get(i); return e ? e.b : null; };
+  const LB = i => { const e = onStride(i) ? lo.get(i) : null; return e ? e.b : null; };
+  function draw(){
+    if (!W) return;
+    const f = Math.min(N - 1, Math.max(0, cur)), i0 = Math.floor(f), i1 = Math.min(N - 1, i0 + 1), r = Math.round(f);
+    let A = null, B = null, t = 0, k = '', tier = 'h', sf = f;
+    const pair = (a0, a1, frac, get, tag) => {           // two neighbours, cross-faded by where we are between them
+      const x = get(a0), w = fade(frac);
+      if (w <= 0 && x) { A = x; k = tag + a0; sf = a0; return true; }
+      const y = get(a1);
+      if (w >= 1 && y) { A = y; k = tag + a1; sf = a1; return true; }
+      if (x && y) { A = x; B = y; t = w; k = tag + a0 + '+' + Math.round(w * 48); sf = f; return true; }
+      return false;
+    };
+    const one = i => { const x = HB(i); if (x) { A = x; k = 'h' + i; sf = i; } return !!x; };
+    // crisp pair, else the nearest crisp frame; then the low-res net, which is blurrier but in the right place (while moving,
+    // a crisp frame half a step behind would read as the car stepping back); at rest the crisp frames are decoded first anyway
+    const L = loStride, l0 = Math.floor(f / L) * L, l1 = Math.min(N - 1, l0 + L);
+    if (pair(i0, i1, f - i0, HB, 'h') || one(r)) {}
+    else if ((tier = 'l', pair(l0, l1, l1 > l0 ? (f - l0) / (l1 - l0) : 0, LB, 'l'))) {}
+    else if ((tier = 'h', one(r === i0 ? i1 : i0))) {}
+    else {
+      for (let d = 0; d < N && !A; d++) for (const i of [r - d, r + d]) {                     // whatever is closest
+        if (i < 0 || i >= N) continue; const x = HB(i) || LB(i); if (x) { A = x; sf = i; tier = hi.has(i) ? 'h' : 'l'; k = 'n' + tier + i; break; }
+      }
+      if (!A) return;
+    }
+    if (k === drawn) return;
+    const t0 = performance.now(); drawn = k; shownF = sf; shownTier = tier;
+    // cross-fade: (1-t)A + tB, added in premultiplied space, so frames with alpha stay solid mid-fade
+    ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1; ctx.clearRect(0, 0, W, H);
+    ctx.globalAlpha = B ? 1 - t : 1; ctx.drawImage(A, 0, 0, W, H);
+    if (B) { ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = t; ctx.drawImage(B, 0, 0, W, H); ctx.globalCompositeOperation = 'source-over'; }
+    ctx.globalAlpha = 1;
+    if (!live) { live = true; stick.classList.add('live'); }
+    drawMs = drawMs * .9 + (performance.now() - t0) * .1;
+  }
+
+  /* ---------------------------------------------------------------- decoding: what to decode next */
+  const busyH = new Set(), busyL = new Set(), fails = new Map();
+  const ahead = () => Math.max(2, Math.min(9, MAXHI - 6));
+  function need(t, i){
+    if (i < 0 || i >= N || !blobs[i] || (t === 'h' ? busyH : busyL).has(i) || (t === 'l' && !onStride(i))) return false;
+    const f = fails.get(t + i); if (f && (f.n >= 3 || performance.now() < f.at)) return false;   // a frame that keeps failing is skipped
+    const e = (t === 'h' ? hi : lo).get(i); return !e || e.sz !== szGen;
+  }
+  function inWindow(i){                                  // the crisp frames we want around the playhead
+    const c = Math.round(cur), d = (i - c) * dir, i0 = Math.floor(cur);
+    return i === i0 || i === i0 + 1 || (d >= -3 && d <= ahead());
+  }
+  function nextJob(urgentOnly){
+    const c = Math.round(cur), i0 = Math.floor(cur), fast = Math.abs(vel) > 1.5, L = loStride, lc = Math.round(cur / L) * L;
+    if (!fast || urgentOnly) {                                                                           // what is on screen now
+      if (need('h', i0)) return ['h', i0]; if (need('h', i0 + 1)) return ['h', i0 + 1];
+      if (urgentOnly) return null;
+    }
+    if (need('l', lc)) return ['l', lc];
+    for (let k = 1; k <= 10; k++) {                                                                       // safety net around us
+      if (need('l', lc + k * L * dir)) return ['l', lc + k * L * dir];
+      if (k <= 4 && need('l', lc - k * L * dir)) return ['l', lc - k * L * dir];
+    }
+    for (let k = 1, A = fast ? 3 : ahead(); k <= A; k++) {                                              // crisp frames ahead, a few behind
+      if (need('h', c + k * dir)) return ['h', c + k * dir];
+      if (k <= 3 && need('h', c - k * dir)) return ['h', c - k * dir];
+    }
+    if (need('l', N - 1)) return ['l', N - 1];
+    for (let k = 1; k * L < N; k++) {                                                                     // the rest of the net
+      if (need('l', lc + k * L)) return ['l', lc + k * L];
+      if (need('l', lc - k * L)) return ['l', lc - k * L];
+    }
+    return null;
+  }
+  function pump(){
+    if (!W) return;
+    // without a worker, decoding blocks the page: one at a time, and mid-scroll only for the frame on screen
+    const max = mode === 'worker' ? JOBS : 1, urgent = mode !== 'worker' && !idle;
+    while (inflight < max) { const j = nextJob(urgent); if (!j) break; decode(j[0], j[1]); }
+  }
+  function trim(){
+    if (hi.size <= MAXHI) return;
+    // never evict what the scheduler would ask for again: outside the window first, farthest first
+    const ks = [...hi.keys()].sort((x, y) => ((inWindow(y) ? 0 : 1e4) + Math.abs(y - cur)) - ((inWindow(x) ? 0 : 1e4) + Math.abs(x - cur)));
+    while (hi.size > MAXHI) { const k = ks.shift(); close(hi.get(k).b); hi.delete(k); }
+  }
+
+  /* ---------------------------------------------------------------- decoding: in a worker, with fallbacks */
+  const WSRC = `let resize = true;
+onmessage = async e => {
+  const { id, blob, w, h } = e.data;
+  try {
+    let b = null;
+    if (resize) { try { b = await createImageBitmap(blob, { resizeWidth: w, resizeHeight: h, resizeQuality: 'high' }); } catch (x) { if (x && x.name === 'TypeError') resize = false; } }
+    if (!b) b = await createImageBitmap(blob);
+    if ((b.width !== w || b.height !== h) && typeof OffscreenCanvas !== 'undefined') {
+      const oc = new OffscreenCanvas(w, h), c = oc.getContext('2d'); c.imageSmoothingQuality = 'high'; c.drawImage(b, 0, 0, w, h); b.close(); b = oc.transferToImageBitmap();
+    }
+    postMessage({ id, b }, [b]);
+  } catch (err) { postMessage({ id, err: String((err && err.message) || err) }); }
+};`;
+  let worker = null, mode = 'main', proven = false, watchdog = 0, jobs = new Map(), jid = 0, inflight = 0;
+  try {
+    if (window.Worker && window.createImageBitmap) {
+      worker = new Worker(URL.createObjectURL(new Blob([WSRC], { type: 'text/javascript' })));
+      worker.onmessage = e => finish(e.data.id, e.data.b, e.data.err);
+      worker.onerror = () => toMain();
+      mode = 'worker';
+    }
+  } catch (e) { worker = null; mode = 'main'; }
+  function dropJobs(){ jobs.forEach(j => clearTimeout(j.timer)); jobs.clear(); busyH.clear(); busyL.clear(); inflight = 0; }
+  function toMain(){
+    if (mode === 'main') return;
+    mode = 'main'; clearTimeout(watchdog); try { worker && worker.terminate(); } catch (e) {} worker = null;
+    dropJobs(); pump();
+  }
+  function decode(t, i){
+    const id = ++jid, w = t === 'h' ? W : LW, h = t === 'h' ? H : LH;
+    // a decode that never answers must not hold its slot for the rest of the visit
+    jobs.set(id, { t, i, g: gen, sz: szGen, w, timer: setTimeout(() => finish(id, null, 'timeout'), 4000) });
+    (t === 'h' ? busyH : busyL).add(i); inflight++;
+    if (mode === 'worker') {
+      worker.postMessage({ id, blob: blobs[i], w, h });
+      if (!proven && !watchdog) watchdog = setTimeout(() => { if (!proven) toMain(); }, 4000);
+    } else mainDecode(id, blobs[i], w, h);
+  }
+  function mainDecode(id, blob, w, h){
+    const viaImg = () => new Promise((res, rej) => {
+      const u = URL.createObjectURL(blob), im = new Image();
+      im.onload = () => (im.decode ? im.decode() : Promise.resolve()).catch(() => {}).then(() => { URL.revokeObjectURL(u); res(im); });
+      im.onerror = () => { URL.revokeObjectURL(u); rej(new Error('decode')); };
+      im.src = u;
+    });
+    const p = window.createImageBitmap
+      ? createImageBitmap(blob, { resizeWidth: w, resizeHeight: h, resizeQuality: 'high' }).catch(() => createImageBitmap(blob)).catch(viaImg)
+      : viaImg();
+    p.then(b => finish(id, b), e => finish(id, null, e));
+  }
+  function finish(id, b, err){
+    const j = jobs.get(id);
+    if (!j) { close(b); return; }
+    jobs.delete(id); clearTimeout(j.timer); (j.t === 'h' ? busyH : busyL).delete(j.i); inflight--;
+    if (!b) {
+      if (mode === 'worker' && !proven && err !== 'timeout') { toMain(); return; }
+      const key = j.t + j.i, f = fails.get(key) || { n: 0, at: 0 }; f.n++; f.at = performance.now() + 600 * f.n; fails.set(key, f);
+      setTimeout(pump, 650 * f.n); pump(); return;
+    }
+    if (mode === 'worker' && !proven) { proven = true; clearTimeout(watchdog); }
+    if (j.g !== gen || (j.t === 'l' && !onStride(j.i))) { close(b); pump(); return; }
+    const bytes = (b.width || 0) * (b.height || 0) * 4;
+    if ((b.width || 0) > j.w * 1.2) {
+      // this browser ignored the resize: keep both sets inside the memory budget by keeping fewer frames
+      if (j.t === 'l') { const s2 = Math.max(loStride, Math.ceil(N * bytes / LO_BUDGET)); if (s2 !== loStride) { loStride = s2; pruneLo(); } if (!onStride(j.i)) { close(b); pump(); return; } }
+      else MAXHI = Math.max(8, Math.min(MAXHI, Math.floor(HI_BUDGET / bytes)));
+    }
+    const map = j.t === 'h' ? hi : lo, old = map.get(j.i);
+    if (old && old.b !== b) close(old.b);
+    map.set(j.i, { b, sz: j.sz });
+    if (j.t === 'h') trim();
+    // redraw if this frame can change what is on screen: it is next to the playhead, or closer than what is shown, or crisper
+    const d = Math.abs(j.i - cur);
+    if (!live || d <= loStride + .5 || d < Math.abs(shownF - cur) || (j.t === 'h' && shownTier !== 'h' && d < 2)) { drawn = ''; kick(); }
+    pump();
+  }
+  function pruneLo(){ for (const [i, e] of lo) if (!onStride(i)) { close(e.b); lo.delete(i); } }
+
+  /* ---------------------------------------------------------------- fetching: every frame as a small blob, coarse to fine */
+  function load(){
+    const g = gen, k = kind, seen = new Set(), order = []; let next = 0, active = 0, settled = 0;
+    for (const step of [N - 1, 32, 16, 8, 4, 2, 1]) for (let i = 0; i < N; i += step) if (!seen.has(i)) { seen.add(i); order.push(i); }
+    const one = (i, tries) => {
+      active++;
+      fetch('film/' + k + '/' + String(i).padStart(3, '0') + '.webp').then(r => { if (!r.ok) throw new Error(r.status); return r.blob(); }).then(b => {
+        active--; if (g !== gen) return;
+        blobs[i] = b; pump(); if (++settled === N) loadedAll(); go();
+      }, () => {
+        active--; if (g !== gen) return;
+        if (tries < 3) setTimeout(() => { if (g === gen) one(i, tries + 1); }, 800 * (tries + 1));   // a dropped request is tried again
+        else if (++settled === N) loadedAll();
+        go();
+      });
+    };
+    const go = () => { while (active < 6 && next < order.length) one(order[next++], 0); };
+    go();
+  }
+  function loadedAll(){
+    allLoaded = true;
+    // fetch the colour picker's car now (network only, into the cache), so its setup later is quick
+    if (!glbReady) setTimeout(() => fetch('3d/lc300.glb').then(r => r.ok && r.arrayBuffer()).catch(() => {}).then(() => { glbReady = true; }), 600);
+  }
+  function setKind(){
+    const k = matchMedia('(max-aspect-ratio: 1/1)').matches ? 'p' : 'l';   // same test as the <picture> sources
+    if (k === kind) return false;
+    kind = k; gen++; N = META[k].N; U = META[k].U;
+    for (const m of [hi, lo]) { m.forEach(e => close(e.b)); m.clear(); }
+    blobs = new Array(N); dropJobs(); fails.clear(); W = H = 0; drawn = ''; allLoaded = false; MAXHI = MAXHI0;
+    if (live) { live = false; stick.classList.remove('live'); }
+    measure(); load(); return true;
+  }
+  /* far from the film for a while: let the crisp frames go (the low-res net stays, so coming back is instant) */
+  let farT = 0;
+  function farCheck(){
+    const near = lastY > secTop - vh * 2 && lastY < secTop + span + vh * 2;
+    if (near) { clearTimeout(farT); farT = 0; }
+    else if (!farT) farT = setTimeout(() => { farT = 0; if (!(lastY > secTop - vh * 2 && lastY < secTop + span + vh * 2)) { hi.forEach(e => close(e.b)); hi.clear(); drawn = ''; } }, 4000);
+  }
+
+  /* ---------------------------------------------------------------- captions, package chips and progress follow the playhead */
+  const S = { head: null, end: null, bars: [-1, -1, -1], tier: ['', '', ''], prog: -1 }; let lastCap = -1, capT = 0;
+  function ui(u){
+    const h = u > HEAD_UNTIL; if (h !== S.head) { S.head = h; head.classList.toggle('gone', h); foot.classList.toggle('gone', !h); }
+    const e = u >= END_AT; if (e !== S.end) { S.end = e; foot.classList.toggle('end', e); }
+    let ci = 0; for (let i = 0; i < CAPS.length; i++) if (u >= CAPS[i][0]) ci = i;
+    if (ci !== lastCap) {
+      const first = lastCap < 0; lastCap = ci; clearTimeout(capT);
+      const set = () => { kEl.textContent = CAPS[lastCap][1]; tEl.textContent = CAPS[lastCap][2]; capEl.classList.remove('swap'); };
+      if (first) set(); else { capEl.classList.add('swap'); capT = setTimeout(set, 200); }
+    }
+    for (let i = 0; i < 3; i++) {
+      const f = Math.round(ss(WAVE[i][0], WAVE[i][1], u) * 1000) / 1000; if (f === S.bars[i]) continue;
+      S.bars[i] = f; bars[i].style.transform = 'scaleX(' + f + ')';
+      const s = f >= .999 ? 'done' : f > 0 ? 'live' : '';
+      if (s !== S.tier[i]) { S.tier[i] = s; tiers[i].classList.toggle('done', s === 'done'); tiers[i].classList.toggle('live', s === 'live'); }
+    }
+    const q = Math.round(u * 1000) / 1000; if (q !== S.prog) { S.prog = q; prog.style.transform = 'scaleX(' + q + ')'; }
+  }
+
+  /* ---------------------------------------------------------------- wiring */
+  addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', () => { if (!setKind()) measure(); sync(); kick(); });
+  addEventListener('load', () => { measure(); sync(); kick(); });
+  if (window.ResizeObserver) new ResizeObserver(() => { measure(); sync(); kick(); }).observe(document.documentElement);   // the page above grew or shrank
+  // back from another tab or app, or the browser dropped the canvas: paint again
+  const repaint = () => { drawn = ''; kick(); };
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) repaint(); });
+  addEventListener('pageshow', repaint); cv.addEventListener('contextrestored', repaint);
+  setKind(); sync(); cur = target; ui(uOf(cur)); kick();
+
+  const idleFor = () => performance.now() - lastScrollAt;
+  window.DD_STORY = {
+    get u(){ return uOf(target); }, get want(){ return target; }, get cur(){ return cur; }, get uc(){ return uOf(cur); }, get shown(){ return shownF; }, get tier(){ return shownTier; },
+    get decoded(){ return hi.size + lo.size; }, get maxHi(){ return MAXHI; }, get jobsStarted(){ return jid; }, get hiCount(){ return hi.size; }, get loCount(){ return lo.size; }, get loStride(){ return loStride; },
+    get loaded(){ return blobs.filter(Boolean).length; }, get drawMs(){ return drawMs; }, get canvas(){ return [W, H]; }, get mode(){ return mode; },
+    get bytes(){ let s = 0; for (const m of [hi, lo]) m.forEach(e => { s += (e.b.width || 0) * (e.b.height || 0) * 4; }); return s; },
+    // the colour picker's one-off setup must not land while the film is being scrolled: it waits until you are past the film,
+    // resting on its last card, or resting anywhere once its car is already downloaded
+    get busy(){ return lastY < secTop + span && !(glbReady && idleFor() > 1200) && !(uOf(cur) >= .97 && idleFor() > 300); },
+    inView(frac){ return lastY > secTop - vh * frac && lastY < secTop + span + vh * frac; },
+    hold(f){ const x = Number(f); hold = f == null || !isFinite(x) ? null : Math.min(N - 1, Math.max(0, x)); kick(); },                        // for checks: park the playhead on an exact (fractional) frame
+    get N(){ return N; }
+  };
+  // warm the colour picker up during a pause, so it is ready before you reach it
+  const warm = () => { if (window.DD_CFG_GO && !window.DD_STORY.busy) { window.DD_CFG_GO(); return; } setTimeout(warm, 400); };
+  setTimeout(warm, 1500);
+})();
+
+</script>
+<script>
+/* ---- film meter: how far down the page you are, as film on a car ----------- */
+(function(){
+  const m = document.getElementById('fmeter'), bar = document.getElementById('fbar'); if (!m || !bar) return;
+  const rect = document.getElementById('fmrect'), pct = document.getElementById('fmpct'), txt = document.getElementById('fmtxt'), fill = bar.querySelector('i');
+  const hero = document.getElementById('top'), story = document.getElementById('wrap'), hdr = document.getElementById('hdr');
+  let raf = 0, lastP = -1, lastShow = null;
+  function paint(){
+    raf = 0;
+    const max = document.documentElement.scrollHeight - innerHeight, p = Math.min(1, Math.max(0, scrollY / Math.max(1, max)));
+    const inStory = window.DD_STORY ? window.DD_STORY.inView(.5) : false;
+    const show = scrollY > hero.offsetHeight * .6 && !inStory;
+    if (show !== lastShow) { lastShow = show; m.classList.toggle('on', show); bar.classList.toggle('on', show); document.documentElement.style.setProperty('--hh', hdr.offsetHeight + 'px'); }
+    const q = Math.round(p * 200) / 200; if (q === lastP) return; lastP = q;
+    rect.setAttribute('width', (q * 120).toFixed(1));
+    const full = q >= .995; pct.textContent = full ? 'Fully protected' : Math.round(q * 100) + '%'; txt.textContent = full ? 'Get your price' : 'Film coverage';
+    m.classList.toggle('full', full);
+    fill.style.transform = 'scaleX(' + q + ')';
+  }
+  const go = () => { if (!raf) raf = requestAnimationFrame(paint); };
+  addEventListener('scroll', go, { passive: true }); addEventListener('resize', go); go();
+})();
 </script>
 </body>
 </html>
